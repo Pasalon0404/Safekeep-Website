@@ -631,72 +631,6 @@ pre code {
 /* =============================================
    DONATE PAGE
    ============================================= */
-.donate-block {
-    background: var(--code-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    margin: 1.25rem 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-}
-
-.donate-qr-box {
-    width: 120px;
-    height: 120px;
-    flex-shrink: 0;
-    background: var(--border);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    text-align: center;
-    line-height: 1.5;
-}
-
-.donate-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.donate-type-label {
-    font-size: 0.71rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-dim);
-    margin-bottom: 0.5rem;
-}
-
-.donate-address {
-    font-family: var(--font-mono);
-    font-size: 0.84rem;
-    color: var(--text);
-    word-break: break-all;
-    user-select: all;
-    cursor: text;
-    display: block;
-    line-height: 1.65;
-    border-bottom: none !important;
-}
-
-.donate-address:hover {
-    color: var(--accent);
-    border-bottom: none !important;
-}
-
-.donate-note {
-    font-size: 0.82rem;
-    color: var(--text-dim);
-    margin-top: 0.6rem;
-}
-
 .contribute-list {
     list-style: disc;
     padding-left: 1.35rem;
@@ -790,14 +724,6 @@ pre code {
         display: none;
     }
 
-    .donate-block {
-        flex-direction: column;
-    }
-
-    .donate-qr-box {
-        width: 100%;
-        height: 80px;
-    }
 }
 
 /* =============================================
@@ -1115,4 +1041,131 @@ pre code {
     .top-nav.nav-open .nav-mobile-menu {
         display: block;
     }
+}
+
+/* =============================================
+   DONATION ADDRESS CARD
+   ============================================= */
+
+.addr-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 1.5rem 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 560px;
+}
+
+.addr-qr-col {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.addr-qr-col canvas,
+.addr-qr-col img {
+    display: block;
+    width: 160px !important;
+    height: 160px !important;
+    border-radius: var(--radius-sm);
+}
+
+.addr-wallet-link {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    border-bottom: 1px dashed var(--border-mid);
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.addr-wallet-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    border-bottom: 1px dashed var(--accent);
+}
+
+.addr-body {
+    background: #1e1e1e;
+    padding: 1.35rem 1.5rem 1.5rem;
+}
+
+.addr-type-label {
+    font-size: 0.69rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #6a9955;
+    margin-bottom: 0.5rem;
+}
+
+.addr-text {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: #1a1a1a;
+    word-break: break-all;
+    line-height: 1.7;
+    user-select: all;
+    cursor: text;
+    margin-bottom: 1.1rem;
+}
+
+.addr-actions {
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.addr-btn-copy {
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition);
+}
+
+.addr-btn-copy:hover { background: var(--accent-hover); }
+
+.addr-btn-new {
+    background: transparent;
+    color: #858585;
+    border: 1px solid #3a3a3a;
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 0.84rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color var(--transition), color var(--transition);
+}
+
+.addr-btn-new:hover {
+    border-color: #6a9955;
+    color: #d4d4d4;
+}
+
+.addr-privacy-note {
+    font-size: 0.75rem;
+    color: #555;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.01em;
+    line-height: 1.55;
+}
+
+@media (max-width: 600px) {
+    .addr-card { max-width: 100%; }
+    .addr-text { font-size: 0.76rem; }
 }

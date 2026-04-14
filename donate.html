@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeKeepBitcoin &mdash; Donate</title>
     <link rel="stylesheet" href="style.css">
+    <!--
+      qrcodejs — davidshimjs/qrcodejs, MIT licence.
+      Self-host by replacing this tag with:
+        <script src="vendor/qrcode-davidshimjs.min.js"></script>
+      Download: https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js
+    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="addresses.js"></script>
 </head>
 <body>
 
@@ -100,43 +108,43 @@
                     SafeKeepVault is free and open-source software. There is no
                     company behind it, no investors, and no paid plan.
                     Development, hardware testing, and signing infrastructure
-                    are funded entirely by donations from users.
+                    are funded entirely by voluntary donations from users like you.
+                    Every sat goes directly toward hardware, signing keys, and the
+                    maintainer's time. The software will remain free regardless.
                 </p>
+            </section>
+
+            <!-- Randomised address dispenser -->
+            <section class="content-section" id="donate-addr">
+                <h2 class="section-heading">Support the SafeKeep Project</h2>
                 <p>
-                    If SafeKeepVault is useful to you and you would like to
-                    support its continued development, you can send Bitcoin to
-                    one of the addresses below. Donations cover hardware for
-                    testing, signing keys, and the maintainer's time. All
-                    donations are voluntary; the software will remain free
-                    regardless.
+                    A unique address is selected from a pool of 300 on every
+                    page load. No server is involved &mdash; the selection
+                    happens entirely in your browser. No balance lookups, no
+                    external APIs, no logs.
                 </p>
-            </section>
 
-            <!-- Lightning -->
-            <section class="content-section">
-                <h2 class="section-heading">Lightning</h2>
-                <p>Recommended for amounts under 100,000 sats.</p>
-                <div class="donate-block">
-                    <div class="donate-qr-box">QR<br>placeholder</div>
-                    <div class="donate-info">
-                        <p class="donate-type-label">Lightning address</p>
-                        <a href="lightning:safekeep@getalby.com" class="donate-address">safekeep@getalby.com</a>
-                        <p class="donate-note">Tap or click to open in your Lightning wallet.</p>
-                    </div>
-                </div>
-            </section>
+                <div class="addr-card">
 
-            <!-- On-chain -->
-            <section class="content-section">
-                <h2 class="section-heading">On-chain</h2>
-                <p>Recommended for amounts above 100,000 sats.</p>
-                <div class="donate-block">
-                    <div class="donate-qr-box">QR<br>placeholder</div>
-                    <div class="donate-info">
-                        <p class="donate-type-label">Bitcoin address</p>
-                        <span class="donate-address">bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq</span>
-                        <p class="donate-note">Select all to copy. Verify the address before sending.</p>
+                    <!-- QR code -->
+                    <div class="addr-qr-col">
+                        <div id="addr-qr"></div>
+                        <a id="addr-wallet-link" href="#" class="addr-wallet-link">Open in Bitcoin wallet &rarr;</a>
                     </div>
+
+                    <!-- Address + controls -->
+                    <div class="addr-body">
+                        <p class="addr-type-label">// Bitcoin address &mdash; native SegWit</p>
+                        <code id="addr-display" class="addr-text">loading&hellip;</code>
+                        <div class="addr-actions">
+                            <button class="addr-btn-copy" id="addr-copy-btn">Copy Address</button>
+                            <button class="addr-btn-new"  id="addr-new-btn">&#8635; New Address</button>
+                        </div>
+                        <p class="addr-privacy-note">
+                            # 300-address pool &middot; client-side only &middot; no API calls &middot; self-verify on-chain
+                        </p>
+                    </div>
+
                 </div>
             </section>
 
@@ -170,6 +178,87 @@
         &middot; No warranty. No telemetry. No accounts.
     </footer>
 
+<script>
+/* ---------------------------------------------------------------
+   Randomised Bitcoin address dispenser — client-side only.
+   BITCOIN_ADDRESSES is loaded from addresses.js (300 entries).
+   No server calls. No balance lookups. No external APIs.
+   --------------------------------------------------------------- */
+(function () {
+    var addresses = window.BITCOIN_ADDRESSES || [];
+    if (!addresses.length) return;
+
+    var currentAddress = '';
+    var qrInstance    = null;
+
+    /* Millisecond-based pick: two simultaneous visitors at different
+       ms get different addresses. Falls back to Math.random if
+       addresses array is somehow empty (defensive). */
+    function pickAddress() {
+        var idx = Date.now() % addresses.length;
+        return addresses[idx];
+    }
+
+    function renderAddress(addr) {
+        currentAddress = addr;
+
+        /* Update address text */
+        document.getElementById('addr-display').textContent = addr;
+
+        /* Update wallet URI link (BIP-21, no amount — donor chooses) */
+        document.getElementById('addr-wallet-link').href = 'bitcoin:' + addr;
+
+        /* Regenerate QR code */
+        var container = document.getElementById('addr-qr');
+        container.innerHTML = '';
+        qrInstance = new QRCode(container, {
+            text:            'bitcoin:' + addr,
+            width:           160,
+            height:          160,
+            colorDark:       '#000000',
+            colorLight:      '#ffffff',
+            correctLevel:    QRCode.CorrectLevel.M
+        });
+    }
+
+    function init() {
+        renderAddress(pickAddress());
+
+        document.getElementById('addr-copy-btn').addEventListener('click', function () {
+            var btn = this;
+            navigator.clipboard.writeText(currentAddress).then(function () {
+                var orig = btn.textContent;
+                btn.textContent = 'Copied \u2713';
+                setTimeout(function () { btn.textContent = orig; }, 2000);
+            }).catch(function () {
+                /* Fallback for browsers without clipboard API */
+                var ta = document.createElement('textarea');
+                ta.value = currentAddress;
+                ta.style.position = 'fixed';
+                ta.style.opacity  = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                var orig = btn.textContent;
+                btn.textContent = 'Copied \u2713';
+                setTimeout(function () { btn.textContent = orig; }, 2000);
+            });
+        });
+
+        document.getElementById('addr-new-btn').addEventListener('click', function () {
+            renderAddress(pickAddress());
+        });
+    }
+
+    /* QRCode may not be ready if the CDN script loads async */
+    if (typeof QRCode !== 'undefined') {
+        init();
+    } else {
+        window.addEventListener('load', init);
+    }
+})();
+</script>
 <script>
 (function () {
     var nav = document.getElementById('top-nav');
