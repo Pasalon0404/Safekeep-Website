@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SafeKeepBitcoin — official Bitcoin ₿ shield logo (black-background variant)
+  ─────────────────────────────────────────────────────────────────────────────
+  ViewBox : 200 × 212  (near-square, scales cleanly as favicon or brand mark)
+  BG      : #080808 deep black
+  Shield  : #F7931A orange fill · #C96500 border stroke
+  ₿ glyph : #1A1A1A near-black · #F7931A for counters & stripe relief
+
+  Official Bitcoin ₿ construction (pre-rotation, 14° CW around (100, 106))
+  ──────────────────────────────────────────────────────────────────────────
+  LEFT stroke  x 72–86   y 62–150  (14 px wide solid bar)
+  TOP cap      x 72–112  y 62–72   (40 px wide crossbar)
+  BOTTOM cap   x 72–116  y 140–150 (44 px wide crossbar, slightly wider)
+
+  UPPER bump   arc  (86,62)  → (86,106)  rx 36 ry 22  sweep CW (bulges right)
+  LOWER bump   arc  (86,106) → (86,150)  rx 42 ry 22  sweep CW (wider)
+
+  Upper COUNTER arc  (86,74)  → (86,98)   rx 25 ry 12  (orange void inside bump)
+  Lower COUNTER arc  (86,118) → (86,142)  rx 30 ry 12  (orange void inside bump)
+
+  STRIPE 1  rect x 86–94   y 62–150  (8 px wide orange overprint = left slit)
+  STRIPE 2  rect x 102–110 y 62–150  (8 px wide orange overprint = right slit)
+
+  BAR TIPS  dark 8×10 rects at each stripe, extending above (y 53–62)
+            and below (y 150–160) the B body — the signature ₿ protrusions
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 212">
+
+  <!-- ── Deep black background ─────────────────────────────────────── -->
+  <rect width="200" height="212" fill="#080808"/>
+
+  <!-- ── Orange shield ──────────────────────────────────────────────── -->
+  <!--  Flat top · rounded corners · straight sides · bezier-curved bottom -->
+  <path d="M 20,10
+           H 180 Q 192,10 192,22
+           V 140 Q 192,190 100,208
+                 Q 8,190   8,140
+           V 22  Q 8,10   20,10
+           Z"
+        fill="#F7931A"
+        stroke="#C96500"
+        stroke-width="3"
+        stroke-linejoin="round"/>
+
+  <!-- ── Official Bitcoin ₿ glyph ───────────────────────────────────
+       Rotated 14° clockwise around glyph centre (100, 106).
+       Painter's-algorithm construction:
+         1. Dark shapes fill the full B body.
+         2. Orange counters punch through the bump interiors.
+         3. Orange stripe rects overprint two vertical slits top-to-bottom.
+         4. Dark bar-tip rects extend above/below — the ₿ signature marks.
+  ────────────────────────────────────────────────────────────────── -->
+  <g transform="rotate(14, 100, 106)">
+
+    <!-- 1a. LEFT vertical stroke -->
+    <rect x="72" y="62" width="14" height="88" fill="#1a1a1a"/>
+
+    <!-- 1b. TOP cap crossbar -->
+    <rect x="72" y="62" width="40" height="10" rx="1" fill="#1a1a1a"/>
+
+    <!-- 1c. BOTTOM cap crossbar (44 px — mirrors wider lower bump) -->
+    <rect x="72" y="140" width="44" height="10" rx="1" fill="#1a1a1a"/>
+
+    <!-- 1d. UPPER bump D-shape
+             Arc from (86,62) to (86,106), rx=36 ry=22, sweep=1 (CW = rightward bulge).
+             Constraint: 2·ry = 44 = dy → valid semicircle. -->
+    <path d="M 86,62 A 36,22 0 0,1 86,106 Z" fill="#1a1a1a"/>
+
+    <!-- 1e. LOWER bump D-shape (wider: rx=42)
+             Arc from (86,106) to (86,150), rx=42 ry=22.
+             Constraint: 2·ry = 44 = dy → valid. -->
+    <path d="M 86,106 A 42,22 0 0,1 86,150 Z" fill="#1a1a1a"/>
+
+    <!-- 2a. Upper bump COUNTER — orange void punched through dark bump
+             Arc (86,74)→(86,98), rx=25 ry=12.  dy=24, 2·ry=24 → valid. -->
+    <path d="M 86,74 A 25,12 0 0,1 86,98 Z" fill="#F7931A"/>
+
+    <!-- 2b. Lower bump COUNTER
+             Arc (86,118)→(86,142), rx=30 ry=12.  dy=24 → valid. -->
+    <path d="M 86,118 A 30,12 0 0,1 86,142 Z" fill="#F7931A"/>
+
+    <!-- 3a. STRIPE 1 — left vertical slit (orange overprints everything below) -->
+    <rect x="86" y="62" width="8" height="88" fill="#F7931A"/>
+
+    <!-- 3b. STRIPE 2 — right vertical slit -->
+    <rect x="102" y="62" width="8" height="88" fill="#F7931A"/>
+
+    <!-- 4a. BAR TIPS — protrude ABOVE B body (the ₿ upper signature marks) -->
+    <rect x="86"  y="53" width="8" height="10" rx="1" fill="#1a1a1a"/>
+    <rect x="102" y="53" width="8" height="10" rx="1" fill="#1a1a1a"/>
+
+    <!-- 4b. BAR TIPS — protrude BELOW B body (the ₿ lower signature marks) -->
+    <rect x="86"  y="150" width="8" height="10" rx="1" fill="#1a1a1a"/>
+    <rect x="102" y="150" width="8" height="10" rx="1" fill="#1a1a1a"/>
+
+  </g>
+
+</svg>

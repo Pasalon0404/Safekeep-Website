@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SafeKeepBitcoin shield logo — clean vector master
+  Viewbox: 200 × 212   (near-square, scales cleanly as a favicon)
+  Shield:  F7931A orange fill, C96500 stroke
+  ₿ glyph: 1A1A1A near-black, rotated 14° clockwise, counters punched in F7931A
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 212">
+
+  <!-- ── Shield ─────────────────────────────────────────────────────── -->
+  <!--  Flat top, gently rounded corners, quadratic curves to a point.  -->
+  <path d="
+    M 20,10
+    H 180
+    Q 192,10 192,22
+    V 140
+    Q 192,190 100,208
+    Q 8,190   8,140
+    V 22
+    Q 8,10  20,10
+    Z"
+    fill="#F7931A"
+    stroke="#C96500"
+    stroke-width="3"
+    stroke-linejoin="round"/>
+
+  <!-- ── Bitcoin ₿ glyph ────────────────────────────────────────────── -->
+  <!--
+    Built from primitives; no font dependency.
+    All coordinates are in the pre-rotation space.
+    Rotation: 14° clockwise around the visual mid-point of the glyph (100, 111).
+
+    Vertical stroke  x 73–85  y 65–156  (12 px wide, 91 px tall)
+    Top serif        x 64–93  y 65–72   (29 px wide,  7 px tall)
+    Bottom serif     x 64–93  y 149–156
+
+    Upper bump D     arc from (85,68) to (85,112)  rx=38 ry=22  sweep CW
+    Upper counter    arc from (85,75) to (85,105)  rx=28 ry=15  sweep CW
+    Lower bump D     arc from (85,112) to (85,155) rx=43 ry=22  sweep CW (wider)
+    Lower counter    arc from (85,119) to (85,148) rx=33 ry=15  sweep CW
+  -->
+  <g transform="rotate(14, 100, 111)">
+
+    <!-- Vertical stroke of the B -->
+    <rect x="73" y="65" width="12" height="91" rx="1.5" fill="#1a1a1a"/>
+
+    <!-- Top horizontal serif bar -->
+    <rect x="64" y="65" width="29" height="7"  rx="1" fill="#1a1a1a"/>
+
+    <!-- Bottom horizontal serif bar -->
+    <rect x="64" y="149" width="29" height="7" rx="1" fill="#1a1a1a"/>
+
+    <!-- Upper bump — outer D shape
+         Arc endpoints share x=85 (right edge of vertical stroke).
+         sweep-flag=1 → clockwise → bulges rightward → forms a D.       -->
+    <path d="M 85,68 A 38,22 0 0,1 85,112 Z" fill="#1a1a1a"/>
+
+    <!-- Upper bump — inner counter (punched in shield colour)            -->
+    <path d="M 85,75 A 28,15 0 0,1 85,105 Z" fill="#F7931A"/>
+
+    <!-- Lower bump — outer D shape (slightly wider than upper)          -->
+    <path d="M 85,112 A 43,22 0 0,1 85,155 Z" fill="#1a1a1a"/>
+
+    <!-- Lower bump — inner counter                                       -->
+    <path d="M 85,119 A 33,15 0 0,1 85,148 Z" fill="#F7931A"/>
+
+  </g>
+
+</svg>
