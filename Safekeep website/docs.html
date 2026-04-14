@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeKeepVault &mdash; Getting Started</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BAR -->
+    <nav class="top-nav">
+        <div class="top-nav-inner">
+            <a href="index.html" class="top-nav-brand">SafeKeep<span>Bitcoin</span></a>
+            <ul class="top-nav-links">
+                <li class="hide-mobile"><a href="index.html">Home</a></li>
+                <li class="hide-mobile"><a href="index.html#features">Features</a></li>
+                <li class="hide-mobile"><a href="docs.html" class="active">Docs</a></li>
+                <li class="hide-mobile"><a href="index.html#about">About</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="download.html" class="nav-download">Download</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- LAYOUT SHELL: SIDEBAR + MAIN -->
+    <div class="layout-shell">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-sticky">
+
+                <div>
+                    <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
+                    <p class="brand-meta">v1.0 &middot; MIT License &middot; Free forever</p>
+                </div>
+
+                <nav class="sidebar-links">
+                    <a href="#source" class="sidebar-link">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 4l16 16M4 20L20 4"/>
+                        </svg>
+                        Twitter / X
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 5L2 12.5l7 1M21 5l-5 15-4-6.5M21 5L9 13.5m0 0V19l3-2.5"/>
+                        </svg>
+                        Telegram
+                    </a>
+                </nav>
+
+                <div class="sidebar-actions">
+                    <a href="download.html" class="btn-download">&#8595; Download v1.0</a>
+                    <a href="donate.html" class="btn-donate">&#9825; Donate</a>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- Page hero -->
+            <div class="page-hero">
+                <p class="page-hero-label">Documentation</p>
+                <h1 class="page-hero-title">Getting Started</h1>
+                <p class="page-hero-tagline">
+                    Everything you need to go from cold hardware to your
+                    first signed transaction, start to finish.
+                </p>
+            </div>
+
+            <!-- Section 1: Hardware Setup -->
+            <section class="content-section" id="hardware">
+                <h2 class="section-heading">The Hardware Setup</h2>
+                <p>
+                    SafeKeepVault enforces the air-gap in software. At boot,
+                    the OS disables all network drivers and the Bluetooth stack
+                    before any user code runs &mdash; the host machine's
+                    existing Wi-Fi card and ports are rendered inert without
+                    any physical modification. Your signing machine is a vault
+                    for the duration of the session.
+                </p>
+                <p>You need three things:</p>
+                <ul class="docs-list">
+                    <li>
+                        <strong>The Boot Drive &mdash;</strong>
+                        A USB stick flashed with the SafeKeepVault image.
+                        This is your operating system. Plug it in, boot from
+                        it, and the machine becomes a dedicated signing device.
+                        The internal hard drive is never mounted.
+                    </li>
+                    <li>
+                        <strong>A Dedicated Offline Machine &mdash;</strong>
+                        Any x86 laptop or desktop. It does not need to be
+                        expensive or powerful. SafeKeepVault disables all
+                        networking and Bluetooth at the kernel level during
+                        boot &mdash; no drivers are loaded, so the machine's
+                        existing hardware is irrelevant. No modifications to
+                        the host machine are required.
+                    </li>
+                    <li>
+                        <strong>The Transfer Partition &mdash;</strong>
+                        The boot drive is partitioned to include an exFAT
+                        transfer volume alongside the OS. The Courier QR code optical transfer tool and the transfer drive are the only
+                        bridge between your vault and the outside world &mdash;
+                        unsigned transactions go in before boot, signed
+                        transactions come out after shutdown. USB ports are
+                        locked down once the OS is running, so no new devices
+                        are recognised mid-session; the drive must be moved
+                        between machines while the vault is powered off.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Section 2: First Boot -->
+            <section class="content-section" id="first-boot">
+                <h2 class="section-heading">First Boot &amp; Initialization</h2>
+                <p>
+                    Insert the Boot Drive and power on. Your machine's BIOS
+                    should be configured to boot from USB. SafeKeepVault loads
+                    directly into the browser-based vault interface &mdash; no
+                    desktop, no terminal, no distractions.
+                </p>
+                <p>On first boot, you'll see two options:</p>
+                <ul class="docs-list">
+                    <li>
+                        <strong>Forge a New Seed &mdash;</strong>
+                        Opens <em>The Forge</em>, SafeKeepVault's entropy
+                        engine. It combines hardware randomness with optional
+                        manual inputs (dice rolls, coin flips) to generate a
+                        BIP-39 master mnemonic. You'll walk through a
+                        verification quiz to confirm your backup before the
+                        seed is written to the vault.
+                    </li>
+                    <li>
+                        <strong>Restore an Existing Seed &mdash;</strong>
+                        Enter your 12- or 24-word mnemonic to load a
+                        previously generated seed into the vault.
+                    </li>
+                </ul>
+                <p>
+                    Once your seed is loaded, you'll land on the Dashboard.
+                    The first thing you should do: click
+                    <strong>Mount Transfer Drive</strong> at the top of the
+                    screen. This grants the vault read/write access to your
+                    exFAT USB stick. You only need to do this once per
+                    session &mdash; every tool inherits the connection
+                    automatically. The status light in the Command Center bar
+                    will turn green when the drive is live.
+                </p>
+            </section>
+
+            <!-- Section 3: Tool Arsenal -->
+            <section class="content-section" id="tools">
+                <h2 class="section-heading">The Tool Arsenal</h2>
+                <p>
+                    Fifteen tools ship in the v1.0 image, organised in the
+                    dashboard under four working sections. Every tool is
+                    offline, auditable, and interoperable with the broader
+                    open-source wallet ecosystem.
+                </p>
+
+                <h3 class="sub-heading">Transaction</h3>
+                <ul class="docs-list">
+                    <li>
+                        <strong>The Scribe &mdash;</strong>
+                        Reviews, decodes, and signs Partially Signed Bitcoin
+                        Transactions entirely offline. Every input and output
+                        is displayed for inspection before the signature is
+                        committed across the air gap.
+                    </li>
+                    <li>
+                        <strong>The Witness &mdash;</strong>
+                        BIP-322 message signing. Proves ownership of a Bitcoin
+                        address by signing an arbitrary message with the
+                        corresponding private key, producing a verifiable proof
+                        without moving any coins.
+                    </li>
+                </ul>
+
+                <h3 class="sub-heading">Seed Management</h3>
+                <ul class="docs-list">
+                    <li>
+                        <strong>The Forge &mdash;</strong>
+                        Generates BIP-39 master seeds using a multi-source
+                        entropy engine. Mixes physical dice rolls, mouse
+                        movement, camera noise, and the kernel CSPRNG into a
+                        single pool &mdash; no single source is trusted on its
+                        own.
+                    </li>
+                    <li>
+                        <strong>The Cipher &mdash;</strong>
+                        Generates, stores, and manages BIP-39 passphrases
+                        (the &ldquo;25th word&rdquo;) inside the encrypted
+                        vault. Entries sit alongside the seed and can be loaded
+                        directly into The Scribe when a PSBT requires a
+                        passphrase-locked wallet.
+                    </li>
+                    <li>
+                        <strong>The Armory &mdash;</strong>
+                        Derives extended public keys, inspects derivation paths,
+                        and exports key material for watch-only wallet setup in
+                        Sparrow, Electrum, or any descriptor-aware coordinator.
+                        The master seed stays sealed &mdash; only public data
+                        leaves this screen.
+                    </li>
+                    <li>
+                        <strong>The Script &mdash;</strong>
+                        Builds standardised output descriptors for single-sig
+                        and multisig configurations with full control over
+                        script type and derivation path. Use the exported
+                        descriptor to import a watch-only wallet into any
+                        compatible coordinator.
+                    </li>
+                    <li>
+                        <strong>The Covenant &mdash;</strong>
+                        Splits the master seed into threshold shares using
+                        Shamir&rsquo;s Secret Sharing (SLIP-39). Recovery
+                        requires only a quorum &mdash; any 2-of-3, 3-of-5,
+                        or similar scheme &mdash; and each individual share
+                        reveals nothing about the original.
+                    </li>
+                    <li>
+                        <strong>The Shard &mdash;</strong>
+                        Splits the master seed into XOR shares for distributed
+                        cold storage, or merges existing shares to reconstruct
+                        the original. Unlike Shamir, every share is required
+                        for recovery &mdash; any subset reveals nothing.
+                    </li>
+                    <li>
+                        <strong>The Lineage &mdash;</strong>
+                        Derives deterministic child seeds from the master seed
+                        using BIP-85. Lets you run isolated wallets for
+                        different purposes while maintaining only a single
+                        master backup &mdash; one seed to rule them all.
+                    </li>
+                </ul>
+
+                <h3 class="sub-heading">Backup &amp; Verification</h3>
+                <ul class="docs-list">
+                    <li>
+                        <strong>The Glyph &mdash;</strong>
+                        Encodes a seed as a compact SeedQR for stamping onto
+                        steel plates or printing on paper. Hand-drawn or
+                        engraved copies can be verified by scanning them back
+                        in with the built-in camera reader.
+                    </li>
+                    <li>
+                        <strong>The Courier &mdash;</strong>
+                        Transfers PSBTs, descriptors, and other data between
+                        air-gapped devices using animated QR codes (BCR-UR /
+                        BBQr). No USB drives, no network &mdash; only light and
+                        a camera lens crossing the gap.
+                    </li>
+                    <li>
+                        <strong>The Archive &mdash;</strong>
+                        A file browser for the Transfer Drive. Mount the exFAT
+                        partition to view, rename, or delete backup archives,
+                        signed transactions, and export files without ever
+                        leaving the air-gap.
+                    </li>
+                    <li>
+                        <strong>The Reliquary &mdash;</strong>
+                        Exports selected vault contents as an AES-256 encrypted
+                        archive to the Transfer Drive. The 7z utility encrypts
+                        both file data and filenames, producing a sealed bundle
+                        that can only be opened with the correct password.
+                    </li>
+                </ul>
+
+                <h3 class="sub-heading">Workspace</h3>
+                <ul class="docs-list">
+                    <li>
+                        <strong>The Codex &mdash;</strong>
+                        Stores plaintext notes inside the LUKS-encrypted vault.
+                        No secondary password is required &mdash; full-disk
+                        encryption protects everything at rest. Keep recovery
+                        instructions, multisig coordination details, and
+                        configuration notes sealed alongside your seed.
+                    </li>
+                    <li>
+                        <strong>The Cartographer &mdash;</strong>
+                        Produces an authoritative technical map of your custody
+                        setup: exact derivation paths, account public keys, and
+                        script types an heir needs to reconstruct the wallet in
+                        Sparrow, Electrum, or any descriptor-aware coordinator.
+                        Print it and store it with your physical inheritance
+                        plan.
+                    </li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;">
+                    That&rsquo;s the full life cycle: generate a seed, back it
+                    up across steel and encrypted archives, export your public
+                    keys, receive unsigned transactions, sign them in isolation,
+                    and carry the result back across the air-gap on a USB stick.
+                    No network. No clipboard. No attack surface.
+                </p>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
+        &mdash;
+        Free and open-source software &middot; MIT License &middot; &copy; 2026
+        &middot; No warranty. No telemetry. No accounts.
+    </footer>
+
+</body>
+</html>
