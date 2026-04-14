@@ -790,10 +790,6 @@ pre code {
         display: none;
     }
 
-    .nav-hamburger {
-        display: flex;
-    }
-
     .donate-block {
         flex-direction: column;
     }
@@ -1031,8 +1027,14 @@ pre code {
 
 /* =============================================
    MOBILE NAVIGATION — hamburger + dropdown
+   Default: both elements hidden on all viewports.
+   The @media block below re-enables them on mobile.
+   Rule order is intentional — defaults must appear
+   before the media-query overrides so the cascade
+   resolves correctly.
    ============================================= */
 
+/* --- Hamburger button: hidden by default (desktop) --- */
 .nav-hamburger {
     display: none;
     background: none;
@@ -1050,10 +1052,12 @@ pre code {
 
 .nav-hamburger:hover { color: var(--accent); }
 
-.nav-hamburger .icon-close { display: none; }
-.top-nav.nav-open .nav-hamburger .icon-menu  { display: none; }
-.top-nav.nav-open .nav-hamburger .icon-close { display: block; }
+/* Icon swap driven by .nav-open class on <nav> */
+.nav-hamburger .icon-close                    { display: none; }
+.top-nav.nav-open .nav-hamburger .icon-menu   { display: none; }
+.top-nav.nav-open .nav-hamburger .icon-close  { display: block; }
 
+/* --- Mobile menu panel: hidden by default (desktop) --- */
 .nav-mobile-menu {
     display: none;
     position: fixed;
@@ -1065,8 +1069,6 @@ pre code {
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
     z-index: 998;
 }
-
-.top-nav.nav-open .nav-mobile-menu { display: block; }
 
 .nav-mobile-menu ul {
     list-style: none;
@@ -1100,4 +1102,17 @@ pre code {
 .nav-mobile-menu ul li a.nav-download {
     color: var(--accent);
     font-weight: 700;
+}
+
+/* --- Mobile breakpoint: enable hamburger + panel --- */
+/* This block must come AFTER the display:none defaults  */
+/* above so the later declaration wins the cascade.      */
+@media (max-width: 768px) {
+    .nav-hamburger {
+        display: flex;
+    }
+
+    .top-nav.nav-open .nav-mobile-menu {
+        display: block;
+    }
 }
