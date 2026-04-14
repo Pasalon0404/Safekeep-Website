@@ -502,17 +502,32 @@
 <body>
 
     <!-- TOP NAVIGATION BAR -->
-    <nav class="top-nav">
+    <nav class="top-nav" id="top-nav">
     <div class="top-nav-inner">
         <a href="index.html" class="top-nav-brand">SafeKeep<span>Bitcoin</span></a>
         <ul class="top-nav-links">
             <li class="hide-mobile"><a href="index.html">Home</a></li>
             <li class="hide-mobile"><a href="index.html#features">Features</a></li>
             <li class="hide-mobile"><a href="docs.html">Docs</a></li>
-            <li class="hide-mobile"><a href="courier.html">Courier Tool</a></li>
+            <li class="hide-mobile"><a href="courier.html" class="active">Courier Tool</a></li>
             <li class="hide-mobile"><a href="index.html#about">About</a></li>
             <li><a href="donate.html">Donate</a></li>
-            <li><a href="download.html" class="nav-download active">Download</a></li>
+            <li><a href="download.html" class="nav-download">Download</a></li>
+        </ul>
+        <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile-menu">
+            <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+    <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="courier.html" class="active">Courier Tool</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="download.html" class="nav-download">Download</a></li>
         </ul>
     </div>
 </nav>
@@ -1109,5 +1124,36 @@
 })();
     </script>
 
+<script>
+(function () {
+    var nav = document.getElementById('top-nav');
+    var hamburger = document.querySelector('.nav-hamburger');
+    var mobileMenu = document.getElementById('nav-mobile-menu');
+    if (!nav || !hamburger || !mobileMenu) return;
+    function closeMenu() {
+        nav.classList.remove('nav-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+    function openMenu() {
+        nav.classList.add('nav-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+    }
+    hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        nav.classList.contains('nav-open') ? closeMenu() : openMenu();
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('click', function (e) {
+        if (!nav.contains(e.target)) closeMenu();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+    });
+})();
+</script>
 </body>
 </html>
