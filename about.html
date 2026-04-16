@@ -4,29 +4,8 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="safekeep_favicon_bitcoin_shield_perfect.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Courier &mdash; SafeKeepVault</title>
+    <title>About &mdash; SafeKeepVault</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* ---- Launch button ---- */
-        .btn-launch-courier {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.85rem 2rem;
-            background: var(--accent);
-            color: #ffffff;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            transition: background var(--transition);
-            letter-spacing: -0.01em;
-        }
-
-        .btn-launch-courier:hover {
-            background: var(--accent-hover);
-        }
-    </style>
 </head>
 <body>
 
@@ -38,8 +17,8 @@
             <li class="hide-mobile"><a href="index.html">Home</a></li>
             <li class="hide-mobile"><a href="features.html">Features</a></li>
             <li class="hide-mobile"><a href="docs.html">Docs</a></li>
-            <li class="hide-mobile"><a href="courier.html" class="active">Courier Tool</a></li>
-            <li class="hide-mobile"><a href="about.html">About</a></li>
+            <li class="hide-mobile"><a href="courier.html">Courier Tool</a></li>
+            <li class="hide-mobile"><a href="about.html" class="active">About</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="download.html" class="nav-download">Download</a></li>
         </ul>
@@ -53,8 +32,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="features.html">Features</a></li>
             <li><a href="docs.html">Docs</a></li>
-            <li><a href="courier.html" class="active">Courier Tool</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="courier.html">Courier Tool</a></li>
+            <li><a href="about.html" class="active">About</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="download.html" class="nav-download">Download</a></li>
         </ul>
@@ -107,84 +86,112 @@
 
             <!-- Page hero -->
             <div class="page-hero">
-                <p class="page-hero-label">SafeKeepVault Tool</p>
-                <h1 class="page-hero-title">The Courier</h1>
+                <p class="page-hero-label">About SafeKeepVault</p>
+                <h1 class="page-hero-title">Built Because It<br>Should Exist</h1>
                 <p class="page-hero-tagline">
-                    Transfer files and text between air-gapped devices using QR codes &mdash; no cables, no USB, no radio.
+                    Self-custody shouldn&rsquo;t cost $150 and a leap of faith in a manufacturer you&rsquo;ve never met.
                 </p>
-                <div style="margin-top: 1.75rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                    <a href="courier-tool.html" target="_blank" rel="noopener" class="btn-launch-courier">
-                        Launch The Courier
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-left:0.4rem;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    </a>
-                    <span style="font-size: 0.85rem; color: var(--text-dim);">Opens in a new tab &mdash; runs entirely in your browser.</span>
-                </div>
             </div>
 
-            <!-- What is The Courier -->
+            <!-- Why -->
             <section class="content-section">
-                <h2 class="section-heading">Your Air-Gap Bridge</h2>
+                <h2 class="section-heading">The Problem with How Most People Hold Bitcoin</h2>
                 <p>
-                    The Courier is a live tool built directly into this website.
-                    It is the bridge between your air-gapped SafeKeepVault and
-                    every other device you own &mdash; your laptop, desktop, or
-                    phone. Nothing is uploaded to a server. Everything happens
-                    locally in your browser, in real time.
+                    Most Bitcoin sits on exchanges. The people who have taken the
+                    step to self-custody have largely done so through dedicated
+                    hardware wallets &mdash; small, proprietary devices with tiny
+                    screens, closed firmware, and supply chains you cannot verify.
+                    You are trusting the manufacturer not to have introduced
+                    vulnerabilities, not to have been compromised, and not to go
+                    out of business before you need to recover your funds.
                 </p>
                 <p>
-                    Use the <strong>Transmit</strong> tab to turn any file or
-                    piece of text into a QR code. Point your SafeKeepVault
-                    camera at the screen and The Courier tool inside the vault
-                    will reassemble it on the other side &mdash; completely
-                    offline. Use the <strong>Receive</strong> tab to open your
-                    device camera and scan a QR code generated by the vault,
-                    pulling a signed transaction, a descriptor, or a backup
-                    file onto your online machine ready to broadcast or save.
-                </p>
-                <p>
-                    This is how you move PSBTs in, signed transactions out,
-                    and any other data across the air-gap without ever
-                    connecting a cable or bridging a network.
+                    That is a significant amount of trust to place in a piece of
+                    hardware for something as consequential as your Bitcoin.
+                    And the smaller the screen, the harder it is to actually read
+                    and verify what you are signing before you sign it.
                 </p>
             </section>
 
-            <!-- Password QR use case -->
+            <!-- The answer -->
             <section class="content-section">
-                <h2 class="section-heading">Set Up Your Encrypted Drive Password</h2>
+                <h2 class="section-heading">A Different Approach</h2>
                 <p>
-                    The Courier has another critical use: creating the QR code
-                    that unlocks your SafeKeepVault encrypted drive on every
-                    boot. Here is the recommended workflow:
+                    SafeKeepVault starts from a different premise: the hardware
+                    you already own is probably powerful enough, and the real
+                    problem has never been the hardware &mdash; it has been the
+                    software environment running on it.
                 </p>
+                <p>
+                    A Windows or macOS machine is not safe for key operations.
+                    Not because the hardware is bad, but because it is always
+                    online, always running background processes, and always
+                    reachable. SafeKeepVault solves that by replacing the
+                    environment entirely at boot. Plug in the drive, restart the
+                    machine, and it comes up as a stripped-down, network-disabled,
+                    read-only signing station &mdash; with your full-size screen,
+                    your keyboard, and hardware you already paid for.
+                </p>
+                <p>
+                    No supply chain to trust. No closed firmware. No manufacturer
+                    account. No tiny screen squinting at a derivation path you
+                    can barely read.
+                </p>
+            </section>
+
+            <!-- Principles -->
+            <section class="content-section">
+                <h2 class="section-heading">What We Believe</h2>
                 <ul class="docs-list">
                     <li>
-                        <strong>Generate a strong password &mdash;</strong> use your password manager to create a long, random,
-                        unbreakable password. This will protect your entire
-                        encrypted key store, so treat it accordingly.
-                        Save it in your password manager as your primary backup.
+                        <strong>Self-custody is a right, not a premium feature &mdash;</strong>
+                        the tools to hold your own Bitcoin securely should be
+                        free, open, and accessible to anyone willing to learn
+                        how to use them.
                     </li>
                     <li>
-                        <strong>Create the QR code &mdash;</strong> open The Courier and paste your password into
-                        &ldquo;Text / password&rdquo; mode on the Transmit
-                        tab. The tool will instantly generate a static
-                        QR code encoding your password &mdash; nothing is sent
-                        anywhere.
+                        <strong>Trust should be minimised, not shifted &mdash;</strong>
+                        every component of SafeKeepVault is open source and
+                        auditable. You should not have to take our word for
+                        anything. Read the code, verify the release signature,
+                        and run it yourself.
                     </li>
                     <li>
-                        <strong>Save the QR code to your phone &mdash;</strong> display the QR code full-screen and take a screenshot.
-                        Store it somewhere secure &mdash; a locked photos album,
-                        your password manager&rsquo;s secure notes, or an
-                        encrypted vault on your phone. On every subsequent
-                        SafeKeepVault boot, hold your phone up to the vault
-                        camera to unlock the encrypted drive instantly. No
-                        typing, no risk of a weak password.
+                        <strong>Transparency is the only real security guarantee &mdash;</strong>
+                        security through obscurity is not security. We follow open
+                        Bitcoin standards, produce human-readable output, and make
+                        every derivation path and transaction detail visible and
+                        verifiable before you sign.
+                    </li>
+                    <li>
+                        <strong>Your hardware should work for you &mdash;</strong>
+                        the laptop collecting dust in a drawer is a capable signing
+                        machine. You already paid for it. SafeKeepVault gives it
+                        a job.
                     </li>
                 </ul>
+            </section>
+
+            <!-- Open source -->
+            <section class="content-section">
+                <h2 class="section-heading">Fully Open Source</h2>
                 <p>
-                    Your password manager holds the source of truth. The QR
-                    code on your phone is the fast, camera-friendly unlock
-                    method. Two copies, both secure, neither online.
+                    SafeKeepVault is MIT licensed. The full source is on GitHub,
+                    the release is signed with a developer key you can verify,
+                    and the SHA-256 hash of every release is published so you can
+                    confirm you are running exactly what we shipped.
                 </p>
+                <p>
+                    We are a small project and we welcome scrutiny. If you find a
+                    bug, a vulnerability, or something that does not look right,
+                    open an issue. If you want to contribute, open a pull request.
+                    The goal is software that earns trust through transparency,
+                    not through marketing.
+                </p>
+                <div class="cta-row" style="margin-top: 1.5rem;">
+                    <a href="https://github.com/Pasalon0404/SafeKeepVault" target="_blank" rel="noopener" class="btn-primary">View on GitHub &rarr;</a>
+                    <a href="download.html" class="btn-secondary">&#8595; Download v1.1b</a>
+                </div>
             </section>
 
         </main>
