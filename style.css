@@ -396,9 +396,7 @@ a {
 }
 
 .docs-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
+    display: block;
     padding: 0.8rem 0;
     border-bottom: 1px solid var(--border);
     font-size: 0.94rem;
@@ -411,11 +409,10 @@ a {
 }
 
 .docs-list li strong {
+    display: block;
     font-weight: 700;
     color: var(--text);
-    white-space: nowrap;
-    margin-right: 0.15em;
-    flex-shrink: 0;
+    margin-bottom: 0.2rem;
 }
 
 .docs-list li em {
@@ -501,9 +498,7 @@ pre code {
 }
 
 .spec-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
+    display: block;
     padding: 0.9rem 0;
     border-bottom: 1px solid var(--border);
     font-size: 0.94rem;
@@ -515,21 +510,20 @@ pre code {
 }
 
 .spec-label {
+    display: block;
     font-family: var(--font-mono);
     font-size: 0.79rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--text);
-    min-width: 148px;
-    flex-shrink: 0;
-    padding-top: 0.18rem;
+    margin-bottom: 0.2rem;
     line-height: 1.35;
 }
 
 .spec-desc {
+    display: block;
     color: var(--text-muted);
-    flex: 1;
 }
 
 /* =============================================
@@ -721,14 +715,6 @@ pre code {
         padding: 2rem 1.75rem 3.5rem;
     }
 
-    .spec-list li {
-        flex-direction: column;
-        gap: 0.2rem;
-    }
-
-    .spec-label {
-        min-width: unset;
-    }
 }
 
 /* Mobile */
@@ -897,9 +883,10 @@ pre code {
     line-height: 1.6;
 }
 
-/* Dark terminal block */
+/* Terminal block */
 .terminal-block {
-    background: #1e1e1e;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
     padding: 1.15rem 1.35rem;
     overflow-x: auto;
@@ -915,25 +902,25 @@ pre code {
 }
 
 .term-prompt {
-    color: #6a9955;
+    color: var(--text-dim);
     user-select: none;
 }
 
 .term-cmd {
-    color: #d4d4d4;
+    color: var(--text);
 }
 
 .term-comment {
-    color: #6a9955;
+    color: var(--text-muted);
     font-style: normal;
 }
 
 .term-output {
-    color: #a8a8a8;
+    color: var(--text-muted);
 }
 
 .term-good {
-    color: #4ec994;
+    color: #2a7a4f;
 }
 
 .verify-note {
