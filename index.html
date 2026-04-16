@@ -49,7 +49,7 @@
 
                 <div>
                     <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
-                    <p class="brand-meta">v1.0 &middot; MIT License &middot; Free forever</p>
+                    <p class="brand-meta">v1.1b &middot; MIT License &middot; Free forever</p>
                 </div>
 
                 <nav class="sidebar-links">
@@ -77,7 +77,7 @@
                 </nav>
 
                 <div class="sidebar-actions">
-                    <a href="download.html" class="btn-download">&#8595; Download v1.0</a>
+                    <a href="download.html" class="btn-download">&#8595; Download v1.1b</a>
                     <a href="donate.html" class="btn-donate">&#9825; Donate</a>
                 </div>
 
@@ -218,7 +218,7 @@
                     height="2288"
                 >
                 <figcaption>
-                    The Forge &mdash; one of fifteen tools inside the v1.0 image.
+                    The Forge &mdash; one of fifteen tools inside the v1.1b image.
                     Mix physical dice, mouse movement, camera noise, and digital
                     randomness into a single entropy pool before forging your
                     master seed.
@@ -229,7 +229,7 @@
             <section class="content-section">
                 <h2 class="section-heading">A Complete Toolkit for the Sovereign Individual</h2>
                 <p>
-                    Fifteen discrete tools ship inside the v1.0 image, covering
+                    Fifteen discrete tools ship inside the v1.1b image, covering
                     the full life cycle of a Bitcoin key: generate, back up,
                     split, derive, transfer, sign, and hand down. Every tool is
                     offline, auditable, and interoperable with the broader
@@ -299,17 +299,66 @@
                 </ul>
             </section>
 
-            <!-- Section 5: Download -->
+            <!-- Section 5: v1.1b Changelog -->
+            <section class="content-section" id="changelog">
+                <h2 class="section-heading">What&rsquo;s New in v1.1b</h2>
+                <p>
+                    v1.1b conquers air-gap interoperability for the two strictest
+                    mobile and desktop wallet implementations in the ecosystem:
+                    Nunchuk and Electrum. Workflows that previously required manual
+                    conversion steps now complete in a single scan.
+                </p>
+
+                <div class="changelog-block">
+                    <span class="changelog-version">v1.1b</span>
+                    <ul class="changelog-entries">
+
+                        <li>
+                            <span class="cl-tag compat">Compat</span>
+                            <span class="cl-text">
+                                <strong>Flawless Nunchuk integration.</strong>
+                                SafeKeep outputs pure, un-prefixed Raw Hex QR codes.
+                                Nunchuk scans and broadcasts without any intermediate
+                                conversion step.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="cl-tag compat">Compat</span>
+                            <span class="cl-text">
+                                <strong>Complete Electrum round-trip.</strong>
+                                A custom Base43 decoder built into SafeKeep&rsquo;s
+                                camera reads Electrum&rsquo;s proprietary PSBT format
+                                natively &mdash; the last manual step is gone.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="cl-tag new">New</span>
+                            <span class="cl-text">
+                                <strong>Electrum skeleton wallet export.</strong>
+                                SafeKeep generates a <code>[FINGERPRINT]-electrum.json</code>
+                                file with the correct descriptor, derivation path, and
+                                little-endian <code>ckcc_xfp</code> field for instant
+                                watch-only wallet creation.
+                            </span>
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 7: Download -->
             <section class="content-section" id="download">
                 <h2 class="section-heading">Download</h2>
                 <p>
                     Verify the signature against the maintainer's public key
                     before writing the image to a USB drive. The
-                    <a href="#docs">verification guide</a> walks through the
-                    procedure end to end.
+                    <a href="download.html#verify">verification guide</a> walks through
+                    the procedure end to end.
                 </p>
                 <div class="download-row">
-                    <a href="download.html">safekeep-os-v1.0.img</a>
+                    <a href="download.html">safekeep-os-v1.1b.img</a>
                     <span style="color:var(--border-mid)">&middot;</span>
                     <a href="download.html">manifest.txt.asc</a>
                     <span style="color:var(--border-mid)">&middot;</span>

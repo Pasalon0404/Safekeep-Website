@@ -10,8 +10,8 @@
     --bg:           #FAFAFA;
     --surface:      #FFFFFF;
     --text:         #222222;
-    --text-muted:   #666666;
-    --text-dim:     #999999;
+    --text-muted:   #484848;
+    --text-dim:     #5c5c5c;
     --accent:       #F7931A;
     --accent-hover: #d97c0e;
     --border:       #E8E8E8;
@@ -108,7 +108,7 @@ a {
 .top-nav-links a {
     display: inline-block;
     padding: 0.28rem 0.65rem;
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     font-weight: 500;
     color: var(--text-muted);
     border-radius: var(--radius-sm);
@@ -183,7 +183,7 @@ a {
 }
 
 .brand-meta {
-    font-size: 0.71rem;
+    font-size: 0.82rem;
     color: var(--text-dim);
     margin-top: 0.3rem;
     letter-spacing: 0.02em;
@@ -290,7 +290,7 @@ a {
 }
 
 .page-hero-label {
-    font-size: 0.71rem;
+    font-size: 0.79rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -313,7 +313,7 @@ a {
 
 .page-hero-tagline {
     font-size: 0.97rem;
-    color: var(--text-muted);
+    color: var(--text);
     line-height: 1.6;
 }
 
@@ -345,18 +345,18 @@ a {
     content: "//";
     color: var(--accent);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.87rem;
     font-weight: 700;
     flex-shrink: 0;
 }
 
 /* Sub-section headings (h3) within a content section */
 .sub-heading {
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: var(--text-muted);
+    color: var(--text);
     margin: 1.75rem 0 0.75rem;
     padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--border);
@@ -485,7 +485,7 @@ pre code {
 
 .spec-label {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.79rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -523,8 +523,8 @@ pre code {
 
 .os-showcase figcaption {
     margin-top: 0.7rem;
-    font-size: 0.78rem;
-    color: var(--text-dim);
+    font-size: 0.88rem;
+    color: var(--text-muted);
     line-height: 1.55;
     letter-spacing: 0.01em;
 }
@@ -557,8 +557,8 @@ pre code {
 }
 
 .tool-sub {
-    font-size: 0.77rem;
-    color: var(--text-dim);
+    font-size: 0.84rem;
+    color: var(--text-muted);
     letter-spacing: 0.01em;
 }
 
@@ -654,8 +654,8 @@ pre code {
     border-top: 1px solid var(--border);
     padding: 1rem 1.5rem;
     text-align: center;
-    font-size: 0.76rem;
-    color: var(--text-dim);
+    font-size: 0.84rem;
+    color: var(--text-muted);
     letter-spacing: 0.01em;
 }
 
@@ -771,8 +771,8 @@ pre code {
 }
 
 .download-filesize {
-    font-size: 0.8rem;
-    color: var(--text-dim);
+    font-size: 0.88rem;
+    color: var(--text-muted);
     font-family: var(--font-mono);
 }
 
@@ -782,11 +782,11 @@ pre code {
 }
 
 .download-verify-label {
-    font-size: 0.72rem;
+    font-size: 0.79rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: var(--text-dim);
+    color: var(--text-muted);
     margin-bottom: 0.45rem;
 }
 
@@ -803,22 +803,22 @@ pre code {
 }
 
 .download-audit-link {
-    font-size: 0.82rem;
-    color: var(--text-dim);
+    font-size: 0.9rem;
+    color: var(--text-muted);
     text-decoration: none;
     border-bottom: none !important;
     transition: color var(--transition);
 }
 
 .download-audit-link:hover {
-    color: var(--text-muted);
+    color: var(--text);
     border-bottom: none !important;
 }
 
 .download-secondary-links a {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-size: 0.88rem;
+    color: var(--text);
     text-decoration: none;
     border-bottom: 1px dashed var(--border-mid);
     padding-bottom: 1px;
@@ -845,7 +845,7 @@ pre code {
 
 .verify-step-number {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.79rem;
     font-weight: 700;
     color: var(--accent);
     letter-spacing: 0.04em;
@@ -860,8 +860,8 @@ pre code {
 }
 
 .verify-step-desc {
-    font-size: 0.9rem;
-    color: var(--text-muted);
+    font-size: 0.95rem;
+    color: var(--text);
     margin-bottom: 0.75rem;
     line-height: 1.6;
 }
@@ -898,7 +898,7 @@ pre code {
 }
 
 .term-output {
-    color: #858585;
+    color: #a8a8a8;
 }
 
 .term-good {
@@ -906,12 +906,9 @@ pre code {
 }
 
 .verify-note {
-    font-size: 0.82rem;
-    color: var(--text-dim);
+    font-size: 0.92rem;
+    color: var(--text-muted);
     margin-top: 0.6rem;
-    padding-left: 0.25rem;
-    border-left: 2px solid var(--border-mid);
-    padding-left: 0.65rem;
 }
 
 /* OS tabs for Linux/macOS toggle — simple, no JS needed */
@@ -924,12 +921,12 @@ pre code {
 
 .os-tab-label {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.79rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     background: #2d2d2d;
-    color: #858585;
+    color: #c0c0c0;
     padding: 0.4rem 0.9rem;
     border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     margin-right: 2px;
@@ -1077,8 +1074,8 @@ pre code {
 
 .addr-wallet-link {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text-dim);
+    font-size: 0.81rem;
+    color: var(--text-muted);
     text-decoration: none;
     letter-spacing: 0.02em;
     border-bottom: 1px dashed var(--border-mid);
@@ -1097,7 +1094,7 @@ pre code {
 }
 
 .addr-type-label {
-    font-size: 0.69rem;
+    font-size: 0.77rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.09em;
@@ -1140,7 +1137,7 @@ pre code {
 
 .addr-btn-new {
     background: transparent;
-    color: #858585;
+    color: #b8b8b8;
     border: 1px solid #3a3a3a;
     padding: 0.6rem 1.1rem;
     border-radius: var(--radius-md);
@@ -1157,8 +1154,8 @@ pre code {
 }
 
 .addr-privacy-note {
-    font-size: 0.75rem;
-    color: #555;
+    font-size: 0.82rem;
+    color: #b0b0b0;
     margin-top: 1rem;
     font-family: var(--font-mono);
     letter-spacing: 0.01em;
@@ -1168,4 +1165,113 @@ pre code {
 @media (max-width: 600px) {
     .addr-card { max-width: 100%; }
     .addr-text { font-size: 0.76rem; }
+}
+
+/* =============================================
+   SHA-256 HASH DISPLAY BLOCK
+   ============================================= */
+
+.sha256-block {
+    background: #ffffff;
+    border: 2px solid var(--accent);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.sha256-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.77rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin-bottom: 0.5rem;
+}
+
+.sha256-value {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.90rem;
+    font-weight: 600;
+    color: var(--text);
+    word-break: break-all;
+    line-height: 1.7;
+    user-select: all;
+    cursor: text;
+}
+
+/* =============================================
+   CHANGELOG / RELEASE NOTES BLOCK
+   ============================================= */
+
+.changelog-block {
+    margin: 1.6rem 0;
+}
+
+.changelog-version {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.2em 0.7em;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 1rem;
+}
+
+.changelog-entries {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.changelog-entries li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 0.8rem;
+    align-items: baseline;
+}
+
+.cl-tag {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 0.15em 0.55em;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+}
+
+.cl-tag.compat { background: #1e1a2e; color: #a78bdb; }
+.cl-tag.new    { background: #1a2e1a; color: #6db56d; }
+.cl-tag.ux     { background: #2e2010; color: #db9f6a; }
+
+.cl-text {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.55;
+}
+
+.cl-text strong {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.cl-text code {
+    font-family: var(--font-mono);
+    font-size: 0.83em;
+    background: var(--code-bg);
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+    border: 1px solid var(--border-mid);
 }
