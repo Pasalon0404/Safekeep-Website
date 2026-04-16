@@ -15,7 +15,7 @@
         <a href="index.html" class="top-nav-brand">SafeKeep<span>Bitcoin</span></a>
         <ul class="top-nav-links">
             <li class="hide-mobile"><a href="index.html">Home</a></li>
-            <li class="hide-mobile"><a href="index.html#features">Features</a></li>
+            <li class="hide-mobile"><a href="features.html">Features</a></li>
             <li class="hide-mobile"><a href="docs.html" class="active">Docs</a></li>
             <li class="hide-mobile"><a href="courier.html">Courier Tool</a></li>
             <li class="hide-mobile"><a href="index.html#about">About</a></li>
@@ -30,7 +30,7 @@
     <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#features">Features</a></li>
+            <li><a href="features.html">Features</a></li>
             <li><a href="docs.html" class="active">Docs</a></li>
             <li><a href="courier.html">Courier Tool</a></li>
             <li><a href="index.html#about">About</a></li>
@@ -49,11 +49,11 @@
 
                 <div>
                     <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
-                    <p class="brand-meta">v1.1b &middot; MIT License &middot; Free forever</p>
+                    <p class="brand-meta">Self-custody &middot; Open source &middot; No middlemen</p>
                 </div>
 
                 <nav class="sidebar-links">
-                    <a href="#source" class="sidebar-link">
+                    <a href="https://github.com/Pasalon0404/SafeKeepVault" class="sidebar-link" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                         </svg>
@@ -91,6 +91,30 @@
                 <p class="page-hero-tagline">
                     Everything you need to go from cold hardware to your
                     first signed transaction, start to finish.
+                </p>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="notice-block">
+                <p class="notice-title">Before you begin &mdash; read this</p>
+                <p>
+                    <strong>Always write your seed words and any passphrases down on paper and store them offline.</strong>
+                    Your 12- or 24-word mnemonic is the only unconditional backup of your Bitcoin.
+                    If you use a BIP-39 passphrase, that passphrase is equally critical &mdash;
+                    a seed without its passphrase cannot recover your funds. Write both down
+                    separately, store them in safe locations, and never store either digitally.
+                    No software, no hardware device, and no encrypted file can substitute for
+                    physical backups. If your vault drive fails, is lost, or is destroyed,
+                    your written seed words and passphrase are the only way to recover your funds.
+                    Do not skip this step. Write them down before you do anything else.
+                </p>
+                <p>
+                    SafeKeepVault is currently in active development. While we take security
+                    seriously and the tools have been tested extensively, this software should
+                    be treated as a work in progress. We recommend starting with a small amount
+                    of funds while you get comfortable with the workflow, and always maintaining
+                    your written seed backup regardless of how much confidence you have in the
+                    software.
                 </p>
             </div>
 
@@ -146,32 +170,119 @@
                     directly into the browser-based vault interface &mdash; no
                     desktop, no terminal, no distractions.
                 </p>
-                <p>On first boot, you'll see two options:</p>
+
+                <h3 class="sub-heading">One-Time Setup: Encrypted Storage</h3>
+                <p>
+                    The very first time you boot, SafeKeepVault will walk you
+                    through a one-time setup step: creating your encrypted
+                    partition. This is the secure, persistent storage layer on
+                    the USB drive where your seed and vault data are kept
+                    between sessions. You will be asked to set a strong
+                    password to protect it.
+                </p>
+
+                <div class="notice-block">
+                    <p class="notice-title">Your password is your security</p>
+                    <p>
+                        <strong>The strength of your encrypted drive password is the single most important
+                        security decision you will make in SafeKeepVault.</strong>
+                        The air-gap, the offline tools, the verified open-source code &mdash; none of it matters
+                        if your encrypted partition can be brute-forced. A weak password means anyone who
+                        gets physical access to your boot drive has access to your keys. There is no
+                        account to lock, no remote wipe, no second factor. The password is the lock.
+                        Make it unbreakable.
+                    </p>
+                    <p>
+                        Use a password manager to generate a long, fully random password &mdash; at least
+                        20 characters with mixed case, numbers, and symbols. Do not invent one yourself.
+                        Human-chosen passwords are predictable in ways that matter to an attacker even
+                        when they feel random to you. Let the machine generate it.
+                    </p>
+                </div>
+
+                <p>
+                    Once you have your password, use <a href="courier.html">The Courier</a> to encode
+                    it as a QR code and screenshot it to your phone. Store it in a locked photos album,
+                    your password manager's secure notes, or an encrypted vault app. On every subsequent
+                    boot, hold your phone up to the vault camera &mdash; the encrypted partition unlocks
+                    automatically without you ever typing a character. This is the recommended workflow:
+                    a machine-generated password stored in your password manager as the source of truth,
+                    with the QR code on your phone as the fast, camera-friendly unlock key. You can also
+                    type the password directly at boot if you prefer, but the QR method eliminates the
+                    temptation to use a shorter or simpler password because it is easier to type.
+                </p>
+                <p>
+                    This setup step happens once. Every subsequent boot goes
+                    straight to the unlock prompt.
+                </p>
+
+                <h3 class="sub-heading">First Boot Options</h3>
+                <p>Once your encrypted partition is unlocked, you'll see five options:</p>
                 <ul class="docs-list">
                     <li>
                         <strong>Forge a New Seed &mdash;</strong>
-                        Opens <em>The Forge</em>, SafeKeepVault's entropy
-                        engine. It combines hardware randomness with optional
-                        manual inputs (dice rolls, coin flips) to generate a
-                        BIP-39 master mnemonic. You'll walk through a
-                        verification quiz to confirm your backup before the
-                        seed is written to the vault.
+                        launches The Forge tool, SafeKeepVault's entropy engine.
+                        Mix browser-generated entropy, dice rolls, and webcam
+                        noise into a single pool to generate a BIP-39 master
+                        mnemonic. You'll walk through a verification quiz to
+                        confirm your backup before the seed is written to
+                        the vault.
                     </li>
                     <li>
                         <strong>Restore an Existing Seed &mdash;</strong>
-                        Enter your 12- or 24-word mnemonic to load a
+                        enter your 12- or 24-word BIP-39 mnemonic to load a
                         previously generated seed into the vault.
+                    </li>
+                    <li>
+                        <strong>Seed XOR &mdash;</strong>
+                        load a seed by combining two or more XOR seed shares.
+                        Use this if your backup was split using The Shard tool
+                        XOR scheme. The shares are combined in memory and
+                        never written individually to storage.
+                    </li>
+                    <li>
+                        <strong>Shamir Recovery &mdash;</strong>
+                        reconstruct a seed from SLIP-39 Shamir shares. Enter
+                        the required threshold of shares and The Covenant tool will
+                        recover the master secret and load it into the vault.
+                    </li>
+                    <li>
+                        <strong>Restore from Backup &mdash;</strong>
+                        load a previously encrypted vault backup from your
+                        transfer drive. Use this to recover your full vault
+                        state, including any stored keys and configuration,
+                        onto a new or re-flashed boot drive.
                     </li>
                 </ul>
                 <p>
                     Once your seed is loaded, you'll land on the Dashboard.
                     The first thing you should do: click
                     <strong>Mount Transfer Drive</strong> at the top of the
-                    screen. This grants the vault read/write access to your
-                    exFAT USB stick. You only need to do this once per
-                    session &mdash; every tool inherits the connection
-                    automatically. The status light in the Command Center bar
-                    will turn green when the drive is live.
+                    screen. This grants the vault read/write access to the
+                    exFAT transfer partition on your boot drive. The transfer
+                    drive is how SafeKeepVault moves data in and out &mdash;
+                    use it to load unsigned PSBTs, save signed PSBTs, export
+                    PDF reports, and store encrypted backups. Because it is
+                    formatted as exFAT, you can mount it directly on any Mac
+                    or Windows machine to move files in and out between
+                    sessions.
+                </p>
+                <p>
+                    If you prefer to stay fully air-gapped without ever
+                    plugging the drive into an online machine, use
+                    <strong>The Courier</strong> tool inside SafeKeepVault
+                    together with the
+                    <a href="courier.html">live Courier tool</a> on this
+                    website. The two communicate entirely via QR code &mdash;
+                    scan from your desktop browser or phone camera to transfer
+                    PSBTs and signed transactions back and forth across the
+                    air-gap without touching a shared drive.
+                </p>
+                <p>
+                    You only need to mount the transfer drive once per session
+                    &mdash; every tool inherits the connection automatically.
+                    The status light in the Command Center bar will turn green
+                    when the drive is live.
                 </p>
             </section>
 
@@ -181,8 +292,9 @@
                 <p>
                     Fifteen tools ship in the v1.1b image, organised in the
                     dashboard under four working sections. Every tool is
-                    offline, auditable, and interoperable with the broader
-                    open-source wallet ecosystem.
+                    each one runs air-gapped, follows open Bitcoin standards,
+                    and produces output that any compatible wallet or coordinator
+                    can consume directly.
                 </p>
 
                 <h3 class="sub-heading">Transaction</h3>
@@ -330,8 +442,7 @@
     <footer class="site-footer">
         <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
         &mdash;
-        Free and open-source software &middot; MIT License &middot; &copy; 2026
-        &middot; No warranty. No telemetry. No accounts.
+        &copy; 2026 &middot; Open source &middot; Your keys, your Bitcoin.
     </footer>
 
 <script>

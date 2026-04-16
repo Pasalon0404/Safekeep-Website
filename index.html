@@ -15,7 +15,7 @@
         <a href="index.html" class="top-nav-brand">SafeKeep<span>Bitcoin</span></a>
         <ul class="top-nav-links">
             <li class="hide-mobile"><a href="index.html">Home</a></li>
-            <li class="hide-mobile"><a href="index.html#features">Features</a></li>
+            <li class="hide-mobile"><a href="features.html">Features</a></li>
             <li class="hide-mobile"><a href="docs.html">Docs</a></li>
             <li class="hide-mobile"><a href="courier.html">Courier Tool</a></li>
             <li class="hide-mobile"><a href="index.html#about">About</a></li>
@@ -30,7 +30,7 @@
     <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#features">Features</a></li>
+            <li><a href="features.html">Features</a></li>
             <li><a href="docs.html">Docs</a></li>
             <li><a href="courier.html">Courier Tool</a></li>
             <li><a href="index.html#about">About</a></li>
@@ -49,11 +49,11 @@
 
                 <div>
                     <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
-                    <p class="brand-meta">v1.1b &middot; MIT License &middot; Free forever</p>
+                    <p class="brand-meta">Self-custody &middot; Open source &middot; No middlemen</p>
                 </div>
 
                 <nav class="sidebar-links">
-                    <a href="#source" class="sidebar-link">
+                    <a href="https://github.com/Pasalon0404/SafeKeepVault" class="sidebar-link" target="_blank" rel="noopener">
                         <!-- GitHub icon -->
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
@@ -89,40 +89,30 @@
 
             <!-- Page hero -->
             <div class="page-hero" id="about">
-                <p class="page-hero-label">Air-gapped Bitcoin OS</p>
-                <h1 class="page-hero-title">SafeKeep<span>Vault</span></h1>
+                <h1 class="page-hero-title">Introducing SafeKeep<span>Vault</span></h1>
+                <p style="font-size: 1.25rem; font-weight: 600; color: var(--text-muted); margin: 0.5rem 0 0; letter-spacing: -0.01em;">Your Hardware. Your Keys. No Internet.</p>
                 <p class="page-hero-tagline">
-                    Absolute sovereignty &middot; Zero cost of entry &middot;
+                    Air-gapped Bitcoin signing &middot; Zero cost of entry &middot;
                     Free &amp; open-source
                 </p>
             </div>
 
             <!-- Section 1: Self-Custody Journey -->
             <section class="content-section">
-                <h2 class="section-heading">Begin Your Self-Custody Journey</h2>
                 <p>
-                    Bitcoin self-custody isn't purchased&mdash;it's learned.
-                    Owning your keys is the foundation, and the tools to do it
-                    right should be accessible to anyone willing to begin,
-                    whether protecting a small amount or a lifetime of savings.
-                    SafeKeepVault helps you move from decision to confident
-                    signature.
+                    Boot any x86-based laptop or desktop from a USB thumb drive and
+                    SafeKeepVault turns it into a dedicated, air-gapped Bitcoin signing environment. Run it stateless
+                    for a zero-footprint session, or unlock password-protected
+                    encrypted storage for persistent key management &mdash; all
+                    on open standards, auditable code, and nothing phoning home.
                 </p>
                 <p>
-                    SafeKeepVault is built to work with the Bitcoin tools that
-                    already exist. It follows the same standards, speaks the
-                    same formats, and fits cleanly into established
-                    workflows&mdash;whether you're importing descriptors,
-                    exporting xpubs, signing PSBTs, or moving data by QR.
-                </p>
-                <p>
-                    What we add is a full-featured signer that runs on hardware
-                    you already own. A first vault for the newcomer, a travel
-                    signer for the veteran, a practice environment for the
-                    curious, a backup signer for a multisig quorum. The vault
-                    is a stepping stone into the ecosystem and a companion once
-                    you are inside it&mdash;whichever of those you need, it is
-                    yours, and it is free.
+                    Whether you are signing single-signature transactions,
+                    coordinating a 2-of-3 multisig quorum, transferring PSBTs
+                    via QR code, or generating offline backups, SafeKeepVault
+                    speaks the same standards and formats as the tools you
+                    already use. No tracking, no telemetry, and no cloud.
+                    Just open-source math on hardware you already own.
                 </p>
             </section>
 
@@ -130,247 +120,104 @@
             <section class="content-section" id="features">
                 <h2 class="section-heading">Repurpose, Don't Replace</h2>
                 <p>
-                    There is almost certainly a laptop in your closet that has
-                    not been powered on in two years. Plug in a USB thumb drive
-                    with SafeKeepVault, boot, and that old machine becomes a
-                    secure, air-gapped, full-featured Bitcoin wallet.
-                    SafeKeepVault turns dormant hardware into sovereign
-                    infrastructure.
+                    Proprietary hardware wallets often force you to trust tiny
+                    screens and cramped interfaces. SafeKeepVault transforms
+                    your offline PC into a high-resolution signing station where
+                    every derivation path, master fingerprint, and PSBT detail
+                    is legible and verifiable.
                 </p>
                 <p>
-                    The ergonomic payoff is immediate. Instead of pecking at a
-                    four-line OLED, you get a full-size keyboard under your
-                    fingers and a full laptop display for the transaction you
-                    are about to sign. Every input and output is legible at a
-                    glance; every derivation path fits on one screen. Critical
-                    security operations stop feeling like a chore and start
-                    feeling like work you can actually double-check.
+                    By utilizing the full-size display and keyboard of your own
+                    hardware, you eliminate the &ldquo;peep-hole&rdquo; security
+                    risk of small devices. It turns dormant silicon into a
+                    professional-grade audit environment for your most critical
+                    transactions.
                 </p>
-<pre># 4 GB USB stick + any retired x86_64 laptop = vault
-# no SSD required — internal storage never touched
-# boots in under 30 seconds</pre>
-            </section>
-
-            <!-- Section 3: Fortress -->
-            <section class="content-section">
-                <h2 class="section-heading">The Fortress</h2>
-                <p>
-                    The OS is engineered to make the host machine a hostile
-                    environment for anything it doesn't explicitly trust. Every
-                    layer is a deliberate choice&mdash;security not as friction,
-                    but as the state the system returns to every time you boot.
-                </p>
-                <ul class="spec-list">
-                    <li>
-                        <span class="spec-label">Zero network</span>
-                        <span class="spec-desc">All networking and Bluetooth
-                        are disabled at the kernel level during the boot
-                        sequence, creating a pristine, verifiable air-gap.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Disabled peripherals</span>
-                        <span class="spec-desc">Wi-Fi, Bluetooth, microphones,
-                        and speakers stay cold. The vault speaks only to the
-                        keyboard, display, camera, and transfer drive.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Host SSD untouched</span>
-                        <span class="spec-desc">The internal NVMe or SATA
-                        drive is ignored entirely. Nothing on the host disk
-                        can be read, written, or contaminated.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Amnesic sandbox</span>
-                        <span class="spec-desc">Runs entirely in RAM. At
-                        power-down, the entire working state&mdash;seeds,
-                        PSBTs, clipboards, memory buffers&mdash;is permanently
-                        destroyed. Zero footprint.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Plausible deniability</span>
-                        <span class="spec-desc">No branded device, no custom
-                        hardware in a drawer. The vault is a thumb drive that
-                        looks exactly like any other thumb drive.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Flexible unlock</span>
-                        <span class="spec-desc">Decrypt the encrypted volume
-                        with a QR code scanned from your phone or a strong
-                        password at the keyboard&mdash;whichever suits your
-                        setup.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Encrypted or ephemeral</span>
-                        <span class="spec-desc">Save seed words to the
-                        encrypted vault for repeated use, or run the whole
-                        session in pure amnesic mode and leave nothing behind.
-                        The same OS does both.</span>
-                    </li>
+                <ul style="list-style: none; padding: 1rem 1.25rem; margin: 1.75rem 0; display: flex; flex-direction: column; gap: 0.65rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface);">
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;">4 GB USB thumb drive or greater &mdash; any x86_64 laptop or desktop</li>
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;">No access to SSD or networking services &mdash; peripherals locked out after boot</li>
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;">Strong password-based encrypted storage, unlockable with a QR code on your phone</li>
                 </ul>
+                <p>
+                    Security isn&rsquo;t about the hardware; it&rsquo;s about
+                    the environment. SafeKeepVault bypasses your vulnerable
+                    Windows or macOS installation entirely, booting into a
+                    stripped-down, read-only Linux environment designed for
+                    maximum isolation. By locking down the networking stack
+                    and isolating your keys from your physical hard drive, we
+                    create a secure &ldquo;air-gap&rdquo; within the machine
+                    itself.
+                </p>
+                <p>
+                    You can watch the vault work via our live system monitor,
+                    ensuring every process is accounted for. Unlock the
+                    password-protected encrypted volume to persist your keys
+                    across sessions, secured at rest and never written to the
+                    host machine. Or run it stateless and the moment you pull
+                    the plug, the entire session is wiped from memory &mdash;
+                    no traces on the disk, no breadcrumbs for attackers.
+                    Either way, you get the isolation of a dedicated hardware
+                    wallet with the transparency and power of a full-scale
+                    computer.
+                </p>
             </section>
 
-            <!-- OS Screenshot -->
+            <!-- Screenshot -->
             <figure class="os-showcase">
                 <img
-                    src="forge-screenshot.png"
-                    alt="SafeKeepVault OS — The Forge entropy generator, showing the four-source mixing panel and live SHA-256 pool hash"
-                    width="2532"
-                    height="2288"
+                    src="safekeep-desktop.png"
+                    alt="SafeKeepVault OS — desktop interface showing the vault dashboard"
                 >
                 <figcaption>
-                    The Forge &mdash; one of fifteen tools inside the v1.1b image.
-                    Mix physical dice, mouse movement, camera noise, and digital
-                    randomness into a single entropy pool before forging your
-                    master seed.
+                    The SafeKeepVault interface &mdash; fifteen tools, one air-gapped
+                    session, zero network exposure.
                 </figcaption>
             </figure>
 
-            <!-- Section 4: Arsenal -->
+            <!-- At a glance -->
             <section class="content-section">
-                <h2 class="section-heading">A Complete Toolkit for the Sovereign Individual</h2>
-                <p>
-                    Fifteen discrete tools ship inside the v1.1b image, covering
-                    the full life cycle of a Bitcoin key: generate, back up,
-                    split, derive, transfer, sign, and hand down. Every tool is
-                    offline, auditable, and interoperable with the broader
-                    open-source wallet ecosystem.
-                </p>
-                <ul class="tools-list">
+                <h2 class="section-heading">Everything You Need. Nothing You Don't.</h2>
+                <ul class="spec-list">
                     <li>
-                        <span class="tool-name">The Scribe</span>
-                        <span class="tool-sub">PSBT Signer</span>
+                        <span class="spec-label">15 tools</span>
+                        <span class="spec-desc">Generate seeds, sign PSBTs, split
+                        backups with Shamir or XOR, derive child keys, export
+                        descriptors, and hand down inheritance instructions &mdash;
+                        the full Bitcoin key lifecycle in one place.</span>
                     </li>
                     <li>
-                        <span class="tool-name">The Witness</span>
-                        <span class="tool-sub">BIP-322 Message Signing</span>
+                        <span class="spec-label">Works with your wallet</span>
+                        <span class="spec-desc">Pairs as an offline signer with
+                        Sparrow and Electrum on desktop, and Nunchuk and Blue Wallet
+                        on mobile. Set up watch-only, sign air-gapped, broadcast from
+                        the wallet you already trust.</span>
                     </li>
                     <li>
-                        <span class="tool-name">The Cipher</span>
-                        <span class="tool-sub">Passphrase Library</span>
+                        <span class="spec-label">Stateless or persistent</span>
+                        <span class="spec-desc">Boot into a zero-footprint amnesic
+                        session, or unlock password-protected encrypted storage for
+                        persistent key management. The same drive does both &mdash;
+                        your choice at every boot.</span>
                     </li>
                     <li>
-                        <span class="tool-name">The Armory</span>
-                        <span class="tool-sub">Key Management &amp; Derivation</span>
+                        <span class="spec-label">True air-gap</span>
+                        <span class="spec-desc">Transfer PSBTs and signed transactions
+                        via QR code using the built-in Courier tool &mdash; no shared
+                        USB drive, no online bridge, no exceptions.</span>
                     </li>
                     <li>
-                        <span class="tool-name">The Script</span>
-                        <span class="tool-sub">Output Descriptor Tool</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Covenant</span>
-                        <span class="tool-sub">SLIP-39 Shamir Backup</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Shard</span>
-                        <span class="tool-sub">Seed XOR</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Forge</span>
-                        <span class="tool-sub">Entropy Generator</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Lineage</span>
-                        <span class="tool-sub">BIP-85 Child Seeds</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Glyph</span>
-                        <span class="tool-sub">SeedQR Backup</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Courier</span>
-                        <span class="tool-sub">Optical Transfer</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Archive</span>
-                        <span class="tool-sub">Transfer Drive Manager</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Reliquary</span>
-                        <span class="tool-sub">Encrypted Backup</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Codex</span>
-                        <span class="tool-sub">Encrypted Notes</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Cartographer</span>
-                        <span class="tool-sub">Inheritance Recovery Map</span>
+                        <span class="spec-label">Free forever</span>
+                        <span class="spec-desc">MIT licensed, fully open-source, and
+                        auditable by anyone. No subscription, no hardware to buy, no
+                        telemetry. Flash a USB stick and you're sovereign.</span>
                     </li>
                 </ul>
             </section>
 
-            <!-- Section 5: v1.1b Changelog -->
-            <section class="content-section" id="changelog">
-                <h2 class="section-heading">What&rsquo;s New in v1.1b</h2>
-                <p>
-                    v1.1b conquers air-gap interoperability for the two strictest
-                    mobile and desktop wallet implementations in the ecosystem:
-                    Nunchuk and Electrum. Workflows that previously required manual
-                    conversion steps now complete in a single scan.
-                </p>
-
-                <div class="changelog-block">
-                    <span class="changelog-version">v1.1b</span>
-                    <ul class="changelog-entries">
-
-                        <li>
-                            <span class="cl-tag compat">Compat</span>
-                            <span class="cl-text">
-                                <strong>Flawless Nunchuk integration.</strong>
-                                SafeKeep outputs pure, un-prefixed Raw Hex QR codes.
-                                Nunchuk scans and broadcasts without any intermediate
-                                conversion step.
-                            </span>
-                        </li>
-
-                        <li>
-                            <span class="cl-tag compat">Compat</span>
-                            <span class="cl-text">
-                                <strong>Complete Electrum round-trip.</strong>
-                                A custom Base43 decoder built into SafeKeep&rsquo;s
-                                camera reads Electrum&rsquo;s proprietary PSBT format
-                                natively &mdash; the last manual step is gone.
-                            </span>
-                        </li>
-
-                        <li>
-                            <span class="cl-tag new">New</span>
-                            <span class="cl-text">
-                                <strong>Electrum skeleton wallet export.</strong>
-                                SafeKeep generates a <code>[FINGERPRINT]-electrum.json</code>
-                                file with the correct descriptor, derivation path, and
-                                little-endian <code>ckcc_xfp</code> field for instant
-                                watch-only wallet creation.
-                            </span>
-                        </li>
-
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Section 7: Download -->
-            <section class="content-section" id="download">
-                <h2 class="section-heading">Download</h2>
-                <p>
-                    Verify the signature against the maintainer's public key
-                    before writing the image to a USB drive. The
-                    <a href="download.html#verify">verification guide</a> walks through
-                    the procedure end to end.
-                </p>
-                <div class="download-row">
-                    <a href="download.html">safekeep-os-v1.1b.img</a>
-                    <span style="color:var(--border-mid)">&middot;</span>
-                    <a href="download.html">manifest.txt.asc</a>
-                    <span style="color:var(--border-mid)">&middot;</span>
-                    <a href="download.html">SHA-256 verified</a>
-                    <span style="color:var(--border-mid)">&middot;</span>
-                    <code>412 MB</code>
-                </div>
-                <div class="cta-row">
-                    <a href="download.html" class="btn-primary">&#8595; Download Image</a>
-                    <a href="donate.html" class="btn-secondary">Support Development</a>
-                </div>
-            </section>
+            <div class="cta-row" style="margin-top: 1.75rem;">
+                <a href="features.html" class="btn-primary">Explore Features &rarr;</a>
+                <a href="download.html" class="btn-secondary">&#8595; Download v1.1b</a>
+            </div>
 
         </main>
     </div>
@@ -379,8 +226,7 @@
     <footer class="site-footer">
         <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
         &mdash;
-        Free and open-source software &middot; MIT License &middot; &copy; 2026
-        &middot; No warranty. No telemetry. No accounts.
+        &copy; 2026 &middot; Open source &middot; Your keys, your Bitcoin.
     </footer>
 
 <script>
