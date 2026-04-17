@@ -110,9 +110,32 @@
                 </p>
             </div>
 
+            <!-- Section 0: Download & Flash -->
+            <section class="content-section" id="download-flash">
+                <h2 class="section-heading">Step 1: Download &amp; Flash</h2>
+                <p>
+                    Head to the <a href="download.html">Download page</a> to grab the latest
+                    release. It comes as a <code>.zip</code> file &mdash; unzip it and you'll
+                    find the <code>.img</code> disk image inside. That&rsquo;s the file you&rsquo;ll
+                    write to your thumb drive.
+                </p>
+                <p>
+                    The easiest way to flash it is with
+                    <a href="https://etcher.balena.io/" target="_blank" rel="noopener">Balena Etcher</a>.
+                    Open Etcher, select the <code>.img</code> file, select your thumb drive, and hit Flash.
+                    It takes a few minutes and tells you when it's done. If you prefer the command line, you can also use <code>dd</code> on macOS or Linux.
+                    
+                </p>
+                <p>
+                    Before flashing, it&rsquo;s worth taking two minutes to verify the download
+                    against the developer&rsquo;s signature. The <a href="download.html#verify">verification
+                    guide</a> on the Download page walks you through it step by step.
+                </p>
+            </section>
+
             <!-- Section 1: Hardware Setup -->
             <section class="content-section" id="hardware">
-                <h2 class="section-heading">What You Need</h2>
+                <h2 class="section-heading">Step 2: What You Need</h2>
                 <p>
                     SafeKeepVault creates an air-gap in software &mdash; no physical modifications,
                     no special networking equipment. It cuts off internet and Bluetooth at startup
@@ -143,7 +166,7 @@
 
             <!-- Section 2: First Boot -->
             <section class="content-section" id="first-boot">
-                <h2 class="section-heading">First Boot</h2>
+                <h2 class="section-heading">Step 3: First Boot</h2>
                 <p>
                     Plug in the thumb drive, set your computer to boot from USB in its startup
                     settings, and power on. SafeKeepVault loads straight into the vault &mdash;
@@ -184,7 +207,7 @@
                 </p>
 
                 <h3 class="sub-heading">First Boot Options</h3>
-                <p>Once you're in, you'll see five options to get started:</p>
+                <p>Once you're in, you'll see six options to get started:</p>
                 <ul class="docs-list">
                     <li>
                         <strong>Forge a New Seed &mdash;</strong>
@@ -216,6 +239,15 @@
                         transfer drive. Use this to recover your full vault
                         state, including any stored keys and configuration,
                         onto a new or re-flashed boot drive.
+                    </li>
+                    <li>
+                        <strong>Ephemeral Session &mdash;</strong>
+                        run the vault without saving anything. Type in your seed phrase,
+                        use the tools you need, and when you shut down it's gone &mdash;
+                        nothing written to the drive, no trace left behind. This is the
+                        'stateless' mode: great for one-off signing sessions or for
+                        those who prefer to keep their seed phrase on paper only and
+                        enter it fresh each time.
                     </li>
                 </ul>
                 <p>
