@@ -89,7 +89,7 @@
                 <p class="page-hero-label">What&rsquo;s inside the vault</p>
                 <h1 class="page-hero-title">Features</h1>
                 <p class="page-hero-tagline">
-                    Engineered for isolation &middot; Built for sovereignty
+                    Designed to keep your keys offline &middot; Built for Bitcoin self-custody
                 </p>
             </div>
 
@@ -97,71 +97,63 @@
             <section class="content-section">
                 <h2 class="section-heading">The Fortress</h2>
                 <p>
-                    Every time you boot SafeKeepVault, networking is disabled,
-                    the internal drive is never mounted, and USB ports are locked
-                    down before any user code runs. There is nothing to configure
-                    and nothing to remember &mdash; the secure state is the default
-                    state, every single session.
+                    Every time you boot SafeKeepVault, it's already locked down &mdash; no internet,
+                    your internal drive untouched, USB ports secured. There's nothing to configure
+                    and nothing to remember. It's just secure, every single time.
                 </p>
                 <ul class="spec-list">
                     <li>
-                        <span class="spec-label">Zero network</span>
-                        <span class="spec-desc">All networking and Bluetooth
-                        are disabled at the kernel level during the boot
-                        sequence, creating a pristine, verifiable air-gap.</span>
+                        <span class="spec-label">No internet, ever</span>
+                        <span class="spec-desc">Wi-Fi and Bluetooth are shut off
+                        the moment it boots &mdash; before anything else loads.
+                        Your keys never get anywhere near the internet.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Disabled peripherals</span>
-                        <span class="spec-desc">Wi-Fi, Bluetooth, microphones,
-                        and speakers stay cold. The vault speaks only to the
-                        keyboard, display, camera, and transfer drive.</span>
+                        <span class="spec-label">Truly offline</span>
+                        <span class="spec-desc">Microphones and speakers are disabled too.
+                        The vault talks only to your keyboard, display, camera, and thumb drive.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Host SSD untouched</span>
-                        <span class="spec-desc">The internal NVMe or SATA
-                        drive is ignored entirely. Nothing on the host disk
-                        can be read, written, or contaminated.</span>
+                        <span class="spec-label">Your computer stays clean</span>
+                        <span class="spec-desc">The internal hard drive is
+                        never touched. Nothing on your computer is read, changed,
+                        or affected in any way.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Amnesic sandbox</span>
-                        <span class="spec-desc">Runs entirely in RAM. At
-                        power-down, the entire working state&mdash;seeds,
-                        PSBTs, clipboards, memory buffers&mdash;is permanently
-                        destroyed. Zero footprint.</span>
+                        <span class="spec-label">No trace left behind</span>
+                        <span class="spec-desc">Runs entirely in memory. Shut it down
+                        and everything is gone &mdash; keys, session data, clipboard history.
+                        Nothing written to your drive.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Plausible deniability</span>
-                        <span class="spec-desc">No branded device, no custom
-                        hardware in a drawer. The vault is a thumb drive that
-                        looks exactly like any other thumb drive.</span>
+                        <span class="spec-label">Just a thumb drive</span>
+                        <span class="spec-desc">No special hardware, no branded
+                        device. The vault is a thumb drive that looks exactly
+                        like any other thumb drive.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Flexible unlock</span>
-                        <span class="spec-desc">Decrypt the encrypted volume
-                        with a QR code scanned from your phone or a strong
-                        password at the keyboard&mdash;whichever suits your
-                        setup.</span>
+                        <span class="spec-label">Unlock your way</span>
+                        <span class="spec-desc">Hold your phone up to the camera to
+                        scan a QR code, or type your password at the keyboard &mdash;
+                        whichever you prefer.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Encrypted or ephemeral</span>
-                        <span class="spec-desc">Save seed words to the
-                        encrypted vault for repeated use, or run the whole
-                        session in pure amnesic mode and leave nothing behind.
-                        The same OS does both.</span>
+                        <span class="spec-label">Save or start fresh</span>
+                        <span class="spec-desc">Store your keys in the encrypted vault
+                        and reuse them every session, or run it 'stateless' and leave
+                        no trace. Same drive, your choice every time.</span>
                     </li>
                 </ul>
             </section>
 
             <!-- Section 2: Arsenal -->
             <section class="content-section">
-                <h2 class="section-heading">A Complete Bitcoin Wallet and Toolkit for the Sovereign Individual</h2>
+                <h2 class="section-heading">The Arsenal</h2>
                 <p>
-                    Fifteen discrete tools ship inside the .zip image, covering
-                    the full life cycle of a Bitcoin key: generate, back up,
-                    split, derive, transfer, sign, and hand down. Every tool is
-                    each one runs air-gapped, follows open Bitcoin standards,
-                    and produces output that any compatible wallet or coordinator
-                    can consume directly.
+                    Fifteen tools covering the full Bitcoin key lifecycle:
+                    generate, back up, split, derive, sign, transfer, and hand
+                    down. Every one runs air-gapped and produces output any
+                    compatible wallet or coordinator can consume directly.
                 </p>
                 <ul class="tools-list">
                     <li>
@@ -234,10 +226,9 @@
                     alt="The Forge — SafeKeepVault's entropy generator, showing the four-source mixing panel"
                 >
                 <figcaption>
-                    The Forge &mdash; SafeKeepVault&rsquo;s entropy engine. Combine
-                    browser-generated randomness, physical dice rolls, and webcam
-                    noise into a single verifiable pool before generating your
-                    master seed. Every source is visible, every step is auditable.
+                    The Forge &mdash; SafeKeepVault&rsquo;s seed generator. Mix dice rolls,
+                    mouse movement, and camera noise together before generating your master seed.
+                    Every source is visible, every step is yours to verify.
                 </figcaption>
             </figure>
 
@@ -245,64 +236,41 @@
             <section class="content-section" id="compatibility">
                 <h2 class="section-heading">Works With the Wallets You Already Use</h2>
                 <p>
-                    SafeKeepVault is not a replacement for the wallet software you trust
-                    &mdash; it is the missing signing layer underneath it. Your favorite
-                    wallet handles balances, transaction history, address management, and
-                    network broadcast. SafeKeepVault handles the one thing those wallets
-                    cannot safely do on an internet-connected machine: holding your private
-                    keys and signing transactions completely offline.
+                    SafeKeepVault sits under the wallet you already use and trust. Your wallet
+                    watches your balance and history. SafeKeepVault holds your private keys and
+                    signs transactions completely offline. Send an unsigned transaction over via
+                    QR code or thumb drive, get a signed one back, and broadcast it from your
+                    everyday wallet. Your keys never touch the internet.
                 </p>
                 <p>
-                    The workflow is simple. Set up your wallet in watch-only mode using
-                    the xpub or output descriptor SafeKeepVault exports. Your wallet sees
-                    your full balance and can construct transactions, but holds no private
-                    keys and can sign nothing on its own. When you need to sign, the
-                    unsigned PSBT travels to SafeKeepVault via QR code or transfer drive,
-                    is signed air-gapped, and the signed transaction is returned the same
-                    way. Your wallet broadcasts it. Your keys never touch the internet.
-                </p>
-                <p>
-                    For multisig wallets, SafeKeepVault goes further. Load your primary
-                    key from encrypted storage and apply the first signature. Then, without
-                    rebooting, load a second seed temporarily into memory &mdash; a
-                    co-signer key stored on paper, a Shamir share, or a key from a
-                    separate backup &mdash; and apply the second signature in the same
-                    session. The temporary seed exists only in RAM and is gone the moment
-                    you clear it or shut down. This means a single SafeKeepVault device
-                    can serve as multiple signers in a quorum, making 2-of-3 multisig
-                    workflows practical without the cost of dedicated hardware for every key.
+                    Doing multisig? Load your primary key and sign first. Then temporarily load
+                    a second key &mdash; from a backup share or paper wallet &mdash; and sign again.
+                    That temporary key vanishes the moment you clear it or shut down.
+                    One device, multiple signers, no extra hardware to buy.
                 </p>
                 <ul class="spec-list">
                     <li>
                         <span class="spec-label">Sparrow Wallet</span>
-                        <span class="spec-desc">The most capable desktop Bitcoin
-                        wallet for power users. Run Sparrow in watch-only mode on
-                        your everyday machine and use SafeKeepVault as its offline
-                        signer. Full PSBT round-trip via file or QR. Ideal for
-                        single-sig and multisig coordinators.</span>
+                        <span class="spec-desc">Run Sparrow on your everyday machine
+                        to watch your balance. SafeKeepVault handles signing offline.
+                        Transfer transactions via file or QR code.</span>
                     </li>
                     <li>
                         <span class="spec-label">Electrum</span>
-                        <span class="spec-desc">A long-standing desktop wallet with
-                        deep scripting and multisig support. SafeKeepVault exports
-                        a ready-to-import <code>[FINGERPRINT]-electrum.json</code>
-                        skeleton wallet file, and the built-in Base43 decoder handles
-                        Electrum&rsquo;s proprietary QR format natively.</span>
+                        <span class="spec-desc">SafeKeepVault exports a ready-to-import
+                        wallet file for Electrum and reads its QR format natively &mdash;
+                        no manual conversion needed.</span>
                     </li>
                     <li>
                         <span class="spec-label">Nunchuk</span>
-                        <span class="spec-desc">A mobile-first multisig coordinator
-                        available on iOS and Android. SafeKeepVault outputs Raw Hex
-                        QR codes that Nunchuk&rsquo;s strict scanner accepts without
-                        any intermediate conversion. Scan, broadcast, done.</span>
+                        <span class="spec-desc">Full compatibility with Nunchuk's QR
+                        scanner. Scan, broadcast, done &mdash; no extra steps.</span>
                     </li>
                     <li>
                         <span class="spec-label">Blue Wallet</span>
-                        <span class="spec-desc">A popular mobile Bitcoin wallet for
-                        iOS and Android. Import your xpub into Blue Wallet as a
-                        watch-only vault, monitor your balance on your phone, and
-                        sign any outgoing transaction through SafeKeepVault before
-                        broadcasting.</span>
+                        <span class="spec-desc">Import your public key into Blue Wallet
+                        to monitor your balance on your phone, then sign through
+                        SafeKeepVault before broadcasting.</span>
                     </li>
                 </ul>
             </section>
@@ -311,10 +279,10 @@
             <section class="content-section" id="changelog">
                 <h2 class="section-heading">What&rsquo;s New in v1.1b</h2>
                 <p>
-                    v1.1b conquers air-gap interoperability for the two strictest
-                    mobile and desktop wallet implementations in the ecosystem:
-                    Nunchuk and Electrum. Workflows that previously required manual
-                    conversion steps now complete in a single scan.
+                    Full interoperability with Nunchuk and Electrum &mdash; the
+                    two strictest wallet implementations in the ecosystem.
+                    Workflows that required manual conversion steps now complete
+                    in a single scan.
                 </p>
 
                 <div class="changelog-block">

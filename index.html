@@ -100,19 +100,10 @@
             <!-- Section 1: Self-Custody Journey -->
             <section class="content-section">
                 <p>
-                    Boot any x86-based laptop or desktop from a USB thumb drive and
-                    SafeKeepVault turns it into a dedicated, air-gapped Bitcoin signing environment. Run it stateless
-                    for a zero-footprint session, or unlock password-protected
-                    encrypted storage for persistent key management &mdash; all
+                    Boot any x86-based laptop or desktop computer from a USB thumb drive and
+                    SafeKeepVault turns it into a dedicated, air-gapped Bitcoin hardware wallet and utility tool.
+                    Run it 'stateless' without saving anything for a clean session, or unlock encrypted storage to permanently and securely store your keys &mdash; all
                     on open standards, auditable code, and nothing phoning home.
-                </p>
-                <p>
-                    Whether you are signing single-signature transactions,
-                    coordinating a 2-of-3 multisig quorum, transferring PSBTs
-                    via QR code, or generating offline backups, SafeKeepVault
-                    speaks the same standards and formats as the tools you
-                    already use. No tracking, no telemetry, and no cloud.
-                    Just open-source math on hardware you already own.
                 </p>
             </section>
 
@@ -120,18 +111,9 @@
             <section class="content-section" id="features">
                 <h2 class="section-heading">Repurpose, Don't Replace</h2>
                 <p>
-                    Proprietary hardware wallets often force you to trust tiny
-                    screens and cramped interfaces. SafeKeepVault transforms
-                    your offline PC into a high-resolution signing station where
-                    every derivation path, master fingerprint, and PSBT detail
-                    is legible and verifiable.
-                </p>
-                <p>
-                    By utilizing the full-size display and keyboard of your own
-                    hardware, you eliminate the &ldquo;peep-hole&rdquo; security
-                    risk of small devices. It turns dormant silicon into a
-                    professional-grade audit environment for your most critical
-                    transactions.
+                    Your full-size screen means every derivation path, master
+                    fingerprint, and PSBT detail is legible before you sign it.
+                    That old device can become a pro-level signing station—no need to buy anything new.
                 </p>
                 <ul style="list-style: none; padding: 1rem 1.25rem; margin: 1.75rem 0; display: flex; flex-direction: column; gap: 0.65rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface);">
                     <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;">4 GB USB thumb drive or greater &mdash; any x86_64 laptop or desktop</li>
@@ -139,26 +121,7 @@
                     <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;">Strong password-based encrypted storage, unlockable with a QR code on your phone</li>
                 </ul>
                 <p>
-                    Security isn&rsquo;t about the hardware; it&rsquo;s about
-                    the environment. SafeKeepVault bypasses your vulnerable
-                    Windows or macOS installation entirely, booting into a
-                    stripped-down, read-only Linux environment designed for
-                    maximum isolation. By locking down the networking stack
-                    and isolating your keys from your physical hard drive, we
-                    create a secure &ldquo;air-gap&rdquo; within the machine
-                    itself.
-                </p>
-                <p>
-                    You can watch the vault work via our live system monitor,
-                    ensuring every process is accounted for. Unlock the
-                    password-protected encrypted volume to persist your keys
-                    across sessions, secured at rest and never written to the
-                    host machine. Or run it stateless and the moment you pull
-                    the plug, the entire session is wiped from memory &mdash;
-                    no traces on the disk, no breadcrumbs for attackers.
-                    Either way, you get the isolation of a dedicated hardware
-                    wallet with the transparency and power of a full-scale
-                    computer.
+                    SafeKeepVault skips your usual OS and starts from a USB in a locked-down, offline mode. It doesn’t touch your internal drive, and once you remove the USB, everything is gone—no trace left behind.
                 </p>
             </section>
 
@@ -180,36 +143,32 @@
                 <ul class="spec-list">
                     <li>
                         <span class="spec-label">15 tools</span>
-                        <span class="spec-desc">Generate seeds, sign PSBTs, split
-                        backups with Shamir or XOR, derive child keys, export
-                        descriptors, and hand down inheritance instructions &mdash;
+                        <span class="spec-desc">Generate keys, sign transactions, split
+                        backups, and create inheritance instructions &mdash;
                         the full Bitcoin key lifecycle in one place.</span>
                     </li>
                     <li>
                         <span class="spec-label">Works with your wallet</span>
-                        <span class="spec-desc">Pairs as an offline signer with
-                        Sparrow and Electrum on desktop, and Nunchuk and Blue Wallet
-                        on mobile. Set up watch-only, sign air-gapped, broadcast from
-                        the wallet you already trust.</span>
+                        <span class="spec-desc">Pairs with Sparrow, Electrum,
+                        Nunchuk, and Blue Wallet. Your wallet handles balances and
+                        history; SafeKeepVault handles signing.</span>
                     </li>
                     <li>
                         <span class="spec-label">Stateless or persistent</span>
-                        <span class="spec-desc">Boot into a zero-footprint amnesic
-                        session, or unlock password-protected encrypted storage for
-                        persistent key management. The same drive does both &mdash;
+                        <span class="spec-desc">Use it once and leave no trace, or
+                        save your setup and come back to it. Same drive,
                         your choice at every boot.</span>
                     </li>
                     <li>
-                        <span class="spec-label">True air-gap</span>
-                        <span class="spec-desc">Transfer PSBTs and signed transactions
-                        via QR code using the built-in Courier tool &mdash; no shared
-                        USB drive, no online bridge, no exceptions.</span>
+                        <span class="spec-label">Truly air-gapped</span>
+                        <span class="spec-desc">Transfer unsigned and signed transactions
+                        via QR code &mdash; no cables, no USB swaps, no internet required.</span>
                     </li>
                     <li>
                         <span class="spec-label">Free forever</span>
-                        <span class="spec-desc">MIT licensed, fully open-source, and
-                        auditable by anyone. No subscription, no hardware to buy, no
-                        telemetry. Flash a USB stick and you're sovereign.</span>
+                        <span class="spec-desc">Open-source and auditable.
+                        No subscription, no hardware to buy. Flash a USB drive and you&rsquo;re
+                        ready to go.</span>
                     </li>
                 </ul>
             </section>

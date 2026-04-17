@@ -89,8 +89,8 @@
                 <p class="page-hero-label">Documentation</p>
                 <h1 class="page-hero-title">Getting Started</h1>
                 <p class="page-hero-tagline">
-                    Everything you need to go from cold hardware to your
-                    first signed transaction, start to finish.
+                    Everything you need to go from a blank USB drive to
+                    signing your first transaction, start to finish.
                 </p>
             </div>
 
@@ -98,64 +98,44 @@
             <div class="notice-block">
                 <p class="notice-title">Before you begin &mdash; read this</p>
                 <p>
-                    <strong>Always write your seed words and any passphrases down on paper and store them offline.</strong>
+                    <strong>Write your seed words and passphrase on paper and store them offline.</strong>
                     Your 12- or 24-word mnemonic is the only unconditional backup of your Bitcoin.
-                    If you use a BIP-39 passphrase, that passphrase is equally critical &mdash;
-                    a seed without its passphrase cannot recover your funds. Write both down
-                    separately, store them in safe locations, and never store either digitally.
-                    No software, no hardware device, and no encrypted file can substitute for
-                    physical backups. If your vault drive fails, is lost, or is destroyed,
-                    your written seed words and passphrase are the only way to recover your funds.
-                    Do not skip this step. Write them down before you do anything else.
+                    A BIP-39 passphrase is equally critical &mdash; a seed without it cannot recover your funds.
+                    Write both separately, store them safely, and never store either digitally.
+                    If your vault drive fails or is lost, your written backup is the only way back.
                 </p>
                 <p>
-                    SafeKeepVault is currently in active development. While we take security
-                    seriously and the tools have been tested extensively, this software should
-                    be treated as a work in progress. We recommend starting with a small amount
-                    of funds while you get comfortable with the workflow, and always maintaining
-                    your written seed backup regardless of how much confidence you have in the
-                    software.
+                    SafeKeepVault is in active development. Start with a small amount while you get
+                    comfortable with the workflow, and always keep your written seed backup current.
                 </p>
             </div>
 
             <!-- Section 1: Hardware Setup -->
             <section class="content-section" id="hardware">
-                <h2 class="section-heading">The Hardware Setup</h2>
+                <h2 class="section-heading">What You Need</h2>
                 <p>
-                    SafeKeepVault enforces the air-gap in software. At boot,
-                    the OS disables all network drivers and the Bluetooth stack
-                    before any user code runs &mdash; the host machine's
-                    existing Wi-Fi card and ports are rendered inert without
-                    any physical modification. Your signing machine is a vault
-                    for the duration of the session.
+                    SafeKeepVault creates an air-gap in software &mdash; no physical modifications,
+                    no special networking equipment. It cuts off internet and Bluetooth at startup
+                    automatically. You just need three things:
                 </p>
-                <p>You need three things:</p>
                 <ul class="docs-list">
                     <li>
                         <strong>The Boot Drive &mdash;</strong>
-                        A USB stick flashed with the SafeKeepVault image.
-                        This is your operating system. Plug it in, boot from
-                        it, and the machine becomes a dedicated signing device.
-                        The internal hard drive is never mounted.
+                        A USB thumb drive flashed with the SafeKeepVault image. Plug it in, start
+                        the computer from it, and you're in the vault. Your internal hard drive
+                        is never touched.
                     </li>
                     <li>
-                        <strong>A Dedicated Offline Machine &mdash;</strong>
-                        Any x86 laptop or desktop. It does not need to be
-                        expensive or powerful. SafeKeepVault disables all
-                        networking and Bluetooth at the kernel level during
-                        boot &mdash; no drivers are loaded, so the machine's
-                        existing hardware is irrelevant. No modifications to
-                        the host machine are required.
+                        <strong>An Offline Machine &mdash;</strong>
+                        Any x86 laptop or desktop &mdash; doesn't need to be new or powerful.
+                        SafeKeepVault handles the internet lockout automatically at startup.
+                        No changes to your computer required.
                     </li>
                     <li>
-                        <strong>The Transfer Partition &mdash;</strong>
-                        The boot drive is partitioned to include an exFAT
-                        transfer volume alongside the OS. The Courier QR code optical transfer tool and the transfer drive are the only
-                        bridge between your vault and the outside world &mdash;
-                        unsigned transactions go in before boot, signed
-                        transactions come out after shutdown. USB ports are
-                        locked down once the OS is running, so no new devices
-                        are recognised mid-session; the drive must be moved
+                        <strong>The Transfer Folder &mdash;</strong>
+                        The thumb drive includes a built-in folder for moving files in and out.
+                        This and The Courier QR tool are the only ways to get data across.
+                        Once the vault is running, the USB ports lock down, so move the drive
                         between machines while the vault is powered off.
                     </li>
                 </ul>
@@ -163,22 +143,18 @@
 
             <!-- Section 2: First Boot -->
             <section class="content-section" id="first-boot">
-                <h2 class="section-heading">First Boot &amp; Initialization</h2>
+                <h2 class="section-heading">First Boot</h2>
                 <p>
-                    Insert the Boot Drive and power on. Your machine's BIOS
-                    should be configured to boot from USB. SafeKeepVault loads
-                    directly into the browser-based vault interface &mdash; no
-                    desktop, no terminal, no distractions.
+                    Plug in the thumb drive, set your computer to boot from USB in its startup
+                    settings, and power on. SafeKeepVault loads straight into the vault &mdash;
+                    no desktop, no distractions, just your tools.
                 </p>
 
                 <h3 class="sub-heading">One-Time Setup: Encrypted Storage</h3>
                 <p>
-                    The very first time you boot, SafeKeepVault will walk you
-                    through a one-time setup step: creating your encrypted
-                    partition. This is the secure, persistent storage layer on
-                    the USB drive where your seed and vault data are kept
-                    between sessions. You will be asked to set a strong
-                    password to protect it.
+                    The very first time you boot, SafeKeepVault walks you through a quick setup:
+                    creating your encrypted storage. This is where your seed and vault data
+                    live between sessions. You'll pick a password to protect it.
                 </p>
 
                 <div class="notice-block">
@@ -186,65 +162,53 @@
                     <p>
                         <strong>The strength of your encrypted drive password is the single most important
                         security decision you will make in SafeKeepVault.</strong>
-                        The air-gap, the offline tools, the verified open-source code &mdash; none of it matters
-                        if your encrypted partition can be brute-forced. A weak password means anyone who
-                        gets physical access to your boot drive has access to your keys. There is no
-                        account to lock, no remote wipe, no second factor. The password is the lock.
-                        Make it unbreakable.
+                        The air-gap, offline tools, open-source code &mdash; none of it matters if your
+                        partition can be brute-forced. Anyone with physical access to your boot drive
+                        has access to your keys. There is no remote wipe, no second factor. The password
+                        is the lock. Make it unbreakable.
                     </p>
                     <p>
                         Use a password manager to generate a long, fully random password &mdash; at least
-                        20 characters with mixed case, numbers, and symbols. Do not invent one yourself.
-                        Human-chosen passwords are predictable in ways that matter to an attacker even
-                        when they feel random to you. Let the machine generate it.
+                        20 characters. Do not invent one yourself. Human-chosen passwords are predictable
+                        in ways that matter to an attacker even when they feel random to you.
                     </p>
                 </div>
 
                 <p>
-                    Once you have your password, use <a href="courier.html">The Courier</a> to encode
-                    it as a QR code and screenshot it to your phone. Store it in a locked photos album,
-                    your password manager's secure notes, or an encrypted vault app. On every subsequent
-                    boot, hold your phone up to the vault camera &mdash; the encrypted partition unlocks
-                    automatically without you ever typing a character. This is the recommended workflow:
-                    a machine-generated password stored in your password manager as the source of truth,
-                    with the QR code on your phone as the fast, camera-friendly unlock key. You can also
-                    type the password directly at boot if you prefer, but the QR method eliminates the
-                    temptation to use a shorter or simpler password because it is easier to type.
-                </p>
-                <p>
-                    This setup step happens once. Every subsequent boot goes
-                    straight to the unlock prompt.
+                    Once you have your password, use <a href="courier.html">The Courier</a> to turn
+                    it into a QR code and save a screenshot to your phone. From then on, just hold
+                    your phone up to the camera at startup and you're in &mdash; no typing required.
+                    This also removes the temptation to use a simpler password because it's easier
+                    to type. This whole setup happens once. Every boot after that goes straight to
+                    the unlock prompt.
                 </p>
 
                 <h3 class="sub-heading">First Boot Options</h3>
-                <p>Once your encrypted partition is unlocked, you'll see five options:</p>
+                <p>Once you're in, you'll see five options to get started:</p>
                 <ul class="docs-list">
                     <li>
                         <strong>Forge a New Seed &mdash;</strong>
-                        launches The Forge tool, SafeKeepVault's entropy engine.
-                        Mix browser-generated entropy, dice rolls, and webcam
-                        noise into a single pool to generate a BIP-39 master
-                        mnemonic. You'll walk through a verification quiz to
-                        confirm your backup before the seed is written to
-                        the vault.
+                        opens The Forge, SafeKeepVault's seed generator. Mix dice rolls,
+                        mouse movement, and camera noise together to generate your master seed.
+                        A verification quiz walks you through confirming your backup before
+                        anything gets saved.
                     </li>
                     <li>
                         <strong>Restore an Existing Seed &mdash;</strong>
-                        enter your 12- or 24-word BIP-39 mnemonic to load a
-                        previously generated seed into the vault.
+                        type in your 12- or 24-word seed phrase to load a seed
+                        you already have.
                     </li>
                     <li>
                         <strong>Seed XOR &mdash;</strong>
-                        load a seed by combining two or more XOR seed shares.
-                        Use this if your backup was split using The Shard tool
-                        XOR scheme. The shares are combined in memory and
-                        never written individually to storage.
+                        load a seed by combining two or more backup shares that were
+                        split with The Shard tool. The shares are combined in memory
+                        and never stored individually.
                     </li>
                     <li>
                         <strong>Shamir Recovery &mdash;</strong>
-                        reconstruct a seed from SLIP-39 Shamir shares. Enter
-                        the required threshold of shares and The Covenant tool will
-                        recover the master secret and load it into the vault.
+                        reconstruct a seed from Shamir backup shares. Enter enough
+                        shares to meet your threshold and The Covenant tool loads it
+                        into the vault.
                     </li>
                     <li>
                         <strong>Restore from Backup &mdash;</strong>
@@ -255,34 +219,17 @@
                     </li>
                 </ul>
                 <p>
-                    Once your seed is loaded, you'll land on the Dashboard.
-                    The first thing you should do: click
-                    <strong>Mount Transfer Drive</strong> at the top of the
-                    screen. This grants the vault read/write access to the
-                    exFAT transfer partition on your boot drive. The transfer
-                    drive is how SafeKeepVault moves data in and out &mdash;
-                    use it to load unsigned PSBTs, save signed PSBTs, export
-                    PDF reports, and store encrypted backups. Because it is
-                    formatted as exFAT, you can mount it directly on any Mac
-                    or Windows machine to move files in and out between
-                    sessions.
+                    Once your seed is loaded, you'll land on the Dashboard. Click
+                    <strong>Mount Transfer Drive</strong> to connect the built-in transfer folder
+                    on your thumb drive &mdash; this is how unsigned transactions, signed transactions,
+                    reports, and backups move in and out. Mount it once per session and every tool
+                    picks it up automatically. The status light in the toolbar turns green when it's live.
                 </p>
                 <p>
-                    If you prefer to stay fully air-gapped without ever
-                    plugging the drive into an online machine, use
-                    <strong>The Courier</strong> tool inside SafeKeepVault
-                    together with the
-                    <a href="courier.html">live Courier tool</a> on this
-                    website. The two communicate entirely via QR code &mdash;
-                    scan from your desktop browser or phone camera to transfer
-                    PSBTs and signed transactions back and forth across the
-                    air-gap without touching a shared drive.
-                </p>
-                <p>
-                    You only need to mount the transfer drive once per session
-                    &mdash; every tool inherits the connection automatically.
-                    The status light in the Command Center bar will turn green
-                    when the drive is live.
+                    Prefer to never plug your drive into an online computer? Use The Courier tool
+                    alongside the <a href="courier.html">live Courier tool</a> on this site.
+                    Transactions cross the air-gap as QR codes only &mdash; no shared drive,
+                    no cable, no radio.
                 </p>
             </section>
 
@@ -290,27 +237,21 @@
             <section class="content-section" id="tools">
                 <h2 class="section-heading">The Tool Arsenal</h2>
                 <p>
-                    Fifteen tools ship in the v1.1b image, organised in the
-                    dashboard under four working sections. Every tool is
-                    each one runs air-gapped, follows open Bitcoin standards,
-                    and produces output that any compatible wallet or coordinator
-                    can consume directly.
+                    Fifteen tools ship in v1.1b, organized under four working sections.
+                    Every one runs completely offline and works with any Bitcoin wallet
+                    that supports standard formats.
                 </p>
 
                 <h3 class="sub-heading">Transaction</h3>
                 <ul class="docs-list">
                     <li>
                         <strong>The Scribe &mdash;</strong>
-                        Reviews, decodes, and signs Partially Signed Bitcoin
-                        Transactions entirely offline. Every input and output
-                        is displayed for inspection before the signature is
-                        committed across the air gap.
+                        Reviews, decodes, and signs PSBTs entirely offline. Every input and output
+                        is displayed for inspection before the signature is committed.
                     </li>
                     <li>
                         <strong>The Witness &mdash;</strong>
-                        BIP-322 message signing. Proves ownership of a Bitcoin
-                        address by signing an arbitrary message with the
-                        corresponding private key, producing a verifiable proof
+                        BIP-322 message signing. Proves address ownership with a verifiable proof
                         without moving any coins.
                     </li>
                 </ul>
@@ -319,57 +260,40 @@
                 <ul class="docs-list">
                     <li>
                         <strong>The Forge &mdash;</strong>
-                        Generates BIP-39 master seeds using a multi-source
-                        entropy engine. Mixes physical dice rolls, mouse
-                        movement, camera noise, and the kernel CSPRNG into a
-                        single pool &mdash; no single source is trusted on its
-                        own.
+                        Generates your master seed using multiple sources of randomness: dice rolls,
+                        mouse movement, camera noise, and the system's built-in random number generator.
+                        No single source is trusted on its own.
                     </li>
                     <li>
                         <strong>The Cipher &mdash;</strong>
-                        Generates, stores, and manages BIP-39 passphrases
-                        (the &ldquo;25th word&rdquo;) inside the encrypted
-                        vault. Entries sit alongside the seed and can be loaded
-                        directly into The Scribe when a PSBT requires a
-                        passphrase-locked wallet.
+                        Manages BIP-39 passphrases (the &ldquo;25th word&rdquo;) inside the encrypted vault.
+                        Loads directly into The Scribe when signing requires a passphrase-protected wallet.
                     </li>
                     <li>
                         <strong>The Armory &mdash;</strong>
-                        Derives extended public keys, inspects derivation paths,
-                        and exports key material for watch-only wallet setup in
-                        Sparrow, Electrum, or any descriptor-aware coordinator.
-                        The master seed stays sealed &mdash; only public data
-                        leaves this screen.
+                        Exports your public key for watch-only wallet setup in Sparrow, Electrum,
+                        or any compatible wallet. Your private keys never leave.
                     </li>
                     <li>
                         <strong>The Script &mdash;</strong>
-                        Builds standardised output descriptors for single-sig
-                        and multisig configurations with full control over
-                        script type and derivation path. Use the exported
-                        descriptor to import a watch-only wallet into any
-                        compatible coordinator.
+                        Builds wallet configurations for single-signature and multisig setups.
+                        Export and import directly into any compatible wallet.
                     </li>
                     <li>
                         <strong>The Covenant &mdash;</strong>
-                        Splits the master seed into threshold shares using
-                        Shamir&rsquo;s Secret Sharing (SLIP-39). Recovery
-                        requires only a quorum &mdash; any 2-of-3, 3-of-5,
-                        or similar scheme &mdash; and each individual share
-                        reveals nothing about the original.
+                        Splits your seed into Shamir shares for distributed backup. Recovery requires
+                        only a portion of the shares (2-of-3, 3-of-5, etc.) &mdash; any single share
+                        alone reveals nothing.
                     </li>
                     <li>
                         <strong>The Shard &mdash;</strong>
-                        Splits the master seed into XOR shares for distributed
-                        cold storage, or merges existing shares to reconstruct
-                        the original. Unlike Shamir, every share is required
-                        for recovery &mdash; any subset reveals nothing.
+                        Splits your seed into XOR shares for distributed cold storage.
+                        Unlike Shamir, every share is needed to recover &mdash; losing one means losing access.
                     </li>
                     <li>
                         <strong>The Lineage &mdash;</strong>
-                        Derives deterministic child seeds from the master seed
-                        using BIP-85. Lets you run isolated wallets for
-                        different purposes while maintaining only a single
-                        master backup &mdash; one seed to rule them all.
+                        Generates separate child wallets from your master seed &mdash; isolated wallets
+                        for different purposes, all recoverable from one backup.
                     </li>
                 </ul>
 
@@ -377,31 +301,23 @@
                 <ul class="docs-list">
                     <li>
                         <strong>The Glyph &mdash;</strong>
-                        Encodes a seed as a compact SeedQR for stamping onto
-                        steel plates or printing on paper. Hand-drawn or
-                        engraved copies can be verified by scanning them back
-                        in with the built-in camera reader.
+                        Encodes a seed as a compact SeedQR for steel stamping or paper backup.
+                        Hand-drawn or engraved copies can be verified by scanning them back in.
                     </li>
                     <li>
                         <strong>The Courier &mdash;</strong>
-                        Transfers PSBTs, descriptors, and other data between
-                        air-gapped devices using animated QR codes (BCR-UR /
-                        BBQr). No USB drives, no network &mdash; only light and
-                        a camera lens crossing the gap.
+                        Transfers PSBTs and descriptors between air-gapped devices via animated QR
+                        codes (BCR-UR / BBQr). No USB, no network &mdash; light and a camera lens only.
                     </li>
                     <li>
                         <strong>The Archive &mdash;</strong>
-                        A file browser for the Transfer Drive. Mount the exFAT
-                        partition to view, rename, or delete backup archives,
-                        signed transactions, and export files without ever
-                        leaving the air-gap.
+                        File browser for the Transfer Drive. View, rename, or delete backup archives
+                        and signed transactions without leaving the air-gap.
                     </li>
                     <li>
                         <strong>The Reliquary &mdash;</strong>
-                        Exports selected vault contents as an AES-256 encrypted
-                        archive to the Transfer Drive. The 7z utility encrypts
-                        both file data and filenames, producing a sealed bundle
-                        that can only be opened with the correct password.
+                        Exports a fully encrypted backup of your vault to the transfer drive.
+                        Everything inside is sealed &mdash; file names included &mdash; until the correct password is entered.
                     </li>
                 </ul>
 
@@ -409,29 +325,21 @@
                 <ul class="docs-list">
                     <li>
                         <strong>The Codex &mdash;</strong>
-                        Stores plaintext notes inside the LUKS-encrypted vault.
-                        No secondary password is required &mdash; full-disk
-                        encryption protects everything at rest. Keep recovery
-                        instructions, multisig coordination details, and
-                        configuration notes sealed alongside your seed.
+                        Encrypted notes stored inside the vault. Keep recovery instructions,
+                        multisig details, and setup notes sealed alongside your seed.
                     </li>
                     <li>
                         <strong>The Cartographer &mdash;</strong>
-                        Produces an authoritative technical map of your custody
-                        setup: exact derivation paths, account public keys, and
-                        script types an heir needs to reconstruct the wallet in
-                        Sparrow, Electrum, or any descriptor-aware coordinator.
-                        Print it and store it with your physical inheritance
-                        plan.
+                        Produces a technical map of your custody setup: derivation paths, account public
+                        keys, and script types an heir needs to reconstruct the wallet. Print it and
+                        store it with your physical inheritance plan.
                     </li>
                 </ul>
 
                 <p style="margin-top: 1.5rem;">
-                    That&rsquo;s the full life cycle: generate a seed, back it
-                    up across steel and encrypted archives, export your public
-                    keys, receive unsigned transactions, sign them in isolation,
-                    and carry the result back across the air-gap on a USB stick.
-                    No network. No clipboard. No attack surface.
+                    That&rsquo;s the whole workflow: generate your seed, back it up,
+                    connect it to your everyday wallet, sign transactions offline, and
+                    send the results back. No internet. No shortcuts. No compromise.
                 </p>
             </section>
 

@@ -97,10 +97,10 @@
             <section class="content-section" id="release">
                 <h2 class="section-heading">Latest Release</h2>
                 <p>
-                    SafeKeepVault v1.1b ships as a bootable disk image. Flash it to a
-                    USB drive using Balena Etcher, <code>dd</code>, or any compatible
-                    imaging tool. The internal hard drive of the host machine is never
-                    touched.
+                    SafeKeepVault v1.1b is a bootable disk image. Flash it to a USB drive
+                    using <a href="https://etcher.balena.io/" target="_blank" rel="noopener">Balena Etcher</a>
+                    (recommended for most people) or <code>dd</code> on Linux or macOS.
+                    Your computer&rsquo;s existing files are never touched.
                 </p>
 
                 <div class="download-hero-block">
@@ -157,13 +157,11 @@
 
                 <p>
                     <code>manifest.txt</code> contains the SHA-256 hash of the image.
-                    <code>manifest.txt.asc</code> is Anton&rsquo;s GPG signature over that
-                    manifest. The maintainer&rsquo;s public key,
-                    <code>developer-pubkey.asc</code>, is not bundled with the release
-                    &mdash; find it in the root of the
-                    <a href="https://github.com/Pasalon0404/SafeKeepVault" target="_blank" rel="noopener">GitHub repository</a>.
-                    Verification takes two minutes and is the only way to confirm you
-                    received an unmodified image.
+                    <code>manifest.txt.asc</code> is the GPG signature over that manifest.
+                    The developer public key is in the root of the
+                    <a href="https://github.com/Pasalon0404/SafeKeepVault" target="_blank" rel="noopener">GitHub repository</a>
+                    &mdash; not bundled with the release. Verification takes two minutes and is the
+                    only way to confirm you received an unmodified image.
                 </p>
             </section>
 
@@ -171,11 +169,9 @@
             <section class="content-section" id="changelog">
                 <h2 class="section-heading">What&rsquo;s New in v1.1b</h2>
                 <p>
-                    This release marks a major interoperability milestone: full,
-                    round-trip compatibility with both Nunchuk and Electrum, the two
-                    strictest air-gap wallet implementations in the ecosystem.
-                    Air-gap workflows that previously required workarounds or
-                    manual hex conversion now work first-scan, every time.
+                    Full round-trip compatibility with Nunchuk and Electrum &mdash; the two strictest
+                    air-gap wallet implementations in the ecosystem. Workflows that previously required
+                    workarounds or manual hex conversion now work first-scan, every time.
                 </p>
 
                 <div class="changelog-block">
@@ -185,22 +181,19 @@
                         <li>
                             <span class="cl-tag compat">Compat</span>
                             <span class="cl-text">
-                                <strong>Nunchuk integration &mdash; Raw Hex QR output.</strong>
-                                The Scribe now exports signed PSBTs as pure, un-prefixed
-                                Raw Hex QR codes. Nunchuk's strict scanner accepts them
-                                instantly with no intermediate conversion step required.
-                                Scan, broadcast, done.
+                                <strong>Nunchuk &mdash; Raw Hex QR output.</strong>
+                                The Scribe exports signed PSBTs as un-prefixed Raw Hex QR codes.
+                                Nunchuk's strict scanner accepts them instantly. Scan, broadcast, done.
                             </span>
                         </li>
 
                         <li>
                             <span class="cl-tag compat">Compat</span>
                             <span class="cl-text">
-                                <strong>Electrum round-trip &mdash; Base43 camera decoder.</strong>
-                                A custom Base43 decoder is now built directly into
-                                SafeKeep&rsquo;s QR scanner. Electrum&rsquo;s proprietary
-                                PSBT encoding is decoded on the fly, eliminating the last
-                                manual step in the Electrum air-gap workflow.
+                                <strong>Electrum round-trip &mdash; Base43 decoder.</strong>
+                                A custom Base43 decoder is now built into SafeKeep's QR scanner.
+                                Electrum's proprietary PSBT encoding is decoded on the fly &mdash;
+                                the last manual step in the Electrum workflow is gone.
                             </span>
                         </li>
 
@@ -208,12 +201,9 @@
                             <span class="cl-tag new">New</span>
                             <span class="cl-text">
                                 <strong>Electrum skeleton wallet export.</strong>
-                                SafeKeep dynamically generates a
-                                <code>[FINGERPRINT]-electrum.json</code> file containing
-                                the correct descriptor, derivation path, and
-                                little-endian <code>ckcc_xfp</code> fingerprint field
-                                that Electrum requires. Import it once and your
-                                watch-only wallet is ready with zero manual configuration.
+                                SafeKeep generates a <code>[FINGERPRINT]-electrum.json</code> with the
+                                correct descriptor, derivation path, and <code>ckcc_xfp</code> field.
+                                Import it once and your watch-only wallet is ready.
                             </span>
                         </li>
 
@@ -225,11 +215,10 @@
             <section class="content-section" id="verify">
                 <h2 class="section-heading">Don&rsquo;t Trust, Verify</h2>
                 <p>
-                    SafeKeepVault is a bare-metal cryptographic tool. An image
-                    tampered with in transit could silently exfiltrate your seed the
-                    moment you type it. GPG signature verification and hash checking
-                    are not optional steps &mdash; they are the security model.
-                    Complete all three steps before writing the image to any drive.
+                    A download that&rsquo;s been tampered with could steal your seed the moment
+                    you type it. Verifying the file takes about two minutes and is the only way
+                    to be sure you received exactly what was released. Complete all three steps
+                    before writing the image to your USB drive.
                 </p>
 
                 <!-- Step 1 -->
@@ -239,10 +228,10 @@
                         <span class="verify-step-title">Import the Developer Key</span>
                     </div>
                     <p class="verify-step-desc">
-                        Download <code>developer-pubkey.asc</code> from the root of the
+                        Download <code>developer-pubkey.asc</code> from the
                         <a href="https://github.com/Pasalon0404/SafeKeepVault/blob/main/developer-pubkey.asc"
                            target="_blank" rel="noopener">GitHub repository</a>
-                        and import it into your local GPG keyring. You only need to do this once.
+                        and import it. You only need to do this once.
                     </p>
                     <div class="os-tabs">
                         <span class="os-tab-label active">Linux / macOS</span>
@@ -330,22 +319,17 @@
             <section class="content-section" id="flash">
                 <h2 class="section-heading">Flash &amp; Boot</h2>
                 <p>
-                    Once verified, write the image to a USB drive of 4 GB or larger.
-                    The internal hard drive of the host machine is never mounted
-                    during a SafeKeepVault session &mdash; choose a thumb drive you
-                    can dedicate to this purpose.
+                    Write the image to a USB drive of 4 GB or larger. Choose a drive you can dedicate
+                    to this purpose &mdash; the host machine's internal drive is never touched.
                 </p>
                 <div class="terminal-block" style="margin: 1rem 0;">
                     <pre><span class="term-comment"># Flash with dd — replace /dev/sdX with your USB device</span>
 <span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=safekeep-os-v1.1b.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
                 </div>
                 <p>
-                    Alternatively, use <a href="https://etcher.balena.io/" target="_blank" rel="noopener">Balena Etcher</a>
-                    for a graphical interface on Linux, macOS, or Windows. Once
-                    flashed, configure your machine&rsquo;s BIOS to boot from USB,
-                    insert the drive, and power on. SafeKeepVault loads in under
-                    30 seconds with no network access, no desktop, and no attack
-                    surface.
+                    Once flashed, set your computer to boot from USB in its startup settings, insert the drive,
+                    and power on. SafeKeepVault is ready in under 30 seconds &mdash; no internet connection,
+                    no distractions, just your keys.
                 </p>
                 <div class="cta-row" style="margin-top: 1.75rem;">
                     <a href="docs.html" class="btn-primary">Read the Docs</a>
