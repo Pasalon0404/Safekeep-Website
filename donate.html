@@ -6,6 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeKeepBitcoin &mdash; Donate</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ---- Amount picker ---- */
+        .donate-amt-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+        }
+        .donate-amt-btn {
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--border-mid);
+            border-radius: var(--radius-sm);
+            background: var(--surface);
+            color: var(--text-muted);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color var(--transition), color var(--transition), background var(--transition);
+        }
+        .donate-amt-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .donate-amt-btn.active {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #fff;
+        }
+        .donate-custom-wrap {
+            display: none;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.75rem;
+        }
+        .donate-custom-prefix {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .donate-custom-input {
+            width: 110px;
+            padding: 0.35rem 0.6rem;
+            border: 1px solid var(--border-mid);
+            border-radius: var(--radius-sm);
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+        }
+        .donate-custom-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .donate-btc-line {
+            margin: 0.5rem 0 0.25rem;
+        }
+        .donate-btc-amount {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: var(--font-mono);
+            letter-spacing: -0.01em;
+        }
+        .donate-btc-amount.placeholder {
+            color: var(--text-dim);
+            font-weight: 400;
+            font-size: 0.9rem;
+            font-family: var(--font-sans);
+        }
+        .donate-price-meta-line {
+            margin-bottom: 0.85rem;
+        }
+        .donate-price-meta {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+        }
+    </style>
     <!--
       qrcodejs — davidshimjs/qrcodejs, MIT licence.
       Self-host by replacing this tag with:
@@ -108,19 +187,14 @@
                 <p>
                     No company, no investors, no paid plan. Development and
                     hardware testing are funded entirely by voluntary donations.
-                    Every sat goes toward hardware, signing keys, and the
-                    maintainer&rsquo;s time. The software stays free regardless.
+                    Every sat goes toward feature devleopment, bug fixes, and ongoing maintainence. The software stays free regardless.
                 </p>
             </section>
 
             <!-- Randomised address dispenser -->
             <section class="content-section" id="donate-addr">
                 <h2 class="section-heading">Support the SafeKeep Project</h2>
-                <p>
-                    A fresh address is generated client-side on every page load.
-                    No server is involved, no balance lookups, no external APIs,
-                    and no logs.
-                </p>
+       
 
                 <div class="addr-card">
 
@@ -132,14 +206,35 @@
 
                     <!-- Address + controls -->
                     <div class="addr-body">
-                        <p class="addr-type-label">// Bitcoin address &mdash; native SegWit</p>
+                        <p class="addr-type-label">// Bitcoin payment URI &mdash; native SegWit</p>
                         <code id="addr-display" class="addr-text">loading&hellip;</code>
+
+                        <!-- BTC equivalent — sits directly under the address -->
+                        <div class="donate-btc-line">
+                            <span class="donate-btc-amount" id="donate-btc-amount">Select an amount below</span>
+                        </div>
+
+                        <!-- Amount picker -->
+                        <div class="donate-amt-row">
+                            <button class="donate-amt-btn" data-usd="5">$5</button>
+                            <button class="donate-amt-btn" data-usd="10">$10</button>
+                            <button class="donate-amt-btn" data-usd="25">$25</button>
+                            <button class="donate-amt-btn" data-usd="other">Other</button>
+                        </div>
+                        <div class="donate-custom-wrap" id="donate-custom-wrap">
+                            <span class="donate-custom-prefix">$</span>
+                            <input type="number" id="donate-custom-input" class="donate-custom-input" min="1" max="10000" placeholder="amount" />
+                        </div>
+                        <div class="donate-price-meta-line">
+                            <span class="donate-price-meta" id="donate-price-meta">fetching price&hellip;</span>
+                        </div>
+
                         <div class="addr-actions">
                             <button class="addr-btn-copy" id="addr-copy-btn">Copy Address</button>
                             <button class="addr-btn-new"  id="addr-new-btn">&#8635; New Address</button>
                         </div>
                         <p class="addr-privacy-note">
-                            # 300-address pool &middot; client-side only &middot; no API calls &middot; self-verify on-chain
+                            # 300-address pool &middot; price via mempool.space &middot; no balance lookups &middot; no logs
                         </p>
                     </div>
 
@@ -195,60 +290,135 @@
 
 <script>
 /* ---------------------------------------------------------------
-   Randomised Bitcoin address dispenser — client-side only.
-   BITCOIN_ADDRESSES is loaded from addresses.js (300 entries).
-   No server calls. No balance lookups. No external APIs.
+   Randomised Bitcoin address dispenser + live price / amount picker.
+   Addresses: client-side only, loaded from addresses.js (300 entries).
+   BTC price: fetched from mempool.space — no personal data sent.
+   No balance lookups. No logs.
    --------------------------------------------------------------- */
 (function () {
-    var addresses = window.BITCOIN_ADDRESSES || [];
+    var addresses      = window.BITCOIN_ADDRESSES || [];
     if (!addresses.length) return;
 
     var currentAddress = '';
-    var qrInstance    = null;
+    var currentURI     = '';     /* full BIP-21 URI — what gets displayed and copied */
+    var btcPriceUSD    = null;
+    var currentAmtUSD  = 0;      /* 0 = no amount selected */
 
-    /* Millisecond-based pick: two simultaneous visitors at different
-       ms get different addresses. Falls back to Math.random if
-       addresses array is somehow empty (defensive). */
+    /* ---- Address picker ---- */
     function pickAddress() {
-        var idx = Date.now() % addresses.length;
-        return addresses[idx];
+        return addresses[Date.now() % addresses.length];
     }
 
+    /* ---- BTC amount helpers ---- */
+    function usdToBtcStr(usd) {
+        if (!btcPriceUSD || !usd) return null;
+        /* BIP-21 requires plain decimal, max 8 places, no trailing zeros */
+        var raw = (usd / btcPriceUSD).toFixed(8);
+        return raw.replace(/\.?0+$/, '');
+    }
+
+    function refreshBtcDisplay() {
+        var amtEl  = document.getElementById('donate-btc-amount');
+        var btcStr = usdToBtcStr(currentAmtUSD);
+        if (!currentAmtUSD) {
+            amtEl.textContent = 'Select an amount below';
+            amtEl.classList.add('placeholder');
+        } else if (!btcPriceUSD) {
+            amtEl.textContent = 'Fetching price\u2026';
+            amtEl.classList.add('placeholder');
+        } else {
+            amtEl.textContent = '\u2248\u00a0' + btcStr + '\u00a0BTC';
+            amtEl.classList.remove('placeholder');
+        }
+    }
+
+    /* ---- QR + wallet link renderer ---- */
     function renderAddress(addr) {
         currentAddress = addr;
 
-        /* Update address text */
-        document.getElementById('addr-display').textContent = addr;
+        var btcStr  = usdToBtcStr(currentAmtUSD);
+        currentURI  = 'bitcoin:' + addr + (btcStr ? '?amount=' + btcStr : '');
 
-        /* Update wallet URI link (BIP-21, no amount — donor chooses) */
-        document.getElementById('addr-wallet-link').href = 'bitcoin:' + addr;
+        /* Show full URI in the display field so copy gives the complete string */
+        document.getElementById('addr-display').textContent = currentURI;
 
-        /* Regenerate QR code */
+        document.getElementById('addr-wallet-link').href = currentURI;
+
         var container = document.getElementById('addr-qr');
         container.innerHTML = '';
-        qrInstance = new QRCode(container, {
-            text:            'bitcoin:' + addr,
-            width:           160,
-            height:          160,
-            colorDark:       '#000000',
-            colorLight:      '#ffffff',
-            correctLevel:    QRCode.CorrectLevel.M
+        new QRCode(container, {
+            text:         currentURI,
+            width:        160,
+            height:       160,
+            colorDark:    '#000000',
+            colorLight:   '#ffffff',
+            correctLevel: QRCode.CorrectLevel.M
+        });
+
+        refreshBtcDisplay();
+    }
+
+    /* ---- Price fetch (mempool.space) ---- */
+    function fetchPrice() {
+        fetch('https://mempool.space/api/v1/prices')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                btcPriceUSD = data.USD;
+                var meta = document.getElementById('donate-price-meta');
+                if (meta) {
+                    meta.textContent = '1 BTC \u2248 $' +
+                        Math.round(btcPriceUSD).toLocaleString() +
+                        ' \u00b7 via mempool.space';
+                }
+                /* Re-render QR now that we have a price */
+                if (currentAddress) renderAddress(currentAddress);
+            })
+            .catch(function () {
+                var meta = document.getElementById('donate-price-meta');
+                if (meta) meta.textContent = 'price unavailable';
+            });
+    }
+
+    /* ---- Amount button wiring ---- */
+    function initAmountPicker() {
+        var btns       = document.querySelectorAll('.donate-amt-btn');
+        var customWrap = document.getElementById('donate-custom-wrap');
+        var customIn   = document.getElementById('donate-custom-input');
+
+        btns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                btns.forEach(function (b) { b.classList.remove('active'); });
+                this.classList.add('active');
+
+                if (this.getAttribute('data-usd') === 'other') {
+                    customWrap.style.display = 'flex';
+                    currentAmtUSD = parseFloat(customIn.value) || 0;
+                } else {
+                    customWrap.style.display = 'none';
+                    currentAmtUSD = parseFloat(this.getAttribute('data-usd'));
+                }
+                renderAddress(currentAddress);
+            });
+        });
+
+        customIn.addEventListener('input', function () {
+            currentAmtUSD = parseFloat(this.value) || 0;
+            renderAddress(currentAddress);
         });
     }
 
-    function init() {
-        renderAddress(pickAddress());
-
+    /* ---- Copy button ---- */
+    function initCopyBtn() {
         document.getElementById('addr-copy-btn').addEventListener('click', function () {
-            var btn = this;
-            navigator.clipboard.writeText(currentAddress).then(function () {
+            var btn     = this;
+            var toCopy  = currentURI || currentAddress;   /* full URI if available */
+            navigator.clipboard.writeText(toCopy).then(function () {
                 var orig = btn.textContent;
                 btn.textContent = 'Copied \u2713';
                 setTimeout(function () { btn.textContent = orig; }, 2000);
             }).catch(function () {
-                /* Fallback for browsers without clipboard API */
                 var ta = document.createElement('textarea');
-                ta.value = currentAddress;
+                ta.value = toCopy;
                 ta.style.position = 'fixed';
                 ta.style.opacity  = '0';
                 document.body.appendChild(ta);
@@ -260,13 +430,20 @@
                 setTimeout(function () { btn.textContent = orig; }, 2000);
             });
         });
+    }
+
+    /* ---- Init ---- */
+    function init() {
+        renderAddress(pickAddress());
+        initAmountPicker();
+        initCopyBtn();
+        fetchPrice();
 
         document.getElementById('addr-new-btn').addEventListener('click', function () {
             renderAddress(pickAddress());
         });
     }
 
-    /* QRCode may not be ready if the CDN script loads async */
     if (typeof QRCode !== 'undefined') {
         init();
     } else {
