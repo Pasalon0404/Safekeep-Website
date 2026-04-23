@@ -95,53 +95,48 @@
 
             <!-- Section 1: Fortress -->
             <section class="content-section">
-                <h2 class="section-heading">A Fortress</h2>
+<h3 class="subsection-heading">Architectural Security</h3>
                 <p>
-                    Every time you boot SafeKeepVault, it's already locked down &mdash; no internet,
-                    your internal drive untouched, USB ports secured. There's nothing to configure
-                    and nothing to remember. It's just secure, every single time.
+                    <strong>SafeKeepVault</strong> initializes in a hardened, pre-configured state. Every boot is a fresh start in a locked-down environment&mdash;no configuration required, no vulnerabilities exposed. It is purpose-built to be secure by default, every single time.
                 </p>
+
+                <h3 class="subsection-heading">Absolute Air-Gap</h3>
                 <ul class="spec-list">
                     <li>
-                        <span class="spec-label">No internet, ever</span>
-                        <span class="spec-desc">Wi-Fi and Bluetooth are shut off
-                        the moment it boots &mdash; before anything else loads.
-                        Your keys never get anywhere near the internet.</span>
+                        <span class="spec-label">Total Network Isolation</span>
+                        <span class="spec-desc">Wi-Fi, Bluetooth, and cellular radios are disabled at the kernel level before the system initializes. Your private keys never encounter a network interface.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Truly offline</span>
-                        <span class="spec-desc">Microphones and speakers are disabled too.
-                        The vault talks only to your keyboard, display, camera, and thumb drive.</span>
+                        <span class="spec-label">Hardware Lockdown</span>
+                        <span class="spec-desc">Non-essential peripherals, including microphones and speakers, are deactivated. The system communicates exclusively with your display, keyboard, camera, and the USB drive itself.</span>
+                    </li>
+                </ul>
+
+                <h3 class="subsection-heading">Zero-Footprint Operations</h3>
+                <ul class="spec-list">
+                    <li>
+                        <span class="spec-label">Host Integrity</span>
+                        <span class="spec-desc"><strong>SafeKeepVault</strong> operates in complete isolation from your computer's internal storage. Your hard drive is never mounted, read, or modified, ensuring your host OS remains untouched.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Your computer stays clean</span>
-                        <span class="spec-desc">The internal hard drive is
-                        never touched. Nothing on your computer is read, changed,
-                        or affected in any way.</span>
+                        <span class="spec-label">Volatile Memory Execution</span>
+                        <span class="spec-desc">By running entirely in RAM, all session data&mdash;including keys and clipboard history&mdash;is instantly purged upon shutdown. No traces are ever written to the local hardware.</span>
+                    </li>
+                </ul>
+
+                <h3 class="subsection-heading">Professional Versatility</h3>
+                <ul class="spec-list">
+                    <li>
+                        <span class="spec-label">Persistent or Stateless</span>
+                        <span class="spec-desc">Choose your workflow for every session. Utilize the Encrypted Vault to securely store keys for recurring use, or run Stateless for a high-privacy, "one-and-done" environment.</span>
                     </li>
                     <li>
-                        <span class="spec-label">No trace left behind</span>
-                        <span class="spec-desc">Runs entirely in memory. Shut it down
-                        and everything is gone &mdash; keys, session data, clipboard history.
-                        Nothing written to your drive.</span>
+                        <span class="spec-label">Streamlined Authentication</span>
+                        <span class="spec-desc">Access your encrypted storage with professional-grade speed. Authenticate by scanning a secure QR code via your mobile device or through traditional high-entropy password entry.</span>
                     </li>
                     <li>
                         <span class="spec-label">Plausible Deniability</span>
-                        <span class="spec-desc">No special hardware, no branded
-                        device. The vault is a thumb drive that looks exactly
-                        like any other thumb drive.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Unlock your way</span>
-                        <span class="spec-desc">Hold your phone up to the camera to
-                        scan a QR code, or type your password at the keyboard &mdash;
-                        whichever you prefer.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Save or start fresh</span>
-                        <span class="spec-desc">Store your keys in the encrypted vault
-                        and reuse them every session, or run it 'stateless' and leave
-                        no trace. Same drive, your choice every time.</span>
+                        <span class="spec-desc">Transform any standard PC into a signing station without specialized, branded hardware. To an outside observer, your vault is an indistinguishable, everyday USB drive.</span>
                     </li>
                 </ul>
             </section>
@@ -150,127 +145,109 @@
             <section class="content-section">
                 <h2 class="section-heading">The Arsenal</h2>
                 <p>
-                    Fifteen tools covering the full Bitcoin key lifecycle:
-                    generate, back up, split, derive, sign, transfer, and hand
-                    down. Every one runs air-gapped and produces output any
-                    compatible wallet or coordinator can consume directly.
+                    A comprehensive suite of fifteen specialized tools covering the entire Bitcoin lifecycle: generation, backup, sharding, derivation, signing, and inheritance planning. Every utility operates within a strictly air-gapped environment, producing standardized outputs compatible with any industry-standard wallet or coordinator.
                 </p>
                 <ul class="tools-list">
-                    <li>
-                        <span class="tool-name">The Scribe</span>
-                        <span class="tool-sub">PSBT Signer</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Witness</span>
-                        <span class="tool-sub">BIP-322 Message Signing</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Cipher</span>
-                        <span class="tool-sub">Passphrase Library</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Armory</span>
-                        <span class="tool-sub">Key Management &amp; Derivation</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Script</span>
-                        <span class="tool-sub">Output Descriptor Tool</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Covenant</span>
-                        <span class="tool-sub">SLIP-39 Shamir Backup</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Shard</span>
-                        <span class="tool-sub">Seed XOR</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Forge</span>
-                        <span class="tool-sub">Entropy Generator</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Lineage</span>
-                        <span class="tool-sub">BIP-85 Child Seeds</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Glyph</span>
-                        <span class="tool-sub">SeedQR Backup</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Courier</span>
-                        <span class="tool-sub">Optical Transfer</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Archive</span>
-                        <span class="tool-sub">Transfer Drive Manager</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Reliquary</span>
-                        <span class="tool-sub">Encrypted Backup</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Codex</span>
-                        <span class="tool-sub">Encrypted Notes</span>
-                    </li>
-                    <li>
-                        <span class="tool-name">The Cartographer</span>
-                        <span class="tool-sub">Inheritance Recovery Map</span>
-                    </li>
+                    <li><span class="tool-name">PSBT Signer</span></li>
+                    <li><span class="tool-name">Passphrase Library</span></li>
+                    <li><span class="tool-name">Seed Management</span></li>
+                    <li><span class="tool-name">Transfer Hub</span></li>
+                    <li><span class="tool-name">Courier Tool</span></li>
+                    <li><span class="tool-name">Output Descriptor</span></li>
+                    <li><span class="tool-name">Entropy Generator</span></li>
+                    <li><span class="tool-name">BIP-85 Child Seeds</span></li>
+                    <li><span class="tool-name">Seed XOR Splitter</span></li>
+                    <li><span class="tool-name">Shamir Backup</span></li>
+                    <li><span class="tool-name">Seed QR Code</span></li>
+                    <li><span class="tool-name">Message Signer</span></li>
+                    <li><span class="tool-name">Encrypted Notes</span></li>
+                    <li><span class="tool-name">Encrypted Backup</span></li>
+                    <li><span class="tool-name">Inheritance Map</span></li>
                 </ul>
             </section>
 
-            <!-- Forge Screenshot -->
+            <!-- Tools Dashboard Screenshot -->
             <figure class="os-showcase">
                 <img
-                    src="forge-screenshot.png"
-                    alt="The Forge — SafeKeepVault's entropy generator, showing the four-source mixing panel"
+                    src="Tools.png"
+                    alt="<strong>SafeKeepVault</strong> tools dashboard — all fifteen tools organized under Core Tools and Advanced Tools, with an active master seed"
                 >
                 <figcaption>
-                    The Forge &mdash; SafeKeepVault&rsquo;s seed generator. Mix dice rolls,
-                    mouse movement, and camera noise together before generating your master seed.
+                    The <strong>SafeKeepVault</strong> tool dashboard &mdash; fifteen specialized utilities
+                    organized into Core and Advanced sections, all accessible within a single
+                    air-gapped session. Your active master seed is loaded once and available
+                    to every tool without re-entry.
+                </figcaption>
+            </figure>
+
+            <!-- Entropy Generator Screenshot -->
+            <figure class="os-showcase">
+                <img
+                    src="Entropy.png"
+                    alt="Entropy Generator — <strong>SafeKeepVault</strong>'s entropy mixing tool, showing manual dice, digital dice, mouse wiggle, and video noise sources"
+                >
+                <figcaption>
+                    The Entropy Generator &mdash; mix physical dice rolls, digital randomness,
+                    mouse movement, and camera noise before generating your master seed.
                     Every source is visible, every step is yours to verify.
+                </figcaption>
+            </figure>
+
+            <!-- PSBT Signer Screenshot -->
+            <figure class="os-showcase">
+                <img
+                    src="signer.png"
+                    alt="PSBT Signer — <strong>SafeKeepVault</strong>'s transaction signing tool, showing the ingest, review, sign, and export workflow"
+                >
+                <figcaption>
+                    The PSBT Signer &mdash; review, decode, and sign Bitcoin transactions
+                    entirely offline. Load an unsigned PSBT via QR code or Transfer Drive,
+                    inspect every input and output, then export your signature back across
+                    the air gap. Nothing is committed until you've verified it yourself.
+                </figcaption>
+            </figure>
+
+            <!-- Encrypted Notes Screenshot -->
+            <figure class="os-showcase">
+                <img
+                    src="notes.png"
+                    alt="Encrypted Notes — <strong>SafeKeepVault</strong>'s vault notes tool, showing a rich-text editor stored inside the encrypted vault"
+                >
+                <figcaption>
+                    Encrypted Notes &mdash; store recovery instructions, multisig coordination
+                    details, or configuration notes sealed inside your encrypted vault.
+                    Protected by full-disk encryption with no secondary passwords required &mdash;
+                    recoverable only with this USB drive.
                 </figcaption>
             </figure>
 
             <!-- Section 3: Wallet Compatibility -->
             <section class="content-section" id="compatibility">
-                <h2 class="section-heading">Works With the Wallets You Already Use</h2>
+                <h2 class="section-heading">Seamless Ecosystem Integration</h2>
                 <p>
-                    SafeKeepVault sits under the wallet you already use and trust. Your wallet
-                    watches your balance and history. SafeKeepVault holds your private keys and
-                    signs transactions completely offline. Send an unsigned transaction over via
-                    QR code or thumb drive, get a signed one back, and broadcast it from your
-                    everyday wallet. Your keys never touch the internet.
+                    <strong>SafeKeepVault</strong> functions as the hardened security layer for the software you already trust. While your primary wallet manages transaction history and balances, <strong>SafeKeepVault</strong> isolates your private keys in a strictly offline environment. Simply transfer unsigned transactions (PSBTs) via QR code or USB, sign them air-gapped, and return the signed data to your coordinator for broadcasting. Your keys remain entirely decoupled from the internet.
                 </p>
+                <h3 class="subsection-heading">Advanced Multisig Coordination</h3>
                 <p>
-                    Doing multisig? Load your primary key and sign first. Then temporarily load
-                    a second key &mdash; from a backup share or paper wallet &mdash; and sign again.
-                    That temporary key vanishes the moment you clear it or shut down.
-                    One device, multiple signers, no extra hardware to buy.
+                    <strong>SafeKeepVault</strong> simplifies complex multi-signature workflows without requiring multiple hardware devices. Sign with your primary key, then temporarily initialize additional keys from backup shards or paper wallets to complete the transaction. These secondary keys exist only in volatile memory and are permanently purged the moment you clear the session or power down.
                 </p>
+                <h3 class="subsection-heading">Native Compatibility</h3>
                 <ul class="spec-list">
                     <li>
                         <span class="spec-label">Sparrow Wallet</span>
-                        <span class="spec-desc">Run Sparrow on your everyday machine
-                        to watch your balance. SafeKeepVault handles signing offline.
-                        Transfer transactions via file or QR code.</span>
+                        <span class="spec-desc">Use Sparrow as your desktop coordinator to track balances while delegating all signing authority to <strong>SafeKeepVault</strong>'s air-gapped environment via file or QR transfer.</span>
                     </li>
                     <li>
                         <span class="spec-label">Electrum</span>
-                        <span class="spec-desc">SafeKeepVault exports a ready-to-import
-                        wallet file for Electrum and reads its QR format natively &mdash;
-                        no manual conversion needed.</span>
+                        <span class="spec-desc">Effortlessly bridge your cold storage with Electrum. <strong>SafeKeepVault</strong> exports native, ready-to-import wallet files and supports Electrum's QR standards with no manual conversion required.</span>
                     </li>
                     <li>
                         <span class="spec-label">Nunchuk</span>
-                        <span class="spec-desc">Full compatibility with Nunchuk's QR
-                        scanner. Scan, broadcast, done &mdash; no extra steps.</span>
+                        <span class="spec-desc">Experience streamlined mobile coordination. <strong>SafeKeepVault</strong> offers full compatibility with Nunchuk's QR-based signing flow for a fast, secure "scan-and-broadcast" experience.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Blue Wallet</span>
-                        <span class="spec-desc">Import your public key into Blue Wallet
-                        to monitor your balance on your phone, then sign through
-                        SafeKeepVault before broadcasting.</span>
+                        <span class="spec-label">BlueWallet</span>
+                        <span class="spec-desc">Maintain mobile oversight of your assets. Import your public keys into BlueWallet for on-the-go monitoring, while keeping the signing process securely contained within <strong>SafeKeepVault</strong>.</span>
                     </li>
                 </ul>
             </section>

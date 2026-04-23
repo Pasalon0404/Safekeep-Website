@@ -362,6 +362,36 @@ a {
     border-bottom: 1px solid var(--border);
 }
 
+/* Compact subsection headings — separator line above each new concept */
+.subsection-heading {
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent);
+    margin: 0 0 0.35rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+/* No separator above the very first subsection heading */
+.subsection-heading:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+/* Spec-lists that follow a subsection heading: no internal dividers, tighter padding */
+.subsection-heading + .spec-list li {
+    border-top: none;
+    border-bottom: none;
+    padding: 0.35rem 0;
+}
+
+.subsection-heading + .spec-list {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
 /* Prose */
 .content-section p {
     font-size: 0.96rem;
@@ -509,6 +539,11 @@ pre code {
     border-top: 1px solid var(--border);
 }
 
+/* Override: no top border when spec-list follows a subsection heading */
+.subsection-heading + .spec-list li:first-child {
+    border-top: none;
+}
+
 .spec-label {
     display: block;
     font-family: var(--font-mono);
@@ -563,7 +598,6 @@ pre code {
     margin: 1.25rem 0 0;
     columns: 2;
     column-gap: 2.5rem;
-    column-rule: 1px solid var(--border);
 }
 
 .tools-list li {
@@ -571,7 +605,6 @@ pre code {
     display: flex;
     flex-direction: column;
     padding: 0.45rem 0;
-    border-bottom: 1px solid var(--border);
     font-size: 0.9rem;
     line-height: 1.35;
 }
