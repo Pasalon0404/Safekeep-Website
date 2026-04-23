@@ -80,18 +80,6 @@
                         </svg>
                         GitHub
                     </a>
-                    <a href="#" class="sidebar-link">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M4 4l16 16M4 20L20 4"/>
-                        </svg>
-                        Twitter / X
-                    </a>
-                    <a href="#" class="sidebar-link">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M21 5L2 12.5l7 1M21 5l-5 15-4-6.5M21 5L9 13.5m0 0V19l3-2.5"/>
-                        </svg>
-                        Telegram
-                    </a>
                 </nav>
 
                 <div class="sidebar-actions">
@@ -110,59 +98,73 @@
                 <p class="page-hero-label">SafeKeepVault Tool</p>
                 <h1 class="page-hero-title">The Courier</h1>
                 <p class="page-hero-tagline">
-                    Transfer files and text between air-gapped devices using QR codes &mdash; no cables, no USB, no radio.
+                    Establish a high-bandwidth air-gap bridge via QR&mdash;no cables, no physical media, no radio signatures.
                 </p>
                 <div style="margin-top: 1.75rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
                     <a href="courier-tool.html" target="_blank" rel="noopener" class="btn-launch-courier">
                         Launch The Courier
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-left:0.4rem;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                     </a>
-                    <span style="font-size: 0.85rem; color: var(--text-dim);">Opens in a new tab &mdash; runs entirely in your browser.</span>
+                    <span style="font-size: 0.85rem; color: var(--text-dim);">Runs locally in a new tab.</span>
                 </div>
             </div>
 
             <!-- What is The Courier -->
             <section class="content-section">
-                <h2 class="section-heading">Your Air-Gap Bridge</h2>
+                <h2 class="section-heading">Your Secure Air-Gap Interface</h2>
                 <p>
-                    The Courier runs entirely in your browser &mdash; nothing
-                    is uploaded anywhere. Use the <strong>Transmit</strong> tab
-                    to encode any file or text as a QR code; point your
-                    SafeKeepVault camera at the screen and it reassembles on
-                    the other side. Use <strong>Receive</strong> to scan a QR
-                    from the vault onto your online machine, ready to broadcast
-                    or save. PSBTs in, signed transactions out, no cable required.
+                    The Courier is a browser-based utility designed to bridge the gap between your
+                    online coordinator and your offline vault. It operates entirely within your local
+                    browser environment; no data is ever uploaded, transmitted, or stored on a server.
                 </p>
+                <ul class="docs-list">
+                    <li>
+                        <strong>Transmit Mode &mdash;</strong>
+                        Encode any file, text, or PSBT (Partially Signed Bitcoin Transaction) into a
+                        high-density QR code. Simply point your <strong>SafeKeepVault</strong> camera
+                        at your screen to reassemble the data in the offline environment.
+                    </li>
+                    <li>
+                        <strong>Receive Mode &mdash;</strong>
+                        Use your online machine&rsquo;s webcam to scan signed transactions or data
+                        exported from the vault, making them instantly ready for broadcasting to the
+                        network.
+                    </li>
+                </ul>
             </section>
 
             <!-- Password QR use case -->
             <section class="content-section">
-                <h2 class="section-heading">Set Up Your Encrypted Drive Password</h2>
+                <h2 class="section-heading">Streamlined Vault Authentication</h2>
                 <p>
-                    The Courier has another critical use: creating the QR code
-                    that unlocks your SafeKeepVault encrypted drive on every
-                    boot. Here is the recommended workflow:
+                    The Courier also serves a critical security function: generating the QR credential
+                    used to unlock your <strong>SafeKeepVault</strong> Encrypted Partition on every boot.
                 </p>
-                <ul class="docs-list">
+                <p>The Recommended Workflow:</p>
+                <ol class="docs-list">
                     <li>
-                        <strong>Generate a strong password &mdash;</strong> use
-                        your password manager. Long, fully random, saved as your
-                        primary backup.
+                        <strong>Generate a High-Entropy Password &mdash;</strong>
+                        Use your password manager to create a long, fully random credential (e.g., 20+
+                        characters). This remains your primary digital backup.
                     </li>
                     <li>
-                        <strong>Create the QR code &mdash;</strong> paste the
-                        password into &ldquo;Text / password&rdquo; mode on the
-                        Transmit tab. A static QR code generates instantly,
-                        locally, nothing sent anywhere.
+                        <strong>Generate the QR Credential &mdash;</strong>
+                        Paste the password into the Transmit tab using &ldquo;Text / Password&rdquo;
+                        mode. A static QR code is generated instantly and locally within your browser.
                     </li>
                     <li>
-                        <strong>Save the QR to your phone &mdash;</strong> screenshot
-                        it full-screen and store it in a locked album or your
-                        password manager&rsquo;s secure notes. On every boot,
-                        hold your phone up to the vault camera to unlock
-                        instantly. No typing, no weak passwords.
+                        <strong>Mobile Integration &mdash;</strong>
+                        Screenshot the resulting QR code on your mobile device and store it within a
+                        secure, encrypted note or a locked album.
                     </li>
-                </ul>
+                    <li>
+                        <strong>Instant Unlock &mdash;</strong>
+                        Upon every boot, present your phone to the <strong>SafeKeepVault</strong>
+                        camera. The system reads the QR and unlocks your vault instantly, eliminating
+                        the need for manual entry and allowing you to utilize &ldquo;unbreakable&rdquo;
+                        passwords without the friction of typing.
+                    </li>
+                </ol>
             </section>
 
         </main>
