@@ -615,11 +615,11 @@ pre code {
 
 .spec-label {
     display: block;
-    font-family: var(--font-mono);
-    font-size: 0.79rem;
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     color: var(--text);
     margin-bottom: 0.2rem;
     line-height: 1.35;
