@@ -685,10 +685,21 @@
                         <div id="transmitProgressBar" class="progress-bar"></div>
                     </div>
 
+                    <!-- Badge toggle (text mode only) -->
+                    <div id="badge-toggle-row" hidden style="margin: 0.75rem 0 0; display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="chk-sk-badge" style="width:1rem; height:1rem; accent-color:var(--accent); cursor:pointer;">
+                        <label for="chk-sk-badge" style="font-size:0.87rem; color:var(--text-muted); cursor:pointer; user-select:none;">
+                            Add <strong>SKV</strong> badge to centre (recommended for vault unlock QR codes)
+                        </label>
+                    </div>
+
                     <!-- QR output -->
                     <div id="qrDisplayContainer" class="qr-display" hidden>
                         <canvas id="qrCanvas"></canvas>
                         <div id="qrInfo"></div>
+                        <button type="button" id="btn-save-qr" style="margin-top:1rem; width:100%; padding:0.65rem 1.4rem; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-md); font-family:var(--font-sans); font-size:0.88rem; font-weight:600; cursor:pointer;">
+                            Save QR Code as Image
+                        </button>
                     </div>
 
                 </section>
@@ -845,18 +856,81 @@
   var textInput = document.getElementById('textInput');
   var qrDisplayContainer = document.getElementById('qrDisplayContainer');
 
+  // Save QR Code as PNG image
+  document.getElementById('btn-save-qr').addEventListener('click', function () {
+    var canvas = document.getElementById('qrCanvas');
+    var link = document.createElement('a');
+    var hasBadge = document.getElementById('chk-sk-badge').checked;
+    link.download = hasBadge ? 'safekeepvault-unlock-qr.png' : 'qrcode.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+
+  // Show badge toggle only in text mode
+  var badgeToggleRow = document.getElementById('badge-toggle-row');
+  var skBadgeCheckbox = document.getElementById('chk-sk-badge');
+
+  // Regenerate QR when badge toggle changes
+  skBadgeCheckbox.addEventListener('change', function () {
+    generateStaticQR();
+  });
+
   function generateStaticQR() {
     var textVal = textInput.value.trim();
     if (!textVal) { qrDisplayContainer.hidden = true; return; }
     qrDisplayContainer.hidden = false;
+    badgeToggleRow.hidden = false;
     var canvas = document.getElementById('qrCanvas');
     QRCode.toCanvas(canvas, textVal, {
       width: 525,
       margin: 2,
-      errorCorrectionLevel: 'L',
+      errorCorrectionLevel: 'Q',
       color: { dark: '#000000', light: '#ffffff' }
-    }, function (error) { if (error) console.error(error); });
+    }, function (error) {
+      if (error) { console.error(error); return; }
+      if (!skBadgeCheckbox.checked) return;
+      // Draw centre badge — "SK" on orange, so users recognise this as their vault QR
+      var ctx = canvas.getContext('2d');
+      var s   = canvas.width;
+      var bw  = Math.round(s * 0.17);   // badge width  (~17 % of QR)
+      var bh  = Math.round(s * 0.10);   // badge height (shorter pill)
+      var bx  = (s - bw) / 2;
+      var by  = (s - bh) / 2;
+      var r   = bh * 0.32;              // corner radius
+
+      // White halo (2 px padding)
+      ctx.fillStyle = '#ffffff';
+      roundRect(ctx, bx - 4, by - 4, bw + 8, bh + 8, r + 3);
+      ctx.fill();
+
+      // Orange badge
+      ctx.fillStyle = '#f7931a';
+      roundRect(ctx, bx, by, bw, bh, r);
+      ctx.fill();
+
+      // "SK" label
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold ' + Math.round(bh * 0.54) + 'px system-ui, sans-serif';
+      ctx.textAlign    = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('SKV', s / 2, s / 2);
+    });
     document.getElementById('qrInfo').textContent = '';
+
+    // Helper: rounded rectangle path (works in all modern browsers)
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
   }
 
   modeRadios.forEach(function (radio) {

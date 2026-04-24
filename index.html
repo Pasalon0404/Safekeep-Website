@@ -111,10 +111,12 @@
 
             <!-- Screenshot -->
             <figure class="os-showcase">
-                <img
+                <a href="safekeep-desktop.png" target="_blank" rel="noopener">
+                    <img
                     src="safekeep-desktop.png"
                     alt="SafeKeepVault OS — desktop interface showing the vault dashboard"
                 >
+                </a>
                 <figcaption>
                     The <strong>SafeKeepVault</strong> interface &mdash; fifteen tools, one air-gapped
                     session, zero network exposure.
@@ -149,9 +151,9 @@
             </section>
 
             <div class="cta-row" style="margin-top: 1.75rem;">
-                <a href="features.html" class="btn-primary">Explore Features</a>
-                <a href="download.html" class="btn-secondary">Download</a>
-            </div>
+                    <a href="download.html" class="btn-primary">Download</a>
+                    <a href="donate.html" class="btn-secondary">&#9825; Donate</a>
+                </div>
 
         </main>
     </div>
@@ -195,11 +197,6 @@
 })();
 </script>
 
-<!-- Lightbox overlay -->
-<div class="lightbox-overlay" id="lightbox">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
-    <img id="lightbox-img" src="" alt="">
-</div>
 <script>
 (function () {
     var overlay  = document.getElementById('lightbox');

@@ -498,6 +498,12 @@ a {
     border-bottom: none;
 }
 
+/* No dividers between items */
+.docs-list--plain li {
+    border-top: none;
+    border-bottom: none;
+}
+
 /* Remove top border on first item when list immediately follows a sub-heading */
 .sub-heading + .docs-list li:first-child {
     border-top: none;
@@ -690,9 +696,21 @@ pre code {
 .lightbox-close:hover,
 .lightbox-close:active { opacity: 1; }
 
-/* Make showcase images show zoom cursor */
+/* Showcase images are tappable/clickable */
 .os-showcase img {
-    cursor: zoom-in;
+    cursor: pointer;
+}
+
+/* Ensure the link wrapper doesn't break centering */
+.os-showcase a {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.os-showcase a img {
+    width: 100%;
+    max-width: 100%;
 }
 
 /* =============================================
