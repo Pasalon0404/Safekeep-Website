@@ -719,6 +719,7 @@ pre code {
 .os-showcase {
     margin: 0 0 2.75rem;   /* same vertical rhythm as content-section */
     padding: 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
