@@ -348,5 +348,40 @@
     });
 })();
 </script>
+
+<!-- Lightbox overlay -->
+<div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+(function () {
+    var overlay = document.getElementById('lightbox');
+    var img     = document.getElementById('lightbox-img');
+    var closeBtn = document.getElementById('lightbox-close');
+
+    document.querySelectorAll('.os-showcase img').forEach(function (el) {
+        el.addEventListener('click', function () {
+            img.src = el.src;
+            img.alt = el.alt;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeLightbox() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        img.src = '';
+    }
+
+    overlay.addEventListener('click', closeLightbox);
+    closeBtn.addEventListener('click', function(e) { e.stopPropagation(); closeLightbox(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+
+    // Prevent clicking the image itself from closing
+    img.addEventListener('click', function(e) { e.stopPropagation(); });
+})();
+</script>
 </body>
 </html>
