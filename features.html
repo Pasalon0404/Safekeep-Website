@@ -85,14 +85,14 @@
             <section class="content-section">
 <h3 class="subsection-heading">Architectural Security</h3>
                 <p>
-                    <strong>SafeKeepVault</strong> initializes in a hardened, pre-configured state. Every boot is a fresh start in a locked-down environment&mdash;no configuration required, no vulnerabilities exposed. It is purpose-built to be secure by default, every single time.
+                    <strong>SafeKeepVault</strong> Starts up secure and ready to use. Every boot is a fresh, clean slate—no setup needed, no lingering data, and no hidden risks. It’s designed to be safe by default, every single time.
                 </p>
 
                 <h3 class="subsection-heading">Absolute Air-Gap</h3>
                 <ul class="spec-list">
                     <li>
                         <span class="spec-label">Total Network Isolation</span>
-                        <span class="spec-desc">Wi-Fi, Bluetooth, and cellular radios are disabled at the kernel level before the system initializes. Your private keys never encounter a network interface.</span>
+                        <span class="spec-desc"><strong>SafeKeepVault</strong> locks down Ethernet, Wi-Fi, and access to the host's storage before the system even fully starts. This ensures your private keys are completely isolated and never even have the chance to see the internet or the local drive.</span>
                     </li>
                     <li>
                         <span class="spec-label">Hardware Lockdown</span>
@@ -112,15 +112,15 @@
                     </li>
                 </ul>
 
-                <h3 class="subsection-heading">Professional Versatility</h3>
+                <h3 class="subsection-heading">Temporary or Encrypted Versatility</h3>
                 <ul class="spec-list">
                     <li>
                         <span class="spec-label">Persistent or Stateless</span>
-                        <span class="spec-desc">Choose your workflow for every session. Utilize the Encrypted Vault to securely store keys for recurring use, or run Stateless for a high-privacy, "one-and-done" environment.</span>
+                        <span class="spec-desc">Choose your workflow for every session. Utilize the Encrypted Vault to securely store keys for recurring use, or run Stateless for using a different private key or multi-signature setup.</span>
                     </li>
                     <li>
                         <span class="spec-label">Streamlined Authentication</span>
-                        <span class="spec-desc">Access your encrypted storage with professional-grade speed. Authenticate by scanning a secure QR code via your mobile device or through traditional high-entropy password entry.</span>
+                        <span class="spec-desc">Access your encrypted storage securely and conveniently. Authenticate by scanning a secure QR code via your mobile device or through traditional password entry.</span>
                     </li>
                     <li>
                         <span class="spec-label">Plausible Deniability</span>
@@ -162,9 +162,8 @@
                 >
                 <figcaption>
                     The <strong>SafeKeepVault</strong> tool dashboard &mdash; fifteen specialized utilities
-                    organized into Core and Advanced sections, all accessible within a single
-                    air-gapped session. Your active master seed is loaded once and available
-                    to every tool without re-entry.
+                    organized into Core and Advanced sections. Your active master seed phrase is loaded once and available
+                    to every tool.
                 </figcaption>
             </figure>
 
@@ -177,7 +176,7 @@
                 <figcaption>
                     The Entropy Generator &mdash; mix physical dice rolls, digital randomness,
                     mouse movement, and camera noise before generating your master seed.
-                    Every source is visible, every step is yours to verify.
+                
                 </figcaption>
             </figure>
 
@@ -188,10 +187,9 @@
                     alt="PSBT Signer — <strong>SafeKeepVault</strong>'s transaction signing tool, showing the ingest, review, sign, and export workflow"
                 >
                 <figcaption>
-                    The PSBT Signer &mdash; review, decode, and sign Bitcoin transactions
-                    entirely offline. Load an unsigned PSBT via QR code or Transfer Drive,
-                    inspect every input and output, then export your signature back across
-                    the air gap. Nothing is committed until you've verified it yourself.
+                    The PSBT Signer &mdash; review and sign Bitcoin transactions
+                    entirely offline. Load an unsigned PSBT via QR code or Transfer Drive then export your signature back across
+                    to your wallet software.  Nothing is committed until you've verified it yourself.
                 </figcaption>
             </figure>
 
@@ -204,8 +202,7 @@
                 <figcaption>
                     Encrypted Notes &mdash; store recovery instructions, multisig coordination
                     details, or configuration notes sealed inside your encrypted vault.
-                    Protected by full-disk encryption with no secondary passwords required &mdash;
-                    recoverable only with this USB drive.
+                    Protected by full-disk encryption.
                 </figcaption>
             </figure>
 
@@ -213,29 +210,32 @@
             <section class="content-section" id="compatibility">
                 <h2 class="section-heading">Seamless Ecosystem Integration</h2>
                 <p>
-                    <strong>SafeKeepVault</strong> functions as the hardened security layer for the software you already trust. While your primary wallet manages transaction history and balances, <strong>SafeKeepVault</strong> isolates your private keys in a strictly offline environment. Simply transfer unsigned transactions (PSBTs) via QR code or USB, sign them air-gapped, and return the signed data to your coordinator for broadcasting. Your keys remain entirely decoupled from the internet.
+                    <strong>SafeKeepVault</strong> acts as a secure shield for the wallet software you already use. While your regular wallet tracks your balances, <strong>SafeKeepVault</strong> keeps your private keys completely offline and out of reach.
+                </p>
+                <p>
+                    To use it, just move a transaction file over using a QR code or USB, sign it while you&rsquo;re offline, and send it back to your regular wallet to finish. Your keys stay totally disconnected from the internet, exactly where they belong.
                 </p>
                 <h3 class="subsection-heading">Advanced Multisig Coordination</h3>
                 <p>
-                    <strong>SafeKeepVault</strong> simplifies complex multi-signature workflows without requiring multiple hardware devices. Sign with your primary key, then temporarily initialize additional keys from backup shards or paper wallets to complete the transaction. These secondary keys exist only in volatile memory and are permanently purged the moment you clear the session or power down.
+                    <strong>SafeKeepVault</strong> makes multi-signature setups easy without forcing you to buy multiple hardware devices. You can sign with your main key, then temporarily load extra keys to finish the transaction. These extra keys only stay in the system's short-term memory; the moment you finish or turn off the power, they are wiped completely and forever.
                 </p>
                 <h3 class="subsection-heading">Native Compatibility</h3>
                 <ul class="spec-list">
                     <li>
                         <span class="spec-label">Sparrow Wallet</span>
-                        <span class="spec-desc">Use Sparrow as your desktop coordinator to track balances while delegating all signing authority to <strong>SafeKeepVault</strong>'s air-gapped environment via file or QR transfer.</span>
+                        <span class="spec-desc">Use Sparrow on your desktop to track your balances and organize transactions. When it’s time to sign, Sparrow hands the job off to <strong>SafeKeepVault</strong>—keeping your keys offline while you move data back and forth using simple files or QR codes.</span>
                     </li>
                     <li>
                         <span class="spec-label">Electrum</span>
-                        <span class="spec-desc">Effortlessly bridge your cold storage with Electrum. <strong>SafeKeepVault</strong> exports native, ready-to-import wallet files and supports Electrum's QR standards with no manual conversion required.</span>
+                        <span class="spec-desc">Easily connect your cold storage to Electrum. <strong>SafeKeepVault</strong> creates wallet files that Electrum recognizes instantly. It also uses Electrum’s QR standards, so you can scan and go without needing to convert any files yourself.</span>
                     </li>
                     <li>
                         <span class="spec-label">Nunchuk</span>
-                        <span class="spec-desc">Experience streamlined mobile coordination. <strong>SafeKeepVault</strong> offers full compatibility with Nunchuk's QR-based signing flow for a fast, secure "scan-and-broadcast" experience.</span>
+                        <span class="spec-desc">The perfect setup for your phone. <strong>SafeKeepVault</strong> works seamlessly with Nunchuk’s QR-based system. It’s a fast "scan-and-send" experience that keeps your mobile signing simple and secure.</span>
                     </li>
                     <li>
-                        <span class="spec-label">BlueWallet</span>
-                        <span class="spec-desc">Maintain mobile oversight of your assets. Import your public keys into BlueWallet for on-the-go monitoring, while keeping the signing process securely contained within <strong>SafeKeepVault</strong>.</span>
+                        <span class="spec-label">Blue Wallet</span>
+                        <span class="spec-desc">Keep an eye on your money from anywhere. You can import your public info into Blue Wallet to check your balance on the go, while the actual power to spend stays safely locked inside</strong>.</span>
                     </li>
                 </ul>
             </section>
