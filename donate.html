@@ -136,7 +136,7 @@
 
                 <div>
                     <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
-                    <p class="brand-meta">Self-custody &middot; Open source &middot; No middlemen</p>
+                    <p class="brand-meta">Open Source Self Custody</p>
                 </div>
 
                 <nav class="sidebar-links">
@@ -164,8 +164,7 @@
                 <p class="page-hero-label">Value for value</p>
                 <h1 class="page-hero-title">Donate</h1>
                 <p class="page-hero-tagline">
-                    Sats for sovereignty &middot; Every contribution keeps the
-                    vault free
+                    Contribute for Sovereignty · Helping us maintain free, high-level security for all.
                 </p>
             </div>
 
@@ -174,14 +173,12 @@
                 <h2 class="section-heading">Why Support SafeKeepVault?</h2>
                 <p>
                     <strong>SafeKeepVault</strong> is a community-driven project with no corporate
-                    backing, no venture capital, and no tiered subscription plans. Development,
-                    rigorous hardware testing, and maintenance are funded exclusively by the users
+                    backing, no venture capital, and no subscription plans. Development,
+                      testing, and maintenance are funded exclusively by the users
                     who value the software.
                 </p>
                 <p>
-                    Every satoshi contributes directly to feature engineering, security audits, and
-                    infrastructure stability. Our commitment remains absolute: The software stays
-                    free, open-source, and accessible to everyone, regardless of funding.
+                    Every contribution goes straight toward building new features, fixing bugs, and keeping the system stable. Our goal is simple: the software will always be free, open-source, and available to everyone, no matter what.
                 </p>
             </section>
 
@@ -192,44 +189,42 @@
 
                 <div class="addr-card">
 
-                    <!-- QR code -->
-                    <div class="addr-qr-col">
-                        <div id="addr-qr"></div>
-                        <a id="addr-wallet-link" href="#" class="addr-wallet-link">Open in Bitcoin wallet</a>
-                    </div>
+                    <!-- Address + controls with QR in bottom-right -->
+                    <div class="addr-body" style="position: relative; display: flex; gap: 1.25rem; align-items: flex-start;">
 
-                    <!-- Address + controls -->
-                    <div class="addr-body">
-                        <p class="addr-type-label">// Bitcoin payment URI &mdash; native SegWit</p>
-                        <code id="addr-display" class="addr-text">loading&hellip;</code>
+                        <!-- Left: text controls -->
+                        <div style="flex: 1; min-width: 0;">
+<code id="addr-display" class="addr-text">loading&hellip;</code>
 
-                        <!-- BTC equivalent — sits directly under the address -->
-                        <div class="donate-btc-line">
-                            <span class="donate-btc-amount" id="donate-btc-amount">Select an amount below</span>
+                            <div class="donate-btc-line">
+                                <span class="donate-btc-amount" id="donate-btc-amount">Select an amount below</span>
+                            </div>
+
+                            <div class="donate-amt-row">
+                                <button class="donate-amt-btn" data-usd="5">$5</button>
+                                <button class="donate-amt-btn" data-usd="10">$10</button>
+                                <button class="donate-amt-btn" data-usd="25">$25</button>
+                                <button class="donate-amt-btn" data-usd="other">Other</button>
+                            </div>
+                            <div class="donate-custom-wrap" id="donate-custom-wrap">
+                                <span class="donate-custom-prefix">$</span>
+                                <input type="number" id="donate-custom-input" class="donate-custom-input" min="1" max="10000" placeholder="amount" />
+                            </div>
+                            <div class="donate-price-meta-line">
+                                <span class="donate-price-meta" id="donate-price-meta">fetching price&hellip;</span>
+                            </div>
+
+                            <div class="addr-actions">
+                                <button class="addr-btn-copy" id="addr-copy-btn">Copy Address</button>
+                                <button class="addr-btn-new"  id="addr-new-btn">New Address</button>
+                            </div>
                         </div>
 
-                        <!-- Amount picker -->
-                        <div class="donate-amt-row">
-                            <button class="donate-amt-btn" data-usd="5">$5</button>
-                            <button class="donate-amt-btn" data-usd="10">$10</button>
-                            <button class="donate-amt-btn" data-usd="25">$25</button>
-                            <button class="donate-amt-btn" data-usd="other">Other</button>
-                        </div>
-                        <div class="donate-custom-wrap" id="donate-custom-wrap">
-                            <span class="donate-custom-prefix">$</span>
-                            <input type="number" id="donate-custom-input" class="donate-custom-input" min="1" max="10000" placeholder="amount" />
-                        </div>
-                        <div class="donate-price-meta-line">
-                            <span class="donate-price-meta" id="donate-price-meta">fetching price&hellip;</span>
+                        <!-- Right: QR code -->
+                        <div style="flex-shrink: 0; display: flex; align-items: flex-end; align-self: stretch;">
+                            <div id="addr-qr" style="background: #fff; padding: 6px; border-radius: 6px;"></div>
                         </div>
 
-                        <div class="addr-actions">
-                            <button class="addr-btn-copy" id="addr-copy-btn">Copy Address</button>
-                            <button class="addr-btn-new"  id="addr-new-btn">New Address</button>
-                        </div>
-                        <p class="addr-privacy-note">
-                            # 300-address pool &middot; price via mempool.space &middot; no balance lookups &middot; no logs
-                        </p>
                     </div>
 
                 </div>
@@ -239,33 +234,28 @@
             <section class="content-section">
                 <h2 class="section-heading">Non-Financial Contributions</h2>
                 <p>
-                    <strong>SafeKeepVault</strong> is maintained by a lean team of dedicated developers.
-                    Your time and expertise are as valuable as your capital. You can directly impact
+                    <strong>SafeKeepVault</strong> is maintained by a dedicated developer.
+                    Your time and expertise are as valuable as your monetary contributions. You can directly impact
                     the project&rsquo;s evolution in the following ways:
                 </p>
                 <ul class="contribute-list">
                     <li>
-                        <strong>Technical Reporting:</strong> Identify and report vulnerabilities or bugs on our
-                        <a href="https://github.com/Pasalon0404/SafeKeepVault/issues/new" target="_blank" rel="noopener">GitHub Issue Tracker</a>.
-                        Please include hardware specs, OS version, and reproduction steps.
+                        <strong>Report a Bug:</strong> Found something broken? Let us know on
+                        <a href="https://github.com/Pasalon0404/SafeKeepVault/issues/new" target="_blank" rel="noopener">GitHub</a>.
+                        Telling us what computer you&rsquo;re using and how the error happened helps us fix it faster.
                     </li>
                     <li>
-                        <strong>Quality Assurance:</strong> Browse
-                        <a href="https://github.com/Pasalon0404/SafeKeepVault/issues" target="_blank" rel="noopener">open issues</a>
-                        to confirm bug reports or provide additional context to help our developers resolve them faster.
+                        <strong>Help Solve Issues:</strong> Take a look at our
+                        <a href="https://github.com/Pasalon0404/SafeKeepVault/issues" target="_blank" rel="noopener">Open Issues</a>.
+                        If you&rsquo;ve run into the same problem as someone else, adding your experience helpstrack down the cause.
                     </li>
                     <li>
-                        <strong>Code Review:</strong> Audit our
-                        <a href="https://github.com/Pasalon0404/SafeKeepVault/pulls" target="_blank" rel="noopener">pull requests</a>.
-                        Analyze the diffs, test experimental changes, and provide technical feedback.
+                        <strong>Check Our Work:</strong> If you&rsquo;re comfortable with code, look over our
+                        <a href="https://github.com/Pasalon0404/SafeKeepVault/pulls" target="_blank" rel="noopener">Pull Requests</a>.
+                        Testing new changes and giving feedback ensures the software stays solid for everyone.
                     </li>
-                    <li>
-                        <strong>Integrity Verification:</strong> Manually verify signed releases against the
-                        <a href="https://github.com/Pasalon0404/Safekeep-Website/blob/main/developer-pubkey.asc" target="_blank" rel="noopener">Maintainer&rsquo;s Public Key</a>.
-                        Security is a collective effort; report any discrepancies immediately.
-                    </li>
-                    <li>
-                        <strong>Community Advocacy:</strong> Introduce other Bitcoiners to the project. In an industry full of marketing noise, a recommendation from a trusted peer is our most powerful asset.
+<li>
+                        <strong>Spread the Word:</strong> Tell other Bitcoiners about the project. In a world of loud ads, a simple recommendation from a friend is the best support we can get.
                     </li>
                 </ul>
                 <div class="cta-row" style="margin-top:1.5rem">
@@ -281,7 +271,7 @@
     <footer class="site-footer">
         <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
         &mdash;
-        &copy; 2026 &middot; Open source &middot; Your keys, your Bitcoin.
+        &copy; 2026
     </footer>
 
 <script>
@@ -338,9 +328,7 @@
         /* Show full URI in the display field so copy gives the complete string */
         document.getElementById('addr-display').textContent = currentURI;
 
-        document.getElementById('addr-wallet-link').href = currentURI;
-
-        var container = document.getElementById('addr-qr');
+var container = document.getElementById('addr-qr');
         container.innerHTML = '';
         new QRCode(container, {
             text:         currentURI,

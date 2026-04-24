@@ -49,7 +49,7 @@
 
                 <div>
                     <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
-                    <p class="brand-meta">Self-custody &middot; Open source &middot; No middlemen</p>
+                    <p class="brand-meta">Open Source Self Custody</p>
                 </div>
 
                 <nav class="sidebar-links">
@@ -85,7 +85,7 @@
             <section class="content-section" id="release">
                 <h2 class="section-heading">Latest Release</h2>
                 <p>
-                    SafeKeepVault v1.1b is a bootable disk image. Flash it to a USB drive
+                    SafeKeepVault is a bootable disk image. Flash it to a USB drive
                     using <a href="https://etcher.balena.io/" target="_blank" rel="noopener">Balena Etcher</a> (Mac or Windows)
                      or <code>dd</code> on Linux.
                     Your computer&rsquo;s existing files are never touched.
@@ -222,16 +222,16 @@
                         and import it. You only need to do this once.
                     </p>
                     <div class="os-tabs">
-                        <span class="os-tab-label active">Linux / macOS</span>
+                        <span class="os-tab-label active">Linux / macOS / Windows</span>
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Import the maintainer's public key</span>
 <span class="term-prompt">$ </span><span class="term-cmd">gpg --import developer-pubkey.asc</span></pre>
                     </div>
                     <p class="verify-note">
-                        GPG is pre-installed on most Linux distributions and macOS.
-                        On macOS, install it via <code>brew install gnupg</code> if
-                        needed. Windows users can use
+                        GPG is pre-installed on most Linux distributions. macOS users will need to
+                        install it, typically via Homebrew (<code>brew install gnupg</code>).
+                        Windows users can install
                         <a href="https://www.gpg4win.org/" target="_blank" rel="noopener">Gpg4win</a>.
                     </p>
                 </div>
@@ -247,7 +247,7 @@
                         maintainer&rsquo;s key and has not been modified since signing.
                     </p>
                     <div class="os-tabs">
-                        <span class="os-tab-label active">Linux / macOS</span>
+                        <span class="os-tab-label active">Linux / macOS / Windows</span>
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Verify the signature over SHA256SUMS.txt</span>
@@ -259,9 +259,14 @@
                     </div>
                     <p class="verify-note">
                         You must see <strong>Good signature</strong> in the output.
-                        Any other result &mdash; including &ldquo;BAD signature&rdquo;
-                        or a key mismatch &mdash; means the manifest was tampered with.
-                        Do not proceed.
+                    </p>
+                    <p class="verify-note">
+                        <strong>Note:</strong> You may also see a warning stating &ldquo;This key is not
+                        certified with a trusted signature.&rdquo; This is standard behavior for newly
+                        imported keys. As long as it explicitly says <strong>Good signature</strong>,
+                        the file is verified. Any other result &mdash; including &ldquo;BAD
+                        signature&rdquo; or a key mismatch &mdash; means the manifest was tampered
+                        with. Do not proceed.
                     </p>
                 </div>
 
@@ -279,25 +284,35 @@
                         <span class="os-tab-label active">Linux</span>
                     </div>
                     <div class="terminal-block">
-                        <pre><span class="term-comment"># Check image hash against SHA256SUMS.txt (Linux)</span>
+                        <pre><span class="term-comment"># Check image hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">sha256sum --check SHA256SUMS.txt</span>
-
-<span class="term-good">safekeep-os-v1.1b.img: OK</span></pre>
+<span class="term-comment"># Expected output: safekeep-os-v1.1b.img: OK</span></pre>
                     </div>
                     <div class="os-tabs" style="margin-top: 0.75rem;">
                         <span class="os-tab-label active">macOS</span>
                     </div>
                     <div class="terminal-block">
-                        <pre><span class="term-comment"># Check image hash against SHA256SUMS.txt (macOS)</span>
+                        <pre><span class="term-comment"># Check image hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">shasum -a 256 -c SHA256SUMS.txt</span>
-
-<span class="term-good">safekeep-os-v1.1b.img: OK</span></pre>
+<span class="term-comment"># Expected output: safekeep-os-v1.1b.img: OK</span></pre>
                     </div>
                     <p class="verify-note">
-                        <strong>OK</strong> confirms the image is byte-for-byte identical
-                        to the file the maintainer signed. Any <strong>FAILED</strong>
-                        result means the download is corrupt or was modified &mdash;
-                        delete it and download again.
+                        For Linux and macOS, <strong>OK</strong> confirms the image is byte-for-byte
+                        identical to the file the maintainer signed. Any <strong>FAILED</strong>
+                        result means the download is corrupt or was modified &mdash; delete it and
+                        download again.
+                    </p>
+                    <div class="os-tabs" style="margin-top: 0.75rem;">
+                        <span class="os-tab-label active">Windows (PowerShell)</span>
+                    </div>
+                    <div class="terminal-block">
+                        <pre><span class="term-comment"># Generate the image hash</span>
+<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash safekeep-os-v1.1b.img -Algorithm SHA256</span></pre>
+                    </div>
+                    <p class="verify-note">
+                        For Windows, open <code>SHA256SUMS.txt</code> in Notepad and visually confirm
+                        that the hash generated in your PowerShell window perfectly matches the text
+                        file. If they do not match, delete the download immediately.
                     </p>
                 </div>
 
@@ -307,18 +322,58 @@
             <section class="content-section" id="flash">
                 <h2 class="section-heading">Flash &amp; Boot</h2>
                 <p>
-                    Write the image to a USB drive of 4 GB or larger. Choose a drive you can dedicate
-                    to this purpose &mdash; the host machine's internal drive is never touched.
+                    Write the image to a dedicated USB drive (4 GB or larger). The host machine&rsquo;s
+                    internal drive is completely bypassed and remains untouched throughout the session.
                 </p>
-                <div class="terminal-block" style="margin: 1rem 0;">
-                    <pre><span class="term-comment"># Flash with dd — replace /dev/sdX with your USB device</span>
-<span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=safekeep-os-v1.1b.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
+
+                <div class="verify-step">
+                    <div class="verify-step-header">
+                        <span class="verify-step-number">Option 1</span>
+                        <span class="verify-step-title">Graphical Interface (Recommended)</span>
+                    </div>
+                    <p class="verify-step-desc">
+                        For the most straightforward experience across Windows, macOS, and Linux, we
+                        recommend using <a href="https://etcher.balena.io/" target="_blank" rel="noopener">BalenaEtcher</a>
+                        (or <a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a> for Windows):
+                    </p>
+                    <ol style="margin: 0.75rem 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.94rem; color: var(--text-muted); line-height: 1.6;">
+                        <li>Open the flashing utility and select the extracted <code>safekeep-release-v1.1b.img
+</code> file.</li>
+                        <li>Select your target USB drive.</li>
+                        <li>Click <strong>Flash</strong> and wait for the verification to complete.</li>
+                    </ol>
                 </div>
-                <p>
-                    Once flashed, set your computer to boot from USB in its startup settings, insert the drive,
-                    and power on. SafeKeepVault is ready in under 30 seconds &mdash; no internet connection,
-                    no distractions, just your keys.
-                </p>
+
+                <div class="verify-step">
+                    <div class="verify-step-header">
+                        <span class="verify-step-number">Option 2</span>
+                        <span class="verify-step-title">Command Line (Linux / macOS)</span>
+                    </div>
+                    <p class="verify-step-desc">
+                        Advanced users can utilize the <code>dd</code> utility to write the image directly.
+                    </p>
+                    <div class="os-tabs">
+                        <span class="os-tab-label active">Linux / macOS</span>
+                    </div>
+                    <div class="terminal-block">
+                        <pre><span class="term-comment"># Flash with dd — replace /dev/sdX with your USB device</span>
+<span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=safekeep-release-v1.1b.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
+                    </div>
+                </div>
+
+                <div class="verify-step">
+                    <div class="verify-step-header">
+                        <span class="verify-step-number"></span>
+                        <span class="verify-step-title">Booting the Vault</span>
+                    </div>
+                    <p class="verify-step-desc">
+                        Once the drive is flashed, configure your computer&rsquo;s UEFI/BIOS settings
+                        to boot from USB. Insert the drive and power on. <strong>SafeKeepVault</strong>
+                        initializes in under 30 seconds&mdash;delivering a hardened, distraction-free
+                        environment with zero internet connectivity. Just your tools and your keys.
+                    </p>
+                </div>
+
                 <div class="cta-row" style="margin-top: 1.75rem;">
                     <a href="docs.html" class="btn-primary">Read the Docs</a>
                     <a href="donate.html" class="btn-secondary">Support Development</a>
@@ -332,7 +387,7 @@
     <footer class="site-footer">
         <a href="index.html" class="brand">SafeKeep<span>Bitcoin</span></a>
         &mdash;
-        &copy; 2026 &middot; Open source &middot; Your keys, your Bitcoin.
+        &copy; 2026
     </footer>
 
 <script>

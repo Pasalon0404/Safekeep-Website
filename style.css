@@ -438,6 +438,15 @@ a {
     border-top: 1px solid var(--border);
 }
 
+.docs-list li:last-child {
+    border-bottom: none;
+}
+
+/* Remove top border on first item when list immediately follows a sub-heading */
+.sub-heading + .docs-list li:first-child {
+    border-top: none;
+}
+
 .docs-list li strong {
     font-weight: 700;
     color: var(--text);
@@ -1111,7 +1120,7 @@ pre code {
     margin: 1.5rem 0 0.5rem;
     display: flex;
     flex-direction: column;
-    max-width: 560px;
+    width: 100%;
 }
 
 .addr-qr-col {
@@ -1149,7 +1158,7 @@ pre code {
 }
 
 .addr-body {
-    background: #1e1e1e;
+    background: var(--surface);
     padding: 1.35rem 1.5rem 1.5rem;
 }
 
@@ -1225,6 +1234,25 @@ pre code {
 @media (max-width: 600px) {
     .addr-card { max-width: 100%; }
     .addr-text { font-size: 0.76rem; }
+
+    /* Stack QR below the controls on mobile */
+    .addr-body {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .addr-body > div:last-child {
+        align-self: center !important;
+        margin-top: 1rem;
+    }
+
+    .donate-amt-row {
+        flex-wrap: wrap;
+    }
+
+    .donate-amt-btn {
+        flex: 1 1 40%;
+    }
 }
 
 /* =============================================
