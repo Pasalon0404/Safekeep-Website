@@ -102,6 +102,11 @@
                             <li><a href="#config-options">Initial Configuration Options</a></li>
                         </ul>
                     </li>
+                    <li><a href="#transfer-drive">Step 4: Mounting the Transfer Drive</a>
+                        <ul>
+                            <li><a href="#mount-steps">How to Mount</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#tools">The Tool Arsenal</a>
                         <ul>
                             <li><a href="#primary-tools">Primary Tools</a></li>
@@ -300,16 +305,48 @@
                         all traces instantly. This stateless mode is ideal for users who prefer to keep their keys exclusively on physical media.
                     </li>
                 </ol>
+            </section>
+
+            <!-- Section 3a: Mount Transfer Drive -->
+            <section class="content-section" id="transfer-drive">
+                <h2 class="section-heading">Step 4: Mounting the Transfer Drive</h2>
                 <p>
-                    Once your seed is loaded, you'll land on the Dashboard. Click
-                    <strong>Mount Transfer Drive</strong> to connect the built-in transfer folder
-                    on your drive &mdash; this is how transactions, PDFs, and backups can be saved and shared. Mount it once per session and every tool
-                    picks it up automatically. The status light in the toolbar turns green when it's live.
+                    Once your seed is loaded and you land on the Dashboard, your next step is to mount
+                    the Transfer Drive. This is the dedicated partition on your USB drive used to move
+                    files in and out of the vault — signed transactions, PSBT files, encrypted backups,
+                    and exported reports all pass through here.
                 </p>
+                <div class="notice-block">
+                    <p class="notice-title">Do this on every boot</p>
+                    <p>
+                        The Transfer Drive is not mounted automatically. You must mount it manually at
+                        the start of each session. Tools that require file access will not function
+                        until it is mounted.
+                    </p>
+                </div>
+                <h3 class="sub-heading" id="mount-steps">How to Mount</h3>
+                <ol class="docs-list">
+                    <li>
+                        <strong>Click "Mount Transfer Drive" &mdash;</strong>
+                        On the Dashboard, you will see a prominent <strong>Mount Transfer Drive</strong>
+                        button. Click it. This opens the system file explorer automatically.
+                    </li>
+                    <li>
+                        <strong>Select the Transfer Partition &mdash;</strong>
+                        In the file explorer, you will see your USB drive listed with two partitions.
+                        Select the one labelled <strong>Transfer</strong> (not the system partition).
+                    </li>
+                    <li>
+                        <strong>Click Allow &mdash;</strong>
+                        A permission prompt will appear asking whether to allow access to the partition.
+                        Click <strong>Allow</strong>. The Transfer Drive will mount and become available
+                        to all tools immediately.
+                    </li>
+                </ol>
                 <p>
-                    Prefer to never plug your drive into an online computer? Use The Courier tool
-                    alongside the <a href="courier.html">live Courier tool</a> on this site.
-                    Transactions are air-gapped as QR codes only.
+                    Once mounted, every tool in the vault can read from and write to the Transfer Drive
+                    automatically. The status indicator in the toolbar will confirm when it is live.
+                    You only need to mount it once per session.
                 </p>
             </section>
 
