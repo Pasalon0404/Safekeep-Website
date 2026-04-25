@@ -701,11 +701,10 @@ pre code {
     cursor: pointer;
 }
 
-/* Ensure the link wrapper doesn't break centering */
+/* Link wrapper fills the figure */
 .os-showcase a {
     display: block;
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .os-showcase a img {
@@ -717,18 +716,18 @@ pre code {
    OS SCREENSHOT SHOWCASE
    ============================================= */
 .os-showcase {
-    margin: 0 0 2.75rem;   /* same vertical rhythm as content-section */
+    margin: 0 auto 2.75rem;
     padding: 0;
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
 }
 
 .os-showcase img {
     display: block;
-    width: 80%;
-    max-width: 80%;
+    width: 100%;
+    max-width: 100%;
     height: auto;
     border-radius: var(--radius-lg);  /* 8px */
     box-shadow:
@@ -739,12 +738,11 @@ pre code {
 
 .os-showcase figcaption {
     margin-top: 0.7rem;
-    width: 80%;
+    width: 100%;
     font-size: 0.88rem;
     color: var(--text-muted);
     line-height: 1.55;
     letter-spacing: 0.01em;
-    text-align: justify;
 }
 
 /* =============================================
@@ -753,18 +751,20 @@ pre code {
 .tools-list {
     list-style: none;
     padding: 0;
-    margin: 1.25rem 0 0;
-    columns: 2;
-    column-gap: 2.5rem;
+    margin: 1.25rem auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.1rem 2rem;
+    max-width: 480px;
 }
 
 .tools-list li {
-    break-inside: avoid;
     display: flex;
     flex-direction: column;
     padding: 0.45rem 0;
     font-size: 0.9rem;
     line-height: 1.35;
+    text-align: left;
 }
 
 .tool-name {
