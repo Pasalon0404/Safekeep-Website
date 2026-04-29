@@ -77,7 +77,7 @@
 
             <!-- Page hero -->
             <div class="page-hero">
-                <p class="page-hero-label">v1.1b Release</p>
+                <p class="page-hero-label">v1.2b Release</p>
                 <h1 class="page-hero-title">Download</h1>
                 <p class="page-hero-tagline">
                     Signed and verified bootable image for the latest version of <strong>SafeKeepVault</strong>. Follow the instructions below to verify your download and get set up.
@@ -96,24 +96,24 @@
 
                 <div class="download-hero-block">
                     <div class="download-primary">
-                        <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.1b/safekeep-release-v1.1b.zip"
+                        <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.2b/safekeep-release-v1.2b.zip"
                            class="btn-download-primary">
                             Download
                         </a>
-                        <span class="download-filesize">v1.1b &middot; SHA-256 verified</span>
+                        <span class="download-filesize">v1.2b &middot; SHA-256 verified</span>
                         <div class="sha256-block">
-                            <span class="sha256-label">SHA-256 &mdash; safekeep-release-v1.1b.zip</span>
-                            <code class="sha256-value">34af5e17521ba7bdd014f06c30d00e93ec4a10c1b1fb4dbd7ecb83b06c92ee2d</code>
+                            <span class="sha256-label">SHA-256 &mdash; safekeep-release-v1.2b.zip</span>
+                            <code class="sha256-value">6590b84b4ebb01b631b8cecbc641deaf007ed3b5a9b1f56928248db018d55a7c</code>
                         </div>
                     </div>
 
                     <div class="download-verify-group">
                         <p class="download-verify-label">Verify your download</p>
                         <div class="download-secondary-links">
-                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.1b/SHA256SUMS.txt">
+                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.2b/SHA256SUMS.txt">
                                 SHA256SUMS.txt
                             </a>
-                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.1b/SHA256SUMS.txt.asc">
+                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.2b/SHA256SUMS.txt.asc">
                                 SHA256SUMS.txt.asc
                             </a>
                         </div>
@@ -136,14 +136,14 @@
                     <div class="download-verify-group" style="margin-top: 0.5rem;">
                         <p class="download-verify-label">Source code</p>
                         <div class="download-secondary-links">
-                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.1b/safekeep-source-v1.1b.zip">
-                                safekeep-source-v1.1b.zip
+                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.2b/safekeep-source-v1.2b.zip">
+                                safekeep-source-v1.2b.zip
                             </a>
                         </div>
                     </div>
 
                     <div class="download-audit-row">
-                        <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/tag/v1.1b"
+                        <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/tag/v1.2b"
                            target="_blank" rel="noopener" class="download-audit-link">
                             View release on GitHub full release notes, all assets
                         </a>
@@ -160,45 +160,70 @@
                 </p>
             </section>
 
-            <!-- Section 2: v1.1b Changelog -->
+            <!-- Section 2: v1.2b Changelog -->
             <section class="content-section" id="changelog">
-                <h2 class="section-heading">What&rsquo;s New in v1.1b</h2>
+                <h2 class="section-heading">What&rsquo;s New in v1.2b</h2>
                 <p>
-                    Full round-trip compatibility with Nunchuk and Electrum &mdash; the two strictest
-                    air-gap wallet implementations in the ecosystem. Workflows that previously required
-                    workarounds or manual hex conversion now work first-scan, every time.
+                    A major usability and standards compliance release. Wallet records are now a single portable PDF, descriptor state syncs across the entire vault, and all key exports conform to BIP-32 standard types &mdash; eliminating the last friction points in common coordinator workflows.
                 </p>
 
                 <div class="changelog-block">
-                    <span class="changelog-version">v1.1b</span>
+                    <span class="changelog-version">v1.2b</span>
                     <ul class="changelog-entries">
 
                         <li>
-                            <span class="cl-tag compat">Compat</span>
+                            <span class="cl-tag new">New</span>
                             <span class="cl-text">
-                                <strong>Nunchuk &mdash; Raw Hex QR output.</strong>
-                                The Scribe exports signed PSBTs as un-prefixed Raw Hex QR codes.
-                                Nunchuk's strict scanner accepts them instantly. Scan, broadcast, done.
-                            </span>
-                        </li>
-
-                        <li>
-                            <span class="cl-tag compat">Compat</span>
-                            <span class="cl-text">
-                                <strong>Electrum round-trip &mdash; Base43 decoder.</strong>
-                                A custom Base43 decoder is now built into SafeKeep's QR scanner.
-                                Electrum's proprietary PSBT encoding is decoded on the fly &mdash;
-                                the last manual step in the Electrum workflow is gone.
+                                <strong>Wallet Record Overhaul.</strong>
+                                The wallet record is now generated as a clean, single-page PDF. All descriptor and key information is formatted for easy printing and long-term offline storage.
                             </span>
                         </li>
 
                         <li>
                             <span class="cl-tag new">New</span>
                             <span class="cl-text">
-                                <strong>Electrum skeleton wallet export.</strong>
-                                SafeKeep generates a <code>[FINGERPRINT]-electrum.json</code> with the
-                                correct descriptor, derivation path, and <code>ckcc_xfp</code> field.
-                                Import it once and your watch-only wallet is ready.
+                                <strong>Deep State Sync.</strong>
+                                Descriptor, seed hints, passphrase, and the derived <code>m/0/0</code> address are now synchronized across the vault in a single operation. All tools see consistent wallet state from boot.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="cl-tag new">New</span>
+                            <span class="cl-text">
+                                <strong>Standards Compliance &mdash; xpub / tpub.</strong>
+                                All extended public key exports now use standard BIP-32 <code>xpub</code> and <code>tpub</code> formats, replacing the legacy <code>zpub</code> / SLIP-132 types. Compatible with every major coordinator out of the box.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="cl-tag new">New</span>
+                            <span class="cl-text">
+                                <strong>Dynamic Passphrase Support.</strong>
+                                Passphrase-protected wallets can now be accessed without re-deriving from scratch. Enter or swap your passphrase at any point during a session and all dependent state updates automatically.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="cl-tag fix">Fix</span>
+                            <span class="cl-text">
+                                <strong>Encrypted Notes &mdash; Save button lifecycle bug.</strong>
+                                The Save button in Encrypted Notes was unresponsive after the first use within a session. The SPA lifecycle issue causing this has been resolved; Save now works reliably across any number of note edits.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="cl-tag fix">Fix</span>
+                            <span class="cl-text">
+                                <strong>Address derivation regression.</strong>
+                                A regression introduced by the xpub normalizer caused incorrect receive addresses to be derived in certain derivation path configurations. Derivation is now correct across all supported script types.
+                            </span>
+                        </li>
+
+                        <li>
+                            <span class="cl-tag fix">Fix</span>
+                            <span class="cl-text">
+                                <strong>Layout rendering in strict browsers.</strong>
+                                Several layout edge cases caused visual breakage under strict content security policies and older WebKit versions. These have been resolved for consistent rendering across all supported environments.
                             </span>
                         </li>
 
@@ -293,7 +318,7 @@
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Check image hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">sha256sum --check SHA256SUMS.txt</span>
-<span class="term-comment"># Expected output: safekeep-os-v1.1b.img: OK</span></pre>
+<span class="term-comment"># Expected output: safekeep-os-v1.2b.img: OK</span></pre>
                     </div>
                     <div class="os-tabs" style="margin-top: 0.75rem;">
                         <span class="os-tab-label active">macOS</span>
@@ -301,7 +326,7 @@
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Check image hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">shasum -a 256 -c SHA256SUMS.txt</span>
-<span class="term-comment"># Expected output: safekeep-os-v1.1b.img: OK</span></pre>
+<span class="term-comment"># Expected output: safekeep-os-v1.2b.img: OK</span></pre>
                     </div>
                     <p class="verify-note">
                         For Linux and macOS, <strong>OK</strong> confirms the image is byte-for-byte
@@ -314,7 +339,7 @@
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Generate the image hash</span>
-<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash safekeep-os-v1.1b.img -Algorithm SHA256</span></pre>
+<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash safekeep-os-v1.2b.img -Algorithm SHA256</span></pre>
                     </div>
                     <p class="verify-note">
                         For Windows, open <code>SHA256SUMS.txt</code> in Notepad and visually confirm
@@ -344,7 +369,7 @@
                         (or <a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a> for Windows):
                     </p>
                     <ol style="margin: 0.75rem 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.94rem; color: var(--text-muted); line-height: 1.6;">
-                        <li>Open the flashing utility and select the extracted <code>safekeep-release-v1.1b.img
+                        <li>Open the flashing utility and select the extracted <code>safekeep-release-v1.2b.img
 </code> file.</li>
                         <li>Select your target USB drive.</li>
                         <li>Click <strong>Flash</strong> and wait for the verification to complete.</li>
@@ -364,7 +389,7 @@
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Flash with dd — replace /dev/sdX with your USB device</span>
-<span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=safekeep-release-v1.1b.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
+<span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=safekeep-release-v1.2b.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
                     </div>
                 </div>
 
