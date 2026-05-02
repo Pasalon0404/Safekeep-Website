@@ -3,31 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="newfavicon.png">
-    <meta name="description" content="The Courier Tool bridges your online wallet and offline vault via high-density QR codes—no cables, no USB swaps, no radio. Runs entirely in your browser.">
+    <meta name="description" content="SafeKeepVault repurposes hardware you already own into a professional-grade air-gapped Bitcoin wallet. Open-source, free, and built on earned trust.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Courier &mdash; SafeKeepVault</title>
+    <title>About &mdash; SafeKeepVault</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* ---- Launch button ---- */
-        .btn-launch-courier {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.85rem 2rem;
-            background: var(--accent);
-            color: #ffffff;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            transition: background var(--transition);
-            letter-spacing: -0.01em;
-        }
-
-        .btn-launch-courier:hover {
-            background: var(--accent-hover);
-        }
-    </style>
 </head>
 <body>
 
@@ -39,10 +18,9 @@
             <li class="hide-mobile"><a href="index.html">Home</a></li>
             <li class="hide-mobile"><a href="features.html">Features</a></li>
             <li class="hide-mobile"><a href="compare.html">Compare</a></li>
-            <li class="hide-mobile"><a href="about.html">About</a></li>
+            <li class="hide-mobile"><a href="about.html" class="active">About</a></li>
             <li class="hide-mobile"><a href="docs.html">Docs</a></li>
-            <li class="hide-mobile"><a href="courier.html" class="active">Courier Tool</a></li>
-            <li class="hide-mobile"><a href="print-qr.html">Print QR</a></li>
+            <li class="hide-mobile"><a href="courier.html">Courier Tool</a></li>
             <li class="hide-mobile"><a href="donate.html">Donate</a></li>
             <li class="hide-mobile"><a href="download.html" class="nav-download">Download</a></li>
         </ul>
@@ -56,10 +34,9 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="features.html">Features</a></li>
             <li><a href="compare.html">Compare</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="about.html" class="active">About</a></li>
             <li><a href="docs.html">Docs</a></li>
-            <li><a href="courier.html" class="active">Courier Tool</a></li>
-            <li><a href="print-qr.html">Print QR</a></li>
+            <li><a href="courier.html">Courier Tool</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="download.html" class="nav-download">Download</a></li>
         </ul>
@@ -100,74 +77,84 @@
 
             <!-- Page hero -->
             <div class="page-hero">
-                <p class="page-hero-label"><strong>SafeKeepVault</strong> Tool</p>
-                <h1 class="page-hero-title">The Courier</h1>
+                <p class="page-hero-label">About <strong>SafeKeepVault</strong></p>
+                <h1 class="page-hero-title">Cold Storage Without the Costs</h1>
                 <p class="page-hero-tagline">
-                    Move data securely using high-density QR codes.
+                    What if the hardware you already own is all you need?
                 </p>
-                <div style="margin-top: 1.75rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                    <a href="courier-tool.html" target="_blank" rel="noopener" class="btn-launch-courier">
-                        Launch The Courier
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-left:0.4rem;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    </a>
-                   
-                </div>
             </div>
 
-            <!-- What is The Courier -->
+            <!-- A New Perspective -->
             <section class="content-section">
-                <h2 class="section-heading">Your Secure Air-Gap Interface</h2>
+                <h2 class="section-heading">A New Perspective on Cold Storage</h2>
                 <p>
-                    The Courier is a browser-based utility designed to transmit text and files between your
-                    online computer or phone and <strong>SafeKeepVault</strong>. It operates entirely within your local
-                    browser environment; no data is ever uploaded, transmitted, or stored on a server.
+                    Dedicated hardware wallets serve a vital role, and <strong>SafeKeepVault</strong>
+                    is designed to integrate seamlessly alongside them. However, for many users,
+                    it&rsquo;s worth asking: is a $50&ndash;$250 specialized device the best use
+                    of your money?
                 </p>
+                <p>
+                    If you have a spare laptop on the shelf, or even the one you use daily, you already own what you need to safely store your Bitcoin. <strong>SafeKeepVault</strong> transforms that hardware
+                    into a fully capable, air-gapped Bitcoin wallet for the cost of a thumb drive. By repurposing
+                    the computer you&rsquo;ve already paid for, your money stays exactly where
+                    it belongs&mdash;in Bitcoin.
+                </p>
+            </section>
+
+            <!-- The OS is the problem -->
+            <section class="content-section">
+                <h2 class="section-heading">The OS is the Vulnerability, Not the Hardware</h2>
+                <p>
+                    Your laptop&rsquo;s hardware is a powerful tool; the true risk lies in the
+                    software. Modern operating systems are
+                    engineered for constant connectivity, telemetry, and background
+                    processes&mdash;creating a broad attack surface for malware, keyloggers, and
+                    remote exploits. This &ldquo;always-on&rdquo; architecture is the fundamental
+                    opposite of what your private keys require.
+                </p>
+                <p>
+                    <strong>SafeKeepVault</strong> solves this by swapping the software at the root.
+                    By booting from an isolated USB drive, you bypass the insecure host OS
+                    and its network vulnerabilities entirely. Your internal storage remains unmounted
+                    and invisible, shielded from any potential compromise. When you are done, your computer returns to its original state with zero trace
+                    of the vault&rsquo;s existence. 
+                </p>
+            </section>
+
+            <!-- Principles -->
+            <section class="content-section">
+                <h2 class="section-heading">Our Core Principles</h2>
                 <ul class="docs-list">
                     <li>
-                        <strong>Transmit Mode &mdash;</strong>
-                        Encode any file or text string into a
-                        high-density QR code. Simply point your laptop or phone camera
-                        at your screen to reassemble the data.
+                        <strong>Sovereignty as a Standard &mdash;</strong>
+                        Secure self-custody Bitcoin should not carry a high barrier to entry. The tools
+                        required to protect your wealth should be free, open, and accessible to everyone.
                     </li>
                     <li>
-                        <strong>Receive Mode &mdash;</strong>
-                        Use your webcam to scan a QR code from the vault. This instantly brings your signed transactions or data back onto your online machine, ready to be sent to the network.
+                        <strong>Earned Trust, Not Assumed &mdash;</strong>
+                        In a world of proprietary &ldquo;black box&rdquo; devices, transparency is
+                        everything. Every line of our code is open-source, auditable, and verifiable.
+                    </li>
+            
+                    <li>
+                        <strong>Hardware Sustainability &mdash;</strong>
+                        That &ldquo;old&rdquo; laptop is more than enough. We believe in maximizing
+                        the utility of existing technology rather than creating more electronic waste.
                     </li>
                 </ul>
             </section>
 
-            <!-- Password QR use case -->
+            <!-- Open source -->
             <section class="content-section">
-                <h2 class="section-heading">Streamlined Vault Authentication</h2>
+                <h2 class="section-heading">Free and Open Source</h2>
                 <p>
-                    The Courier also serves a critical security function: generating the QR credential
-                    used to unlock your <strong>SafeKeepVault</strong> Encrypted Partition every time you boot.
+                    <strong>SafeKeepVault</strong> is released under the MIT License. Our development
+                    is public, our releases are SHA-256 verified, and our roadmap is shaped by your input.
                 </p>
-                <h3 class="sub-heading">The Recommended Workflow</h3>
-                <ol class="docs-list docs-list--plain">
-                    <li>
-                        <strong>Generate a High-Entropy Password &mdash;</strong>
-                        Use any password manager to create a long, fully random credential (e.g., 20+
-                        characters). This remains your primary digital backup.
-                    </li>
-                    <li>
-                        <strong>Generate the QR Credential &mdash;</strong>
-                        Paste the password into the Transmit tab using &ldquo;Text / Password&rdquo;
-                        mode. A static QR code is generated instantly and locally within your browser.
-                    </li>
-                    <li>
-                        <strong>Mobile Integration &mdash;</strong>
-                        Screenshot the resulting QR code on your mobile device and store it within a
-                        secure, encrypted note or a locked album.
-                    </li>
-                    <li>
-                        <strong>Instant Unlock &mdash;</strong>
-                        Upon every boot, display your phone to the <strong>SafeKeepVault</strong>
-                        camera. The system reads the QR and unlocks your vault instantly, eliminating
-                        the need for manual entry and allowing you to utilize unbreakable
-                        passwords without the inconvenience of typing.
-                    </li>
-                </ol>
+                <p>
+                    We don&rsquo;t rely on marketing claims&mdash;we rely on transparency. If you
+                    find a bug, report it. If you have an improvement, submit a pull request. The code is open for everyone to see.
+                </p>
                 <div class="cta-row" style="margin-top: 1.75rem;">
                     <a href="download.html" class="btn-primary">Download</a>
                     <a href="donate.html" class="btn-secondary">&#9825; Donate</a>

@@ -21,7 +21,6 @@
             <li class="hide-mobile"><a href="about.html">About</a></li>
             <li class="hide-mobile"><a href="docs.html" class="active">Docs</a></li>
             <li class="hide-mobile"><a href="courier.html">Courier Tool</a></li>
-            <li class="hide-mobile"><a href="print-qr.html">Print QR</a></li>
             <li class="hide-mobile"><a href="donate.html">Donate</a></li>
             <li class="hide-mobile"><a href="download.html" class="nav-download">Download</a></li>
         </ul>
@@ -38,7 +37,6 @@
             <li><a href="about.html">About</a></li>
             <li><a href="docs.html" class="active">Docs</a></li>
             <li><a href="courier.html">Courier Tool</a></li>
-            <li><a href="print-qr.html">Print QR</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="download.html" class="nav-download">Download</a></li>
         </ul>
