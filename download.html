@@ -320,7 +320,7 @@
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Check image hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">sha256sum --check SHA256SUMS.txt</span>
-<span class="term-comment"># Expected output: safekeep-os-v1.2b.img: OK</span></pre>
+<span class="term-comment"># Expected output: safekeep-Release-v1.22b.img: OK</span></pre>
                     </div>
                     <div class="os-tabs" style="margin-top: 0.75rem;">
                         <span class="os-tab-label active">macOS</span>
@@ -328,7 +328,7 @@
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Check image hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">shasum -a 256 -c SHA256SUMS.txt</span>
-<span class="term-comment"># Expected output: safekeep-os-v1.2b.img: OK</span></pre>
+<span class="term-comment"># Expected output: safekeep-Release-v1.22b.img: OK</span></pre>
                     </div>
                     <p class="verify-note">
                         For Linux and macOS, <strong>OK</strong> confirms the image is byte-for-byte
@@ -341,7 +341,7 @@
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Generate the image hash</span>
-<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash safekeep-os-v1.2b.img -Algorithm SHA256</span></pre>
+<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash safekeep-Release-v1.22b.img -Algorithm SHA256</span></pre>
                     </div>
                     <p class="verify-note">
                         For Windows, open <code>SHA256SUMS.txt</code> in Notepad and visually confirm
@@ -371,7 +371,7 @@
                         (or <a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a> for Windows):
                     </p>
                     <ol style="margin: 0.75rem 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.94rem; color: var(--text-muted); line-height: 1.6;">
-                        <li>Open the flashing utility and select the extracted <code>safekeep-release-v1.2b.img
+                        <li>Open the flashing utility and select the extracted <code>safekeep-release-v1.22b.img
 </code> file.</li>
                         <li>Select your target USB drive.</li>
                         <li>Click <strong>Flash</strong> and wait for the verification to complete.</li>
@@ -391,7 +391,7 @@
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Flash with dd — replace /dev/sdX with your USB device</span>
-<span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=safekeep-release-v1.2b.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
+<span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=safekeep-release-v1.22b.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
                     </div>
                 </div>
 
