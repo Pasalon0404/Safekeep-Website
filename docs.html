@@ -73,6 +73,8 @@
         .qr-canvas-wrap canvas,
         .qr-canvas-wrap img {
             display: block;
+            max-width: 240px;
+            height: auto !important;
         }
 
         .qr-actions {
@@ -921,8 +923,8 @@
         &copy; 2026
     </footer>
 
-<!-- QR Code library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<!-- QR Code library (same build as courier-tool) -->
+<script src="vendor/qrcode.min.js"></script>
 
 <script>
 /* ================================================================
@@ -944,8 +946,8 @@
         toggleBtn.setAttribute('aria-label', isShown ? 'Show password' : 'Hide password');
         input.focus();
     });
-    var qrInstance = null;
     var debounceTimer = null;
+    var qrCanvas = null;  // persistent <canvas> element inside #qr-display
 
     // ── Canvas helpers ──────────────────────────────────────────────
     function roundRect(ctx, x, y, w, h, r) {
@@ -963,67 +965,55 @@
     }
 
     function drawSKBBadge(canvas) {
-        var ctx  = canvas.getContext('2d');
-        var cx   = canvas.width  / 2;
-        var cy   = canvas.height / 2;
-        var pw   = canvas.width  * 0.32;
-        var ph   = canvas.height * 0.13;
-        var pr   = ph / 2;
-        var px   = cx - pw / 2;
-        var py   = cy - ph / 2;
+        var ctx = canvas.getContext('2d');
+        var s   = canvas.width;
+        var bw  = Math.round(s * 0.32);
+        var bh  = Math.round(s * 0.13);
+        var bx  = (s - bw) / 2;
+        var by  = (s - bh) / 2;
+        var r   = bh / 2;
 
         // White halo
-        ctx.save();
-        roundRect(ctx, px - 3, py - 3, pw + 6, ph + 6, pr + 3);
         ctx.fillStyle = '#ffffff';
+        roundRect(ctx, bx - 3, by - 3, bw + 6, bh + 6, r + 3);
         ctx.fill();
-        ctx.restore();
 
         // Orange pill
-        ctx.save();
-        roundRect(ctx, px, py, pw, ph, pr);
         ctx.fillStyle = '#f7931a';
+        roundRect(ctx, bx, by, bw, bh, r);
         ctx.fill();
-        ctx.restore();
 
         // SKB text
-        ctx.save();
         ctx.fillStyle    = '#ffffff';
-        ctx.font         = 'bold ' + Math.round(ph * 0.62) + 'px sans-serif';
+        ctx.font         = 'bold ' + Math.round(bh * 0.62) + 'px sans-serif';
         ctx.textAlign    = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('SKB', cx, cy);
-        ctx.restore();
+        ctx.fillText('SKB', s / 2, s / 2);
     }
 
     function generateQR(text) {
-        // Clear previous instance
-        display.innerHTML = '';
-        if (qrInstance) { qrInstance = null; }
-
         if (!text) {
             output.classList.remove('visible');
             return;
         }
 
-        qrInstance = new QRCode(display, {
-            text: text,
-            width: 200,
-            height: 200,
-            colorDark: '#000000',
-            colorLight: '#ffffff',
-            correctLevel: QRCode.CorrectLevel.Q
-        });
-
-        // Apply SKB badge after QRCode.js finishes rendering
-        if (badgeChk && badgeChk.checked) {
-            setTimeout(function () {
-                var canvas = display.querySelector('canvas');
-                if (canvas) { drawSKBBadge(canvas); }
-            }, 50);
+        // Create the canvas once; QRCode.toCanvas reuses it on subsequent calls
+        if (!qrCanvas) {
+            qrCanvas = document.createElement('canvas');
+            display.innerHTML = '';
+            display.appendChild(qrCanvas);
         }
 
-        output.classList.add('visible');
+        QRCode.toCanvas(qrCanvas, text, {
+            width: 525,
+            margin: 2,
+            errorCorrectionLevel: 'Q',
+            color: { dark: '#000000', light: '#ffffff' }
+        }, function (err) {
+            if (err) { console.error(err); return; }
+            if (badgeChk && badgeChk.checked) { drawSKBBadge(qrCanvas); }
+            output.classList.add('visible');
+        });
     }
 
     input.addEventListener('input', function () {
@@ -1038,26 +1028,9 @@
     });
 
     saveBtn.addEventListener('click', function () {
-        // QRCode.js renders a canvas (or img fallback); grab whichever is present
-        var canvas = display.querySelector('canvas');
-        var img    = display.querySelector('img');
-        var dataURL;
-
-        if (canvas) {
-            dataURL = canvas.toDataURL('image/png');
-        } else if (img) {
-            // Draw img onto a temporary canvas to get a data URL
-            var tmp = document.createElement('canvas');
-            tmp.width  = img.naturalWidth  || 200;
-            tmp.height = img.naturalHeight || 200;
-            tmp.getContext('2d').drawImage(img, 0, 0);
-            dataURL = tmp.toDataURL('image/png');
-        } else {
-            return;
-        }
-
+        if (!qrCanvas) { return; }
         var link = document.createElement('a');
-        link.href     = dataURL;
+        link.href     = qrCanvas.toDataURL('image/png');
         link.download = 'safekeepvault-unlock-qr.png';
         document.body.appendChild(link);
         link.click();
