@@ -107,6 +107,38 @@
             max-width: 280px;
         }
 
+        /* ---- Password input with show/hide toggle ---- */
+        .qr-input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .qr-input-wrap .qr-password-input {
+            padding-right: 2.75rem;
+        }
+
+        .btn-toggle-pw {
+            position: absolute;
+            right: 0.6rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            transition: color var(--transition);
+        }
+
+        .btn-toggle-pw:hover {
+            color: var(--text);
+        }
+
+        .btn-toggle-pw .icon-eye-off { display: none; }
+        .btn-toggle-pw.shown .icon-eye     { display: none; }
+        .btn-toggle-pw.shown .icon-eye-off { display: block; }
+
         /* ---- Watch wallet sub-steps ---- */
         .wallet-steps {
             margin: 0.6rem 0 0 0;
@@ -404,27 +436,39 @@
                     convert it to a QR code using the widget below. Save the QR image to your phone&rsquo;s
                     secure photo library or an encrypted note in your password manager. On every subsequent
                     boot, simply hold your phone up to the vault&rsquo;s webcam &mdash; the system reads
-                    the QR and unlocks the vault instantly, with no typing required.
+                    the QR and unlocks the vault instantly, with no typing required. This converter run entirely in your browser - SafeKeepBitcoin does not store your password.
                 </p>
 
                 <!-- QR Generator Widget -->
                 <div class="qr-widget">
                     <p class="qr-widget-label">Vault Password &rarr; QR Code</p>
-                    <input
-                        type="password"
-                        id="vault-pw-input"
-                        class="qr-password-input"
-                        placeholder="Paste your password manager password here&hellip;"
-                        autocomplete="off"
-                        autocorrect="off"
-                        autocapitalize="off"
-                        spellcheck="false"
-                    >
+                    <div class="qr-input-wrap">
+                        <input
+                            type="password"
+                            id="vault-pw-input"
+                            class="qr-password-input"
+                            placeholder="Paste your password manager password here&hellip;"
+                            autocomplete="off"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            spellcheck="false"
+                        >
+                        <button class="btn-toggle-pw" id="btn-toggle-pw" type="button" aria-label="Show password">
+                            <!-- Eye (hidden → show) -->
+                            <svg class="icon-eye" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <!-- Eye-off (shown → hide) -->
+                            <svg class="icon-eye-off" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                        </button>
+                    </div>
                     <div class="qr-output" id="qr-output">
                         <div class="qr-canvas-wrap">
                             <div id="qr-display"></div>
                         </div>
                         <div class="qr-actions">
+                            <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer; user-select:none;">
+                                <input type="checkbox" id="chk-skb-badge" style="width:1rem; height:1rem; accent-color:var(--accent); cursor:pointer;">
+                                <span style="font-size:0.87rem; color:var(--text-muted);">Add <strong>SKB</strong> badge to center</span>
+                            </label>
                             <button class="btn-save-qr" id="btn-save-qr">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                 Save to File
@@ -881,11 +925,71 @@
    ================================================================ */
 (function () {
     var input     = document.getElementById('vault-pw-input');
+    var toggleBtn = document.getElementById('btn-toggle-pw');
     var output    = document.getElementById('qr-output');
     var display   = document.getElementById('qr-display');
     var saveBtn   = document.getElementById('btn-save-qr');
+    var badgeChk  = document.getElementById('chk-skb-badge');
+
+    // Show / hide password toggle
+    toggleBtn.addEventListener('click', function () {
+        var isShown = input.type === 'text';
+        input.type = isShown ? 'password' : 'text';
+        toggleBtn.classList.toggle('shown', !isShown);
+        toggleBtn.setAttribute('aria-label', isShown ? 'Show password' : 'Hide password');
+        input.focus();
+    });
     var qrInstance = null;
     var debounceTimer = null;
+
+    // ── Canvas helpers ──────────────────────────────────────────────
+    function roundRect(ctx, x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+        ctx.lineTo(x + w, y + h - r);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        ctx.lineTo(x + r, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+    }
+
+    function drawSKBBadge(canvas) {
+        var ctx  = canvas.getContext('2d');
+        var cx   = canvas.width  / 2;
+        var cy   = canvas.height / 2;
+        var pw   = canvas.width  * 0.32;
+        var ph   = canvas.height * 0.13;
+        var pr   = ph / 2;
+        var px   = cx - pw / 2;
+        var py   = cy - ph / 2;
+
+        // White halo
+        ctx.save();
+        roundRect(ctx, px - 3, py - 3, pw + 6, ph + 6, pr + 3);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
+        ctx.restore();
+
+        // Orange pill
+        ctx.save();
+        roundRect(ctx, px, py, pw, ph, pr);
+        ctx.fillStyle = '#f7931a';
+        ctx.fill();
+        ctx.restore();
+
+        // SKB text
+        ctx.save();
+        ctx.fillStyle    = '#ffffff';
+        ctx.font         = 'bold ' + Math.round(ph * 0.62) + 'px sans-serif';
+        ctx.textAlign    = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('SKB', cx, cy);
+        ctx.restore();
+    }
 
     function generateQR(text) {
         // Clear previous instance
@@ -903,8 +1007,16 @@
             height: 200,
             colorDark: '#000000',
             colorLight: '#ffffff',
-            correctLevel: QRCode.CorrectLevel.M
+            correctLevel: QRCode.CorrectLevel.Q
         });
+
+        // Apply SKB badge after QRCode.js finishes rendering
+        if (badgeChk && badgeChk.checked) {
+            setTimeout(function () {
+                var canvas = display.querySelector('canvas');
+                if (canvas) { drawSKBBadge(canvas); }
+            }, 50);
+        }
 
         output.classList.add('visible');
     }
@@ -914,6 +1026,10 @@
         debounceTimer = setTimeout(function () {
             generateQR(input.value.trim());
         }, 300);
+    });
+
+    badgeChk.addEventListener('change', function () {
+        if (input.value.trim()) { generateQR(input.value.trim()); }
     });
 
     saveBtn.addEventListener('click', function () {
