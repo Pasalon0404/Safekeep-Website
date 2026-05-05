@@ -101,7 +101,7 @@
                     </li>
                     <li>
                         <span class="spec-label">Hardware Lockdown</span>
-                        <span class="spec-desc">Non-essential peripherals, including microphones and speakers, are deactivated. The system communicates exclusively with your display, keyboard, camera, and the USB drive itself.</span>
+                        <span class="spec-desc">Non-essential peripherals are deactivated. The system communicates exclusively with your display, keyboard, camera, and the USB drive itself.</span>
                     </li>
                 </ul>
 
@@ -162,11 +162,8 @@
             <!-- Tools Dashboard Screenshot -->
             <figure class="os-showcase">
                 <a href="Tools.png" target="_blank" rel="noopener">
-                    <img
-                    src="Tools.png"
-                    alt="<strong>
-                </a>SafeKeepVault</strong> tools dashboard — all fifteen tools organized under Core Tools and Advanced Tools, with an active master seed"
-                >
+                    <img src="Tools.png" alt="SafeKeepVault tools dashboard — all fifteen tools organized under Core Tools and Advanced Tools, with an active master seed">
+                </a>
                 <figcaption>
                     The <strong>SafeKeepVault</strong> tool dashboard &mdash; fifteen specialized utilities
                     organized into Core and Advanced sections. Your active master seed phrase is loaded once and available
@@ -177,11 +174,8 @@
             <!-- Entropy Generator Screenshot -->
             <figure class="os-showcase">
                 <a href="Entropy.png" target="_blank" rel="noopener">
-                    <img
-                    src="Entropy.png"
-                    alt="Entropy Generator — <strong>
-                </a>SafeKeepVault</strong>'s entropy mixing tool, showing manual dice, digital dice, mouse wiggle, and video noise sources"
-                >
+                    <img src="Entropy.png" alt="Entropy Generator — SafeKeepVault's entropy mixing tool, showing manual dice, digital dice, mouse wiggle, and video noise sources">
+                </a>
                 <figcaption>
                     The Entropy Generator &mdash; mix physical dice rolls, digital randomness,
                     mouse movement, and camera noise before generating your master seed.
@@ -192,11 +186,8 @@
             <!-- PSBT Signer Screenshot -->
             <figure class="os-showcase">
                 <a href="signer.png" target="_blank" rel="noopener">
-                    <img
-                    src="signer.png"
-                    alt="PSBT Signer — <strong>
-                </a>SafeKeepVault</strong>'s transaction signing tool, showing the ingest, review, sign, and export workflow"
-                >
+                    <img src="signer.png" alt="PSBT Signer — SafeKeepVault's transaction signing tool, showing the ingest, review, sign, and export workflow">
+                </a>
                 <figcaption>
                     The PSBT Signer &mdash; review and sign Bitcoin transactions
                     entirely offline. Load an unsigned PSBT via QR code or Transfer Drive then export your signature back across
@@ -207,11 +198,8 @@
             <!-- Encrypted Notes Screenshot -->
             <figure class="os-showcase">
                 <a href="notes.png" target="_blank" rel="noopener">
-                    <img
-                    src="notes.png"
-                    alt="Encrypted Notes — <strong>
-                </a>SafeKeepVault</strong>'s vault notes tool, showing a rich-text editor stored inside the encrypted vault"
-                >
+                    <img src="notes.png" alt="Encrypted Notes — SafeKeepVault's vault notes tool, showing a rich-text editor stored inside the encrypted vault">
+                </a>
                 <figcaption>
                     Encrypted Notes &mdash; store recovery instructions, multisig coordination
                     details, or configuration notes sealed inside your encrypted vault.
@@ -222,10 +210,7 @@
             <!-- Wallet Record Screenshot -->
             <figure class="os-showcase">
                 <a href="wallet%20record.png" target="_blank" rel="noopener">
-                    <img
-                    src="wallet%20record.png"
-                    alt="Wallet Record — SafeKeepVault's printable wallet summary, showing descriptor, derivation path, and key fingerprint formatted as a single-page PDF"
-                    >
+                    <img src="wallet%20record.png" alt="Wallet Record — SafeKeepVault's printable wallet summary, showing descriptor, derivation path, and key fingerprint formatted as a single-page PDF">
                 </a>
                 <figcaption>
                     The Wallet Record &mdash; generate a clean, printable PDF summary of your
@@ -242,11 +227,17 @@
                     <strong>SafeKeepVault</strong> acts as a secure shield for the wallet software you already use. While your regular wallet tracks your balances, <strong>SafeKeepVault</strong> keeps your private keys completely offline and out of reach.
                 </p>
                 <p>
-                    To use it, just move a transaction file over using a QR code or USB, sign it while you&rsquo;re offline, and send it back to your regular wallet to finish. Your keys stay totally disconnected from the internet, exactly where they belong.
+                    To get started, export your public key information from <strong>SafeKeepVault</strong> and import it into your wallet of choice &mdash; Sparrow, Specter, Electrum, Nunchuk, or Blue Wallet &mdash; to create a watch-only wallet. Your watch wallet can track your balance and transaction history in full without ever touching your private keys.
+                </p>
+                <p>
+                    When it&rsquo;s time to spend, your watch wallet builds the transaction and hands it off as a PSBT file. Move it over to <strong>SafeKeepVault</strong> by QR code or USB, sign it while fully offline, and send it back to your regular wallet to broadcast. Your keys stay totally disconnected from the internet, exactly where they belong.
                 </p>
                 <h3 class="subsection-heading">Advanced Multisig Coordination</h3>
                 <p>
-                    <strong>SafeKeepVault</strong> makes multi-signature setups easy without forcing you to buy multiple hardware devices. You can sign with your main key, then temporarily load extra keys to finish the transaction. These extra keys only stay in the system's short-term memory; the moment you finish or turn off the power, they are wiped completely and forever.
+                    <strong>SafeKeepVault</strong> is a first-class participant in any multi-signature setup. If you already own a Coldcard, Trezor, or any other signing device, <strong>SafeKeepVault</strong> works alongside it harmoniously &mdash; contributing one key in a 2-of-3 or larger quorum just like any dedicated hardware wallet would. No need to replace what you already have.
+                </p>
+                <p>
+                    If you prefer an all-in-one approach, <strong>SafeKeepVault</strong> can also hold and sign with multiple keys itself. Load your primary key from encrypted storage, then temporarily bring in additional keys to meet the required threshold. Those extra keys exist only in volatile memory &mdash; the moment you finish or shut down, they are wiped completely and permanently, leaving no trace on the drive.
                 </p>
                 <h3 class="subsection-heading">Native Compatibility</h3>
                 <ul class="spec-list">

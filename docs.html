@@ -532,6 +532,13 @@
                     settings, and power on. <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
                 </p>
 
+                <figure class="os-showcase">
+                    <a href="Initial%20boot%20screen.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="Initial%20boot%20screen.png" alt="SafeKeepVault initial boot screen showing the password entry interface on first startup">
+                    </a>
+                    <figcaption>The <strong>SafeKeepVault</strong> boot screen. Display your QR code to the webcam to unlock instantly, or type your vault password manually to decrypt and load your master seed.</figcaption>
+                </figure>
+
                 <h3 class="sub-heading" id="encrypted-vault">One-Time Configuration: The Encrypted Vault</h3>
                 <p>
                     Upon your initial boot, <strong>SafeKeepVault</strong> will guide you through the
@@ -541,12 +548,20 @@
                     read it instantly and use it to encrypt the partition. Every subsequent boot works
                     the same way &mdash; just scan and you&rsquo;re in.
                 </p>
+                <p>
+                    Alternatively, at the decryption prompt you may choose to bypass the encrypted vault
+                    entirely and boot into a <strong>Temporary (Stateless) Session</strong>. This launches
+                    a volatile session without writing any data to the physical drive. Manually enter your
+                    seed, perform the necessary operations, and shut down to purge all traces instantly.
+                    This mode is ideal for users who prefer to keep their keys exclusively on physical media
+                    and need no persistent storage on the drive.
+                </p>
 
                 <h3 class="sub-heading" id="config-options">Initial Configuration Options</h3>
-                <p>Once the vault is initialized, you are presented with six methods to manage your seed phrase:</p>
+                <p>Once the vault is initialized, you are presented with five methods to manage your seed phrase:</p>
                 <ol class="docs-list">
                     <li>
-                        <strong>Forge a New Seed &mdash;</strong>
+                        <strong>Generate New Seed &mdash;</strong>
                         Access the Entropy Generator, <strong>SafeKeepVault's</strong> entropy-driven
                         seed generator. By combining dice rolls, erratic mouse movement, and camera
                         sensor noise, you can generate a master seed with maximum cryptographic randomness.
@@ -554,33 +569,27 @@
                         any data is committed to the vault.
                     </li>
                     <li>
-                        <strong>Restore an Existing Seed &mdash;</strong>
+                        <strong>Restore from Words &mdash;</strong>
                         Securely import an existing 12- or 24-word recovery mnemonic.
                     </li>
                     <li>
-                        <strong>Seed XOR Operation &mdash;</strong>
+                        <strong>Restore via Seed XOR &mdash;</strong>
                         Reconstruct a seed phrase by combining multiple backup shares previously split
                         with any Seed XOR tool. The shares are merged exclusively in
                         memory; the individual components are never stored on the drive, maintaining
                         the integrity of your distributed backup scheme.
                     </li>
                     <li>
-                        <strong>Shamir Recovery &mdash;</strong>
+                        <strong>Restore Shamir Backup &mdash;</strong>
                         Utilize the Shamir Backup tool to reconstruct a seed from Shamir&rsquo;s Secret
                         Sharing (SLIP-39) shares. Simply input the required number of shares to meet
                         your designated threshold, and the vault will restore the seed for immediate use.
                     </li>
                     <li>
-                        <strong>Restore from Vault Backup &mdash;</strong>
+                        <strong>Unlock .7z Backup &mdash;</strong>
                         Import a previously encrypted vault archive from your transfer interface. This
                         restores your entire environment&mdash;including all stored keys, passphrases, and
                         custom configurations&mdash;onto a new or freshly flashed boot drive.
-                    </li>
-                    <li>
-                        <strong>Temporary (Stateless) Session &mdash;</strong>
-                        Boot into a volatile session without writing any data to the physical drive.
-                        Manually enter your seed, perform the necessary operations, and shut down to purge
-                        all traces instantly. This stateless mode is ideal for users who prefer to keep their keys exclusively on physical media.
                     </li>
                 </ol>
             </section>
@@ -621,6 +630,12 @@
                         to all tools immediately.
                     </li>
                 </ol>
+                <figure class="os-showcase">
+                    <a href="Mount%20transfer%20drive.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="Mount%20transfer%20drive.png" alt="SafeKeepVault Dashboard showing the Mount Transfer Drive button and status indicator">
+                    </a>
+                    <figcaption>The <strong>Mount Transfer Drive</strong> button on the SafeKeepVault Dashboard. After clicking <strong>Allow</strong> in the file explorer, the status indicator confirms the drive is live.</figcaption>
+                </figure>
                 <p>
                     Once mounted, every tool in the vault can read from and write to the Transfer Drive
                     automatically. The status indicator in the toolbar will confirm when it is live.
@@ -647,6 +662,18 @@
                     Courier Tool. Transfer it to your online device and follow the setup steps for your
                     chosen wallet below.
                 </p>
+                <figure class="os-showcase">
+                    <a href="seed%20management.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="seed%20management.png" alt="SafeKeepVault Seed Management tool showing key format and wallet type export options">
+                    </a>
+                    <figcaption>The <strong>Seed Management</strong> tool. Choose your Key Format and Wallet Type to match the callout boxes in each wallet's setup section below, then export to your Transfer Drive or transmit via QR.</figcaption>
+                </figure>
+                <figure class="os-showcase">
+                    <a href="address%20type%20and%20wallet%20type.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="address%20type%20and%20wallet%20type.png" alt="SafeKeepVault address type and wallet type selection panel showing script type and single-sig or multisig options">
+                    </a>
+                    <figcaption>Address type and wallet type selection. Match these settings exactly to the export settings shown in the green callout box for your chosen wallet app.</figcaption>
+                </figure>
 
                 <h3 class="sub-heading" id="ww-bluewallet">Blue Wallet <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
                 <p>
