@@ -3,10 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="newfavicon.png">
-    <meta name="description" content="Step-by-step guide to getting started with SafeKeepVault: download, flash, boot, and sign your first transaction from a secure, offline environment.">
+    <meta name="description" content="Step-by-step guide to getting started with SafeKeepVault: generate your vault password, download, flash, boot, and set up your watch wallet.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeKeepVault &mdash; Getting Started</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ---- QR Password Widget ---- */
+        .qr-widget {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .qr-widget-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .qr-password-input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.7rem 0.9rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm, 6px);
+            outline: none;
+            transition: border-color var(--transition);
+        }
+
+        .qr-password-input:focus {
+            border-color: var(--accent);
+        }
+
+        .qr-output {
+            display: none;
+            margin-top: 1.25rem;
+            align-items: flex-start;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .qr-output.visible {
+            display: flex;
+        }
+
+        .qr-canvas-wrap {
+            background: #fff;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm, 6px);
+            display: inline-flex;
+            flex-shrink: 0;
+        }
+
+        .qr-canvas-wrap canvas,
+        .qr-canvas-wrap img {
+            display: block;
+        }
+
+        .qr-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            justify-content: flex-start;
+            padding-top: 0.25rem;
+        }
+
+        .btn-save-qr {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.7rem 1.4rem;
+            background: var(--accent);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: background var(--transition);
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+
+        .btn-save-qr:hover {
+            background: var(--accent-hover);
+        }
+
+        .qr-hint {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            max-width: 280px;
+        }
+
+        /* ---- Watch wallet sub-steps ---- */
+        .wallet-steps {
+            margin: 0.6rem 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            padding-left: 1.1rem;
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ---- Wallet sig-type sub-heading ---- */
+        .wallet-sig-heading {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 1.4rem 0 0.6rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+            letter-spacing: -0.01em;
+        }
+
+        /* ---- SafeKeepVault export settings callout ---- */
+        .vault-export-settings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            background: var(--surface);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 0.6rem 1rem;
+            margin: 0.5rem 0 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .vault-export-settings-label {
+            width: 100%;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--accent);
+            margin-bottom: 0.15rem;
+        }
+
+        .vault-export-settings span {
+            color: var(--text-muted);
+        }
+
+        .vault-export-settings strong {
+            color: var(--text);
+        }
+    </style>
 </head>
 <body>
 
@@ -91,13 +245,14 @@
             <nav class="docs-toc" aria-label="Page contents">
                 <p class="docs-toc-label">On this page</p>
                 <ul>
-                    <li><a href="#download-flash">Step 1: Download &amp; Image Creation</a></li>
-                    <li><a href="#hardware">Step 2: System Requirements &amp; Components</a>
+                    <li><a href="#hardware">System Requirements &amp; Components</a>
                         <ul>
                             <li><a href="#system-requirements">System Requirements</a></li>
                             <li><a href="#components">Components</a></li>
                         </ul>
                     </li>
+                    <li><a href="#vault-password">Step 1: Vault Password &amp; QR Generation</a></li>
+                    <li><a href="#download-flash">Step 2: Download &amp; Image Creation</a></li>
                     <li><a href="#first-boot">Step 3: Initialization &amp; Encryption</a>
                         <ul>
                             <li><a href="#encrypted-vault">One-Time Configuration</a></li>
@@ -109,6 +264,15 @@
                             <li><a href="#mount-steps">How to Mount</a></li>
                         </ul>
                     </li>
+                    <li><a href="#watch-wallet">Step 5: Watch Wallet Creation</a>
+                        <ul>
+                            <li><a href="#ww-bluewallet">Blue Wallet</a></li>
+                            <li><a href="#ww-nunchuk">Nunchuk</a></li>
+                            <li><a href="#ww-sparrow">Sparrow</a></li>
+                            <li><a href="#ww-specter">Specter Desktop</a></li>
+                            <li><a href="#ww-electrum">Electrum</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#tools">The Tool Arsenal</a>
                         <ul>
                             <li><a href="#primary-tools">Primary Tools</a></li>
@@ -118,7 +282,7 @@
                 </ul>
             </nav>
 
-            <!-- Disclaimer -->
+            <!-- Critical Precautions -->
             <div class="notice-block">
                 <p class="notice-title">Critical Precautions: Read Before Proceeding</p>
                 <p>Your 12- or 24-word mnemonic is the only unconditional backup of your private key.</p>
@@ -143,42 +307,9 @@
                 </p>
             </div>
 
-            <!-- Section 0: Download & Flash -->
-            <section class="content-section" id="download-flash">
-                <h2 class="section-heading">Step 1: Download &amp; Image Creation</h2>
-                <p>
-                    <strong>Download the Software</strong> &mdash;
-                    Visit the <a href="download.html">Download page</a> to obtain the latest release.
-                    The software is provided as a <code>.zip</code> archive; once extracted, you will
-                    find the <code>.img</code> disk image required for the installation.
-                </p>
-                <p>
-                    <strong>Flash to USB</strong> &mdash;
-                    To write the image to your drive, we recommend using
-                    <a href="https://etcher.balena.io/" target="_blank" rel="noopener">BalenaEtcher</a>,
-                    which is available for Windows, macOS, and Linux.
-                </p>
-                <ol style="margin: 0.75rem 0 0.75rem 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.94rem; color: var(--text-muted); line-height: 1.6;">
-                    <li>Open BalenaEtcher and select the extracted <code>.img</code> file.</li>
-                    <li>Select your target USB drive.</li>
-                    <li>Click <strong>Flash</strong> to begin the process.</li>
-                </ol>
-                <p>
-                    While BalenaEtcher provides the most straightforward experience across all platforms,
-                    advanced users may also utilize the <code>dd</code> utility on macOS/Linux or
-                    <a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a> on Windows.
-                </p>
-                <p>
-                    <strong>Verify the Release</strong> &mdash;
-                    A developer signature is provided to verify software integrity and authenticity.
-                    Our <a href="download.html#verify">Verification Guide</a> contains the public keys
-                    and checksums required to validate the release across Windows, macOS, and Linux.
-                </p>
-            </section>
-
-            <!-- Section 1: Hardware Setup -->
+            <!-- System Requirements & Components (moved, no longer a numbered step) -->
             <section class="content-section" id="hardware">
-                <h2 class="section-heading">Step 2: System Requirements &amp; Components</h2>
+                <h2 class="section-heading">System Requirements &amp; Components</h2>
                 <p>
                     <strong>SafeKeepVault</strong> creates a secure, offline environment without you
                     needing to take your computer apart or buy extra gear. The moment it starts up,
@@ -214,7 +345,7 @@
                         Strongly recommended for generating and storing the high-entropy password that
                         protects your encrypted vault partition. A password manager lets you use a
                         truly unbreakable credential without the risk of forgetting it, and pairs
-                        seamlessly with the QR unlock workflow.
+                        seamlessly with the QR unlock workflow described in Step 1 below.
                     </li>
                 </ul>
 
@@ -227,14 +358,127 @@
                         and external storage. When combined with the Courier Tool&mdash;our high-density
                         QR tool&mdash;this creates a secure, bidirectional data flow.
                         <ul style="margin: 0.65rem 0 0 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.93rem; color: var(--text-muted); line-height: 1.6;">
-                            <li><strong>Seamless QR Unlocking:</strong> By storing your vault password in a manager on your mobile device, you can use the Courier Tool to transform that password into a QR code. Simply display your phone to the host&rsquo;s webcam to unlock your encrypted vault instantly&mdash;combining elite cryptographic strength with a streamlined, convenient way to unlock your wallet.</li>
+                            <li><strong>Seamless QR Unlocking:</strong> By storing your vault password in a manager on your mobile device, you can generate a QR code from that password (see Step 1). Simply display your phone to the host&rsquo;s webcam to unlock your encrypted vault instantly&mdash;combining elite cryptographic strength with a streamlined, convenient way to unlock your wallet.</li>
                             <li><strong>Port Security:</strong> Note that for maximum hardware isolation, USB ports are restricted once the vault is active. File-based transfers should be managed by moving the drive between machines while the vault is powered down.</li>
                         </ul>
                     </li>
                 </ul>
             </section>
 
-            <!-- Section 2: First Boot -->
+            <!-- Step 1: Vault Password & QR Generation (NEW) -->
+            <section class="content-section" id="vault-password">
+                <h2 class="section-heading">Step 1: Vault Password &amp; QR Generation</h2>
+                <p>
+                    Before you boot <strong>SafeKeepVault</strong> for the first time, you need a
+                    vault password ready to go. This password will encrypt the persistent partition
+                    of your USB drive&mdash;the storage layer where your keys and vault data live
+                    between sessions. It is the primary cryptographic barrier protecting everything
+                    inside the vault.
+                </p>
+
+                <div class="notice-block">
+                    <p class="notice-title">Your Password is the Primary Defense</p>
+                    <p>
+                        The strength of your vault password is the single most critical security decision
+                        you will make during setup. If an unauthorized party gains physical access to
+                        your drive, this password is the only barrier protecting your keys. There is no
+                        &ldquo;forgot password&rdquo; reset and no remote wipe. The password is the
+                        absolute lock.
+                    </p>
+                </div>
+
+                <h3 class="sub-heading">Generate a High-Entropy Password</h3>
+                <p>
+                    Open your password manager and generate a new credential for
+                    <strong>SafeKeepVault</strong>. Use a fully random string of <strong>at least 20
+                    characters</strong>. Do not use a memorable phrase or a password you have used
+                    anywhere else. Human-chosen passwords follow predictable patterns that modern
+                    brute-force tools can exploit. A randomly generated credential cannot be guessed
+                    &mdash; only lost. Your password manager is its permanent home; do not write it
+                    down in plaintext anywhere.
+                </p>
+
+                <h3 class="sub-heading">Generate Your Unlock QR Code</h3>
+                <p>
+                    Typing a 20+ character random password on every boot is impractical. Instead,
+                    convert it to a QR code using the widget below. Save the QR image to your phone&rsquo;s
+                    secure photo library or an encrypted note in your password manager. On every subsequent
+                    boot, simply hold your phone up to the vault&rsquo;s webcam &mdash; the system reads
+                    the QR and unlocks the vault instantly, with no typing required.
+                </p>
+
+                <!-- QR Generator Widget -->
+                <div class="qr-widget">
+                    <p class="qr-widget-label">Vault Password &rarr; QR Code</p>
+                    <input
+                        type="password"
+                        id="vault-pw-input"
+                        class="qr-password-input"
+                        placeholder="Paste your password manager password here&hellip;"
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                    >
+                    <div class="qr-output" id="qr-output">
+                        <div class="qr-canvas-wrap">
+                            <div id="qr-display"></div>
+                        </div>
+                        <div class="qr-actions">
+                            <button class="btn-save-qr" id="btn-save-qr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Save to File
+                            </button>
+                            <p class="qr-hint">
+                                Save this image to your phone&rsquo;s secure photo library
+                                or a locked note in your password manager. Display it to
+                                the vault&rsquo;s webcam on every boot to unlock instantly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.25rem;">
+                    Once your QR image is saved, you are ready to move on. Keep your password manager
+                    open &mdash; you will type this password manually just once during the initial vault
+                    setup in Step 3. Every boot after that uses the QR.
+                </p>
+            </section>
+
+            <!-- Step 2: Download & Image Creation (was Step 1) -->
+            <section class="content-section" id="download-flash">
+                <h2 class="section-heading">Step 2: Download &amp; Image Creation</h2>
+                <p>
+                    <strong>Download the Software</strong> &mdash;
+                    Visit the <a href="download.html">Download page</a> to obtain the latest release.
+                    The software is provided as a <code>.zip</code> archive; once extracted, you will
+                    find the <code>.img</code> disk image required for the installation.
+                </p>
+                <p>
+                    <strong>Flash to USB</strong> &mdash;
+                    To write the image to your drive, we recommend using
+                    <a href="https://etcher.balena.io/" target="_blank" rel="noopener">BalenaEtcher</a>,
+                    which is available for Windows, macOS, and Linux.
+                </p>
+                <ol style="margin: 0.75rem 0 0.75rem 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.94rem; color: var(--text-muted); line-height: 1.6;">
+                    <li>Open BalenaEtcher and select the extracted <code>.img</code> file.</li>
+                    <li>Select your target USB drive.</li>
+                    <li>Click <strong>Flash</strong> to begin the process.</li>
+                </ol>
+                <p>
+                    While BalenaEtcher provides the most straightforward experience across all platforms,
+                    advanced users may also utilize the <code>dd</code> utility on macOS/Linux or
+                    <a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a> on Windows.
+                </p>
+                <p>
+                    <strong>Verify the Release</strong> &mdash;
+                    A developer signature is provided to verify software integrity and authenticity.
+                    Our <a href="download.html#verify">Verification Guide</a> contains the public keys
+                    and checksums required to validate the release across Windows, macOS, and Linux.
+                </p>
+            </section>
+
+            <!-- Step 3: Initialization & Encryption (same) -->
             <section class="content-section" id="first-boot">
                 <h2 class="section-heading">Step 3: Initialization &amp; Encryption</h2>
                 <p>
@@ -246,25 +490,11 @@
                 <p>
                     Upon your initial boot, <strong>SafeKeepVault</strong> will guide you through the
                     creation of your Encrypted Storage Partition. This persistent volume is where your
-                    keys and vault data reside between sessions.
+                    keys and vault data reside between sessions. When prompted to set your vault
+                    password, display the QR code you saved in Step 1 to the webcam. The vault will
+                    read it instantly and use it to encrypt the partition. Every subsequent boot works
+                    the same way &mdash; just scan and you&rsquo;re in.
                 </p>
-
-                <div class="notice-block">
-                    <p class="notice-title">Your Password is the Primary Defense</p>
-                    <p>
-                        The strength of your vault password is the most critical security decision you
-                        will make. While <strong>SafeKeepVault</strong> provides a safe environment to manage your Bitcoin, the software relies entirely on the strength of your password.
-                        If an unauthorized party gains physical access to your drive, your password is
-                        the only barrier protecting your keys. There is no &ldquo;forgot password&rdquo;
-                        reset and no remote wipe; the password is the absolute lock.
-                    </p>
-                    <p><strong>The Suggested Workflow:</strong></p>
-                    <ul style="margin: 0.5rem 0 0 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.94rem; line-height: 1.65;">
-                        <li><strong>Generate and Save an Unbreakable Password:</strong> Use a password manager to generate a high-entropy, fully random string of at least 20 characters. Human-chosen passwords often follow predictable patterns that modern brute-force tools can exploit.</li>
-                        <li><strong>QR Code Integration:</strong> Once your password is generated, use the <a href="courier.html">Courier Tool</a> to convert it into a QR code. Save this code securely on your mobile device.</li>
-                        <li><strong>Instant Authentication:</strong> For every subsequent boot, simply display the QR code to your webcam to unlock the vault. This eliminates the inconvenience of manual entry and allows you to utilize maximum-strength passwords without the burden of typing them.</li>
-                    </ul>
-                </div>
 
                 <h3 class="sub-heading" id="config-options">Initial Configuration Options</h3>
                 <p>Once the vault is initialized, you are presented with six methods to manage your seed phrase:</p>
@@ -284,7 +514,7 @@
                     <li>
                         <strong>Seed XOR Operation &mdash;</strong>
                         Reconstruct a seed phrase by combining multiple backup shares previously split
-                        with any Seed XOR tool. The shares are merged exclusively in 
+                        with any Seed XOR tool. The shares are merged exclusively in
                         memory; the individual components are never stored on the drive, maintaining
                         the integrity of your distributed backup scheme.
                     </li>
@@ -309,13 +539,13 @@
                 </ol>
             </section>
 
-            <!-- Section 3a: Mount Transfer Drive -->
+            <!-- Step 4: Mounting the Transfer Drive (same) -->
             <section class="content-section" id="transfer-drive">
                 <h2 class="section-heading">Step 4: Mounting the Transfer Drive</h2>
                 <p>
                     Once your seed is loaded and you land on the Dashboard, your next step is to mount
                     the Transfer Drive. This is the dedicated partition on your USB drive used to move
-                    files in and out of the vault — signed transactions, PSBT files, encrypted backups,
+                    files in and out of the vault &mdash; signed transactions, PSBT files, encrypted backups,
                     and exported reports all pass through here.
                 </p>
                 <div class="notice-block">
@@ -329,7 +559,7 @@
                 <h3 class="sub-heading" id="mount-steps">How to Mount</h3>
                 <ol class="docs-list">
                     <li>
-                        <strong>Click "Mount Transfer Drive" &mdash;</strong>
+                        <strong>Click &ldquo;Mount Transfer Drive&rdquo; &mdash;</strong>
                         On the Dashboard, you will see a prominent <strong>Mount Transfer Drive</strong>
                         button. Click it. This opens the system file explorer automatically.
                     </li>
@@ -352,7 +582,186 @@
                 </p>
             </section>
 
-            <!-- Section 3: Tool Arsenal -->
+            <!-- Step 5: Watch Wallet Creation (NEW) -->
+            <section class="content-section" id="watch-wallet">
+                <h2 class="section-heading">Step 5: Watch Wallet Creation</h2>
+                <p>
+                    Your vault holds the private keys; a watch-only wallet on your everyday device holds
+                    the public keys. The watch wallet tracks your balances, generates receive addresses,
+                    and builds unsigned transactions &mdash; all without ever touching a private key.
+                    When it&rsquo;s time to spend, the watch wallet hands off an unsigned PSBT to the vault
+                    for signing, then broadcasts the result.
+                </p>
+                <p>
+                    To set up a watch wallet, you first need to export your public key or output descriptor
+                    from the vault. Open the <strong>Seed Management</strong> tool inside
+                    <strong>SafeKeepVault</strong>, select your desired script type (Native SegWit,
+                    Taproot, etc.), and export the descriptor or extended public key. The export lands
+                    on your Transfer Drive as a file, or can be transmitted directly via QR using the
+                    Courier Tool. Transfer it to your online device and follow the setup steps for your
+                    chosen wallet below.
+                </p>
+
+                <h3 class="sub-heading" id="ww-bluewallet">Blue Wallet <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
+                <p>
+                    Blue Wallet is the simplest mobile option for balance monitoring and receiving funds.
+                    It imports both single-signature and multisig watch wallets directly via QR code from
+                    the vault &mdash; no file transfer required.
+                </p>
+
+                <p class="wallet-sig-heading">Single Signature</p>
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
+                    <span><strong>Key Format:</strong> SLIP-380</span>
+                    <span><strong>Wallet Type:</strong> Single-Sig</span>
+                </div>
+                <ol class="wallet-steps">
+                    <li>Tap <strong>Add Wallet</strong> and choose type <strong>Bitcoin</strong>.</li>
+                    <li>Tap <strong>Import Wallet</strong>.</li>
+                    <li>Tap <strong>Scan or import a file</strong>.</li>
+                    <li>Scan the QR code displayed on <strong>SafeKeepVault</strong>. Blue Wallet imports the xpub and fingerprint automatically and creates your watch wallet.</li>
+                </ol>
+
+                <p class="wallet-sig-heading">Multisig</p>
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings (repeat for each co-signer key)</span>
+                    <span><strong>Key Format:</strong> SLIP-380</span>
+                    <span><strong>Wallet Type:</strong> Multi-Sig (BIP-48)</span>
+                </div>
+                <ol class="wallet-steps">
+                    <li>Tap <strong>Add Wallet</strong> and choose type <strong>Multisig Vault</strong>.</li>
+                    <li>Tap <strong>Create</strong>, then <strong>Let&rsquo;s Start</strong>.</li>
+                    <li>Tap <strong>Import vault key 1</strong> &rarr; <strong>Scan or import a file</strong>.</li>
+                    <li>Scan the first key QR from <strong>SafeKeepVault</strong>.</li>
+                    <li>Repeat steps 3&ndash;4 for each additional co-signer key.</li>
+                    <li>Tap <strong>Create</strong> to finalize the multisig vault.</li>
+                </ol>
+
+                <h3 class="sub-heading" id="ww-nunchuk">Nunchuk <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
+                <p>
+                    Nunchuk is the recommended mobile option for an active signing workflow. It imports
+                    keys via a Hardware Wallet JSON file transferred from the vault using the
+                    <a href="courier.html">Courier Tool</a>.
+                </p>
+
+                <p class="wallet-sig-heading">Single Signature</p>
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
+                    <span><strong>Wallet Type:</strong> Single-Sig</span>
+                    <span><strong>Key Format:</strong> Hardware Wallet JSON</span>
+                </div>
+                <ol class="wallet-steps">
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and tap <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
+                    <li>Open the <strong>Transfer Hub</strong> in the vault and locate the JSON file you just downloaded.</li>
+                    <li>On your phone, open the <a href="courier-tool.html" target="_blank" rel="noopener">Courier Tool</a> and select <strong>Receive</strong>, then tap <strong>Open camera and scan</strong>.</li>
+                    <li>On <strong>SafeKeepVault</strong>, select the JSON file and tap <strong>Transmit</strong> &rarr; <strong>Start Transmission</strong>. The vault displays an animated QR sequence.</li>
+                    <li>Hold your phone to the vault&rsquo;s screen. The Courier Tool will scan and reconstruct the file. Save it to your phone when prompted.</li>
+                    <li>In Nunchuk, tap <strong>Add Key</strong> &rarr; <strong>Coldcard</strong> &rarr; <strong>Add COLDCARD via file (advanced)</strong> &rarr; <strong>Continue</strong>.</li>
+                    <li>Navigate to the JSON file you transferred and select it.</li>
+                    <li>Name your key and tap <strong>Add Key</strong>. Your signing key is now registered.</li>
+                    <li>Return to the Nunchuk home screen and tap <strong>+</strong> to add a wallet.</li>
+                    <li>Select <strong>Custom Wallet</strong>, name it, choose the address type you used in step&nbsp;1, and tap <strong>Continue</strong>.</li>
+                    <li>Select the key you created in step&nbsp;8, tap <strong>Continue</strong>, then <strong>Create Wallet</strong>.</li>
+                </ol>
+
+                <p class="wallet-sig-heading">Multisig</p>
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings (repeat for each co-signer key)</span>
+                    <span><strong>Wallet Type:</strong> Multi-Sig (BIP-48)</span>
+                    <span><strong>Key Format:</strong> Hardware Wallet JSON</span>
+                </div>
+                <ol class="wallet-steps">
+                    <li>Follow the same key creation steps as Single Signature above, selecting <strong>Multi-Sig (BIP-48)</strong> as the Wallet Type in <strong>SafeKeepVault</strong>. Repeat for each co-signer key.</li>
+                    <li>In Nunchuk, tap <strong>+</strong> and select <strong>Group Wallet</strong>.</li>
+                    <li>Select the appropriate co-signer keys you created, configure the signing threshold (e.g., 2-of-3), and tap <strong>Create Wallet</strong>.</li>
+                </ol>
+
+                <h3 class="sub-heading" id="ww-sparrow">Sparrow <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
+                <p>
+                    Sparrow is the recommended desktop coordinator for <strong>SafeKeepVault</strong>.
+                    Setup is file-based: export a Hardware Wallet JSON from the vault and open it
+                    directly in Sparrow &mdash; no descriptor syntax or manual key entry required.
+                </p>
+                <p>
+                    Getting the file from the vault to your computer requires one of two approaches.
+                    You can move the USB drive directly to your online machine (sneakernet), but note
+                    that removing the drive from a live vault session requires a full reboot before
+                    the drive can be re-inserted. The simpler alternative is to use the
+                    <a href="courier-tool.html" target="_blank" rel="noopener">Courier Tool</a> to
+                    transfer the file to your phone, then share it to your computer via a cloud
+                    service such as Google Drive.
+                </p>
+
+                <p class="wallet-sig-heading">Single Signature</p>
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
+                    <span><strong>Wallet Type:</strong> Single-Sig</span>
+                    <span><strong>Key Format:</strong> Hardware Wallet JSON</span>
+                </div>
+                <ol class="wallet-steps">
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and tap <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
+                    <li>Transfer the JSON file to your online computer using sneakernet or the phone &rarr; cloud method described above.</li>
+                    <li>Open Sparrow and go to <strong>File &rarr; Open Wallet</strong>.</li>
+                    <li>Navigate to and select the JSON file you transferred. Sparrow reads the key data and populates the wallet configuration automatically.</li>
+                    <li>Click <strong>Create Wallet</strong> to save.</li>
+                    <li>Sparrow will sync and display your balance and transaction history.</li>
+                </ol>
+
+                <p class="wallet-sig-heading">Multisig</p>
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings (repeat for each co-signer key)</span>
+                    <span><strong>Wallet Type:</strong> Multi-Sig (BIP-48)</span>
+                    <span><strong>Key Format:</strong> SLIP-132</span>
+                </div>
+                <ol class="wallet-steps">
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and tap <strong>Download JSON</strong>. Repeat for each co-signer key. Transfer all files to your online computer using sneakernet or the phone &rarr; cloud method described above.</li>
+                    <li>Open Sparrow and go to <strong>File &rarr; New Wallet</strong>. Give your wallet a name.</li>
+                    <li>Select <strong>Multi Signature</strong> and configure your cosigner quorum (e.g., 2-of-3).</li>
+                    <li>For the first keystore, click <strong>xPub / Watch Only Wallet</strong>, then click <strong>Import</strong> &rarr; <strong>Airgapped Hardware Wallet</strong> &rarr; <strong>Import File</strong> &rarr; <strong>Coldcard Multisig</strong>. Navigate to and select the first key file.</li>
+                    <li>Repeat step 4 for each remaining keystore, selecting the corresponding key file each time.</li>
+                    <li>Once all keys are loaded, click <strong>Apply</strong> to complete the wallet.</li>
+                </ol>
+
+                <h3 class="sub-heading" id="ww-specter">Specter Desktop <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
+                <p>
+                    Specter Desktop is a strong choice for both single-signature and multisig
+                    coordination. Like Sparrow, setup is file-based &mdash; export from the vault,
+                    transfer the file to your computer via sneakernet or the phone &rarr; cloud method,
+                    and import directly into Specter.
+                </p>
+
+                <p class="wallet-sig-heading">Single Signature</p>
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
+                    <span><strong>Wallet Type:</strong> Single-Sig</span>
+                    <span><strong>Key Format:</strong> Hardware Wallet JSON</span>
+                </div>
+                <ol class="wallet-steps">
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and tap <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
+                    <li>Transfer the JSON file to your online computer using sneakernet or the phone &rarr; cloud method described above.</li>
+                    <li>Open Specter Desktop and click <strong>Add Device</strong>.</li>
+                    <li>Select device type <strong>Other</strong>, then click <strong>Upload from SD</strong> to import your xpub. Navigate to and select the JSON file, then click <strong>Continue</strong>.</li>
+                    <li>Specter confirms the device has been added. Click <strong>Create Single Key Wallet</strong>.</li>
+                    <li>Give your wallet a name and click <strong>Continue</strong> to complete setup.</li>
+                </ol>
+
+                <h3 class="sub-heading" id="ww-electrum">Electrum <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
+                <p>
+                    <strong>SafeKeepVault</strong> generates a purpose-built Electrum skeleton wallet
+                    file directly from the Seed Management tool. This file contains the correct
+                    descriptor, derivation path, and <code>ckcc_xfp</code> field for instant watch-only
+                    import.
+                </p>
+                <ol class="wallet-steps">
+                    <li>In the vault, open <strong>Seed Management</strong> and export the <code>[FINGERPRINT]-electrum.json</code> file to your Transfer Drive.</li>
+                    <li>Transfer the file to your online machine and open Electrum.</li>
+                    <li>Go to <strong>File &rarr; Open</strong> and select the exported <code>.json</code> file. Electrum will load it as a watch-only wallet immediately.</li>
+                    <li>To sign a PSBT, go to <strong>Tools &rarr; Load Transaction &rarr; From File</strong>, select your unsigned PSBT, and click <strong>Export &rarr; As QR Code</strong> to transmit it to the vault.</li>
+                    <li>After signing inside the vault, use the Courier Tool to scan the signed result back into Electrum and broadcast.</li>
+                </ol>
+            </section>
+
+            <!-- Tool Arsenal (kept, Inheritance Map → Wallet Record) -->
             <section class="content-section" id="tools">
                 <h2 class="section-heading">The Tool Arsenal</h2>
                 <p>
@@ -376,8 +785,9 @@
                     </li>
                     <li>
                         <strong>Seed Management &mdash;</strong>
-                        Exports your public key for watch-only wallet setup in Sparrow, Electrum,
-                        or any compatible wallet. Your private keys never leave.
+                        Exports your public key and output descriptor for watch-only wallet setup in
+                        Sparrow, Electrum, Nunchuk, Blue Wallet, Specter, or any compatible coordinator.
+                        Your private keys never leave.
                     </li>
                 </ul>
 
@@ -385,7 +795,7 @@
                 <ul class="docs-list">
                     <li>
                         <strong>Transfer Hub &mdash;</strong>
-                        File browser for the Transfer Drive. View, rename, or delete backup archives, transaction, and PDFs.
+                        File browser for the Transfer Drive. View, rename, or delete backup archives, transactions, and PDFs.
                     </li>
                     <li>
                         <strong>Courier Tool &mdash;</strong>
@@ -401,7 +811,7 @@
                         <strong>Entropy Generator &mdash;</strong>
                         Generates your master seed using multiple sources of randomness: dice rolls,
                         mouse movement, camera noise, and the system&rsquo;s built-in random number
-                        generator. 
+                        generator.
                     </li>
                     <li>
                         <strong>BIP-85 Child Seeds &mdash;</strong>
@@ -420,7 +830,7 @@
                     <li>
                         <strong>Seed QR Code &mdash;</strong>
                         Displays a QR encoded version of a seed as a compact SeedQR for steel stamping or paper backup.
-                        Hand-drawn or engraved copies can be verified by scanning them back in.  Blank template is also available for printing.
+                        Hand-drawn or engraved copies can be verified by scanning them back in. Blank templates are also available for printing.
                     </li>
                     <li>
                         <strong>Message Signer &mdash;</strong>
@@ -430,7 +840,7 @@
                     <li>
                         <strong>Encrypted Notes &mdash;</strong>
                         Encrypted notes stored inside the vault. Keep recovery instructions,
-                        multisig details, and setup notes sealed within the vault.  For your eyes only.
+                        multisig details, and setup notes sealed within the vault. For your eyes only.
                     </li>
                     <li>
                         <strong>Encrypted Backup &mdash;</strong>
@@ -439,16 +849,13 @@
                         correct password is entered.
                     </li>
                     <li>
-                        <strong>Inheritance Map &mdash;</strong>
-                        Produces a technical map of your custody setup: derivation paths, account
-                        public keys, and script types an heir needs to reconstruct the wallet.
-                        Print it and store it with your physical inheritance plan.
+                        <strong>Wallet Record &mdash;</strong>
+                        Generates a clean, single-page PDF summary of your wallet configuration &mdash;
+                        descriptor, derivation path, key fingerprint, and first receive address &mdash;
+                        formatted for long-term offline storage and inheritance planning.
                     </li>
                 </ul>
 
-                <p style="margin-top: 1.5rem;">
-
-                </p>
                 <div class="cta-row" style="margin-top: 1.75rem;">
                     <a href="download.html" class="btn-primary">Download</a>
                     <a href="donate.html" class="btn-secondary">&#9825; Donate</a>
@@ -465,7 +872,83 @@
         &copy; 2026
     </footer>
 
+<!-- QR Code library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <script>
+/* ================================================================
+   QR PASSWORD WIDGET
+   ================================================================ */
+(function () {
+    var input     = document.getElementById('vault-pw-input');
+    var output    = document.getElementById('qr-output');
+    var display   = document.getElementById('qr-display');
+    var saveBtn   = document.getElementById('btn-save-qr');
+    var qrInstance = null;
+    var debounceTimer = null;
+
+    function generateQR(text) {
+        // Clear previous instance
+        display.innerHTML = '';
+        if (qrInstance) { qrInstance = null; }
+
+        if (!text) {
+            output.classList.remove('visible');
+            return;
+        }
+
+        qrInstance = new QRCode(display, {
+            text: text,
+            width: 200,
+            height: 200,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLevel: QRCode.CorrectLevel.M
+        });
+
+        output.classList.add('visible');
+    }
+
+    input.addEventListener('input', function () {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+            generateQR(input.value.trim());
+        }, 300);
+    });
+
+    saveBtn.addEventListener('click', function () {
+        // QRCode.js renders a canvas (or img fallback); grab whichever is present
+        var canvas = display.querySelector('canvas');
+        var img    = display.querySelector('img');
+        var dataURL;
+
+        if (canvas) {
+            dataURL = canvas.toDataURL('image/png');
+        } else if (img) {
+            // Draw img onto a temporary canvas to get a data URL
+            var tmp = document.createElement('canvas');
+            tmp.width  = img.naturalWidth  || 200;
+            tmp.height = img.naturalHeight || 200;
+            tmp.getContext('2d').drawImage(img, 0, 0);
+            dataURL = tmp.toDataURL('image/png');
+        } else {
+            return;
+        }
+
+        var link = document.createElement('a');
+        link.href     = dataURL;
+        link.download = 'safekeepvault-unlock-qr.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+})();
+</script>
+
+<script>
+/* ================================================================
+   MOBILE HAMBURGER MENU
+   ================================================================ */
 (function () {
     var nav = document.getElementById('top-nav');
     var hamburger = document.querySelector('.nav-hamburger');
