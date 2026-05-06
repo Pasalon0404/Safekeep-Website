@@ -175,9 +175,9 @@
             flex-wrap: wrap;
             gap: 0.5rem 1.5rem;
             background: var(--surface);
-            border-left: 3px solid var(--accent);
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
-            padding: 0.6rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 0.65rem 1rem;
             margin: 0.5rem 0 0.75rem;
             font-size: 0.85rem;
         }
@@ -188,7 +188,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.07em;
-            color: var(--accent);
+            color: var(--text-muted);
             margin-bottom: 0.15rem;
         }
 
@@ -303,13 +303,22 @@
                             <li><a href="#mount-steps">How to Mount</a></li>
                         </ul>
                     </li>
-                    <li><a href="#watch-wallet">Step 5: Watch Wallet Creation</a>
+                    <li><a href="#watch-wallet">Watch Wallet Creation</a>
                         <ul>
                             <li><a href="#ww-bluewallet">Blue Wallet</a></li>
                             <li><a href="#ww-nunchuk">Nunchuk</a></li>
                             <li><a href="#ww-sparrow">Sparrow</a></li>
                             <li><a href="#ww-specter">Specter Desktop</a></li>
                             <li><a href="#ww-electrum">Electrum</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#signing">Signing a Transaction</a>
+                        <ul>
+                            <li><a href="#sign-ingest">Loading the PSBT</a></li>
+                            <li><a href="#sign-review">Reviewing the Transaction</a></li>
+                            <li><a href="#sign-sign">Signing</a></li>
+                            <li><a href="#sign-export">Exporting the Result</a></li>
+                            <li><a href="#sign-transfer-hub">Exporting via the Transfer Hub</a></li>
                         </ul>
                     </li>
                     <li><a href="#tools">The Tool Arsenal</a>
@@ -643,9 +652,9 @@
                 </p>
             </section>
 
-            <!-- Step 5: Watch Wallet Creation (NEW) -->
+            <!-- Watch Wallet Creation -->
             <section class="content-section" id="watch-wallet">
-                <h2 class="section-heading">Step 5: Watch Wallet Creation</h2>
+                <h2 class="section-heading">Watch Wallet Creation</h2>
                 <p>
                     Your vault holds the private keys; a watch-only wallet on your everyday device holds
                     the public keys. The watch wallet tracks your balances, generates receive addresses,
@@ -675,7 +684,7 @@
                     <figcaption>Address type and wallet type selection. Match these settings exactly to the export settings shown in the green callout box for your chosen wallet app.</figcaption>
                 </figure>
 
-                <h3 class="sub-heading" id="ww-bluewallet">Blue Wallet <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
+                <h3 class="wallet-heading" id="ww-bluewallet">Blue Wallet <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
                 <p>
                     Blue Wallet is the simplest mobile option for balance monitoring and receiving funds.
                     It imports both single-signature and multisig watch wallets directly via QR code from
@@ -685,8 +694,8 @@
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
-                    <span><strong>Key Format:</strong> SLIP-380</span>
                     <span><strong>Wallet Type:</strong> Single-Sig</span>
+                    <span><strong>Key Format:</strong> SLIP-380</span>
                 </div>
                 <ol class="wallet-steps">
                     <li>Tap <strong>Add Wallet</strong> and choose type <strong>Bitcoin</strong>.</li>
@@ -698,8 +707,8 @@
                 <p class="wallet-sig-heading">Multisig</p>
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings (repeat for each co-signer key)</span>
-                    <span><strong>Key Format:</strong> SLIP-380</span>
                     <span><strong>Wallet Type:</strong> Multi-Sig (BIP-48)</span>
+                    <span><strong>Key Format:</strong> SLIP-380</span>
                 </div>
                 <ol class="wallet-steps">
                     <li>Tap <strong>Add Wallet</strong> and choose type <strong>Multisig Vault</strong>.</li>
@@ -710,7 +719,7 @@
                     <li>Tap <strong>Create</strong> to finalize the multisig vault.</li>
                 </ol>
 
-                <h3 class="sub-heading" id="ww-nunchuk">Nunchuk <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
+                <h3 class="wallet-heading" id="ww-nunchuk">Nunchuk <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
                 <p>
                     Nunchuk is the recommended mobile option for an active signing workflow. It imports
                     keys via a Hardware Wallet JSON file transferred from the vault using the
@@ -749,7 +758,7 @@
                     <li>Select the appropriate co-signer keys you created, configure the signing threshold (e.g., 2-of-3), and tap <strong>Create Wallet</strong>.</li>
                 </ol>
 
-                <h3 class="sub-heading" id="ww-sparrow">Sparrow <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
+                <h3 class="wallet-heading" id="ww-sparrow">Sparrow <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
                 <p>
                     Sparrow is the recommended desktop coordinator for <strong>SafeKeepVault</strong>.
                     Setup is file-based: export a Hardware Wallet JSON from the vault and open it
@@ -795,7 +804,7 @@
                     <li>Once all keys are loaded, click <strong>Apply</strong> to complete the wallet.</li>
                 </ol>
 
-                <h3 class="sub-heading" id="ww-specter">Specter Desktop <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
+                <h3 class="wallet-heading" id="ww-specter">Specter Desktop <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
                 <p>
                     Specter Desktop is a strong choice for both single-signature and multisig
                     coordination. Like Sparrow, setup is file-based &mdash; export from the vault,
@@ -818,7 +827,7 @@
                     <li>Give your wallet a name and click <strong>Continue</strong> to complete setup.</li>
                 </ol>
 
-                <h3 class="sub-heading" id="ww-electrum">Electrum <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
+                <h3 class="wallet-heading" id="ww-electrum">Electrum <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
                 <p>
                     <strong>SafeKeepVault</strong> generates a purpose-built Electrum skeleton wallet
                     file directly from the Seed Management tool. This file contains the correct
@@ -834,12 +843,123 @@
                 </ol>
             </section>
 
+            <!-- Signing a Transaction -->
+            <section class="content-section" id="signing">
+                <h2 class="section-heading">Signing a Transaction</h2>
+                <p>
+                    Once your watch wallet has built a transaction and exported it as a PSBT, bring it into
+                    <strong>SafeKeepVault</strong> to sign. The vault reviews every detail before your key
+                    is ever involved &mdash; you inspect and verify the destination address and amount before
+                    signing is unlocked. The signed result is then returned to your watch wallet to broadcast.
+                </p>
+
+                <h3 class="sub-heading" id="sign-ingest">Loading the PSBT</h3>
+                <p>
+                    From the Dashboard, click <strong>PSBT Signer</strong> to open the tool. You are given two options for loading the unsigned transaction:
+                    scan a QR code displayed by your watch wallet, or load a <code>.psbt</code> file
+                    directly from the Transfer Drive.
+                </p>
+
+                <figure class="os-showcase">
+                    <a href="select%20signer.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="select%20signer.png" alt="PSBT Signer Review tab showing the loaded transaction before the destination verification audit begins">
+                    </a>
+                    <figcaption>Select <strong>PSBT Signer</strong> from the Dashboard to begin the signing workflow.</figcaption>
+                </figure>
+
+                <figure class="os-showcase">
+                    <a href="select%20signing%20type.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="select%20signing%20type.png" alt="Signing screen showing Vault Seed and Temporary Seed tabs, passphrase field, and the Sign Transaction button">
+                    </a>
+                    <figcaption>The <strong>Signing</strong> screen. The vault confirms the expected signer fingerprint matches your loaded seed. Select your signing key source and approve to proceed.</figcaption>
+                </figure>
+
+                <figure class="os-showcase">
+                    <a href="signer.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="signer.png" alt="PSBT Signer ingest screen showing Scan Unsigned PSBT and Load PSBT from Transfer Drive options">
+                    </a>
+                    <figcaption>The <strong>PSBT Signer</strong> ingest screen. Choose to scan a QR code from your watch wallet or load a <code>.psbt</code> file from the Transfer Drive.</figcaption>
+                </figure>
+
+                <p>
+                    If you select <strong>Load PSBT from Transfer Drive</strong>, the vault lists every
+                    <code>.psbt</code> file currently on the partition. Click the file to load it.
+                </p>
+
+                <figure class="os-showcase">
+                    <a href="load%20from%20drive.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="load%20from%20drive.png" alt="PSBT Signer showing a list of .psbt files available on the Transfer Drive for selection">
+                    </a>
+                    <figcaption>The Transfer Drive file picker lists all available <code>.psbt</code> files. Select the unsigned transaction to proceed.</figcaption>
+                </figure>
+
+                <h3 class="sub-heading" id="sign-review">Reviewing the Transaction</h3>
+                <p>
+                    Display the QR code generated by your wallet software and hold it up to
+                    <strong>SafeKeepVault&rsquo;s</strong> webcam. Once scanned, the vault moves to the
+                    <strong>Review</strong> tab and presents a full transaction audit &mdash; every
+                    destination address displayed in full, the amount in BTC and satoshis, a generated
+                    QR of the address for independent verification on a second device, and the mining
+                    fee and fee rate.
+                </p>
+                <p>
+                    Check the box confirming you have independently verified the destination address and
+                    amount. The <strong>Sign Transaction</strong> button remains locked until this
+                    confirmation is complete.
+                </p>
+
+                <figure class="os-showcase">
+                    <a href="confirm%20address.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="confirm%20address.png" alt="Transaction Audit screen showing destination address, BTC and satoshi amounts, fee, and the independent verification checkbox">
+                    </a>
+                    <figcaption>The <strong>Transaction Audit</strong> screen. Verify the destination address against an independent device, confirm the amount and fee, and check the verification box to unlock signing.</figcaption>
+                </figure>
+
+                <h3 class="sub-heading" id="sign-sign">Signing</h3>
+
+                <h3 class="sub-heading" id="sign-export">Exporting the Result</h3>
+                <p>
+                    Once signed, the <strong>Export</strong> tab offers several ways to return the result
+                    to your watch wallet. The primary method is a QR code &mdash; choose the format that
+                    matches your coordinator: Standard Base64 for Sparrow and Blue Wallet, Nunchuk Raw Hex,
+                    or Electrum Raw Hex. You can also copy or save the raw transaction hex for direct
+                    broadcast, or save the signed <code>.psbt</code> file back to the Transfer Drive for
+                    sneakernet handoff.
+                </p>
+
+                <figure class="os-showcase">
+                    <a href="tx%20finalized.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="tx%20finalized.png" alt="Transaction finalized export screen showing QR code export, raw transaction hex, and fallback Transfer Drive export options">
+                    </a>
+                    <figcaption>The <strong>Export</strong> screen. Point your watch wallet&rsquo;s camera at the QR code to import the signed transaction, or use the Transfer Drive fallback for sneakernet handoff. Once broadcast, you&rsquo;re done.</figcaption>
+                </figure>
+                <h3 class="sub-heading" id="sign-transfer-hub">Exporting via the Transfer Hub</h3>
+                <p>
+                    If your workflow is file-based rather than QR-based, the Transfer Hub is where you
+                    retrieve the signed <code>.psbt</code> file after signing. Open the Transfer Hub
+                    from the Dashboard, locate the signed file on the partition, and use the
+                    <strong>Transmit</strong> button to send it via animated QR to the Courier Tool on
+                    your phone, or simply move the USB drive to your online machine and collect the file
+                    directly from the Transfer partition. Files transmitted via QR can be received
+                    directly on your computer at <a href="courier-tool.html">safekeepbitcoin.com/Courier&nbsp;Tool</a>.
+                </p>
+
+                <figure class="os-showcase">
+                    <a href="transfer%20hub.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="transfer%20hub.png" alt="SafeKeepVault Transfer Hub showing a list of files on the Transfer Drive including signed PSBT files ready for export">
+                    </a>
+                    <figcaption>The <strong>Transfer Hub</strong> lists all files on the Transfer partition. Locate your signed <code>.psbt</code> file and transmit it via QR or collect it via sneakernet to complete the workflow.</figcaption>
+                </figure>
+            </section>
+
             <!-- Tool Arsenal (kept, Inheritance Map → Wallet Record) -->
             <section class="content-section" id="tools">
                 <h2 class="section-heading">The Tool Arsenal</h2>
                 <p>
-                    Fifteen tools are included.
-                    Every one runs completely offline and works with any Bitcoin wallet
+                    Beyond the core signing workflow, <strong>SafeKeepVault</strong> includes a broad
+                    suite of tools covering the full range of Bitcoin self-custody tasks &mdash; from
+                    seed generation and address verification to backup management, multisig coordination,
+                    and inheritance planning. Every tool runs completely offline and works with any Bitcoin wallet
                     that supports standard formats.
                 </p>
 
