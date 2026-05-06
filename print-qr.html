@@ -340,8 +340,8 @@
 
 <script>
 var templates = {
-    21: 'QR%20template%2021x21%20new.pdf',
-    25: 'QR%20template%2025x25%20new.pdf'
+    21: 'Blank%20QR%20code%20template%2021x21.pdf',
+    25: 'Blank%20QR%20code%20template%2025x25.pdf'
 };
 
 function selectSize(size) {
@@ -350,7 +350,7 @@ function selectSize(size) {
 
     var btn = document.getElementById('btn-download');
     btn.href = templates[size];
-    btn.setAttribute('download', size === 21 ? 'QR template 21x21 new.pdf' : 'QR template 25x25 new.pdf');
+    btn.setAttribute('download', size === 21 ? 'Blank QR code template 21x21.pdf' : 'Blank QR code template 25x25.pdf');
     btn.removeAttribute('aria-disabled');
 
     document.getElementById('preview-note').style.display = 'block';
