@@ -243,9 +243,9 @@
                             </tr>
                             <tr>
                                 <td>Fully open source</td>
-                                <td class="col-skv"><span class="tag-yes">Yes</span> — firmware &amp; OS</td>
-                                <td><span class="tag-part">Partial</span> — firmware open, hardware not</td>
-                                <td><span class="tag-part">Partial</span> — firmware open, hardware not</td>
+                                <td class="col-skv"><span class="tag-yes">Yes</span> — OS &amp; Application Software</td>
+                                <td><span class="tag-yes">Yes</span> — hardware &amp; firmware</td>
+                                <td><span class="tag-part">Partial</span> — firmware open, hardware closed</td>
                                 <td><span class="tag-no">No</span> — firmware is closed source</td>
                             </tr>
                             <tr>
@@ -279,9 +279,9 @@
                             <tr>
                                 <td>PSBT review detail</td>
                                 <td class="col-skv"><span class="tag-part">Full output audit</span> — destinations, change, hijack detection, fee &amp; fee-rate. Inputs verified against signer fingerprint; individual input lines not listed.</td>
-                                <td><span class="tag-part">Partial</span> — scrolling required</td>
-                                <td><span class="tag-part">Partial</span> — scrolling required</td>
-                                <td><span class="tag-part">Partial</span> — scrolling required</td>
+                                <td>Full detail — but requires scrolling on a small screen</td>
+                                <td>Full detail — but requires scrolling on a small screen</td>
+                                <td>Full detail — but requires scrolling on a small screen</td>
                             </tr>
                             <tr>
                                 <td>Cloud key backup option</td>
@@ -308,7 +308,7 @@
                                 <td>Shamir / XOR seed splitting</td>
                                 <td class="col-skv"><span class="tag-yes">Yes</span> — both SLIP-39 Shamir &amp; Seed XOR built in</td>
                                 <td><span class="tag-yes">Yes</span> — SLIP-39 (Safe 3, Safe 5, Model T)</td>
-                                <td><span class="tag-yes">Yes</span> — Seed XOR &amp; SLIP-39 (Mk4 &amp; Q)</td>
+                                <td><span class="tag-part">Yes</span> — Seed XOR only (no SLIP-39)</td>
                                 <td><span class="tag-no">No</span></td>
                             </tr>
                             <tr>
@@ -323,7 +323,7 @@
                                 <td class="col-skv">No device shipped — self-flashed from GPG-signed, SHA-256 verified image. No hardware to intercept.</td>
                                 <td>Physical device shipped. Tamper-evident packaging. Open-source firmware allows independent verification.</td>
                                 <td>Physical device shipped. Numbered tamper-evident bag verified on first boot. Open-source firmware allows independent verification.</td>
-                                <td>Physical device shipped. Tamper-evident packaging. Closed-source firmware limits independent verification.</td>
+                                <td>Physical device shipped. No tamper-evident packaging; relies on cryptographic Secure Element (Genuine Check) attestation.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -376,7 +376,7 @@
                     </div>
                     <div class="threat-card">
                         <p class="threat-card-title">A compromised host BIOS</p>
-                        <p><strong>SafeKeepVault</strong> bypasses the host OS, but a deeply compromised BIOS or UEFI firmware could theoretically intercept activity before the vault loads. This is an advanced, nation-state-level attack vector requiring physical access and specialized expertise — well outside the threat model of virtually all individual users.</p>
+                        <p><strong>SafeKeepVault</strong> bypasses the host OS, but a deeply compromised BIOS or UEFI firmware could theoretically intercept activity before the vault loads. This is a highly sophisticated attack vector requiring physical access to the machine and specialized expertise — well outside the threat model of virtually all individual users.</p>
                     </div>
                 </div>
             </section>
