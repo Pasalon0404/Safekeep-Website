@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="newfavicon.png">
     <meta name="description" content="Print blank QR code grids for manual SeedQR encoding. 21x21 for 12-word seeds, 25x25 for 24-word seeds. Works offline, prints to standard 8.5×11 paper.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print QR &mdash; SafeKeepVault</title>
+    <title>Download QR Template &mdash; SafeKeepVault</title>
     <link rel="stylesheet" href="style.css">
     <style>
 
@@ -74,15 +74,17 @@
             cursor: pointer;
             transition: background var(--transition), opacity var(--transition);
             letter-spacing: -0.01em;
+            text-decoration: none;
         }
 
-        .btn-print-qr:hover:not(:disabled) {
+        .btn-print-qr:hover:not([aria-disabled="true"]) {
             background: var(--accent-hover);
         }
 
-        .btn-print-qr:disabled {
+        .btn-print-qr[aria-disabled="true"] {
             opacity: 0.4;
             cursor: not-allowed;
+            pointer-events: none;
         }
 
         .qr-preview-note {
@@ -260,10 +262,10 @@
             <!-- Page hero -->
             <div class="page-hero">
                 <p class="page-hero-label"><strong>SafeKeepVault</strong> Tool</p>
-                <h1 class="page-hero-title">Print QR</h1>
+                <h1 class="page-hero-title">Download QR Template</h1>
                 <p class="page-hero-tagline">
-                    Generate a blank, mathematically precise QR template and print it to paper.
-                    Fill in the modules by hand, then scan directly into the vault.
+                    Download a blank, print-ready SeedQR template. Fill in the modules by hand,
+                    then scan directly into the vault.
                 </p>
             </div>
 
@@ -277,9 +279,9 @@
                     <strong>SafeKeepVault</strong> can read in a single camera scan.
                 </p>
                 <p>
-                    This tool generates the blank grid on your screen and hands it off to your
-                    browser&rsquo;s print dialog. Everything happens locally &mdash; nothing is
-                    transmitted or stored. The only output is ink on paper.
+                    Select the template that matches your seed length, download the PDF, and print
+                    it to standard 8.5&times;11 paper. Everything is self-contained in the file &mdash;
+                    no internet connection required to print.
                 </p>
                 <ul class="docs-list">
                     <li>
@@ -303,7 +305,7 @@
 
             <!-- Controls section -->
             <section class="content-section controls">
-                <h2 class="section-heading">Select Grid Size &amp; Print</h2>
+                <h2 class="section-heading">Select &amp; Download Template</h2>
 
                 <div class="qr-size-options">
                     <button class="qr-size-btn" id="btn-21" onclick="selectSize(21)">
@@ -316,23 +318,15 @@
                     </button>
                 </div>
 
-                <button class="btn-print-qr" id="btn-print" disabled onclick="window.print()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                    Print Template
-                </button>
+                <a class="btn-print-qr" id="btn-download" aria-disabled="true" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download Template
+                </a>
 
                 <p class="qr-preview-note" id="preview-note" style="display:none;">
-                    Grid preview shown below. Use your browser&rsquo;s print dialog to send to paper.
+                    Print to standard 8.5&times;11 paper at 100% scale &mdash; do not scale to fit.
                 </p>
             </section>
-
-            <!-- CORE RENDERING ENGINE — DO NOT ALTER MATH OR PRINT CSS -->
-            <div class="print-wrapper">
-                <div class="qr-container" id="qr-target-container" style="display: none;">
-                    <div id="qr-target" class="qr-grid"></div>
-                    <div id="qr-label" class="qr-title"></div>
-                </div>
-            </div>
 
         </main>
     </div>
@@ -345,100 +339,20 @@
     </footer>
 
 <script>
-/* ================================================================
-   CORE RENDERING ENGINE — DO NOT ALTER MATH
-   ================================================================ */
-function renderGrid(size) {
-    const container = document.getElementById('qr-target-container');
-    const grid = document.getElementById('qr-target');
-    const label = document.getElementById('qr-label');
+var templates = {
+    21: 'QR%20template%2021x21.pdf',
+    25: 'QR%20template%2025x25.pdf'
+};
 
-    container.style.display = 'block';
-    grid.innerHTML = '';
-
-    // Add +1 to the grid size to make room for the axis labels
-    grid.style.gridTemplateColumns = `20px repeat(${size}, 1fr)`;
-    grid.style.gridTemplateRows = `20px repeat(${size}, 1fr)`;
-
-    label.innerText = size === 21
-        ? "Compact SeedQR - 21x21 (12 words)"
-        : "Standard SeedQR - 25x25 (24 words)";
-
-    // Loop from -1 to allow row/col 0 to act as the axis
-    for (let y = -1; y < size; y++) {
-        for (let x = -1; x < size; x++) {
-            const cell = document.createElement('div');
-
-            // --- AXIS LABEL RENDERING ---
-            if (y === -1 && x === -1) {
-                // Top-left blank corner
-                cell.className = 'qr-axis';
-            } else if (y === -1) {
-                // Top X-Axis
-                cell.className = 'qr-axis';
-                // Show odd numbers (0-indexed x means x=0 is 1)
-                if (x % 2 === 0) cell.innerText = x + 1;
-            } else if (x === -1) {
-                // Left Y-Axis
-                cell.className = 'qr-axis';
-                if (y % 2 === 0) cell.innerText = y + 1;
-            }
-            // --- ACTUAL QR GRID RENDERING ---
-            else {
-                cell.className = 'qr-cell';
-
-                // 1. Draw the thick outer black border
-                if (y === 0) cell.style.borderTop = '2px solid #000';
-                if (x === 0) cell.style.borderLeft = '2px solid #000';
-                if (y === size - 1) cell.style.borderBottom = '2px solid #000';
-                if (x === size - 1) cell.style.borderRight = '2px solid #000';
-
-                // 2. Draw internal guide lines every 7 squares
-                if ((x + 1) % 7 === 0 && x !== size - 1) cell.style.borderRight = '2px solid #777';
-                if ((y + 1) % 7 === 0 && y !== size - 1) cell.style.borderBottom = '2px solid #777';
-
-                // 3. Draw the fixed 7x7 anchor patterns
-                const isTopLeft    = (x < 7 && y < 7);
-                const isTopRight   = (x >= size - 7 && y < 7);
-                const isBottomLeft = (x < 7 && y >= size - 7);
-
-                if (isTopLeft || isTopRight || isBottomLeft) {
-                    let anchorX = x;
-                    let anchorY = y;
-                    if (isTopRight)   anchorX = x - (size - 7);
-                    if (isBottomLeft) anchorY = y - (size - 7);
-
-                    if (anchorX === 0 || anchorX === 6 || anchorY === 0 || anchorY === 6) {
-                        cell.style.backgroundColor = '#000';
-                        // Override internal borders to keep anchor solid
-                        cell.style.borderColor = '#000';
-                    } else if (anchorX === 1 || anchorX === 5 || anchorY === 1 || anchorY === 5) {
-                        cell.style.backgroundColor = '#fff';
-                        cell.style.borderColor = '#000';
-                    } else {
-                        cell.style.backgroundColor = '#000';
-                        cell.style.borderColor = '#000';
-                    }
-                }
-            }
-            grid.appendChild(cell);
-        }
-    }
-}
-
-/* ================================================================
-   UI BINDINGS
-   ================================================================ */
 function selectSize(size) {
-    // Update button selection state
     document.getElementById('btn-21').classList.toggle('selected', size === 21);
     document.getElementById('btn-25').classList.toggle('selected', size === 25);
 
-    // Render the grid
-    renderGrid(size);
+    var btn = document.getElementById('btn-download');
+    btn.href = templates[size];
+    btn.setAttribute('download', size === 21 ? 'QR template 21x21.pdf' : 'QR template 25x25.pdf');
+    btn.removeAttribute('aria-disabled');
 
-    // Enable print button and show preview note
-    document.getElementById('btn-print').disabled = false;
     document.getElementById('preview-note').style.display = 'block';
 }
 </script>
