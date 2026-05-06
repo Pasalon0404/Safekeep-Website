@@ -275,7 +275,7 @@
                 <p class="page-hero-label">Documentation</p>
                 <h1 class="page-hero-title">Getting Started</h1>
                 <p class="page-hero-tagline">
-                    Everything you need to go from a blank USB drive to
+                    Everything you need to go from a blank USB flash drive to
                     signing your first transaction, start to finish.
                 </p>
             </div>
@@ -333,19 +333,19 @@
             <!-- Critical Precautions -->
             <div class="notice-block">
                 <p class="notice-title">Critical Precautions: Read Before Proceeding</p>
-                <p>Your 12- or 24-word mnemonic is the only unconditional backup of your private key.</p>
+                <p>Your 12- or 24-word seed phrase is the only unconditional backup of your private key.</p>
                 <p>
                     <strong>Physical Backups are Mandatory</strong> &mdash;
-                    Write your seed words and BIP-39 passphrase onto physical media
+                    Write your seed phrase and BIP-39 passphrase onto physical media
                     and store them in separate, secure locations. Never store these records digitally.
-                    If your USB drive fails, is lost, or is wiped, your physical backup is the only
+                    If your flash drive fails, is lost, or is wiped, your physical backup is the only
                     path to recovering your Bitcoin.
                 </p>
                 <p>
                     <strong>The Passphrase is Integral</strong> &mdash;
-                    A BIP-39 passphrase is not just a password; it is a permanent extension of your seed.
-                    Without it, your mnemonic alone cannot recover your funds. Treat the passphrase with
-                    the same level of security as the seed itself.
+                    A BIP-39 passphrase is not just a password; it is a permanent extension of your seed phrase.
+                    Without it, your seed phrase alone cannot recover your funds. Treat the passphrase with
+                    the same level of security as the seed phrase itself.
                 </p>
                 <p>
                     <strong>Active Development Notice</strong> &mdash;
@@ -369,7 +369,7 @@
                 <ul class="docs-list">
                     <li>
                         <strong>A Boot Drive &mdash;</strong>
-                        A standard USB drive flashed with the <strong>SafeKeepVault</strong> image.
+                        A standard USB flash drive flashed with the <strong>SafeKeepVault</strong> image.
                         Once you boot your computer from this drive, the system runs in
                         total isolation. Your internal storage remains unmounted and entirely untouched
                         throughout the session.
@@ -383,7 +383,7 @@
                     <li>
                         <strong>Webcam &mdash;</strong>
                         While not strictly required, an integrated or USB-connected webcam is highly
-                        recommended. This enables the use of the Courier Tool, our high-density QR
+                        recommended. This enables the use of the <strong>Courier Tool</strong>, our high-density QR
                         transfer tool, allowing you to sign transactions and verify data without ever
                         physically connecting the vault to another device. It is the most seamless
                         way to maintain a true air-gap.
@@ -401,9 +401,9 @@
                 <ul class="docs-list">
                     <li>
                         <strong>The Transfer Drive &mdash;</strong>
-                        The USB drive contains a dedicated partition for moving data in and out of the
+                        The USB flash drive creates a dedicated partition for moving data in and out of the
                         vault. This is the only point of contact between <strong>SafeKeepVault</strong>
-                        and external storage. When combined with the Courier Tool&mdash;our high-density
+                        and external storage. When combined with the <strong>Courier Tool</strong>&mdash;our high-density
                         QR tool&mdash;this creates a secure, bidirectional data flow.
                         <ul style="margin: 0.65rem 0 0 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.93rem; color: var(--text-muted); line-height: 1.6;">
                             <li><strong>Seamless QR Unlocking:</strong> By storing your vault password in a manager on your mobile device, you can generate a QR code from that password (see Step 1). Simply display your phone to the host&rsquo;s webcam to unlock your encrypted vault instantly&mdash;combining elite cryptographic strength with a streamlined, convenient way to unlock your wallet.</li>
@@ -419,7 +419,7 @@
                 <p>
                     Before you boot <strong>SafeKeepVault</strong> for the first time, you need a
                     vault password ready to go. This password will encrypt the persistent partition
-                    of your USB drive&mdash;the storage layer where your keys and vault data live
+                    of your flash drive&mdash;the storage layer where your keys and vault data live
                     between sessions. It is the primary cryptographic barrier protecting everything
                     inside the vault.
                 </p>
@@ -452,7 +452,7 @@
                     convert it to a QR code using the widget below. Save the QR image to your phone&rsquo;s
                     secure photo library or an encrypted note in your password manager. On every subsequent
                     boot, simply hold your phone up to the vault&rsquo;s webcam &mdash; the system reads
-                    the QR and unlocks the vault instantly, with no typing required. This converter run entirely in your browser - SafeKeepBitcoin does not store your password.
+                    the QR and unlocks the vault instantly, with no typing required. This converter run entirely in your browser - safekeepbitcoin.com does not store your password.
                 </p>
 
                 <!-- QR Generator Widget -->
@@ -511,13 +511,13 @@
                 </p>
                 <p>
                     <strong>Flash to USB</strong> &mdash;
-                    To write the image to your drive, we recommend using
+                    To write the image to your flash drive, we recommend using
                     <a href="https://etcher.balena.io/" target="_blank" rel="noopener">BalenaEtcher</a>,
                     which is available for Windows, macOS, and Linux.
                 </p>
                 <ol style="margin: 0.75rem 0 0.75rem 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.94rem; color: var(--text-muted); line-height: 1.6;">
                     <li>Open BalenaEtcher and select the extracted <code>.img</code> file.</li>
-                    <li>Select your target USB drive.</li>
+                    <li>Select your target flash drive.</li>
                     <li>Click <strong>Flash</strong> to begin the process.</li>
                 </ol>
                 <p>
@@ -537,23 +537,16 @@
             <section class="content-section" id="first-boot">
                 <h2 class="section-heading">Step 3: Initialization &amp; Encryption</h2>
                 <p>
-                    Insert the USB drive, configure your hardware to boot from USB in the UEFI/BIOS
+                    Insert the flash drive, configure your hardware to boot from USB in the UEFI/BIOS
                     settings, and power on. <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
                 </p>
-
-                <figure class="os-showcase">
-                    <a href="Initial%20boot%20screen.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="Initial%20boot%20screen.png" alt="SafeKeepVault initial boot screen showing the password entry interface on first startup">
-                    </a>
-                    <figcaption>The <strong>SafeKeepVault</strong> boot screen. Display your QR code to the webcam to unlock instantly, or type your vault password manually to decrypt and load your master seed.</figcaption>
-                </figure>
 
                 <h3 class="sub-heading" id="encrypted-vault">One-Time Configuration: The Encrypted Vault</h3>
                 <p>
                     Upon your initial boot, <strong>SafeKeepVault</strong> will guide you through the
                     creation of your Encrypted Storage Partition. This persistent volume is where your
                     keys and vault data reside between sessions. When prompted to set your vault
-                    password, display the QR code you saved in Step 1 to the webcam. The vault will
+                    password, select the scan QR option and display the QR code you saved in Step 1 to the webcam. The scanner will
                     read it instantly and use it to encrypt the partition. Every subsequent boot works
                     the same way &mdash; just scan and you&rsquo;re in.
                 </p>
@@ -568,6 +561,13 @@
 
                 <h3 class="sub-heading" id="config-options">Initial Configuration Options</h3>
                 <p>Once the vault is initialized, you are presented with five methods to manage your seed phrase:</p>
+
+                <figure class="os-showcase">
+                    <a href="Initial%20boot%20screen.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="Initial%20boot%20screen.png" alt="SafeKeepVault initial boot screen showing the password entry interface on first startup">
+                    </a>
+                </figure>
+
                 <ol class="docs-list">
                     <li>
                         <strong>Generate New Seed &mdash;</strong>
@@ -579,7 +579,7 @@
                     </li>
                     <li>
                         <strong>Restore from Words &mdash;</strong>
-                        Securely import an existing 12- or 24-word recovery mnemonic.
+                        Securely import an existing 12- or 24-word recovery seed phrase.  This will be stored securely within the vault and restored each time you reboot and enable the vault.
                     </li>
                     <li>
                         <strong>Restore via Seed XOR &mdash;</strong>
@@ -592,11 +592,11 @@
                         <strong>Restore Shamir Backup &mdash;</strong>
                         Utilize the Shamir Backup tool to reconstruct a seed from Shamir&rsquo;s Secret
                         Sharing (SLIP-39) shares. Simply input the required number of shares to meet
-                        your designated threshold, and the vault will restore the seed for immediate use.
+                        your designated threshold, and your seed phrase will be restored into the vault.
                     </li>
                     <li>
                         <strong>Unlock .7z Backup &mdash;</strong>
-                        Import a previously encrypted vault archive from your transfer interface. This
+                        Import a previously encrypted vault archive created using the Encrypted Backup toool. This
                         restores your entire environment&mdash;including all stored keys, passphrases, and
                         custom configurations&mdash;onto a new or freshly flashed boot drive.
                     </li>
@@ -607,8 +607,8 @@
             <section class="content-section" id="transfer-drive">
                 <h2 class="section-heading">Step 4: Mounting the Transfer Drive</h2>
                 <p>
-                    Once your seed is loaded and you land on the Dashboard, your next step is to mount
-                    the Transfer Drive. This is the dedicated partition on your USB drive used to move
+                    Once your seed phrase is loaded and you land on the Dashboard, your next step is to mount
+                    the Transfer Drive. This is the dedicated partition on your flash drive used to move
                     files in and out of the vault &mdash; signed transactions, PSBT files, encrypted backups,
                     and exported reports all pass through here.
                 </p>
@@ -629,7 +629,7 @@
                     </li>
                     <li>
                         <strong>Select the Transfer Partition &mdash;</strong>
-                        In the file explorer, you will see your USB drive listed with two partitions.
+                        In the file explorer, you will see your flash drive listed with two partitions.
                         Select the one labelled <strong>Transfer</strong> (not the system partition).
                     </li>
                     <li>
@@ -664,11 +664,9 @@
                 </p>
                 <p>
                     To set up a watch wallet, you first need to export your public key or output descriptor
-                    from the vault. Open the <strong>Seed Management</strong> tool inside
-                    <strong>SafeKeepVault</strong>, select your desired script type (Native SegWit,
-                    Taproot, etc.), and export the descriptor or extended public key. The export lands
-                    on your Transfer Drive as a file, or can be transmitted directly via QR using the
-                    Courier Tool. Transfer it to your online device and follow the setup steps for your
+                    from the vault. Open the <strong>Seed Management</strong> tool and select your desired script type (Native SegWit,
+                    Taproot, etc.), then export the extended public key. The export lands
+                    on your Transfer Drive as a file, or can be transmitted directly via QR. Transfer it to your online device and follow the setup steps for your
                     chosen wallet below.
                 </p>
                 <figure class="os-showcase">
@@ -685,11 +683,7 @@
                 </figure>
 
                 <h3 class="wallet-heading" id="ww-bluewallet">Blue Wallet <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
-                <p>
-                    Blue Wallet is the simplest mobile option for balance monitoring and receiving funds.
-                    It imports both single-signature and multisig watch wallets directly via QR code from
-                    the vault &mdash; no file transfer required.
-                </p>
+                <p>Use these settings and steps for Blue Wallet. Keys are transferred directly via QR code &mdash; no file transfer required.</p>
 
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
@@ -720,11 +714,7 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-nunchuk">Nunchuk <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
-                <p>
-                    Nunchuk is the recommended mobile option for an active signing workflow. It imports
-                    keys via a Hardware Wallet JSON file transferred from the vault using the
-                    <a href="courier.html">Courier Tool</a>.
-                </p>
+                <p>Use these settings and steps for Nunchuk. This workflow is file-based &mdash; use the <strong>Courier Tool</strong> to transmit the JSON file from the vault to your phone.</p>
 
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
@@ -735,9 +725,9 @@
                 <ol class="wallet-steps">
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and tap <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
                     <li>Open the <strong>Transfer Hub</strong> in the vault and locate the JSON file you just downloaded.</li>
-                    <li>On your phone, open the <a href="courier-tool.html" target="_blank" rel="noopener">Courier Tool</a> and select <strong>Receive</strong>, then tap <strong>Open camera and scan</strong>.</li>
+                    <li>On your phone, open the <a href="courier-tool.html" target="_blank" rel="noopener"><strong>Courier Tool</strong></a> and select <strong>Receive</strong>, then tap <strong>Open camera and scan</strong>.</li>
                     <li>On <strong>SafeKeepVault</strong>, select the JSON file and tap <strong>Transmit</strong> &rarr; <strong>Start Transmission</strong>. The vault displays an animated QR sequence.</li>
-                    <li>Hold your phone to the vault&rsquo;s screen. The Courier Tool will scan and reconstruct the file. Save it to your phone when prompted.</li>
+                    <li>Hold your phone to the vault&rsquo;s screen. The <strong>Courier Tool</strong> will scan and reconstruct the file. Save it to your phone when prompted.</li>
                     <li>In Nunchuk, tap <strong>Add Key</strong> &rarr; <strong>Coldcard</strong> &rarr; <strong>Add COLDCARD via file (advanced)</strong> &rarr; <strong>Continue</strong>.</li>
                     <li>Navigate to the JSON file you transferred and select it.</li>
                     <li>Name your key and tap <strong>Add Key</strong>. Your signing key is now registered.</li>
@@ -759,20 +749,7 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-sparrow">Sparrow <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>
-                    Sparrow is the recommended desktop coordinator for <strong>SafeKeepVault</strong>.
-                    Setup is file-based: export a Hardware Wallet JSON from the vault and open it
-                    directly in Sparrow &mdash; no descriptor syntax or manual key entry required.
-                </p>
-                <p>
-                    Getting the file from the vault to your computer requires one of two approaches.
-                    You can move the USB drive directly to your online machine (sneakernet), but note
-                    that removing the drive from a live vault session requires a full reboot before
-                    the drive can be re-inserted. The simpler alternative is to use the
-                    <a href="courier-tool.html" target="_blank" rel="noopener">Courier Tool</a> to
-                    transfer the file to your phone, then share it to your computer via a cloud
-                    service such as Google Drive.
-                </p>
+                <p>Use these settings and steps for Sparrow. This workflow is file-based &mdash; use the <strong>Courier Tool</strong> to transmit the JSON file from the vault to your phone, then share it to your computer via a cloud service, or move the flash drive directly to your online machine (sneakernet).</p>
 
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
@@ -805,12 +782,7 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-specter">Specter Desktop <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>
-                    Specter Desktop is a strong choice for both single-signature and multisig
-                    coordination. Like Sparrow, setup is file-based &mdash; export from the vault,
-                    transfer the file to your computer via sneakernet or the phone &rarr; cloud method,
-                    and import directly into Specter.
-                </p>
+                <p>Use these settings and steps for Specter Desktop. This workflow is file-based &mdash; use the <strong>Courier Tool</strong> to transmit the JSON file from the vault to your phone, then share it to your computer via a cloud service, or move the flash drive directly to your online machine (sneakernet).</p>
 
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
@@ -828,18 +800,13 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-electrum">Electrum <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>
-                    <strong>SafeKeepVault</strong> generates a purpose-built Electrum skeleton wallet
-                    file directly from the Seed Management tool. This file contains the correct
-                    descriptor, derivation path, and <code>ckcc_xfp</code> field for instant watch-only
-                    import.
-                </p>
+                <p>Use these settings and steps for Electrum. This workflow is file-based &mdash; use the <strong>Courier Tool</strong> to transmit the JSON file from the vault to your phone, then share it to your computer via a cloud service, or move the flash drive directly to your online machine (sneakernet).</p>
                 <ol class="wallet-steps">
                     <li>In the vault, open <strong>Seed Management</strong> and export the <code>[FINGERPRINT]-electrum.json</code> file to your Transfer Drive.</li>
                     <li>Transfer the file to your online machine and open Electrum.</li>
                     <li>Go to <strong>File &rarr; Open</strong> and select the exported <code>.json</code> file. Electrum will load it as a watch-only wallet immediately.</li>
                     <li>To sign a PSBT, go to <strong>Tools &rarr; Load Transaction &rarr; From File</strong>, select your unsigned PSBT, and click <strong>Export &rarr; As QR Code</strong> to transmit it to the vault.</li>
-                    <li>After signing inside the vault, use the Courier Tool to scan the signed result back into Electrum and broadcast.</li>
+                    <li>After signing inside the vault, use the <strong>Courier Tool</strong> to scan the signed result back into Electrum and broadcast.</li>
                 </ol>
             </section>
 
@@ -848,8 +815,7 @@
                 <h2 class="section-heading">Signing a Transaction</h2>
                 <p>
                     Once your watch wallet has built a transaction and exported it as a PSBT, bring it into
-                    <strong>SafeKeepVault</strong> to sign. The vault reviews every detail before your key
-                    is ever involved &mdash; you inspect and verify the destination address and amount before
+                    <strong>SafeKeepVault</strong> to sign. The vault reviews the details  &mdash; you inspect and verify the destination address and amount before
                     signing is unlocked. The signed result is then returned to your watch wallet to broadcast.
                 </p>
 
@@ -864,22 +830,23 @@
                     <a href="select%20signer.png" target="_blank" rel="noopener">
                         <img class="img-elevated" src="select%20signer.png" alt="PSBT Signer Review tab showing the loaded transaction before the destination verification audit begins">
                     </a>
-                    <figcaption>Select <strong>PSBT Signer</strong> from the Dashboard to begin the signing workflow.</figcaption>
+                    <figcaption>The <strong>PSBT Signer</strong> ingest screen. Choose to scan a QR code from your watch wallet or load a <code>.psbt</code> file from the Transfer Drive.</figcaption>
                 </figure>
 
                 <figure class="os-showcase">
                     <a href="select%20signing%20type.png" target="_blank" rel="noopener">
                         <img class="img-elevated" src="select%20signing%20type.png" alt="Signing screen showing Vault Seed and Temporary Seed tabs, passphrase field, and the Sign Transaction button">
                     </a>
-                    <figcaption>The <strong>Signing</strong> screen. The vault confirms the expected signer fingerprint matches your loaded seed. Select your signing key source and approve to proceed.</figcaption>
+                    <figcaption>Select <strong>Scan Unsigned PSBT</strong> to activate the webcam and scan the QR code displayed by your watch wallet, or choose <strong>Load PSBT from Transfer Drive</strong> to import the file directly.</figcaption>
                 </figure>
 
                 <figure class="os-showcase">
-                    <a href="signer.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="signer.png" alt="PSBT Signer ingest screen showing Scan Unsigned PSBT and Load PSBT from Transfer Drive options">
+                    <a href="sign%20a%20transaction.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="sign%20a%20transaction.png" alt="Signing screen showing Vault Seed and Temporary Seed tabs, passphrase field, and the Sign Transaction button">
                     </a>
-                    <figcaption>The <strong>PSBT Signer</strong> ingest screen. Choose to scan a QR code from your watch wallet or load a <code>.psbt</code> file from the Transfer Drive.</figcaption>
+                    <figcaption>Select <strong>PSBT Signer</strong> from the Dashboard to begin the signing workflow.</figcaption>
                 </figure>
+
 
                 <p>
                     If you select <strong>Load PSBT from Transfer Drive</strong>, the vault lists every
@@ -933,13 +900,21 @@
                     </a>
                     <figcaption>The <strong>Export</strong> screen. Point your watch wallet&rsquo;s camera at the QR code to import the signed transaction, or use the Transfer Drive fallback for sneakernet handoff. Once broadcast, you&rsquo;re done.</figcaption>
                 </figure>
+
+                <figure class="os-showcase">
+                    <a href="select%20format.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="select%20format.png" alt="Export format selection screen showing QR format options for different wallet coordinators">
+                    </a>
+                    <figcaption>Choose the export format that matches your watch wallet. Different coordinators expect different formats &mdash; select the one for yours to ensure the signed transaction imports correctly.</figcaption>
+                </figure>
+
                 <h3 class="sub-heading" id="sign-transfer-hub">Exporting via the Transfer Hub</h3>
                 <p>
                     If your workflow is file-based rather than QR-based, the Transfer Hub is where you
                     retrieve the signed <code>.psbt</code> file after signing. Open the Transfer Hub
                     from the Dashboard, locate the signed file on the partition, and use the
-                    <strong>Transmit</strong> button to send it via animated QR to the Courier Tool on
-                    your phone, or simply move the USB drive to your online machine and collect the file
+                    <strong>Transmit</strong> button to send it via animated QR to the <strong>Courier Tool</strong> on
+                    your phone, or simply move the flash drive to your online machine and collect the file
                     directly from the Transfer partition. Files transmitted via QR can be received
                     directly on your computer at <a href="courier-tool.html">safekeepbitcoin.com/Courier&nbsp;Tool</a>.
                 </p>

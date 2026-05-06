@@ -101,7 +101,7 @@
                     </li>
                     <li>
                         <span class="spec-label">Hardware Lockdown</span>
-                        <span class="spec-desc">Non-essential peripherals are deactivated. The system communicates exclusively with your display, keyboard, camera, and the USB drive itself.</span>
+                        <span class="spec-desc">Non-essential peripherals are deactivated. The system communicates exclusively with your display, keyboard, camera, and the flash drive itself.</span>
                     </li>
                 </ul>
 
@@ -129,7 +129,7 @@
                     </li>
                     <li>
                         <span class="spec-label">Plausible Deniability</span>
-                        <span class="spec-desc">Transform any standard PC into a signing station without specialized, branded hardware. To an outside observer, your vault is an indistinguishable, everyday USB drive.</span>
+                        <span class="spec-desc">Transform any standard PC into a signing station without specialized, branded hardware. To an outside observer, your vault is an indistinguishable, everyday USB flash drive.</span>
                     </li>
                 </ul>
             </section>
@@ -227,14 +227,14 @@
                     <strong>SafeKeepVault</strong> acts as a secure shield for the wallet software you already use. While your regular wallet tracks your balances, <strong>SafeKeepVault</strong> keeps your private keys completely offline and out of reach.
                 </p>
                 <p>
-                    To get started, export your public key information from <strong>SafeKeepVault</strong> and import it into your wallet of choice &mdash; Sparrow, Specter, Electrum, Nunchuk, or Blue Wallet &mdash; to create a watch-only wallet. Your watch wallet can track your balance and transaction history in full without ever touching your private keys.
+                    To get started, export your public key information from <strong>SafeKeepVault</strong> and import it into your wallet of choice &mdash; like Sparrow, Specter, Electrum, Nunchuk, or Blue Wallet &mdash; to create a watch-only wallet. Your watch wallet can track your balance and transaction history in full without ever touching your private keys.
                 </p>
                 <p>
-                    When it&rsquo;s time to spend, your watch wallet builds the transaction and hands it off as a PSBT file. Move it over to <strong>SafeKeepVault</strong> by QR code or USB, sign it while fully offline, and send it back to your regular wallet to broadcast. Your keys stay totally disconnected from the internet, exactly where they belong.
+                    When it&rsquo;s time to spend, your watch wallet builds the transaction and hands it off as a PSBT file. Move it over to <strong>SafeKeepVault</strong> by QR code or sneakernet, sign it while fully offline, and send it back to your regular wallet to broadcast. Your keys stay totally disconnected from the internet, exactly where they belong.
                 </p>
                 <h3 class="subsection-heading">Advanced Multisig Coordination</h3>
                 <p>
-                    <strong>SafeKeepVault</strong> is a first-class participant in any multi-signature setup. If you already own a Coldcard, Trezor, or any other signing device, <strong>SafeKeepVault</strong> works alongside it harmoniously &mdash; contributing one key in a 2-of-3 or larger quorum just like any dedicated hardware wallet would. No need to replace what you already have.
+                    <strong>SafeKeepVault</strong> is a first-class participant in any multi-signature setup. If you already own a Coldcard, Trezor, or any other signing device, <strong>SafeKeepVault</strong> works alongside it seemlessly &mdash; contributing one key in a 2-of-3 or larger quorum just like any dedicated hardware wallet would. No need to replace what you already have.
                 </p>
                 <p>
                     If you prefer an all-in-one approach, <strong>SafeKeepVault</strong> can also hold and sign with multiple keys itself. Load your primary key from encrypted storage, then temporarily bring in additional keys to meet the required threshold. Those extra keys exist only in volatile memory &mdash; the moment you finish or shut down, they are wiped completely and permanently, leaving no trace on the drive.
@@ -242,24 +242,24 @@
                 <h3 class="subsection-heading">Native Compatibility</h3>
                 <ul class="spec-list">
                     <li>
+                        <span class="spec-label">Blue Wallet</span>
+                        <span class="spec-desc">Export your public key to Blue Wallet and monitor your balance from your phone. Your signing keys never leave <strong>SafeKeepVault</strong> &mdash; Blue Wallet sees your funds, but can't touch them.</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Nunchuk</span>
+                        <span class="spec-desc">Nunchuk handles transaction coordination and broadcasting from your phone while <strong>SafeKeepVault</strong> serves as your offline signing device. Scan the unsigned transaction, sign it on the vault, and send the result back &mdash; your keys never touch a networked device.</span>
+                    </li>
+                    <li>
                         <span class="spec-label">Sparrow Wallet</span>
                         <span class="spec-desc">Use Sparrow on your desktop to track your balances and organize transactions. When it’s time to sign, Sparrow hands the job off to <strong>SafeKeepVault</strong>—keeping your keys offline while you move data back and forth using simple files or QR codes.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Electrum</span>
-                        <span class="spec-desc">Easily connect your cold storage to Electrum. <strong>SafeKeepVault</strong> creates wallet files that Electrum recognizes instantly. It also uses Electrum’s QR standards, so you can scan and go without needing to convert any files yourself.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Nunchuk</span>
-                        <span class="spec-desc">The perfect setup for your phone. <strong>SafeKeepVault</strong> works seamlessly with Nunchuk’s QR-based system. It’s a fast "scan-and-send" experience that keeps your mobile signing simple and secure.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Blue Wallet</span>
-                        <span class="spec-desc">Keep an eye on your money from anywhere. You can import your public info into Blue Wallet to check your balance on the go, while the actual power to spend stays safely locked inside</strong>.</span>
-                    </li>
-                    <li>
                         <span class="spec-label">Specter Desktop</span>
                         <span class="spec-desc">A natural fit for multisig-first setups. <strong>SafeKeepVault</strong> exports descriptors and PSBTs in the formats Specter expects, making it straightforward to coordinate complex signing arrangements without ever exposing a key to an online machine.</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Electrum</span>
+                        <span class="spec-desc">Set up Electrum as your watch-only coordinator and use <strong>SafeKeepVault</strong> as the offline signer. Export your public key, track your balance in Electrum, and sign transactions on the vault when it's time to spend.</span>
                     </li>
                 </ul>
             </section>
@@ -270,7 +270,7 @@
                 <h2 class="section-heading">Download</h2>
                 <p>
                     Verify the signature against the maintainer's public key
-                    before writing the image to a USB drive. The
+                    before writing the image to a flash drive. The
                     <a href="download.html#verify">verification guide</a> walks through
                     the procedure end to end.
                 </p>
