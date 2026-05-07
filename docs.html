@@ -610,7 +610,12 @@
                     Once your seed phrase is loaded and you land on the Dashboard, your next step is to mount
                     the Transfer Drive. This is the dedicated partition on your flash drive used to move
                     files in and out of the vault &mdash; signed transactions, PSBT files, encrypted backups,
-                    and exported reports all pass through here.
+                    and exported reports all pass through here. When the flash drive is inserted into your
+                    everyday Mac or Windows computer, this partition mounts like a normal drive, giving your
+                    wallet software direct access to any files the vault has written to it &mdash; this is
+                    how sneakernet file transfer works. Note that removing the drive from a live vault session
+                    is a one-way action: as a security precaution, you cannot hot-swap it back in without
+                    rebooting the vault.
                 </p>
                 <div class="notice-block">
                     <p class="notice-title">Do this on every boot</p>
