@@ -152,95 +152,14 @@
                     </div>
                 </div>
 
-                <p>
-                    <code>SHA256SUMS.txt</code> contains the SHA-256 hash of the release.
-                    <code>SHA256SUMS.txt.asc</code> is the GPG signature over that file.
-                    The developer public key is in the root of the
-                    <a href="https://github.com/Pasalon0404/Safekeep-Website/blob/main/developer-pubkey.asc" target="_blank" rel="noopener">GitHub repository</a>
-                    &mdash; not bundled with the release. Verification takes two minutes and is the
-                    only way to confirm you received an unmodified image.
-                </p>
             </section>
 
-            <!-- Section 2: v1.2b Changelog -->
-            <section class="content-section" id="changelog">
-                <h2 class="section-heading">What&rsquo;s New in v1.2b</h2>
-                <p>
-                    A major usability and standards compliance release. Wallet records are now a single portable PDF, descriptor state syncs across the entire vault, and all key exports conform to BIP-32 standard types &mdash; eliminating the last friction points in common coordinator workflows.
-                </p>
-
-                <div class="changelog-block">
-                    <span class="changelog-version">v1.2b</span>
-                    <ul class="changelog-entries">
-
-                        <li>
-                            <span class="cl-tag new">New</span>
-                            <span class="cl-text">
-                                <strong>Wallet Record Overhaul.</strong>
-                                The wallet record is now generated as a clean, single-page PDF. All descriptor and key information is formatted for easy printing and long-term offline storage.
-                            </span>
-                        </li>
-
-                        <li>
-                            <span class="cl-tag new">New</span>
-                            <span class="cl-text">
-                                <strong>Deep State Sync.</strong>
-                                Descriptor, seed hints, passphrase, and the derived <code>m/0/0</code> address are now synchronized across the vault in a single operation. All tools see consistent wallet state from boot.
-                            </span>
-                        </li>
-
-                        <li>
-                            <span class="cl-tag new">New</span>
-                            <span class="cl-text">
-                                <strong>Standards Compliance &mdash; xpub / tpub.</strong>
-                                All extended public key exports now use standard BIP-32 <code>xpub</code> and <code>tpub</code> formats, replacing the legacy <code>zpub</code> / SLIP-132 types. Compatible with every major coordinator out of the box.
-                            </span>
-                        </li>
-
-                        <li>
-                            <span class="cl-tag new">New</span>
-                            <span class="cl-text">
-                                <strong>Dynamic Passphrase Support.</strong>
-                                Passphrase-protected wallets can now be accessed without re-deriving from scratch. Enter or swap your passphrase at any point during a session and all dependent state updates automatically.
-                            </span>
-                        </li>
-
-                        <li>
-                            <span class="cl-tag fix">Fix</span>
-                            <span class="cl-text">
-                                <strong>Encrypted Notes &mdash; Save button lifecycle bug.</strong>
-                                The Save button in Encrypted Notes was unresponsive after the first use within a session. The SPA lifecycle issue causing this has been resolved; Save now works reliably across any number of note edits.
-                            </span>
-                        </li>
-
-                        <li>
-                            <span class="cl-tag fix">Fix</span>
-                            <span class="cl-text">
-                                <strong>Address derivation regression.</strong>
-                                A regression introduced by the xpub normalizer caused incorrect receive addresses to be derived in certain derivation path configurations. Derivation is now correct across all supported script types.
-                            </span>
-                        </li>
-
-                        <li>
-                            <span class="cl-tag fix">Fix</span>
-                            <span class="cl-text">
-                                <strong>Layout rendering in strict browsers.</strong>
-                                Several layout edge cases caused visual breakage under strict content security policies and older WebKit versions. These have been resolved for consistent rendering across all supported environments.
-                            </span>
-                        </li>
-
-                    </ul>
-                </div>
-            </section>
 
             <!-- Section 3: Don't Trust, Verify -->
             <section class="content-section" id="verify">
                 <h2 class="section-heading">Don&rsquo;t Trust, Verify</h2>
                 <p>
-                    A download that&rsquo;s been tampered with could steal your seed the moment
-                    you type it. Verifying the file takes about two minutes and is the only way
-                    to be sure you received exactly what was released. Complete all three steps
-                    before writing the image to your USB flash drive.
+                    A tampered image could silently steal your seed. Verification takes about two minutes — complete all three steps before writing to your USB drive.
                 </p>
 
                 <!-- Step 1 -->
@@ -277,8 +196,7 @@
                         <span class="verify-step-title">Verify the Manifest Signature</span>
                     </div>
                     <p class="verify-step-desc">
-                        Confirm that <code>SHA256SUMS.txt</code> was signed by the
-                        maintainer&rsquo;s key and has not been modified since signing.
+                        Confirm that <code>SHA256SUMS.txt</code> was signed by the developer&rsquo;s key and has not been modified since signing.
                     </p>
                     <div class="os-tabs">
                         <span class="os-tab-label active">Linux / macOS / Windows</span>
@@ -292,15 +210,7 @@
 <span class="term-good">gpg: Good signature from "SafeKeepVault Maintainer ..."</span></pre>
                     </div>
                     <p class="verify-note">
-                        You must see <strong>Good signature</strong> in the output.
-                    </p>
-                    <p class="verify-note">
-                        <strong>Note:</strong> You may also see a warning stating &ldquo;This key is not
-                        certified with a trusted signature.&rdquo; This is standard behavior for newly
-                        imported keys. As long as it explicitly says <strong>Good signature</strong>,
-                        the file is verified. Any other result &mdash; including &ldquo;BAD
-                        signature&rdquo; or a key mismatch &mdash; means the manifest was tampered
-                        with. Do not proceed.
+                        You must see <strong>Good signature</strong>. A warning that the key is &ldquo;not certified with a trusted signature&rdquo; is normal for newly imported keys and can be ignored. A <strong>BAD signature</strong> or key mismatch means the file was tampered with &mdash; do not proceed.
                     </p>
                 </div>
 
@@ -311,42 +221,36 @@
                         <span class="verify-step-title">Verify the Image Hash</span>
                     </div>
                     <p class="verify-step-desc">
-                        Confirm that the image file you downloaded matches the
-                        SHA-256 hash recorded in the verified manifest.
+                        Confirm that the downloaded file matches the SHA-256 hash recorded in the verified manifest.
                     </p>
                     <div class="os-tabs">
                         <span class="os-tab-label active">Linux</span>
                     </div>
                     <div class="terminal-block">
-                        <pre><span class="term-comment"># Check image hash against SHA256SUMS.txt</span>
+                        <pre><span class="term-comment"># Check file hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">sha256sum --check SHA256SUMS.txt</span>
-<span class="term-comment"># Expected output: safekeep-Release-v1.22b.img: OK</span></pre>
+<span class="term-comment"># Expected output: safekeep-release-v1.22b.zip: OK</span></pre>
                     </div>
                     <div class="os-tabs" style="margin-top: 0.75rem;">
                         <span class="os-tab-label active">macOS</span>
                     </div>
                     <div class="terminal-block">
-                        <pre><span class="term-comment"># Check image hash against SHA256SUMS.txt</span>
+                        <pre><span class="term-comment"># Check file hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">shasum -a 256 -c SHA256SUMS.txt</span>
-<span class="term-comment"># Expected output: safekeep-Release-v1.22b.img: OK</span></pre>
+<span class="term-comment"># Expected output: safekeep-release-v1.22b.zip: OK</span></pre>
                     </div>
                     <p class="verify-note">
-                        For Linux and macOS, <strong>OK</strong> confirms the image is byte-for-byte
-                        identical to the file the maintainer signed. Any <strong>FAILED</strong>
-                        result means the download is corrupt or was modified &mdash; delete it and
-                        download again.
+                        <strong>OK</strong> confirms the file is unmodified. <strong>FAILED</strong> means the download is corrupt or tampered with &mdash; delete it and download again.
                     </p>
                     <div class="os-tabs" style="margin-top: 0.75rem;">
                         <span class="os-tab-label active">Windows (PowerShell)</span>
                     </div>
                     <div class="terminal-block">
-                        <pre><span class="term-comment"># Generate the image hash</span>
-<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash safekeep-Release-v1.22b.img -Algorithm SHA256</span></pre>
+                        <pre><span class="term-comment"># Generate the file hash</span>
+<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash safekeep-release-v1.22b.zip -Algorithm SHA256</span></pre>
                     </div>
                     <p class="verify-note">
-                        For Windows, open <code>SHA256SUMS.txt</code> in Notepad and visually confirm
-                        that the hash generated in your PowerShell window perfectly matches the text
-                        file. If they do not match, delete the download immediately.
+                        Open <code>SHA256SUMS.txt</code> in Notepad and confirm the hash matches exactly. If it doesn&rsquo;t, delete the download and start over.
                     </p>
                 </div>
 
@@ -403,8 +307,7 @@
                     <p class="verify-step-desc">
                         Once the drive is flashed, configure your computer&rsquo;s UEFI/BIOS settings
                         to boot from USB. Insert the drive and power on. <strong>SafeKeepVault</strong>
-                        initializes in under 30 seconds&mdash;delivering a hardened, distraction-free
-                        environment with zero internet connectivity. Just your tools and your keys.
+                        initializes in under 30 seconds into a hardened, air-gapped environment with all network interfaces locked down.
                     </p>
                 </div>
 
