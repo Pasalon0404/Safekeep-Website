@@ -700,7 +700,7 @@
                     <li>Tap <strong>Add Wallet</strong> and choose type <strong>Bitcoin</strong>.</li>
                     <li>Tap <strong>Import Wallet</strong>.</li>
                     <li>Tap <strong>Scan or import a file</strong>.</li>
-                    <li>Scan the QR code displayed on <strong>SafeKeepVault</strong>. Blue Wallet imports the xpub and fingerprint automatically and creates your watch wallet.</li>
+                    <li>Click Show QR on <strong>SafeKeepVault</strong> and scan the QR code with your phone. Blue Wallet imports the xpub and fingerprint automatically and creates your watch wallet.</li>
                 </ol>
 
                 <p class="wallet-sig-heading">Multisig</p>
@@ -731,7 +731,7 @@
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
                     <li>Open the <strong>Transfer Hub</strong> in the vault and locate the JSON file you just downloaded.</li>
                     <li>On your phone, open the <a href="courier-tool.html" target="_blank" rel="noopener"><strong>Courier Tool</strong></a> and select <strong>Receive</strong>, then tap <strong>Open camera and scan</strong>.</li>
-                    <li>On <strong>SafeKeepVault</strong>, select the JSON file and click <strong>Transmit</strong> &rarr; <strong>Start Transmission</strong>. The vault displays an animated QR sequence.</li>
+                    <li>On <strong>SafeKeepVault</strong>, select the JSON file and click <strong>Transmit</strong> &rarr;<strong>Courier Tool&rarr;</strong><strong>Start Transmission</strong>. The vault displays an animated QR sequence.</li>
                     <li>Hold your phone to the vault&rsquo;s screen. The <strong>Courier Tool</strong> will scan and reconstruct the file. Save it to your phone when prompted.</li>
                     <li>In Nunchuk, tap <strong>Add Key</strong> &rarr; <strong>Coldcard</strong> &rarr; <strong>Add COLDCARD via file (advanced)</strong> &rarr; <strong>Continue</strong>.</li>
                     <li>Navigate to the JSON file you transferred and select it.</li>
@@ -793,7 +793,7 @@
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
                     <span><strong>Wallet Type:</strong> Single-Sig</span>
-                    <span><strong>Key Format:</strong> Hardware Wallet JSON</span>
+                    <span><strong>Key Format:</strong> BIP-32 Watch-Only JSON</span>
                 </div>
                 <ol class="wallet-steps">
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
@@ -803,16 +803,43 @@
                     <li>Specter confirms the device has been added. Click <strong>Create Single Key Wallet</strong>.</li>
                     <li>Give your wallet a name and click <strong>Continue</strong> to complete setup.</li>
                 </ol>
+                <p class="wallet-sig-heading">Multisig</p>
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
+                    <span><strong>Wallet Type:</strong> Multisig</span>
+                    <span><strong>Key Format:</strong> BIP-32 Watch-Only JSON</span>
+                </div>
+                <ol class="wallet-steps">
+                    <li>Follow the same key creation steps as Single Signature above, selecting Multi-Sig (BIP-48) as the Wallet Type in SafeKeepVault. Repeat for each co-signer key</li>
+
+                    <li>Click <strong>Add Wallet</strong> and select <strong>Multiple Signature</strong>.</li>
+                    <li>Select the devices you want in your multisig quorum and click <strong>Continue</strong>. Give your wallet a name and click <strong>Create Wallet</strong> to complete setup.</li>
+                </ol>
 
                 <h3 class="wallet-heading" id="ww-electrum">Electrum <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
                 <p>Use these settings and steps for Electrum. This workflow is file-based &mdash; use the <strong>Courier Tool</strong> to transmit the JSON file from the vault to your phone, then share it to your computer via a cloud service, or move the flash drive directly to your online machine (sneakernet).</p>
+                <p class="wallet-sig-heading">Single Signature</p>
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
+                    <span><strong>Wallet Type:</strong> Single-Sig</span>
+                    <span><strong>Key Format:</strong> Electrum Compatible JSON</span>
+                </div>
                 <ol class="wallet-steps">
-                    <li>In the vault, open <strong>Seed Management</strong> and export the <code>[FINGERPRINT]-electrum.json</code> file to your Transfer Drive.</li>
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.
                     <li>Transfer the file to your online machine and open Electrum.</li>
-                    <li>Go to <strong>File &rarr; Open</strong> and select the exported <code>.json</code> file. Electrum will load it as a watch-only wallet immediately.</li>
-                    <li>To sign a PSBT, go to <strong>Tools &rarr; Load Transaction &rarr; From File</strong>, select your unsigned PSBT, and click <strong>Export &rarr; As QR Code</strong> to transmit it to the vault.</li>
-                    <li>After signing inside the vault, use the <strong>Courier Tool</strong> to scan the signed result back into Electrum and broadcast.</li>
+                    <li>Go to <strong>File &rarr; Open</strong> and select the exported JSON file. Electrum will load it as a watch-only wallet. Electrum will identify the JSON as a Coldcard and ask you to connect it.  Just click No.
                 </ol>
+                 <p class="wallet-sig-heading">Multisig</p>
+            
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
+                    <span><strong>Wallet Type:</strong> Multisig</span>
+                    <span><strong>Key Format:</strong> Electrum Compatible JSON</span>
+                </ol>
+                </div>
+                <ol class="wallet-steps">
+                    Multisig with Electrum is not currently supported. In the meantime, you can set up your multisig wallet in Sparrow or Specter Desktop using the instructions above.</li>
+                 
             </section>
 
             <!-- Signing a Transaction -->
