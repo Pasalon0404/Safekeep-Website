@@ -98,24 +98,24 @@
 
                 <div class="download-hero-block">
                     <div class="download-primary">
-                        <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.22b/safekeep-release-v1.22b.zip"
+                        <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.23b/safekeep-release-v1.23b.zip"
                            class="btn-download-primary">
                             Download
                         </a>
-                        <span class="download-filesize">v1.22b &middot; SHA-256 verified</span>
+                        <span class="download-filesize">v1.23b &middot; SHA-256 verified</span>
                         <div class="sha256-block">
-                            <span class="sha256-label">SHA-256 &mdash; safekeep-release-v1.22b.zip</span>
-                            <code class="sha256-value">336a4c433444a1aad660ef49abc6a94188a6c120afbe53f9704ca2acec89356f</code>
+                            <span class="sha256-label">SHA-256 &mdash; safekeep-release-v1.23b.img</span>
+                            <code class="sha256-value">bbacfbaf2a6dcf5b4d202e4d7b0b982402b1f00faee27552a9ce9831c13e9b61</code>
                         </div>
                     </div>
 
                     <div class="download-verify-group">
                         <p class="download-verify-label">Verify your download</p>
                         <div class="download-secondary-links">
-                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.22b/SHA256SUMS.txt">
+                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.23b/SHA256SUMS.txt">
                                 SHA256SUMS.txt
                             </a>
-                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.22b/SHA256SUMS.txt.asc">
+                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.23b/SHA256SUMS.txt.asc">
                                 SHA256SUMS.txt.asc
                             </a>
                         </div>
@@ -138,8 +138,8 @@
                     <div class="download-verify-group" style="margin-top: 0.5rem;">
                         <p class="download-verify-label">Source code</p>
                         <div class="download-secondary-links">
-                            <a href="https://github.com/Pasalon0404/SafeKeepVault/archive/refs/tags/v1.22b.zip">
-                                safekeep-source-v1.22b.zip
+                            <a href="https://github.com/Pasalon0404/SafeKeepVault/archive/refs/tags/v1.23b.zip">
+                                safekeep-source-v1.23b.zip
                             </a>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Check file hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">sha256sum --check SHA256SUMS.txt</span>
-<span class="term-comment"># Expected output: safekeep-release-v1.22b.zip: OK</span></pre>
+<span class="term-comment"># Expected output: safekeep-release-v1.23b.img: OK</span></pre>
                     </div>
                     <div class="os-tabs" style="margin-top: 0.75rem;">
                         <span class="os-tab-label active">macOS</span>
@@ -237,7 +237,7 @@
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Check file hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">shasum -a 256 -c SHA256SUMS.txt</span>
-<span class="term-comment"># Expected output: safekeep-release-v1.22b.zip: OK</span></pre>
+<span class="term-comment"># Expected output: safekeep-release-v1.23b.img: OK</span></pre>
                     </div>
                     <p class="verify-note">
                         <strong>OK</strong> confirms the file is unmodified. <strong>FAILED</strong> means the download is corrupt or tampered with &mdash; delete it and download again.
@@ -247,7 +247,7 @@
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Generate the file hash</span>
-<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash safekeep-release-v1.22b.zip -Algorithm SHA256</span></pre>
+<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash safekeep-release-v1.23b.img -Algorithm SHA256</span></pre>
                     </div>
                     <p class="verify-note">
                         Open <code>SHA256SUMS.txt</code> in Notepad and confirm the hash matches exactly. If it doesn&rsquo;t, delete the download and start over.
@@ -275,7 +275,7 @@
                         (or <a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a> for Windows):
                     </p>
                     <ol style="margin: 0.75rem 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.94rem; color: var(--text-muted); line-height: 1.6;">
-                        <li>Open the flashing utility and select the extracted <code>safekeep-release-v1.22b.img
+                        <li>Open the flashing utility and select the extracted <code>safekeep-release-v1.23b.img
 </code> file.</li>
                         <li>Select your target flash drive.</li>
                         <li>Click <strong>Flash</strong> and wait for the verification to complete.</li>
@@ -295,7 +295,7 @@
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Flash with dd — replace /dev/sdX with your USB device</span>
-<span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=safekeep-release-v1.22b.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
+<span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=safekeep-release-v1.23b.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
                     </div>
                 </div>
 
