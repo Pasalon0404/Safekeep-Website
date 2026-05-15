@@ -437,7 +437,7 @@ a {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: var(--accent);
+    color: var(--text);
     margin: 0 0 0.35rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--border);

@@ -95,9 +95,13 @@
                     <strong>SafeKeepVault</strong> is a custom-hardened Linux OS that flashes to any USB flash drive, instantly turning your existing PC into a powerful, secure Bitcoin cold storage device.
                 </p>
                 <ul style="list-style: none; padding: 1rem 1.25rem; margin: 1.75rem 0 0; display: flex; flex-direction: column; gap: 0.65rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface);">
-                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>Complete Isolation:</strong> Bypasses your host OS and completely blocks network, disk, and peripheral access.</li>
-                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>Encrypted Storage:</strong> Safely locks away your seed phrase in a dedicated, secure partition.</li>
-                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>Air-Gapped Security:</strong> Gives you the peace of mind of a traditional hardware wallet, powered by your own laptop or desktop PC.</li>
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>Open Source:</strong> Fully auditable code — every line is public and verifiable. No black boxes, no proprietary firmware.</li>
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>Bitcoin Only:</strong> Built exclusively for Bitcoin self-custody. No altcoin distractions, no bloat.</li>
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>True Air Gap:</strong> Network, Bluetooth, and storage interfaces are locked at the OS level before your session begins. Data passes in and out via QR code &mdash; your keys never have a path to the internet.  </li>
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>No Ecosystem Lock:</strong> Works with Sparrow, Specter, Electrum, Nunchuk, Blue Wallet, and others. Use the coordinator you already know.</li>
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>No Blind Signing:</strong> Every transaction is fully decoded and displayed before your key is involved. You verify the destination address and amount on a full-size screen before signing is unlocked.</li>
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>Passphrase Support:</strong> Full BIP-39 passphrase support. Add a 25th word to your seed for an additional layer of protection that makes your seed phrase useless without it.</li>
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>Shamir &amp; Seed XOR Backup:</strong> Split your seed into multiple shares using Shamir Secret Sharing or Seed XOR. Distribute the pieces so no single location holds your complete backup.</li>
                 </ul>
             </section>
 
@@ -111,6 +115,7 @@
                     <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>Universal Compatibility:</strong> Runs on any x86 laptop or desktop using a standard 4GB+ flash drive. Supports most internal webcams or external cameras.</li>
                     <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>Watch Wallet Integration:</strong> Works seamlessly with your favorite Bitcoin wallet software. Export your public key, build transactions in your coordinator, and sign them air-gapped using <strong>SafeKeepVault</strong>.</li>
                     <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>QR-Powered Unlock:</strong> Store your vault password as a QR code on your phone. Display it to the webcam on every boot to decrypt instantly &mdash; no long password to type.</li>
+                    <li style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.5;"><strong>Encrypted Storage:</strong> Safely locks away your seed phrase in a dedicated, AES-256 encrypted partition on the flash drive.</li>
                 </ul>
             </section>
 
@@ -133,24 +138,16 @@
                 <h2 class="section-heading">Comprehensive Utility.</h2>
                 <ul class="spec-list">
                     <li>
-                        <span class="spec-label">The 15-Tool Suite</span>
-                        <span class="spec-desc">Whether you're generating your first seed phrase, signing a complex transaction, or managing your backup recovery tools, <strong>SafeKeepVault</strong> gives you everything you need to keep your Bitcoin secure and offline.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Seamless Integration</span>
-                        <span class="spec-desc">Pairs natively with wallets like Sparrow, Specter, Electrum, Nunchuk, and Blue Wallet. While your software wallet tracks balances and history and creates transactions, <strong>SafeKeepVault</strong> serves as your dedicated, offline signing device.</span>
+                        <span class="spec-label">15-Tool Suite</span>
+                        <span class="spec-desc"><strong>SafeKeepVault</strong> covers every step of the self-custody workflow &mdash; seed generation, signing, multisig coordination, encrypted backups, and more &mdash; in a single, offline environment.</span>
                     </li>
                     <li>
                         <span class="spec-label">Temporary or Encrypted</span>
-                        <span class="spec-desc">The choice is yours at every boot: operate in Temporary Mode, or save your seed phrase in the Encrypted Vault for permanent use.</span>
+                        <span class="spec-desc">The choice is yours at every boot: operate in Temporary Mode for a session that leaves no trace, or use the Encrypted Vault to store your seed securely.</span>
                     </li>
                     <li>
                         <span class="spec-label">Optical Transmission</span>
-                        <span class="spec-desc">Eliminate the need for cables or sneakernet data swaps. Move unsigned and signed transactions via high-density QR codes, ensuring your hardware remains physically and digitally disconnected from the internet.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Open &amp; Accessible</span>
-                        <span class="spec-desc"><strong>SafeKeepVault</strong> is open-source, fully auditable, and free to use. There are no proprietary devices to purchase and no subscriptions to manage&mdash;simply flash a standard USB flash drive and secure your Bitcoin.</span>
+                        <span class="spec-desc">Move unsigned and signed transactions between devices via high-density QR codes &mdash; no cables, no exposed ports, no physical connection to a networked machine.</span>
                     </li>
                 </ul>
             </section>

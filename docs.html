@@ -377,16 +377,15 @@
                     <li>
                         <strong>A Host Computer &mdash;</strong>
                         Any x86-based laptop or desktop with at least 4GB of RAM. <strong>SafeKeepVault</strong>
-                        is engineered to run on a wide range of hardware, regardless of age or performance
-                        specifications. No permanent modifications to your hardware or settings are required.
+                        is built to run on a wide range of hardware regardless of age &mdash; the x86 computer
+                        you already own is very likely compatible. Note - Apple Silicon Macs are not supported due to their unique architecture and secure boot process.
                     </li>
                     <li>
                         <strong>Webcam &mdash;</strong>
                         While not strictly required, an integrated or USB-connected webcam is highly
                         recommended. This enables the use of the <strong>Courier Tool</strong>, our high-density QR
                         transfer tool, allowing you to sign transactions and verify data without ever
-                        physically connecting the vault to another device. It is the most seamless
-                        way to maintain a true air-gap.
+                        physically connecting the vault to another device. 
                     </li>
                     <li>
                         <strong>A Password Manager &mdash;</strong>
@@ -452,7 +451,7 @@
                     convert it to a QR code using the widget below. Save the QR image to your phone&rsquo;s
                     secure photo library or an encrypted note in your password manager. On every subsequent
                     boot, simply hold your phone up to the vault&rsquo;s webcam &mdash; the system reads
-                    the QR and unlocks the vault instantly, with no typing required. This converter run entirely in your browser - safekeepbitcoin.com does not store your password.
+                    the QR and unlocks the vault instantly, with no typing required. This converter runs entirely in your browser &mdash; <strong>safekeepbitcoin.com</strong> does not store your password.
                 </p>
 
                 <!-- QR Generator Widget -->
@@ -537,7 +536,7 @@
             <section class="content-section" id="first-boot">
                 <h2 class="section-heading">Step 3: Initialization &amp; Encryption</h2>
                 <p>
-                    Insert the USB flash drive, then power on or restart your computer. During startup, most systems allow you to choose a temporary boot device by pressing a function key such as F12, F11, ESC, or sometimes F8 immediately after powering on. On Macs with Intel processors, hold the Option key during startup.  <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
+                    Insert the USB flash drive, then power on or restart your computer. During startup, most systems allow you to choose a temporary boot device by pressing a function key such as F2, F8, F9, ESC, etc. immediately after powering on. On Macs with Intel processors, hold the Option key during startup.  <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
                 </p>
 
                 <h3 class="sub-heading" id="encrypted-vault">One-Time Configuration: The Encrypted Vault</h3>
@@ -1140,10 +1139,7 @@
     }
 
     function generateQR(text) {
-        if (!text) {
-            output.classList.remove('visible');
-            return;
-        }
+        if (!text) { return; }
 
         // Create the canvas once; QRCode.toCanvas reuses it on subsequent calls
         if (!qrCanvas) {
@@ -1164,11 +1160,80 @@
         });
     }
 
+    // Always show the output panel so it acts as a visual affordance
+    output.classList.add('visible');
+
+    // ── Demo animation ──────────────────────────────────────────────
+    var demoText    = 'xK9#mP2$vL7@nQ4!';
+    var demoIndex   = 0;
+    var demoTimer   = null;
+    var demoRunning = true;
+
+    function demoStep() {
+        if (!demoRunning) { return; }
+        demoIndex++;
+        var current = demoText.slice(0, demoIndex);
+        input.value = current;
+        generateQR(current);
+        if (demoIndex < demoText.length) {
+            demoTimer = setTimeout(demoStep, 120);
+        } else {
+            // Hold for 1.5 s then fade the placeholder text back out
+            demoTimer = setTimeout(function () {
+                if (!demoRunning) { return; }
+                // Reverse — erase character by character
+                function eraseStep() {
+                    if (!demoRunning || demoIndex <= 0) {
+                        if (demoRunning) {
+                            input.value = '';
+                            generateQR('');
+                            // Restart after a short pause
+                            demoTimer = setTimeout(function () {
+                                demoIndex = 0;
+                                demoTimer = setTimeout(demoStep, 120);
+                            }, 800);
+                        }
+                        return;
+                    }
+                    demoIndex--;
+                    var current = demoText.slice(0, demoIndex);
+                    input.value = current;
+                    if (current) { generateQR(current); }
+                    demoTimer = setTimeout(eraseStep, 60);
+                }
+                eraseStep();
+            }, 1500);
+        }
+    }
+
+    function stopDemo() {
+        demoRunning = false;
+        clearTimeout(demoTimer);
+        input.value = '';
+        input.type = 'password';
+        toggleBtn.classList.remove('shown');
+        toggleBtn.setAttribute('aria-label', 'Show password');
+    }
+
+    // Show demo text in plaintext so the user can see it being typed
+    input.type = 'text';
+
+    // Start demo after a short delay so the page has settled
+    demoTimer = setTimeout(demoStep, 800);
+
     input.addEventListener('input', function () {
+        if (demoRunning) { stopDemo(); }
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(function () {
-            generateQR(input.value.trim());
+            var val = input.value.trim();
+            if (val) {
+                generateQR(val);
+            }
         }, 300);
+    });
+
+    input.addEventListener('focus', function () {
+        if (demoRunning) { stopDemo(); }
     });
 
     badgeChk.addEventListener('change', function () {
