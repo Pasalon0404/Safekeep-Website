@@ -257,6 +257,10 @@
                         </svg>
                         GitHub
                     </a>
+                    <a href="https://x.com/bitcoin_anton" class="sidebar-link" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.26 5.632L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+                        X
+                    </a>
                 </nav>
 
                 <div class="sidebar-actions">
@@ -594,7 +598,7 @@
                     </li>
                     <li>
                         <strong>Unlock .7z Backup &mdash;</strong>
-                        Import a previously encrypted vault archive created using the Encrypted Backup toool. This
+                        Import a previously encrypted vault archive created using the Encrypted Backup tool. This
                         restores your entire environment&mdash;including all stored keys, passphrases, and
                         custom configurations&mdash;onto a new or freshly flashed boot drive.
                     </li>
@@ -823,21 +827,19 @@
                     <span><strong>Key Format:</strong> Electrum Compatible JSON</span>
                 </div>
                 <ol class="wallet-steps">
-                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
                     <li>Transfer the file to your online machine and open Electrum.</li>
-                    <li>Go to <strong>File &rarr; Open</strong> and select the exported JSON file. Electrum will load it as a watch-only wallet. Electrum will identify the JSON as a Coldcard and ask you to connect it.  Just click No.
+                    <li>Go to <strong>File &rarr; Open</strong> and select the exported JSON file. Electrum will load it as a watch-only wallet. Electrum will identify the JSON as a Coldcard and ask you to connect it — click <strong>No</strong>.</li>
                 </ol>
-                 <p class="wallet-sig-heading">Multisig</p>
-            
+
+                <p class="wallet-sig-heading">Multisig</p>
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
                     <span><strong>Wallet Type:</strong> N/A</span>
                     <span><strong>Key Format:</strong> N/A</span>
-                </ol>
                 </div>
-                <ol class="wallet-steps">
-                    Multisig with Electrum is not currently supported. In the meantime, you can set up your multisig wallet in Sparrow or Specter Desktop using the instructions above.</li>
-                 
+                <p style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.6;">Multisig with Electrum is not currently supported. In the meantime, you can set up your multisig wallet in Sparrow or Specter Desktop using the instructions above.</p>
+
             </section>
 
             <!-- Signing a Transaction -->

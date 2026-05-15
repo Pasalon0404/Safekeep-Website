@@ -64,6 +64,10 @@
                         </svg>
                         GitHub
                     </a>
+                    <a href="https://x.com/bitcoin_anton" class="sidebar-link" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.26 5.632L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+                        X
+                    </a>
                 </nav>
 
                 <div class="sidebar-actions">
@@ -93,36 +97,27 @@
                     <strong>SafeKeepVault</strong> boots directly into a hardened, air-gapped environment with all network interfaces disabled and no access to your host machine’s storage. Security isn’t a setting you configure &mdash; it’s the starting state.
                 </p>
 
-                <h3 class="subsection-heading">Absolute Air-Gap</h3>
+                <h3 class="subsection-heading">Absolute Air-Gap &mdash; Total Network Isolation</h3>
+                <p><strong>SafeKeepVault</strong> locks down Ethernet, Wi-Fi, and Bluetooth before the system even fully starts. Your private keys are completely isolated and never have the chance to reach any network interface.</p>
                 <ul class="spec-list">
-                    <li>
-                        <span class="spec-label">Total Network Isolation</span>
-                        <span class="spec-desc"><strong>SafeKeepVault</strong> locks down Ethernet, Wi-Fi, and Bluetooth before the system even fully starts. Your private keys are completely isolated and never have the chance to reach any network interface.</span>
-                    </li>
                     <li>
                         <span class="spec-label">Hardware Lockdown</span>
                         <span class="spec-desc">Non-essential peripherals are deactivated. The system communicates exclusively with your display, keyboard, camera, and the flash drive itself.</span>
                     </li>
                 </ul>
 
-                <h3 class="subsection-heading">Zero-Footprint Operations</h3>
+                <h3 class="subsection-heading">Zero-Footprint Operations &mdash; Host Integrity</h3>
+                <p><strong>SafeKeepVault</strong> operates in complete isolation from your computer's internal storage. Your hard drive is never mounted, read, or modified, ensuring your host OS remains untouched.</p>
                 <ul class="spec-list">
-                    <li>
-                        <span class="spec-label">Host Integrity</span>
-                        <span class="spec-desc"><strong>SafeKeepVault</strong> operates in complete isolation from your computer's internal storage. Your hard drive is never mounted, read, or modified, ensuring your host OS remains untouched.</span>
-                    </li>
                     <li>
                         <span class="spec-label">Volatile Memory Execution</span>
                         <span class="spec-desc">By running entirely in RAM, all session data&mdash;including keys and clipboard history&mdash;is instantly purged upon shutdown. No traces are ever written to the local hardware.</span>
                     </li>
                 </ul>
 
-                <h3 class="subsection-heading">Temporary or Encrypted Versatility</h3>
+                <h3 class="subsection-heading">Temporary or Encrypted Versatility &mdash; Persistent or Temporary</h3>
+                <p>Choose your workflow for every session. Utilize the Encrypted Vault to securely store keys for recurring use, or run in Temporary Mode for using a different private key or multi-signature setup.</p>
                 <ul class="spec-list">
-                    <li>
-                        <span class="spec-label">Persistent or Temporary</span>
-                        <span class="spec-desc">Choose your workflow for every session. Utilize the Encrypted Vault to securely store keys for recurring use, or run in Temporary Mode for using a different private key or multi-signature setup.</span>
-                    </li>
                     <li>
                         <span class="spec-label">Streamlined Authentication</span>
                         <span class="spec-desc">Access your encrypted storage securely and conveniently. Authenticate by scanning a secure QR code via your mobile device or through traditional password entry.</span>
@@ -234,7 +229,7 @@
                 </p>
                 <h3 class="subsection-heading">Advanced Multisig Coordination</h3>
                 <p>
-                    <strong>SafeKeepVault</strong> is a first-class participant in any multi-signature setup. If you already own a Coldcard, Trezor, or any other signing device, <strong>SafeKeepVault</strong> works alongside it seemlessly &mdash; contributing one key in a 2-of-3 or larger quorum just like any dedicated hardware wallet would. No need to replace what you already have.
+                    <strong>SafeKeepVault</strong> is a first-class participant in any multi-signature setup. If you already own a Coldcard, Trezor, or any other signing device, <strong>SafeKeepVault</strong> works alongside it seamlessly &mdash; contributing one key in a 2-of-3 or larger quorum just like any dedicated hardware wallet would. No need to replace what you already have.
                 </p>
                 <p>
                     If you prefer an all-in-one approach, <strong>SafeKeepVault</strong> can also hold and sign with multiple keys itself. Load your primary key from encrypted storage, then temporarily bring in additional keys to meet the required threshold. Those extra keys exist only in volatile memory &mdash; the moment you finish or shut down, they are wiped completely and permanently, leaving no trace on the drive.
