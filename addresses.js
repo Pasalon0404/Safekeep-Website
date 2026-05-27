@@ -188,8 +188,6 @@ var BITCOIN_ADDRESSES = [
   "bc1qhr0cgtnfqq7v6a5dvalrz042lgr7zmt0z95f44",
   "bc1qlzfpztq6j0k0tsr9zvvzwv2dtrhn23w00wmdu8",
   "bc1qeg8c0yfq2990qdc9l2f3u2mdcmsmc3meqdmlf2",
-  "bc1qrzt0xck6pa5tkycd0uagttae06nexvh9n0cx9v",
-  "bc1qz86cj986zewgxmmdv37mc9hasqptdwdq83k52c",
   "bc1q3xctju0h0cvlw5332yalek8t6dlde90xu87z3q",
   "bc1qs85200ht9vng5cvmnm8uc5dgefhrngxk9vhxwd",
   "bc1qwk70vpedz9qes2932zpl9k53e0l49dxlr0wzqf",
