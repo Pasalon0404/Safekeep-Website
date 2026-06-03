@@ -93,7 +93,6 @@
       Download: https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js
     -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="addresses.js"></script>
 </head>
 <body>
 
@@ -203,7 +202,7 @@
 
                         <!-- Left: text controls -->
                         <div style="flex: 1; min-width: 0;">
-<code id="addr-display" class="addr-text">loading&hellip;</code>
+<code id="addr-display" class="addr-text" style="word-break: break-all; font-size: 0.78rem;"></code>
 
                             <div class="donate-btc-line">
                                 <span class="donate-btc-amount" id="donate-btc-amount">Select an amount below</span>
@@ -225,8 +224,7 @@
 
                             <div class="addr-actions">
                                 <button class="addr-btn-copy" id="addr-copy-btn">Copy Address</button>
-                                <button class="addr-btn-new"  id="addr-new-btn">New Address</button>
-                                <p style="font-size:0.78rem; color:var(--text-dim); margin:0.4rem 0 0;">Generates a fresh address for privacy — each donation is unlinkable.</p>
+                                <p style="font-size:0.78rem; color:var(--text-dim); margin:0.4rem 0 0;">Silent Payment address &mdash; every donation appears as a unique transaction on-chain automatically. No address reuse, no address cycling needed.</p>
                             </div>
                         </div>
 
@@ -285,29 +283,18 @@
 
 <script>
 /* ---------------------------------------------------------------
-   Randomised Bitcoin address dispenser + live price / amount picker.
-   Addresses: client-side only, loaded from addresses.js (300 entries).
+   Silent Payment address + live price / amount picker.
    BTC price: fetched from mempool.space — no personal data sent.
    No balance lookups. No logs.
    --------------------------------------------------------------- */
 (function () {
-    var addresses      = window.BITCOIN_ADDRESSES || [];
-    if (!addresses.length) return;
-
-    var currentAddress = '';
-    var currentURI     = '';     /* full BIP-21 URI — what gets displayed and copied */
-    var btcPriceUSD    = null;
-    var currentAmtUSD  = 0;      /* 0 = no amount selected */
-
-    /* ---- Address picker ---- */
-    function pickAddress() {
-        return addresses[Date.now() % addresses.length];
-    }
+    var SP_ADDRESS  = 'sp1qqwf8zxdcek34gl5hqvyhg9yuecmsnczzur8qz83lugsajqk8ddr5uqcrw3qvzqpxm6ypzhyaszd04ewdnwxdedhkxp0w868njm9tct3hjgl5nrvr';
+    var btcPriceUSD = null;
+    var currentAmtUSD = 0;
 
     /* ---- BTC amount helpers ---- */
     function usdToBtcStr(usd) {
         if (!btcPriceUSD || !usd) return null;
-        /* BIP-21 requires plain decimal, max 8 places, no trailing zeros */
         var raw = (usd / btcPriceUSD).toFixed(8);
         return raw.replace(/\.?0+$/, '');
     }
@@ -319,35 +306,27 @@
             amtEl.textContent = 'Select an amount below';
             amtEl.classList.add('placeholder');
         } else if (!btcPriceUSD) {
-            amtEl.textContent = 'Fetching price\u2026';
+            amtEl.textContent = 'Fetching price…';
             amtEl.classList.add('placeholder');
         } else {
-            amtEl.textContent = '\u2248\u00a0' + btcStr + '\u00a0BTC';
+            amtEl.textContent = '≈\u00a0' + btcStr + '\u00a0BTC';
             amtEl.classList.remove('placeholder');
         }
     }
 
-    /* ---- QR + wallet link renderer ---- */
-    function renderAddress(addr) {
-        currentAddress = addr;
-
-        var btcStr  = usdToBtcStr(currentAmtUSD);
-        currentURI  = 'bitcoin:' + addr + (btcStr ? '?amount=' + btcStr : '');
-
-        /* Show full URI in the display field so copy gives the complete string */
-        document.getElementById('addr-display').textContent = currentURI;
-
-var container = document.getElementById('addr-qr');
+    /* ---- Render address + QR ---- */
+    function renderAddress() {
+        document.getElementById('addr-display').textContent = SP_ADDRESS;
+        var container = document.getElementById('addr-qr');
         container.innerHTML = '';
         new QRCode(container, {
-            text:         currentURI,
+            text:         SP_ADDRESS,
             width:        160,
             height:       160,
             colorDark:    '#000000',
             colorLight:   '#ffffff',
             correctLevel: QRCode.CorrectLevel.M
         });
-
         refreshBtcDisplay();
     }
 
@@ -359,12 +338,11 @@ var container = document.getElementById('addr-qr');
                 btcPriceUSD = data.USD;
                 var meta = document.getElementById('donate-price-meta');
                 if (meta) {
-                    meta.textContent = '1 BTC \u2248 $' +
+                    meta.textContent = '1 BTC ≈ $' +
                         Math.round(btcPriceUSD).toLocaleString() +
-                        ' \u00b7 via mempool.space';
+                        ' · via mempool.space';
                 }
-                /* Re-render QR now that we have a price */
-                if (currentAddress) renderAddress(currentAddress);
+                refreshBtcDisplay();
             })
             .catch(function () {
                 var meta = document.getElementById('donate-price-meta');
@@ -382,7 +360,6 @@ var container = document.getElementById('addr-qr');
             btn.addEventListener('click', function () {
                 btns.forEach(function (b) { b.classList.remove('active'); });
                 this.classList.add('active');
-
                 if (this.getAttribute('data-usd') === 'other') {
                     customWrap.style.display = 'flex';
                     currentAmtUSD = parseFloat(customIn.value) || 0;
@@ -390,28 +367,27 @@ var container = document.getElementById('addr-qr');
                     customWrap.style.display = 'none';
                     currentAmtUSD = parseFloat(this.getAttribute('data-usd'));
                 }
-                renderAddress(currentAddress);
+                refreshBtcDisplay();
             });
         });
 
         customIn.addEventListener('input', function () {
             currentAmtUSD = parseFloat(this.value) || 0;
-            renderAddress(currentAddress);
+            refreshBtcDisplay();
         });
     }
 
     /* ---- Copy button ---- */
     function initCopyBtn() {
         document.getElementById('addr-copy-btn').addEventListener('click', function () {
-            var btn     = this;
-            var toCopy  = currentURI || currentAddress;   /* full URI if available */
-            navigator.clipboard.writeText(toCopy).then(function () {
+            var btn = this;
+            navigator.clipboard.writeText(SP_ADDRESS).then(function () {
                 var orig = btn.textContent;
-                btn.textContent = 'Copied \u2713';
+                btn.textContent = 'Copied ✓';
                 setTimeout(function () { btn.textContent = orig; }, 2000);
             }).catch(function () {
                 var ta = document.createElement('textarea');
-                ta.value = toCopy;
+                ta.value = SP_ADDRESS;
                 ta.style.position = 'fixed';
                 ta.style.opacity  = '0';
                 document.body.appendChild(ta);
@@ -419,7 +395,7 @@ var container = document.getElementById('addr-qr');
                 document.execCommand('copy');
                 document.body.removeChild(ta);
                 var orig = btn.textContent;
-                btn.textContent = 'Copied \u2713';
+                btn.textContent = 'Copied ✓';
                 setTimeout(function () { btn.textContent = orig; }, 2000);
             });
         });
@@ -427,14 +403,10 @@ var container = document.getElementById('addr-qr');
 
     /* ---- Init ---- */
     function init() {
-        renderAddress(pickAddress());
+        renderAddress();
         initAmountPicker();
         initCopyBtn();
         fetchPrice();
-
-        document.getElementById('addr-new-btn').addEventListener('click', function () {
-            renderAddress(pickAddress());
-        });
     }
 
     if (typeof QRCode !== 'undefined') {
