@@ -10,30 +10,30 @@
    DESIGN TOKENS
    ============================================= */
 :root {
-    /* Surfaces — rich blacks → dark slate */
-    --bg:           #0B0E11;  /* page background, near-black */
-    --surface:      #14181D;  /* cards, sidebar, nav */
-    --surface-2:    #1B2026;  /* elevated panels, hovers */
-    --code-bg:      #0F1318;  /* terminals, code */
+    /* Surfaces — clean white / light slate */
+    --bg:           #FFFFFF;  /* page background, white */
+    --surface:      #FFFFFF;  /* cards, sidebar, nav */
+    --surface-2:    #F4F6F8;  /* elevated panels, hovers */
+    --code-bg:      #F4F6F8;  /* terminals, code */
 
     /* Text */
-    --text:         #E8EAED;  /* primary, off-white */
-    --text-muted:   #A4ABB3;  /* secondary prose */
-    --text-dim:     #6B727A;  /* meta, captions */
+    --text:         #1A1D21;  /* primary, near-black */
+    --text-muted:   #4A5158;  /* secondary prose */
+    --text-dim:     #7A828B;  /* meta, captions */
 
     /* Bitcoin Orange accent */
     --accent:       #F7931A;  /* exact Bitcoin orange — CTAs, highlights */
-    --accent-hover: #FFA938;  /* brighter for dark-mode hover */
-    --accent-soft:  rgba(247, 147, 26, 0.12);  /* tinted fills */
-    --accent-ring:  rgba(247, 147, 26, 0.28);  /* glows / focus rings */
+    --accent-hover: #E07F0E;  /* darker for light-mode hover */
+    --accent-soft:  rgba(247, 147, 26, 0.10);  /* tinted fills */
+    --accent-ring:  rgba(247, 147, 26, 0.22);  /* glows / focus rings */
 
     /* Functional */
-    --good:         #3FB950;  /* "Good signature", success */
-    --good-soft:    rgba(63, 185, 80, 0.12);
+    --good:         #1A7F37;  /* "Good signature", success */
+    --good-soft:    rgba(26, 127, 55, 0.10);
 
     /* Lines */
-    --border:       #232A31;
-    --border-mid:   #2E363F;
+    --border:       #E4E7EB;
+    --border-mid:   #D4D8DD;
 
     --sidebar-width:  230px;
     --topnav-height:  52px;
@@ -47,15 +47,15 @@
     --radius-md: 8px;
     --radius-lg: 12px;
     --transition: 0.18s ease;
-    --shadow-card: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.28);
+    --shadow-card: 0 1px 2px rgba(16,24,40,0.06), 0 8px 24px rgba(16,24,40,0.08);
 }
 
 ::selection {
-    background: var(--accent-ring);
-    color: #fff;
+    background: var(--accent-soft);
+    color: var(--text);
 }
 
-html { color-scheme: dark; }
+html { color-scheme: light; }
 
 /* =============================================
    RESET & BASE
@@ -90,7 +90,7 @@ a {
    ============================================= */
 .top-nav {
     height: var(--topnav-height);
-    background: rgba(11, 14, 17, 0.82);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: saturate(140%) blur(12px);
     -webkit-backdrop-filter: saturate(140%) blur(12px);
     border-bottom: 1px solid var(--border);
@@ -776,11 +776,11 @@ pre code {
     height: auto;
     cursor: pointer;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-mid);
+    border: 1px solid var(--border);
     box-shadow:
-        0 2px  8px  rgba(0, 0, 0, 0.45),
-        0 12px 28px rgba(0, 0, 0, 0.45),
-        0 28px 60px rgba(0, 0, 0, 0.35);
+        0 1px  4px  rgba(16, 24, 40, 0.10),
+        0 6px  18px rgba(16, 24, 40, 0.12),
+        0 24px 52px rgba(16, 24, 40, 0.10);
 }
 
 /* .os-showcase a img: no additional width rules needed —
@@ -809,11 +809,11 @@ pre code {
 .img-elevated {
     display: block;
     border-radius: var(--radius-lg, 8px);
-    border: 1px solid var(--border-mid);
+    border: 1px solid var(--border);
     box-shadow:
-        0 2px  8px  rgba(0, 0, 0, 0.45),
-        0 12px 28px rgba(0, 0, 0, 0.45),
-        0 28px 60px rgba(0, 0, 0, 0.35);
+        0 1px  4px  rgba(16, 24, 40, 0.10),
+        0 6px  18px rgba(16, 24, 40, 0.12),
+        0 24px 52px rgba(16, 24, 40, 0.10);
 }
 
 /* =============================================
@@ -1277,7 +1277,7 @@ pre code {
     right: 0;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 12px 28px rgba(16, 24, 40, 0.12);
     z-index: 998;
 }
 
