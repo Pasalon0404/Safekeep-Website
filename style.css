@@ -1,36 +1,61 @@
 /* =============================================
-   SAFEKEEPBITCOIN — Clean Open-Source Minimal
-   Design: left sidebar + top nav, light theme
+   SAFEKEEPBITCOIN — Secure Dark Redesign
+   Design: left sidebar + top nav, deep dark theme
+   Accent: Bitcoin Orange (#F7931A)
    ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 /* =============================================
    DESIGN TOKENS
    ============================================= */
 :root {
-    --bg:           #FAFAFA;
-    --surface:      #FFFFFF;
-    --text:         #222222;
-    --text-muted:   #484848;
-    --text-dim:     #5c5c5c;
-    --accent:       #F7931A;
-    --accent-hover: #d97c0e;
-    --border:       #E8E8E8;
-    --border-mid:   #D4D4D4;
-    --code-bg:      #F4F4F4;
+    /* Surfaces — rich blacks → dark slate */
+    --bg:           #0B0E11;  /* page background, near-black */
+    --surface:      #14181D;  /* cards, sidebar, nav */
+    --surface-2:    #1B2026;  /* elevated panels, hovers */
+    --code-bg:      #0F1318;  /* terminals, code */
+
+    /* Text */
+    --text:         #E8EAED;  /* primary, off-white */
+    --text-muted:   #A4ABB3;  /* secondary prose */
+    --text-dim:     #6B727A;  /* meta, captions */
+
+    /* Bitcoin Orange accent */
+    --accent:       #F7931A;  /* exact Bitcoin orange — CTAs, highlights */
+    --accent-hover: #FFA938;  /* brighter for dark-mode hover */
+    --accent-soft:  rgba(247, 147, 26, 0.12);  /* tinted fills */
+    --accent-ring:  rgba(247, 147, 26, 0.28);  /* glows / focus rings */
+
+    /* Functional */
+    --good:         #3FB950;  /* "Good signature", success */
+    --good-soft:    rgba(63, 185, 80, 0.12);
+
+    /* Lines */
+    --border:       #232A31;
+    --border-mid:   #2E363F;
 
     --sidebar-width:  230px;
-    --topnav-height:  44px;
-    --max-content:    700px;
+    --topnav-height:  52px;
+    --max-content:    760px;
 
-    --font-sans: system-ui, -apple-system, BlinkMacSystemFont,
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
                  'Segoe UI', Roboto, sans-serif;
-    --font-mono: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+    --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Courier New', monospace;
 
-    --radius-sm: 4px;
-    --radius-md: 6px;
-    --radius-lg: 8px;
-    --transition: 0.15s ease;
+    --radius-sm: 5px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition: 0.18s ease;
+    --shadow-card: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.28);
 }
+
+::selection {
+    background: var(--accent-ring);
+    color: #fff;
+}
+
+html { color-scheme: dark; }
 
 /* =============================================
    RESET & BASE
@@ -65,7 +90,9 @@ a {
    ============================================= */
 .top-nav {
     height: var(--topnav-height);
-    background: var(--surface);
+    background: rgba(11, 14, 17, 0.82);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
@@ -118,19 +145,26 @@ a {
 .top-nav-links a:hover,
 .top-nav-links a.active {
     color: var(--text);
-    background: var(--code-bg);
+    background: var(--surface-2);
+}
+
+.top-nav-links a.active {
+    color: var(--accent);
 }
 
 .top-nav-links a.nav-download {
     background: var(--accent);
-    color: #ffffff;
-    font-weight: 600;
-    margin-left: 0.35rem;
+    color: #0B0E11;
+    font-weight: 700;
+    margin-left: 0.5rem;
+    padding: 0.34rem 0.95rem;
+    box-shadow: 0 0 0 1px var(--accent), 0 6px 18px -6px var(--accent-ring);
 }
 
-.top-nav-links a.nav-download:hover {
+.top-nav-links a.nav-download:hover,
+.top-nav-links a.nav-download.active {
     background: var(--accent-hover);
-    color: #ffffff;
+    color: #0B0E11;
 }
 
 /* =============================================
@@ -253,12 +287,13 @@ a {
 
 .btn-download {
     background: var(--accent);
-    color: #ffffff;
+    color: #0B0E11;
+    box-shadow: 0 8px 22px -10px var(--accent-ring);
 }
 
 .btn-download:hover {
     background: var(--accent-hover);
-    color: #ffffff;
+    color: #0B0E11;
 }
 
 .btn-donate {
@@ -299,10 +334,10 @@ a {
 }
 
 .page-hero-title {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.035em;
-    line-height: 1.1;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
     color: var(--text);
     margin-bottom: 0.6rem;
 }
@@ -544,11 +579,12 @@ a {
 
 /* Notice / disclaimer block */
 .notice-block {
-    border: 2px solid var(--accent);
+    border: 1px solid var(--accent-ring);
+    border-left: 3px solid var(--accent);
     border-radius: var(--radius-md);
     padding: 1.25rem 1.5rem;
     margin: 1.75rem 0;
-    background: #fffaf5;
+    background: var(--accent-soft);
 }
 
 .notice-block .notice-title {
@@ -740,11 +776,11 @@ pre code {
     height: auto;
     cursor: pointer;
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--border-mid);
     box-shadow:
-        0 1px  4px  rgba(0, 0, 0, 0.12),
-        0 6px  18px rgba(0, 0, 0, 0.22),
-        0 24px 52px rgba(0, 0, 0, 0.16);
+        0 2px  8px  rgba(0, 0, 0, 0.45),
+        0 12px 28px rgba(0, 0, 0, 0.45),
+        0 28px 60px rgba(0, 0, 0, 0.35);
 }
 
 /* .os-showcase a img: no additional width rules needed —
@@ -773,11 +809,11 @@ pre code {
 .img-elevated {
     display: block;
     border-radius: var(--radius-lg, 8px);
-    border: 1px solid rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--border-mid);
     box-shadow:
-        0 1px  4px  rgba(0, 0, 0, 0.12),
-        0 6px  18px rgba(0, 0, 0, 0.22),
-        0 24px 52px rgba(0, 0, 0, 0.16);
+        0 2px  8px  rgba(0, 0, 0, 0.45),
+        0 12px 28px rgba(0, 0, 0, 0.45),
+        0 28px 60px rgba(0, 0, 0, 0.35);
 }
 
 /* =============================================
@@ -846,19 +882,23 @@ pre code {
 .btn-primary {
     display: inline-block;
     background: var(--accent);
-    color: #ffffff;
-    padding: 0.65rem 1.4rem;
+    color: #0B0E11;
+    padding: 0.7rem 1.5rem;
     border-radius: var(--radius-md);
-    font-size: 0.88rem;
-    font-weight: 600;
-    transition: background var(--transition);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
     cursor: pointer;
     border: none;
+    box-shadow: 0 8px 24px -8px var(--accent-ring);
 }
 
 .btn-primary:hover {
     background: var(--accent-hover);
-    color: #ffffff;
+    color: #0B0E11;
+    box-shadow: 0 10px 28px -6px var(--accent-ring);
+    transform: translateY(-1px);
 }
 
 .btn-secondary {
@@ -995,22 +1035,25 @@ pre code {
     align-items: center;
     gap: 0.5rem;
     background: var(--accent);
-    color: #ffffff;
-    padding: 0.75rem 1.6rem;
+    color: #0B0E11;
+    padding: 0.85rem 1.9rem;
     border-radius: var(--radius-md);
-    font-size: 0.95rem;
+    font-size: 0.97rem;
     font-weight: 700;
     font-family: var(--font-mono);
     letter-spacing: -0.01em;
     text-decoration: none;
-    transition: background var(--transition);
+    transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
     white-space: nowrap;
+    box-shadow: 0 10px 30px -10px var(--accent-ring);
 }
 
 .btn-download-primary:hover {
     background: var(--accent-hover);
-    color: #ffffff;
+    color: #0B0E11;
     border-bottom: none;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 34px -8px var(--accent-ring);
 }
 
 .download-filesize {
@@ -1146,7 +1189,8 @@ pre code {
 }
 
 .term-good {
-    color: #2a7a4f;
+    color: var(--good);
+    font-weight: 600;
 }
 
 .verify-note {
@@ -1233,7 +1277,7 @@ pre code {
     right: 0;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
     z-index: 998;
 }
 
@@ -1350,7 +1394,7 @@ pre code {
     display: block;
     font-family: var(--font-mono);
     font-size: 0.82rem;
-    color: #1a1a1a;
+    color: var(--text);
     word-break: break-all;
     line-height: 1.7;
     user-select: all;
@@ -1366,7 +1410,7 @@ pre code {
 
 .addr-btn-copy {
     background: var(--accent);
-    color: #ffffff;
+    color: #0B0E11;
     border: none;
     padding: 0.6rem 1.2rem;
     border-radius: var(--radius-md);
@@ -1435,8 +1479,9 @@ pre code {
    ============================================= */
 
 .sha256-block {
-    background: #ffffff;
-    border: 2px solid var(--accent);
+    background: var(--code-bg);
+    border: 1px solid var(--accent-ring);
+    border-left: 3px solid var(--accent);
     border-radius: var(--radius-md);
     padding: 1rem 1.25rem;
     margin-top: 1rem;
@@ -1459,7 +1504,7 @@ pre code {
     font-family: var(--font-mono);
     font-size: 0.90rem;
     font-weight: 600;
-    color: var(--text);
+    color: var(--accent);
     word-break: break-all;
     line-height: 1.7;
     user-select: all;
@@ -1537,4 +1582,346 @@ pre code {
     padding: 0.1em 0.4em;
     border-radius: 3px;
     border: 1px solid var(--border-mid);
+}
+
+/* =============================================
+   REDESIGN 2026 — HOMEPAGE SHOWCASE COMPONENTS
+   ============================================= */
+
+/* ---- Hero with ambient orange glow + grid ---- */
+.hero {
+    position: relative;
+    padding: 3.25rem 0 2.75rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
+/* faint dot-grid + radial orange glow behind the hero */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -40% -20% auto -20%;
+    height: 420px;
+    background:
+        radial-gradient(60% 100% at 30% 0%, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 34px 34px;
+    -webkit-mask-image: radial-gradient(70% 60% at 25% 20%, #000 0%, transparent 75%);
+            mask-image: radial-gradient(70% 60% at 25% 20%, #000 0%, transparent 75%);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero > * { position: relative; z-index: 1; }
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-ring);
+    padding: 0.32rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+}
+
+.hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--good);
+    box-shadow: 0 0 0 3px var(--good-soft);
+}
+
+.hero-title {
+    font-size: 3.25rem;
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    color: var(--text);
+    margin: 0 0 0.4rem;
+}
+
+.hero-title span { color: var(--accent); }
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+}
+
+.hero-lede {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 56ch;
+    margin: 0 0 1.75rem;
+}
+
+.hero-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.hero-meta {
+    margin-top: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    letter-spacing: 0.01em;
+}
+.hero-meta strong { color: var(--text-muted); font-weight: 600; }
+
+/* ---- Trust badge row ---- */
+.trust-badges {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0;
+    margin: 1.75rem 0 0;
+}
+
+.trust-badges li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem;
+}
+
+.trust-badges svg {
+    width: 15px; height: 15px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+/* ---- Feature card grid ---- */
+.feature-grid {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+}
+
+.feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.15rem 1.2rem 1.25rem;
+    transition: border-color var(--transition), transform var(--transition), background var(--transition);
+}
+
+.feature-card:hover {
+    border-color: var(--border-mid);
+    background: var(--surface-2);
+    transform: translateY(-2px);
+}
+
+.feature-card .fc-icon {
+    width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-ring);
+    margin-bottom: 0.85rem;
+}
+.feature-card .fc-icon svg {
+    width: 17px; height: 17px;
+    stroke: var(--accent); fill: none;
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.feature-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 0.35rem;
+    letter-spacing: -0.01em;
+}
+
+.feature-card p {
+    font-size: 0.875rem !important;
+    color: var(--text-muted) !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+}
+
+/* ---- Stat / proof strip ---- */
+.stat-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 1.75rem 0 0;
+}
+.stat-strip .stat {
+    background: var(--surface);
+    padding: 1.1rem 1.25rem;
+}
+.stat-strip .stat-num {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--accent);
+    line-height: 1;
+}
+.stat-strip .stat-label {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* ---- Numbered step badge (download verify steps) ---- */
+.verify-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.4rem 1.5rem 1.5rem;
+}
+.verify-step + .verify-step { margin-top: 1rem; }
+
+.verify-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.2rem;
+    height: 1.5rem;
+    padding: 0 0.55rem;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-ring);
+    border-radius: 999px;
+    color: var(--accent) !important;
+}
+.verify-step-number:empty { display: none; }
+
+/* ---- Section CTA panel ---- */
+.cta-panel {
+    background:
+        radial-gradient(120% 140% at 100% 0%, var(--accent-soft) 0%, transparent 55%),
+        var(--surface);
+    border: 1px solid var(--border-mid);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2rem 2.1rem;
+    margin-top: 2.5rem;
+}
+.cta-panel h2 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin: 0 0 0.5rem;
+}
+.cta-panel h2::before { content: none; }
+.cta-panel p {
+    color: var(--text-muted) !important;
+    margin: 0 0 1.35rem !important;
+    max-width: 52ch;
+}
+
+/* ---- Richer multi-column footer ---- */
+.site-footer-rich {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+    padding: 2.5rem 1.5rem 1.75rem;
+}
+.site-footer-rich .footer-inner {
+    max-width: calc(var(--sidebar-width) + var(--max-content) + 7rem);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.site-footer-rich .footer-brand .brand {
+    font-size: 1.1rem;
+}
+.site-footer-rich .footer-tag {
+    margin-top: 0.6rem;
+    font-size: 0.84rem;
+    color: var(--text-dim);
+    line-height: 1.55;
+    max-width: 30ch;
+}
+.site-footer-rich h4 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--text-dim);
+    margin: 0 0 0.85rem;
+}
+.site-footer-rich ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 0.5rem;
+}
+.site-footer-rich ul a {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    transition: color var(--transition);
+}
+.site-footer-rich ul a:hover { color: var(--accent); }
+.site-footer-rich .footer-bottom {
+    max-width: calc(var(--sidebar-width) + var(--max-content) + 7rem);
+    margin: 2rem auto 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+}
+
+@media (max-width: 860px) {
+    .hero-title { font-size: 2.5rem; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .site-footer-rich .footer-inner { grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+}
+
+@media (max-width: 600px) {
+    .hero-title { font-size: 2.05rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .stat-strip { grid-template-columns: 1fr; }
+    .site-footer-rich .footer-inner { grid-template-columns: 1fr 1fr; }
+    .hero-cta { flex-direction: column; align-items: stretch; }
+    .hero-cta .btn-primary, .hero-cta .btn-secondary { text-align: center; }
 }
