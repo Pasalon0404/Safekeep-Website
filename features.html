@@ -91,11 +91,12 @@
             </div>
 
 
-            <!-- Silent Payments Banner -->
+            <!-- What's New Banner -->
             <div style="margin: 1.5rem 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-md);">
-                <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.35rem;">New Feature</p>
-                <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.5rem;">Silent Payments (BIP-352) Now Supported</p>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.6;"><strong>SafeKeepVault</strong> now generates and signs <strong>BIP-352 Silent Payment</strong> addresses &mdash; receive Bitcoin privately with a single static address that never repeats on-chain. Works perfectly with <strong>Sparrow 2.5</strong>. Fully air-gapped, no network required.</p>
+                <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.35rem;">New in v1.34</p>
+                <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.5rem;">Co-sign with your Coldcard or Trezor over USB</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0 0 0.75rem; line-height: 1.6;">Pair a <strong>Coldcard</strong> or <strong>Trezor One</strong> and the PSBT Signer can ask it for a co-signature directly, so a 2-of-3 can be signed in one sitting. Every signature is still approved on the device&rsquo;s own screen. For multisig, you can even use the vault as a large-screen review station for your hardware wallets alone, with no seed loaded. The Transfer Drive now mounts automatically, and Lock is now a real lock that clears your keys from memory.</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Also supported: <strong>BIP-352 Silent Payments</strong> &mdash; receive Bitcoin privately with a single static address that never repeats on-chain. Works with <strong>Sparrow 2.5</strong>.</p>
             </div>
             <!-- Section 1: Fortress -->
             <section class="content-section">
@@ -109,7 +110,7 @@
                 <ul class="spec-list">
                     <li>
                         <span class="spec-label">Hardware Lockdown</span>
-                        <span class="spec-desc">Non-essential peripherals are deactivated. The system communicates exclusively with your display, keyboard, camera, and the flash drive itself.</span>
+                        <span class="spec-desc">Non-essential peripherals are deactivated. The system communicates only with your display, keyboard, mouse, camera, the flash drive itself, and a Coldcard or Trezor One if you choose to co-sign with one. About 30 seconds after boot, any newly plugged-in keyboard or mouse is blocked, to defend against &ldquo;BadUSB&rdquo; devices that pretend to be a keyboard.</span>
                     </li>
                 </ul>
 
@@ -130,6 +131,10 @@
                         <span class="spec-desc">Access your encrypted storage securely and conveniently. Authenticate by scanning a secure QR code via your mobile device or through traditional password entry.</span>
                     </li>
                     <li>
+                        <span class="spec-label">True Lock</span>
+                        <span class="spec-desc">Locking closes the app, clears your keys from memory and closes the encrypted partition, returning to the password prompt. Set an Auto-Lock timer, or leave a Temporary Session and return to your master vault without rebooting.</span>
+                    </li>
+                    <li>
                         <span class="spec-label">Plausible Deniability</span>
                         <span class="spec-desc">Transform any standard PC into a signing station without specialized, branded hardware. To an outside observer, your vault is an indistinguishable, everyday USB flash drive.</span>
                     </li>
@@ -144,32 +149,33 @@
                 </p>
                 <ul class="tools-list">
                     <li><span class="tool-name">PSBT Signer</span></li>
-                    <li><span class="tool-name">Passphrase Library</span></li>
                     <li><span class="tool-name">Seed Management</span></li>
                     <li><span class="tool-name">Transfer Hub</span></li>
-                    <li><span class="tool-name">Courier Tool</span></li>
-                    <li><span class="tool-name">Output Descriptor</span></li>
                     <li><span class="tool-name">Entropy Generator</span></li>
                     <li><span class="tool-name">BIP-85 Child Seeds</span></li>
+                    <li><span class="tool-name">Seed QR Code</span></li>
+                    <li><span class="tool-name">Passphrase Library</span></li>
+                    <li><span class="tool-name">Output Descriptor</span></li>
                     <li><span class="tool-name">Seed XOR Splitter</span></li>
                     <li><span class="tool-name">Shamir Backup</span></li>
-                    <li><span class="tool-name">Seed QR Code</span></li>
-                    <li><span class="tool-name">Message Signer</span></li>
-                    <li><span class="tool-name">Encrypted Notes</span></li>
                     <li><span class="tool-name">Encrypted Backup</span></li>
-                    <li><span class="tool-name">Wallet Record</span></li><li><span class="tool-name">2FA Backup</span></li>
+                    <li><span class="tool-name">Wallet Record</span></li>
+                    <li><span class="tool-name">Message Signer</span></li>
+                    <li><span class="tool-name">Courier Tool</span></li>
+                    <li><span class="tool-name">Encrypted Notes</span></li>
+                    <li><span class="tool-name">2FA Backup</span></li>
                 </ul>
             </section>
 
             <!-- Tools Dashboard Screenshot -->
             <figure class="os-showcase">
-                <a href="Tools.png" target="_blank" rel="noopener">
-                    <img src="Tools.png" alt="SafeKeepVault tools dashboard — all sixteen tools organized under Core Tools and Advanced Tools, with an active master seed">
+                <a href="dashboard.png" target="_blank" rel="noopener">
+                    <img src="dashboard.png" alt="SafeKeepVault tools dashboard — three main tools plus thirteen advanced tools in four groups, with an active master seed">
                 </a>
                 <figcaption>
-                    The <strong>SafeKeepVault</strong> tool dashboard &mdash; sixteen specialized utilities
-                    organized into Core and Advanced sections. Your active master seed phrase is loaded once and available
-                    to every tool.
+                    The <strong>SafeKeepVault</strong> tool dashboard &mdash; three main tools up front, and thirteen
+                    advanced tools grouped into Keys &amp; Seeds, Backup &amp; Recovery, Signing &amp; Transfer, and Private Data.
+                    Your active master seed phrase is loaded once and available to every tool.
                 </figcaption>
             </figure>
 
@@ -237,6 +243,9 @@
                 <h3 class="subsection-heading">Advanced Multisig Coordination</h3>
                 <p>
                     <strong>SafeKeepVault</strong> is a first-class participant in any multi-signature setup. If you already own a Coldcard, Trezor, or any other signing device, <strong>SafeKeepVault</strong> works alongside it seamlessly &mdash; contributing one key in a 2-of-3 or larger quorum just like any dedicated hardware wallet would. No need to replace what you already have.
+                </p>
+                <p>
+                    A <strong>Coldcard</strong> or <strong>Trezor One</strong> can even be plugged straight into the vault. Pair it once in Device Options, and after the vault adds its own signature the PSBT Signer can ask the device for the second one over USB &mdash; no files or QR codes passed back and forth. You approve every signature on the hardware wallet&rsquo;s own screen, and the vault only ever talks to the device you paired.
                 </p>
                 <p>
                     If you prefer an all-in-one approach, <strong>SafeKeepVault</strong> can also hold and sign with multiple keys itself. Load your primary key from encrypted storage, then temporarily bring in additional keys to meet the required threshold. Those extra keys exist only in volatile memory &mdash; the moment you finish or shut down, they are wiped completely and permanently, leaving no trace on the drive.

@@ -302,11 +302,7 @@
                             <li><a href="#config-options">Initial Configuration Options</a></li>
                         </ul>
                     </li>
-                    <li><a href="#transfer-drive">Step 4: Mounting the Transfer Drive</a>
-                        <ul>
-                            <li><a href="#mount-steps">How to Mount</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#transfer-drive">Step 4: The Transfer Drive</a></li>
                     <li><a href="#watch-wallet">Watch Wallet Creation</a>
                         <ul>
                             <li><a href="#ww-bluewallet">Blue Wallet</a></li>
@@ -321,13 +317,16 @@
                             <li><a href="#sign-ingest">Loading the PSBT</a></li>
                             <li><a href="#sign-review">Reviewing the Transaction</a></li>
                             <li><a href="#sign-sign">Signing</a></li>
+                            <li><a href="#sign-hardware">Co-signing with a Coldcard or Trezor</a></li>
+                            <li><a href="#sign-hardware-only">Signing with only a hardware wallet</a></li>
                             <li><a href="#sign-export">Exporting the Result</a></li>
                             <li><a href="#sign-transfer-hub">Exporting via the Transfer Hub</a></li>
                         </ul>
                     </li>
+                    <li><a href="#sessions">Locking &amp; Device Options</a></li>
                     <li><a href="#tools">The Tool Arsenal</a>
                         <ul>
-                            <li><a href="#primary-tools">Primary Tools</a></li>
+                            <li><a href="#primary-tools">Main Tools</a></li>
                             <li><a href="#advanced-tools">Advanced Tools</a></li>
                         </ul>
                     </li>
@@ -410,7 +409,7 @@
                         QR tool&mdash;this creates a secure, bidirectional data flow.
                         <ul style="margin: 0.65rem 0 0 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.93rem; color: var(--text-muted); line-height: 1.6;">
                             <li><strong>Seamless QR Unlocking:</strong> By storing your vault password in a manager on your mobile device, you can generate a QR code from that password (see Step 1). Simply display your phone to the host&rsquo;s webcam to unlock your encrypted vault instantly&mdash;combining elite cryptographic strength with a streamlined, convenient way to unlock your wallet.</li>
-                            <li><strong>Port Security:</strong> Note that for maximum hardware isolation, USB ports are restricted once the vault is active. File-based transfers should be managed by moving the drive between machines while the vault is powered down.</li>
+                            <li><strong>Port Security:</strong> About 30 seconds after boot, the vault blocks any new keyboard or mouse that is plugged in, to defend against &ldquo;BadUSB&rdquo; devices that pretend to be a keyboard and type commands. Other USB storage is never mounted. The only exceptions are a <strong>Coldcard</strong> or <strong>Trezor One</strong> used for co-signing, which can be plugged in at any time and can never act as a keyboard or mouse. File-based transfers should be managed by moving the drive between machines while the vault is powered down.</li>
                         </ul>
                     </li>
                 </ul>
@@ -562,11 +561,11 @@
                 </p>
 
                 <h3 class="sub-heading" id="config-options">Initial Configuration Options</h3>
-                <p>Once the vault is initialized, you are presented with five methods to manage your seed phrase:</p>
+                <p>Once the vault is initialized, you are presented with five methods to manage your seed phrase. In a Temporary Session, a sixth option, <strong>Sign with Hardware Wallet</strong>, also appears.</p>
 
                 <figure class="os-showcase">
                     <a href="Initial%20boot%20screen.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="Initial%20boot%20screen.png" alt="SafeKeepVault initial boot screen showing the password entry interface on first startup">
+                        <img class="img-elevated" src="Initial%20boot%20screen.png" alt="SafeKeepVault welcome screen showing No Master Seed Found and the five seed setup options">
                     </a>
                 </figure>
 
@@ -591,7 +590,7 @@
                         the integrity of your distributed backup scheme.
                     </li>
                     <li>
-                        <strong>Restore Shamir Backup &mdash;</strong>
+                        <strong>Recover Shamir Backup (SLIP-39) &mdash;</strong>
                         Utilize the Shamir Backup tool to reconstruct a seed from Shamir&rsquo;s Secret
                         Sharing (SLIP-39) shares. Simply input the required number of shares to meet
                         your designated threshold, and your seed phrase will be restored into the vault.
@@ -602,60 +601,44 @@
                         restores your entire environment&mdash;including all stored keys, passphrases, and
                         custom configurations&mdash;onto a new or freshly flashed boot drive.
                     </li>
+                    <li>
+                        <strong>Sign with Hardware Wallet (Temporary Session only) &mdash;</strong>
+                        Co-sign a multisig transaction with a connected Coldcard or Trezor One without loading
+                        any seed into the vault. See <a href="#sign-hardware-only">Signing with only a hardware wallet</a>.
+                    </li>
                 </ol>
+                <p>
+                    Once a seed is loaded, the vault shows a
+                    <strong>Seed Nickname</strong> in the status bar: three words calculated from your
+                    seed phrase. The same seed always shows the same three words, on any drive, so you
+                    can tell at a glance which seed is loaded. It is a convenience label only. It does
+                    not prove that the drive is genuine, and a BIP-39 passphrase does not change it.
+                </p>
             </section>
 
-            <!-- Step 4: Mounting the Transfer Drive (same) -->
+            <!-- Step 4: The Transfer Drive (mounted automatically since v1.34) -->
             <section class="content-section" id="transfer-drive">
-                <h2 class="section-heading">Step 4: Mounting the Transfer Drive</h2>
+                <h2 class="section-heading">Step 4: The Transfer Drive</h2>
                 <p>
-                    Once your seed phrase is loaded and you land on the Dashboard, your next step is to mount
-                    the Transfer Drive. This is the dedicated partition on your flash drive used to move
+                    The Transfer Drive is the dedicated partition on your flash drive used to move
                     files in and out of the vault &mdash; signed transactions, PSBT files, encrypted backups,
                     and exported reports all pass through here. When the flash drive is inserted into your
                     everyday Mac or Windows computer, this partition mounts like a normal drive, giving your
                     wallet software direct access to any files the vault has written to it &mdash; this is
-                    how sneakernet file transfer works. Note that removing the drive from a live vault session
-                    is a one-way action: as a security precaution, you cannot hot-swap it back in without
-                    rebooting the vault.
+                    how sneakernet file transfer works.
                 </p>
                 <div class="notice-block">
-                    <p class="notice-title">Do this on every boot</p>
+                    <p class="notice-title">No setup needed</p>
                     <p>
-                        The Transfer Drive is not mounted automatically. You must mount it manually at
-                        the start of each session. Tools that require file access will not function
-                        until it is mounted.
+                        The vault mounts the Transfer Drive automatically on every boot. There is nothing
+                        to click and no permission prompt. The status bar shows
+                        <strong>TRANSFER: MOUNTED</strong> once it is ready, and every tool can read from
+                        and write to it straight away.
                     </p>
                 </div>
-                <h3 class="sub-heading" id="mount-steps">How to Mount</h3>
-                <ol class="docs-list">
-                    <li>
-                        <strong>Click &ldquo;Mount Transfer Drive&rdquo; &mdash;</strong>
-                        On the Dashboard, you will see a prominent <strong>Mount Transfer Drive</strong>
-                        button. Click it. This opens the system file explorer automatically.
-                    </li>
-                    <li>
-                        <strong>Select the Transfer Partition &mdash;</strong>
-                        In the file explorer, you will see your flash drive listed with two partitions.
-                        Select the one labelled <strong>Transfer</strong> (not the system partition).
-                    </li>
-                    <li>
-                        <strong>Click Allow &mdash;</strong>
-                        A permission prompt will appear asking whether to allow access to the partition.
-                        Click <strong>Allow</strong>. The Transfer Drive will mount and become available
-                        to all tools immediately.
-                    </li>
-                </ol>
-                <figure class="os-showcase">
-                    <a href="Mount%20transfer%20drive.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="Mount%20transfer%20drive.png" alt="SafeKeepVault Dashboard showing the Mount Transfer Drive button and status indicator">
-                    </a>
-                    <figcaption>The <strong>Mount Transfer Drive</strong> button on the SafeKeepVault Dashboard. After clicking <strong>Allow</strong> in the file explorer, the status indicator confirms the drive is live.</figcaption>
-                </figure>
                 <p>
-                    Once mounted, every tool in the vault can read from and write to the Transfer Drive
-                    automatically. The status indicator in the toolbar will confirm when it is live.
-                    You only need to mount it once per session.
+                    Removing the drive from a live vault session is a one-way action: as a security
+                    precaution, you cannot hot-swap it back in without rebooting the vault.
                 </p>
             </section>
 
@@ -696,7 +679,7 @@
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
                     <span><strong>Wallet Type:</strong> Single-Sig</span>
-                    <span><strong>Key Format:</strong> SLIP-380</span>
+                    <span><strong>Key Format:</strong> BIP-380</span>
                 </div>
                 <ol class="wallet-steps">
                     <li>Tap <strong>Add Wallet</strong> and choose type <strong>Bitcoin</strong>.</li>
@@ -709,7 +692,7 @@
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings (repeat for each co-signer key)</span>
                     <span><strong>Wallet Type:</strong> Multi-Sig (BIP-48)</span>
-                    <span><strong>Key Format:</strong> SLIP-380</span>
+                    <span><strong>Key Format:</strong> BIP-380</span>
                 </div>
                 <ol class="wallet-steps">
                     <li>Tap <strong>Add Wallet</strong> and choose type <strong>Multisig Vault</strong>.</li>
@@ -727,7 +710,7 @@
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
                     <span><strong>Wallet Type:</strong> Single-Sig</span>
-                    <span><strong>Key Format:</strong> Hardware Wallet JSON</span>
+                    <span><strong>Key Format:</strong> Hardware Wallet JSON (Minimal)</span>
                 </div>
                 <ol class="wallet-steps">
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
@@ -747,7 +730,7 @@
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings (repeat for each co-signer key)</span>
                     <span><strong>Wallet Type:</strong> Multi-Sig (BIP-48)</span>
-                    <span><strong>Key Format:</strong> Hardware Wallet JSON</span>
+                    <span><strong>Key Format:</strong> Hardware Wallet JSON (Minimal)</span>
                 </div>
                 <ol class="wallet-steps">
                     <li>Follow the same key creation steps as Single Signature above, selecting <strong>Multi-Sig (BIP-48)</strong> as the Wallet Type in <strong>SafeKeepVault</strong>. Repeat for each co-signer key.</li>
@@ -860,23 +843,16 @@
 
                 <figure class="os-showcase">
                     <a href="select%20signer.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="select%20signer.png" alt="PSBT Signer Review tab showing the loaded transaction before the destination verification audit begins">
+                        <img class="img-elevated" src="select%20signer.png" alt="SafeKeepVault Dashboard with the PSBT Signer, Seed Management and Transfer Hub tools">
                     </a>
-                    <figcaption>The <strong>PSBT Signer</strong> ingest screen. Choose to scan a QR code from your watch wallet or load a <code>.psbt</code> file from the Transfer Drive.</figcaption>
+                    <figcaption>Select <strong>PSBT Signer</strong> from the Dashboard to begin the signing workflow.</figcaption>
                 </figure>
 
                 <figure class="os-showcase">
                     <a href="select%20signing%20type.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="select%20signing%20type.png" alt="Signing screen showing Vault Seed and Temporary Seed tabs, passphrase field, and the Sign Transaction button">
+                        <img class="img-elevated" src="select%20signing%20type.png" alt="PSBT Signer ingest screen with Scan Unsigned PSBT and Load PSBT from Transfer Drive options">
                     </a>
-                    <figcaption>Select <strong>Scan Unsigned PSBT</strong> to activate the webcam and scan the QR code displayed by your watch wallet, or choose <strong>Load PSBT from Transfer Drive</strong> to import the file directly.</figcaption>
-                </figure>
-
-                <figure class="os-showcase">
-                    <a href="sign%20a%20transaction.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="sign%20a%20transaction.png" alt="Signing screen showing Vault Seed and Temporary Seed tabs, passphrase field, and the Sign Transaction button">
-                    </a>
-                    <figcaption>Select <strong>PSBT Signer</strong> from the Dashboard to begin the signing workflow.</figcaption>
+                    <figcaption>Select <strong>Scan Unsigned PSBT</strong> to activate the webcam and scan the QR code displayed by your watch wallet (static or animated UR and BBQr codes), or choose <strong>Load PSBT from Transfer Drive</strong> to import the file directly.</figcaption>
                 </figure>
 
 
@@ -915,15 +891,102 @@
                 </figure>
 
                 <h3 class="sub-heading" id="sign-sign">Signing</h3>
+                <p>
+                    Click <strong>Sign Transaction</strong>. The vault signs with your master seed, or with
+                    a temporary seed you entered or scanned for this transaction only. If the wallet uses a
+                    BIP-39 passphrase, type it in or load it from the <strong>Library</strong> first: a
+                    passphrase changes the wallet&rsquo;s fingerprint, so the vault cannot sign for that
+                    wallet without it. A temporary seed is never saved to disk and is cleared from memory
+                    after signing or when you leave the tool.
+                </p>
+
+                <h3 class="sub-heading" id="sign-hardware">Co-signing with a Coldcard or Trezor</h3>
+                <p>
+                    In a multisig wallet, <strong>SafeKeepVault</strong> can ask a connected
+                    <strong>Coldcard</strong> or <strong>Trezor One</strong> for its signature over USB,
+                    so you can collect two signatures in one sitting without passing files back and forth.
+                    Every signature is still approved on the hardware wallet&rsquo;s own screen.
+                </p>
+                <ol class="docs-list">
+                    <li>
+                        <strong>Pair the device (once) &mdash;</strong>
+                        On the Dashboard, open <strong>Device Options</strong> and click
+                        <strong>Pair Coldcard</strong> or <strong>Pair Trezor</strong>. The vault only ever
+                        talks to the device paired here. To unlock a Trezor, click your PIN on a grid of
+                        blank buttons, matching the shuffled numbers shown on the Trezor&rsquo;s screen.
+                    </li>
+                    <li>
+                        <strong>Sign with the vault &mdash;</strong>
+                        Load, review and sign the transaction as described above.
+                    </li>
+                    <li>
+                        <strong>Add the hardware signature &mdash;</strong>
+                        On the export screen, the co-signing card shows how many signatures the transaction
+                        has and which keys are still missing. Click <strong>Sign with Coldcard</strong> or
+                        <strong>Sign with Trezor</strong> and approve the transaction on the device. The
+                        export QR and files update to include the new signature. You can also add a
+                        signature from another seed you hold by entering it as a temporary seed.
+                    </li>
+                </ol>
+                <figure class="os-showcase">
+                    <a href="device-options-hardware.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="device-options-hardware.png" alt="Device Options showing the Coldcard and Trezor pairing sections">
+                    </a>
+                    <figcaption>Pair a <strong>Coldcard</strong> or <strong>Trezor One</strong> once in <strong>Device Options</strong>.</figcaption>
+                </figure>
+                <figure class="os-showcase">
+                    <a href="trezor-pin.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="trezor-pin.png" alt="Unlock your Trezor dialog with a three-by-three grid of blank buttons" style="max-width: 420px;">
+                    </a>
+                    <figcaption>The Trezor PIN grid. The buttons have no numbers on purpose: you match the shuffled layout shown on the Trezor&rsquo;s own screen, so <strong>SafeKeepVault</strong> never learns your PIN.</figcaption>
+                </figure>
+                <figure class="os-showcase">
+                    <a href="hardware-cosign.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="hardware-cosign.png" alt="Co-signing card showing 1 of 2 signatures and Sign with Coldcard, Sign with Trezor and Sign with another seed buttons">
+                    </a>
+                    <figcaption>After the vault signs a 2-of-3, the co-signing card shows which keys have signed and offers <strong>Sign with Coldcard</strong>, <strong>Sign with Trezor</strong> or <strong>Sign with another seed</strong>.</figcaption>
+                </figure>
+                <div class="notice-block">
+                    <p class="notice-title">Trezor needs full previous transactions</p>
+                    <p>
+                        A Trezor One must see the full previous transaction for every coin being spent.
+                        Wallets often leave these out of QR codes to keep them short. If they are missing,
+                        the <strong>Sign with Trezor</strong> button is disabled and explains why: in your
+                        wallet, save the transaction as a file and load that file from the Transfer Drive
+                        instead of scanning it. A Coldcard can sign either way.
+                    </p>
+                </div>
+
+                <h3 class="sub-heading" id="sign-hardware-only">Signing with only a hardware wallet</h3>
+                <p>
+                    For a multisig wallet, you can also use <strong>SafeKeepVault</strong> as a large-screen,
+                    air-gapped review station for your hardware wallets without loading any seed at all. Boot
+                    into a <strong>Temporary Session</strong> and choose <strong>Sign with Hardware Wallet</strong>.
+                    Load and review the PSBT as usual; the review lists the keys in the transaction instead
+                    of seed options. Click <strong>Continue to Hardware Signing</strong>, then
+                    <strong>Sign with Coldcard</strong> or <strong>Sign with Trezor</strong>. The vault
+                    checks that the device holds one of the transaction&rsquo;s keys before pairing it for
+                    this session. To add more signatures, unplug the device, plug in the next one and repeat.
+                    Hardware-only signing works with multisig (m-of-n) transactions; sign a single-signature
+                    transaction in your wallet software with the hardware wallet instead.
+                </p>
+                <figure class="os-showcase">
+                    <a href="welcome-temporary.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="welcome-temporary.png" alt="Temporary Session welcome screen with the Sign with Hardware Wallet option">
+                    </a>
+                    <figcaption>In a <strong>Temporary Session</strong>, <strong>Sign with Hardware Wallet</strong> opens the PSBT Signer with no seed loaded.</figcaption>
+                </figure>
 
                 <h3 class="sub-heading" id="sign-export">Exporting the Result</h3>
                 <p>
                     Once signed, the <strong>Export</strong> tab offers several ways to return the result
                     to your watch wallet. The primary method is a QR code &mdash; choose the format that
-                    matches your coordinator: Standard Base64 for Sparrow and Blue Wallet, Nunchuk Raw Hex,
-                    or Electrum Raw Hex. You can also copy or save the raw transaction hex for direct
-                    broadcast, or save the signed <code>.psbt</code> file back to the Transfer Drive for
-                    sneakernet handoff.
+                    matches your coordinator: Standard Base64 for Sparrow and Blue Wallet, UR
+                    (<code>ur:crypto-psbt</code>, an animated QR that many mobile wallets prefer), Nunchuk
+                    Raw Hex, or Electrum Raw Hex. Large PSBTs (over about 1,200 bytes) start on UR
+                    automatically, because they no longer fit cleanly in a single QR code. You can also copy
+                    or save the raw transaction hex for direct broadcast, or save the signed
+                    <code>.psbt</code> file back to the Transfer Drive for sneakernet handoff.
                 </p>
 
                 <figure class="os-showcase">
@@ -937,7 +1000,7 @@
                     <a href="select%20format.png" target="_blank" rel="noopener">
                         <img class="img-elevated" src="select%20format.png" alt="Export format selection screen showing QR format options for different wallet coordinators">
                     </a>
-                    <figcaption>Choose the export format that matches your watch wallet. Different coordinators expect different formats &mdash; select the one for yours to ensure the signed transaction imports correctly.</figcaption>
+                    <figcaption>Choose the export format that matches your watch wallet. Different coordinators expect different formats &mdash; select the one for yours to ensure the signed transaction imports correctly. Shown here: <strong>UR</strong>, an animated QR code.</figcaption>
                 </figure>
 
                 <h3 class="sub-heading" id="sign-transfer-hub">Exporting via the Transfer Hub</h3>
@@ -959,6 +1022,38 @@
                 </figure>
             </section>
 
+            <!-- Locking & Device Options -->
+            <section class="content-section" id="sessions">
+                <h2 class="section-heading">Locking &amp; Device Options</h2>
+                <ul class="docs-list">
+                    <li>
+                        <strong>Lock Vault &mdash;</strong>
+                        Click the seed fingerprint badge at the top of the Dashboard to lock. Locking is a
+                        real lock, not just a screen cover: the app closes, your keys are cleared from
+                        memory, the encrypted partition is closed, and the vault returns to the password
+                        prompt. Locking never powers the machine off. Scan your QR or type your password to
+                        continue.
+                    </li>
+                    <li>
+                        <strong>Auto-Lock &amp; Display Sleep &mdash;</strong>
+                        In <strong>Device Options</strong>, set how many idle minutes pass before the vault
+                        locks itself or the screen goes dark. Set either to 0 to turn it off.
+                    </li>
+                    <li>
+                        <strong>Return to Master Vault &mdash;</strong>
+                        From a Temporary Session, open <strong>Device Options</strong> and click
+                        <strong>Return to Master Vault</strong> to wipe the temporary seed from memory and go
+                        straight to the unlock prompt for your encrypted vault, with no reboot. You can also
+                        load a different temporary seed in place.
+                    </li>
+                    <li>
+                        <strong>Settings that stick &mdash;</strong>
+                        Theme, display scale, sound and the idle timers are saved in your encrypted vault and
+                        restored on every boot. Temporary Sessions never read or save them.
+                    </li>
+                </ul>
+            </section>
+
             <!-- Tool Arsenal (kept, Inheritance Map → Wallet Record) -->
             <section class="content-section" id="tools">
                 <h2 class="section-heading">The Tool Arsenal</h2>
@@ -970,18 +1065,13 @@
                     that supports standard formats.
                 </p>
 
-                <h3 class="sub-heading" id="primary-tools">Primary Tools</h3>
+                <h3 class="sub-heading" id="primary-tools">Main Tools</h3>
                 <ul class="docs-list">
                     <li>
                         <strong>PSBT Signer &mdash;</strong>
                         Reviews, decodes, and signs PSBTs entirely offline. Transaction details
-                        are displayed for inspection before you sign.
-                    </li>
-                    <li>
-                        <strong>Passphrase Library &mdash;</strong>
-                        Manages BIP-39 passphrases (the &ldquo;25th word&rdquo;) inside the encrypted
-                        vault. Loads directly into the PSBT Signer when signing requires a
-                        passphrase-protected wallet.
+                        are displayed for inspection before you sign. Can also ask a paired Coldcard or
+                        Trezor One for a co-signature over USB.
                     </li>
                     <li>
                         <strong>Seed Management &mdash;</strong>
@@ -989,24 +1079,17 @@
                         Sparrow, Electrum, Nunchuk, Blue Wallet, Specter, or any compatible coordinator.
                         Your private keys never leave.
                     </li>
+                    <li>
+                        <strong>Transfer Hub &mdash;</strong>
+                        File browser for the Transfer Drive. View, rename, or delete backup archives, transactions, and PDFs,
+                        or transmit a file to your phone as an animated QR.
+                    </li>
                 </ul>
 
                 <h3 class="sub-heading" id="advanced-tools">Advanced Tools</h3>
+                <p>The thirteen advanced tools are grouped on the Dashboard by what they do.</p>
+                <p class="wallet-sig-heading">Keys &amp; Seeds</p>
                 <ul class="docs-list">
-                    <li>
-                        <strong>Transfer Hub &mdash;</strong>
-                        File browser for the Transfer Drive. View, rename, or delete backup archives, transactions, and PDFs.
-                    </li>
-                    <li>
-                        <strong>Courier Tool &mdash;</strong>
-                        Transfers files between air-gapped devices via animated QR
-                        codes. No USB, no network &mdash; light and a camera lens only.
-                    </li>
-                    <li>
-                        <strong>Output Descriptor &mdash;</strong>
-                        Builds wallet configurations for single-signature and multisig setups.
-                        Export and import directly into any compatible wallet.
-                    </li>
                     <li>
                         <strong>Entropy Generator &mdash;</strong>
                         Generates your master seed using multiple sources of randomness: dice rolls,
@@ -1019,28 +1102,33 @@
                         for different purposes, all recoverable from one backup.
                     </li>
                     <li>
-                        <strong>Seed XOR Splitter &mdash;</strong>
-                        Splits your seed into XOR shares for distributed cold storage. Reconstructs your master seed by combining these shares.
-                    </li>
-                    <li>
-                        <strong>Shamir Backup &mdash;</strong>
-                        Splits your seed into Shamir shares for distributed backup. Recovery requires
-                        only a portion of the shares (2-of-3, 3-of-5, etc.) to restore.
-                    </li>
-                    <li>
                         <strong>Seed QR Code &mdash;</strong>
                         Displays a QR encoded version of a seed as a compact SeedQR for steel stamping or paper backup.
                         Hand-drawn or engraved copies can be verified by scanning them back in. Blank templates are also available for printing.
                     </li>
                     <li>
-                        <strong>Message Signer &mdash;</strong>
-                        BIP-322 message signing. Proves address ownership with a verifiable proof
-                        without moving any coins.
+                        <strong>Passphrase Library &mdash;</strong>
+                        Manages BIP-39 passphrases (the &ldquo;25th word&rdquo;) inside the encrypted
+                        vault. Loads directly into the PSBT Signer and other tools when you need a
+                        passphrase-protected wallet.
                     </li>
                     <li>
-                        <strong>Encrypted Notes &mdash;</strong>
-                        Encrypted notes stored inside the vault. Keep recovery instructions,
-                        multisig details, and setup notes sealed within the vault. For your eyes only.
+                        <strong>Output Descriptor &mdash;</strong>
+                        Builds wallet configurations for single-signature, multisig and Silent Payment setups.
+                        Export and import directly into any compatible wallet.
+                    </li>
+                </ul>
+                <p class="wallet-sig-heading">Backup &amp; Recovery</p>
+                <ul class="docs-list">
+                    <li>
+                        <strong>Seed XOR Splitter &mdash;</strong>
+                        Splits your seed into XOR shares for distributed cold storage. Reconstructs your master seed by combining these shares.
+                    </li>
+                    <li>
+                        <strong>Shamir Backup &mdash;</strong>
+                        Splits your seed into Shamir (SLIP-39) shares for distributed backup. Recovery requires
+                        only a portion of the shares (2-of-3, 3-of-5, etc.) to restore. Recover these shares with
+                        <strong>SafeKeepVault</strong>: restoring them on a Trezor opens a different, empty wallet.
                     </li>
                     <li>
                         <strong>Encrypted Backup &mdash;</strong>
@@ -1053,6 +1141,33 @@
                         Generates a clean, single-page PDF summary of your wallet configuration &mdash;
                         descriptor, derivation path, key fingerprint, and first receive address &mdash;
                         formatted for long-term offline storage and inheritance planning.
+                    </li>
+                </ul>
+                <p class="wallet-sig-heading">Signing &amp; Transfer</p>
+                <ul class="docs-list">
+                    <li>
+                        <strong>Message Signer &mdash;</strong>
+                        BIP-322 message signing. Proves address ownership with a verifiable proof
+                        without moving any coins.
+                    </li>
+                    <li>
+                        <strong>Courier Tool &mdash;</strong>
+                        Transfers files between air-gapped devices via animated QR
+                        codes. No USB, no network &mdash; light and a camera lens only.
+                    </li>
+                </ul>
+                <p class="wallet-sig-heading">Private Data</p>
+                <ul class="docs-list">
+                    <li>
+                        <strong>Encrypted Notes &mdash;</strong>
+                        Encrypted notes stored inside the vault. Keep recovery instructions,
+                        multisig details, and setup notes sealed within the vault. For your eyes only.
+                    </li>
+                    <li>
+                        <strong>2FA Backup &mdash;</strong>
+                        Backs up your authenticator (TOTP) secrets inside the encrypted vault. Scan the export QR
+                        from Google Authenticator, or individual <code>otpauth://</code> codes, so you can restore
+                        your two-factor accounts if your phone is lost.
                     </li>
                 </ul>
 

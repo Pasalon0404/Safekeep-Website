@@ -279,8 +279,7 @@
                         (or <a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a> for Windows):
                     </p>
                     <ol style="margin: 0.75rem 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.94rem; color: var(--text-muted); line-height: 1.6;">
-                        <li>Open the flashing utility and select the extracted <code>SafeKeep-Release-v1.34.img
-</code> file.</li>
+                        <li>Open the flashing utility and select the extracted <code>SafeKeep-Release-v1.34.img</code> file.</li>
                         <li>Select your target flash drive.</li>
                         <li>Click <strong>Flash</strong> and wait for the verification to complete.</li>
                     </ol>
@@ -314,6 +313,75 @@
                         initializes in under 30 seconds into a hardened, air-gapped environment with all network interfaces locked down.
                     </p>
                 </div>
+
+            </section>
+
+            <!-- Section 4: Build It Yourself -->
+            <section class="content-section" id="build">
+                <h2 class="section-heading">Build It Yourself</h2>
+                <p>
+                    Verifying the signature proves the release came from the developer. Building from source
+                    goes one step further: the image you flash contains exactly the code you reviewed, so a
+                    tampered release file is no longer a risk. <strong>SafeKeepVault</strong> is plain HTML and
+                    JavaScript plus a set of build scripts, with no compiled app committed to the repository.
+                </p>
+                <p>
+                    <strong>You need:</strong> an x86-64 Linux machine (Debian or Ubuntu is easiest), <code>sudo</code>,
+                    git, Node.js 22 or newer with npm, about 15 GB of free disk space, an internet connection during
+                    the build, and a USB flash drive of 4 GB or more.
+                </p>
+
+                <div class="verify-step">
+                    <div class="verify-step-header">
+                        <span class="verify-step-number">Step 01</span>
+                        <span class="verify-step-title">Build the App</span>
+                    </div>
+                    <p class="verify-step-desc">
+                        Installs the exact dependency versions pinned in the repository and compiles the app. No <code>sudo</code> needed.
+                    </p>
+                    <div class="terminal-block">
+                        <pre><span class="term-prompt">$ </span><span class="term-cmd">git clone https://github.com/Pasalon0404/SafeKeepVault.git</span>
+<span class="term-prompt">$ </span><span class="term-cmd">cd SafeKeepVault/usbbootdrive</span>
+<span class="term-prompt">$ </span><span class="term-cmd">bash prepare-app.sh</span></pre>
+                    </div>
+                </div>
+
+                <div class="verify-step">
+                    <div class="verify-step-header">
+                        <span class="verify-step-number">Step 02</span>
+                        <span class="verify-step-title">Build the OS Image</span>
+                    </div>
+                    <p class="verify-step-desc">
+                        Takes 10&ndash;20 minutes the first time. Builds a locked-down Ubuntu 24.04 system around the app and writes <code>safekeep.img</code>.
+                    </p>
+                    <div class="terminal-block">
+                        <pre><span class="term-prompt">$ </span><span class="term-cmd">sudo bash build.sh</span></pre>
+                    </div>
+                </div>
+
+                <div class="verify-step">
+                    <div class="verify-step-header">
+                        <span class="verify-step-number">Step 03</span>
+                        <span class="verify-step-title">Flash the Drive</span>
+                    </div>
+                    <p class="verify-step-desc">
+                        Find your flash drive with <code>lsblk</code> and double-check the name. This <strong>erases the whole drive</strong>.
+                        The script refuses system disks, asks you to type the device name to confirm, and reads the drive back afterwards to verify the write.
+                    </p>
+                    <div class="terminal-block">
+                        <pre><span class="term-comment"># replace /dev/sdX with your USB device</span>
+<span class="term-prompt">$ </span><span class="term-cmd">lsblk</span>
+<span class="term-prompt">$ </span><span class="term-cmd">sudo bash flash-new-stick.sh /dev/sdX</span></pre>
+                    </div>
+                </div>
+
+                <p>
+                    Builds are not byte-for-byte reproducible yet, so your image&rsquo;s hash will not match the
+                    published release. That is expected. The build also downloads Ubuntu, npm and Python packages
+                    (npm and Python are pinned by version and hash); reviewing the repository does not review those.
+                    The <a href="https://github.com/Pasalon0404/SafeKeepVault#readme" target="_blank" rel="noopener">README</a>
+                    has the full details, including a suggested prompt for reviewing the code with an AI assistant.
+                </p>
 
                 <div class="cta-row" style="margin-top: 1.75rem;">
                     <a href="donate.html" class="btn-secondary">&#9825; Donate</a>
