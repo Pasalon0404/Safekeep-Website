@@ -310,6 +310,7 @@
                             <li><a href="#ww-sparrow">Sparrow</a></li>
                             <li><a href="#ww-specter">Specter Desktop</a></li>
                             <li><a href="#ww-electrum">Electrum</a></li>
+                            <li><a href="#ww-core">Bitcoin Core</a></li>
                         </ul>
                     </li>
                     <li><a href="#signing">Signing a Transaction</a>
@@ -541,6 +542,15 @@
                 <p>
                     Insert the USB flash drive, then power on or restart your computer. During startup, most systems allow you to choose a temporary boot device by pressing a function key such as F2, F8, F9, ESC, etc. immediately after powering on. On Macs with Intel processors, hold the Option key during startup.  <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
                 </p>
+                <p>
+                    Before anything else, the vault runs a <strong>start-up self-check</strong>: it feeds
+                    published Bitcoin test vectors (seed words, key derivation, addresses for every wallet
+                    type, and test signatures) through the same code it will use for your keys. If this
+                    computer gives a single wrong answer, the vault stops with the message
+                    <strong>&ldquo;SafeKeep stopped: start-up self-check failed&rdquo;</strong> and lists
+                    the failed checks. Don&rsquo;t use that session: power off, and boot again from a freshly
+                    verified drive or on different hardware.
+                </p>
 
                 <h3 class="sub-heading" id="encrypted-vault">One-Time Configuration: The Encrypted Vault</h3>
                 <p>
@@ -607,12 +617,25 @@
                         any seed into the vault. See <a href="#sign-hardware-only">Signing with only a hardware wallet</a>.
                     </li>
                 </ol>
+                <figure class="os-showcase">
+                    <a href="dice-fairness.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="dice-fairness.png" alt="Manual Dice card with 60 rolls entered and a fairness check reporting the die looks fair" style="max-width: 560px;">
+                    </a>
+                    <figcaption>When you add physical dice rolls in the Entropy Generator (under <strong>Advanced: Provide Manual Physical Entropy</strong>), a fairness check counts each face and, after 30 rolls, says whether the die looks fair, possibly biased or likely biased. It&rsquo;s advice only and never blocks you.</figcaption>
+                </figure>
                 <p>
                     Once a seed is loaded, the vault shows a
                     <strong>Seed Nickname</strong> in the status bar: three words calculated from your
                     seed phrase. The same seed always shows the same three words, on any drive, so you
                     can tell at a glance which seed is loaded. It is a convenience label only. It does
                     not prove that the drive is genuine, and a BIP-39 passphrase does not change it.
+                </p>
+                <p>
+                    Next to every master fingerprint (on the Dashboard, in the tool sidebar and in the PSBT
+                    Signer), the vault draws a small coloured <strong>LifeHash</strong> pattern made from that
+                    fingerprint. It is the same picture Sparrow Wallet shows for the same wallet, so you can
+                    tell at a glance that your watch wallet and the vault hold the same key. Always confirm
+                    the fingerprint itself too: the picture is a quick check, not a replacement.
                 </p>
             </section>
 
@@ -823,6 +846,26 @@
                 </div>
                 <p style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.6;">Multisig with Electrum is not currently supported. In the meantime, you can set up your multisig wallet in Sparrow or Specter Desktop using the instructions above.</p>
 
+                <h3 class="wallet-heading" id="ww-core">Bitcoin Core <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; your own node, v0.21 or later)</span></h3>
+                <p>If you run your own Bitcoin Core node, you can import the wallet into it as a watch-only descriptor wallet. This works for single-signature and multisig wallets, and uses the <strong>Output Descriptor</strong> tool rather than Seed Management.</p>
+                <ol class="wallet-steps">
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Output Descriptor</strong> (under Advanced Tools &rarr; Keys &amp; Seeds) and build the descriptor for your wallet.</li>
+                    <li>If this is a brand-new wallet that has never received funds, tick the box to skip Bitcoin Core&rsquo;s blockchain rescan. Otherwise leave it unticked, so Core scans from the start of the chain and finds every past transaction.</li>
+                    <li>Click <strong>Export for Bitcoin Core (.json)</strong>, follow the on-screen message to copy the file to your Transfer Drive, and move it to the computer running Bitcoin Core.</li>
+                    <li>In the folder holding the file, create an empty watch-only wallet, then import the file. The vault shows both commands with the exact file name; they look like this:
+                        <pre>bitcoin-cli -named createwallet wallet_name=safekeep-watch disable_private_keys=true blank=true
+bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMPORT-&hellip;.json)"</pre>
+                        In the Bitcoin Core app, use <strong>Window &rarr; Console</strong>, leave out the <code>bitcoin-cli</code> prefix, and paste the file&rsquo;s contents in place of <code>"$(cat &hellip;)"</code>.</li>
+                    <li>Check that <code>getnewaddress</code> returns the same first receive address the vault shows.</li>
+                </ol>
+                <figure class="os-showcase">
+                    <a href="bitcoin-core-export.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="bitcoin-core-export.png" alt="Output Descriptor tool with the Export for Bitcoin Core button, the brand-new wallet option and the import commands">
+                    </a>
+                    <figcaption>The <strong>Export for Bitcoin Core (.json)</strong> button in the Output Descriptor tool, with the commands to load the file into your node.</figcaption>
+                </figure>
+                <p style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.6;">The export imports receive and change addresses (1,000 of each) and never contains private keys. Silent Payment descriptors can&rsquo;t be imported this way.</p>
+
             </section>
 
             <!-- Signing a Transaction -->
@@ -881,6 +924,14 @@
                     Check the box confirming you have independently verified the destination address and
                     amount. The <strong>Sign Transaction</strong> button remains locked until this
                     confirmation is complete.
+                </p>
+                <p>
+                    The vault also checks what kind of signature the transaction asks for. It only ever
+                    signs with the standard type that covers the whole transaction (<code>SIGHASH_ALL</code>).
+                    A transaction can ask for other types that leave some inputs or outputs uncovered, so
+                    whoever holds the signature could change where the funds go. If any input asks for one,
+                    signing is blocked with an explanation, and <strong>Force Sign</strong> cannot override it.
+                    Create the transaction again in your wallet with the default signature type.
                 </p>
 
                 <figure class="os-showcase">
@@ -1094,7 +1145,8 @@
                         <strong>Entropy Generator &mdash;</strong>
                         Generates your master seed using multiple sources of randomness: dice rolls,
                         mouse movement, camera noise, and the system&rsquo;s built-in random number
-                        generator.
+                        generator. A live fairness check scores your physical dice rolls and, after 30 rolls,
+                        warns if the die looks biased.
                     </li>
                     <li>
                         <strong>BIP-85 Child Seeds &mdash;</strong>
@@ -1115,7 +1167,8 @@
                     <li>
                         <strong>Output Descriptor &mdash;</strong>
                         Builds wallet configurations for single-signature, multisig and Silent Payment setups.
-                        Export and import directly into any compatible wallet.
+                        Export and import directly into any compatible wallet, or export a watch-only import
+                        file for Bitcoin Core.
                     </li>
                 </ul>
                 <p class="wallet-sig-heading">Backup &amp; Recovery</p>
@@ -1193,6 +1246,7 @@
                     <li><a href="features.html">Features</a></li>
                     <li><a href="compare.html">Compare</a></li>
                     <li><a href="download.html">Download</a></li>
+                    <li><a href="release-notes.html">Release Notes</a></li>
                 </ul>
             </div>
             <div>

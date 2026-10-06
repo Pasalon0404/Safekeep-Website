@@ -93,10 +93,10 @@
 
             <!-- What's New Banner -->
             <div style="margin: 1.5rem 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-md);">
-                <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.35rem;">New in v1.34</p>
-                <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.5rem;">Co-sign with your Coldcard or Trezor over USB</p>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0 0 0.75rem; line-height: 1.6;">Pair a <strong>Coldcard</strong> or <strong>Trezor One</strong> and the PSBT Signer can ask it for a co-signature directly, so a 2-of-3 can be signed in one sitting. Every signature is still approved on the device&rsquo;s own screen. For multisig, you can even use the vault as a large-screen review station for your hardware wallets alone, with no seed loaded. The Transfer Drive now mounts automatically, and Lock is now a real lock that clears your keys from memory.</p>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Also supported: <strong>BIP-352 Silent Payments</strong> &mdash; receive Bitcoin privately with a single static address that never repeats on-chain. Works with <strong>Sparrow 2.5</strong>.</p>
+                <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.35rem;">New in v1.36</p>
+                <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.5rem;">Verify everything: start-up self-check and verifiable releases</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0 0 0.75rem; line-height: 1.6;">Every boot now starts with a <strong>self-check</strong> that runs published Bitcoin test vectors through the vault&rsquo;s own code, and stops if this computer gets a single answer wrong. Each app release is <strong>reproducible</strong>, attested by GitHub, signed and timestamped on Bitcoin. Also new: <strong>LifeHash</strong> icons that match Sparrow&rsquo;s, a <strong>dice fairness check</strong>, a <strong>Bitcoin Core</strong> watch-only export, and a stricter signing rule that refuses signatures which don&rsquo;t cover the whole transaction.</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Earlier releases added: co-signing with a <strong>Coldcard</strong> or <strong>Trezor One</strong> over USB, an automatically mounted Transfer Drive, a real Lock that clears your keys from memory, settings that survive a reboot, sound on more laptops, and <strong>BIP-352 Silent Payments</strong>. <a href="release-notes.html">See all release notes</a>.</p>
             </div>
             <!-- Section 1: Fortress -->
             <section class="content-section">
@@ -108,6 +108,10 @@
                 <h3 class="subsection-heading">Absolute Air-Gap &mdash; Total Network Isolation</h3>
                 <p><strong>SafeKeepVault</strong> locks down Ethernet, Wi-Fi, and Bluetooth before the system even fully starts. Your private keys are completely isolated and never have the chance to reach any network interface.</p>
                 <ul class="spec-list">
+                    <li>
+                        <span class="spec-label">Start-up Self-Check</span>
+                        <span class="spec-desc">Before you can enter anything, the vault runs published Bitcoin test vectors (seed words, key derivation, addresses, signatures) through its own code. If this computer gets a single answer wrong, the vault stops instead of risking a wrong key or address.</span>
+                    </li>
                     <li>
                         <span class="spec-label">Hardware Lockdown</span>
                         <span class="spec-desc">Non-essential peripherals are deactivated. The system communicates only with your display, keyboard, mouse, camera, the flash drive itself, and a Coldcard or Trezor One if you choose to co-sign with one. About 30 seconds after boot, any newly plugged-in keyboard or mouse is blocked, to defend against &ldquo;BadUSB&rdquo; devices that pretend to be a keyboard.</span>
@@ -272,6 +276,10 @@
                         <span class="spec-label">Electrum</span>
                         <span class="spec-desc">Set up Electrum as your watch-only coordinator and use <strong>SafeKeepVault</strong> as the offline signer. Export your public key, track your balance in Electrum, and sign transactions on the vault when it's time to spend.</span>
                     </li>
+                    <li>
+                        <span class="spec-label">Bitcoin Core</span>
+                        <span class="spec-desc">Run your own node? The Output Descriptor tool exports a watch-only import file for Bitcoin Core (v0.21 or later). Your node tracks the wallet and can build PSBTs for the vault to sign, with no third-party server involved and no private keys in the export.</span>
+                    </li>
                 </ul>
             </section>
 
@@ -307,6 +315,7 @@
                     <li><a href="features.html">Features</a></li>
                     <li><a href="compare.html">Compare</a></li>
                     <li><a href="download.html">Download</a></li>
+                    <li><a href="release-notes.html">Release Notes</a></li>
                 </ul>
             </div>
             <div>
