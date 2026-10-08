@@ -93,10 +93,10 @@
 
             <!-- What's New Banner -->
             <div style="margin: 1.5rem 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-md);">
-                <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.35rem;">New in v1.36</p>
-                <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.5rem;">Verify everything: start-up self-check and verifiable releases</p>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0 0 0.75rem; line-height: 1.6;">Every boot now starts with a <strong>self-check</strong> that runs published Bitcoin test vectors through the vault&rsquo;s own code, and stops if this computer gets a single answer wrong. Each app release is <strong>reproducible</strong>, attested by GitHub, signed and timestamped on Bitcoin. Also new: <strong>LifeHash</strong> icons that match Sparrow&rsquo;s, a <strong>dice fairness check</strong>, a <strong>Bitcoin Core</strong> watch-only export, and a stricter signing rule that refuses signatures which don&rsquo;t cover the whole transaction.</p>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Earlier releases added: co-signing with a <strong>Coldcard</strong> or <strong>Trezor One</strong> over USB, an automatically mounted Transfer Drive, a real Lock that clears your keys from memory, settings that survive a reboot, sound on more laptops, and <strong>BIP-352 Silent Payments</strong>. <a href="release-notes.html">See all release notes</a>.</p>
+                <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.35rem;">New in v1.37</p>
+                <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.5rem;">Verifiable dice, playing cards, and a Wallet Record built from your descriptor</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0 0 0.75rem; line-height: 1.6;">The Entropy Generator adds a <strong>Verifiable Dice</strong> mode that uses the same method as SeedSigner and COLDCARD, so the same rolls give the same words on either device, plus <strong>Playing Cards</strong> as an entropy source and a meter that counts only the randomness you add. The <strong>Wallet Record</strong> now reads everything from your output descriptor and lets you name each key. The <strong>Passphrase Library</strong> checks your written copy instead of making you re-type, and <strong>Standard SeedQR</strong> joins Compact.</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Earlier releases added: a start-up self-check, verifiable and reproducible app releases, LifeHash icons, a dice fairness check, a Bitcoin Core export, co-signing with a <strong>Coldcard</strong> or <strong>Trezor One</strong> over USB, a real Lock that clears your keys from memory, and <strong>BIP-352 Silent Payments</strong>. <a href="release-notes.html">See all release notes</a>.</p>
             </div>
             <!-- Section 1: Fortress -->
             <section class="content-section">
@@ -186,12 +186,12 @@
             <!-- Entropy Generator Screenshot -->
             <figure class="os-showcase">
                 <a href="Entropy.png" target="_blank" rel="noopener">
-                    <img src="Entropy.png" alt="Entropy Generator — SafeKeepVault's entropy mixing tool, showing manual dice, digital dice, mouse wiggle, and video noise sources">
+                    <img src="Entropy.png" alt="Entropy Generator — SafeKeepVault's seed generation tool">
                 </a>
                 <figcaption>
-                    The Entropy Generator &mdash; mix physical dice rolls, digital randomness,
-                    mouse movement, and camera noise before generating your master seed.
-                
+                    The Entropy Generator &mdash; mix physical dice rolls, a shuffled deck of cards,
+                    mouse movement and camera noise into your master seed, or use Verifiable Dice to
+                    create a seed you can check on SeedSigner or COLDCARD.
                 </figcaption>
             </figure>
 
@@ -222,13 +222,13 @@
             <!-- Wallet Record Screenshot -->
             <figure class="os-showcase">
                 <a href="wallet%20record.png" target="_blank" rel="noopener">
-                    <img src="wallet%20record.png" alt="Wallet Record — SafeKeepVault's printable wallet summary, showing descriptor, derivation path, and key fingerprint formatted as a single-page PDF">
+                    <img src="wallet%20record.png" alt="Wallet Record — the descriptor-first form: add the wallet, then name each key and note which need a passphrase">
                 </a>
                 <figcaption>
-                    The Wallet Record &mdash; generate a clean, printable PDF summary of your
-                    entire wallet configuration. Captures your output descriptor, derivation path,
-                    key fingerprint, and first receive address on a single page &mdash; formatted
-                    for long-term offline storage and inheritance planning.
+                    The Wallet Record &mdash; add your output descriptor (from the Output Descriptor
+                    tool or any wallet app) and the vault works out the wallet type, keys and first
+                    receive address. You name each key and note which need a passphrase, then print a
+                    clean one-page summary for long-term offline storage and inheritance planning.
                 </figcaption>
             </figure>
 
