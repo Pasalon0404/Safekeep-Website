@@ -1261,9 +1261,14 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         warns you instead of showing an address. Then add a title and purpose, give each key a plain-language
                         name (&ldquo;Dave&rsquo;s Coldcard &mdash; home safe&rdquo;), and mark which keys need a passphrase.
                         Nothing you type is saved in the browser.
+                        On the printed record each key appears by its name only. For a key with a passphrase, the
+                        fingerprint in the descriptor belongs to the seed words <em>plus</em> the passphrase, so an heir
+                        who loads the seed words alone would see a different one. To make the printout unambiguous, add
+                        the seed&rsquo;s own fingerprint to the key&rsquo;s name. Every key&rsquo;s fingerprint is still on
+                        the record inside the descriptor.
                         <em>Print a new record if either applies to you: you printed a record for a nested SegWit or legacy
                         multisig wallet with v1.36 or earlier (these were recorded as single-signature), or you printed a
-                        record from a scanned wallet QR code before v1.38 (its first receiving address could be wrong).</em>
+                        record from a scanned wallet QR code with v1.37 (its first receiving address could be wrong).</em>
                     </li>
                 </ul>
                 <p class="wallet-sig-heading">Signing &amp; Transfer</p>
