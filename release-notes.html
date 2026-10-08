@@ -91,20 +91,22 @@
                 </p>
             </div>
 
-            <!-- v1.37 -->
-            <section class="content-section" id="v1-37">
-                <h2 class="section-heading">v1.37 &mdash; October 8, 2026</h2>
+            <!-- v1.38 (replaces v1.37) -->
+            <section class="content-section" id="v1-38">
+                <h2 class="section-heading">v1.38 &mdash; October 8, 2026</h2>
                 <p>Better seed generation, a Wallet Record built from your descriptor, and an easier Passphrase Library.</p>
+                <p><em>v1.37 was released earlier the same day and replaced by v1.38 because of a Wallet Record bug (see the last item). If you installed v1.37, update to v1.38.</em></p>
                 <ul class="docs-list">
                     <li><strong>Verifiable Dice &mdash;</strong> a new Entropy Generator mode that uses physical dice only. The seed is the SHA-256 of your rolls (exactly 50 rolls for 12 words, 99 for 24), the same method SeedSigner and COLDCARD use, so the same rolls give the same words on either device and you can check one against the other. Mixed mode stays the default.</li>
                     <li><strong>Playing Cards &mdash;</strong> a new entropy source: shuffle a 52-card deck and enter it from the top. A full deck adds about 225 bits.</li>
                     <li><strong>An honest entropy meter &mdash;</strong> the meter now counts only the randomness you add: 0.5 bits per mouse sample, and 4 bits per camera frame taken only from the sensor-noise bits. Digital Dice are gone; they came from the same generator that is always mixed in, so they added no security.</li>
-                    <li><strong>Wallet Record starts from the descriptor &mdash;</strong> use the wallet you just built in the Output Descriptor tool, or paste or scan the descriptor from any wallet app (animated QR codes work). The vault checks the descriptor&rsquo;s checksum, refuses private keys, and works out the wallet type, M-of-N, script and first receiving address. You name each key (&ldquo;Dave&rsquo;s Coldcard &mdash; home safe&rdquo;) and mark which ones need a passphrase. The printed record looks the same as before.</li>
+                    <li><strong>Wallet Record starts from the descriptor &mdash;</strong> use the wallet you just built in the Output Descriptor tool, or paste or scan the descriptor from any wallet app (animated QR codes work, such as Sparrow&rsquo;s wallet export). The vault checks the descriptor&rsquo;s checksum, refuses private keys, and works out the wallet type, M-of-N, script and first receiving address. If a key is missing its <code>&hellip;/&lt;0;1&gt;/*</code> path, it warns you instead of showing an address. You name each key (&ldquo;Dave&rsquo;s Coldcard &mdash; home safe&rdquo;) and mark which ones need a passphrase. The printed record looks the same as before.</li>
                     <li><strong>Wallet Record fixes &mdash;</strong> nested SegWit and legacy multisig wallets were recorded as single-signature. <strong>If you printed a record for one of these, print it again.</strong> Passphrases are also no longer saved in the browser.</li>
                     <li><strong>Passphrase Library &mdash;</strong> the generator opens right under the passphrase field. A generated passphrase no longer has to be re-typed: instead you check your written copy before saving. Changing the separator or capitalization keeps the same words, and a new <strong>Use this wallet now</strong> button switches to the passphrase wallet straight away.</li>
                     <li><strong>Passphrase backup fix &mdash;</strong> Print PDF could show the fingerprint of a different, active wallet. It now always matches the passphrase being printed. <strong>If you printed a passphrase backup while another passphrase wallet was active, print it again.</strong></li>
                     <li><strong>Seed XOR &mdash;</strong> merging now shows the recovered fingerprint to compare with your share cards, and rejects a share entered twice or shares that cancel out to an empty seed. The recovery drill also works in preview mode.</li>
                     <li><strong>SeedQR &mdash;</strong> Standard SeedQR is now offered alongside Compact, with a note on which wallets can scan each.</li>
+                    <li><strong>Scanned wallet QR fix (why v1.37 was replaced) &mdash;</strong> in v1.37, scanning a wallet QR code into the Wallet Record (for example a Sparrow multisig export) imported the right key fingerprints but showed the wrong first receiving address and an incomplete descriptor, because the QR leaves out the keys&rsquo; <code>&hellip;/&lt;0;1&gt;/*</code> path. v1.38 adds the standard path and the descriptor checksum. <strong>If you printed a Wallet Record from a scanned QR code with v1.37, discard it and print a new one.</strong></li>
                 </ul>
             </section>
 

@@ -1220,7 +1220,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         A generated passphrase doesn&rsquo;t need re-typing: write it down (or print it), then
                         type it back from your copy to unlock <strong>Save</strong>. <strong>Use this wallet now</strong>
                         switches straight to the passphrase wallet. A printed backup always shows the fingerprint
-                        of the passphrase on it. <em>If you printed a passphrase backup before v1.37 while another
+                        of the passphrase on it. <em>If you printed a passphrase backup with v1.36 or earlier while another
                         passphrase wallet was active, print it again: its fingerprint may be wrong.</em>
                     </li>
                     <li>
@@ -1255,12 +1255,15 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         Generates a clean, single-page PDF summary of your wallet for long-term offline storage and
                         inheritance planning. Start with <strong>Use the wallet I just built</strong> (from the Output
                         Descriptor tool), or paste or scan the descriptor exported by any wallet app (animated QR codes
-                        work). The vault checks the descriptor&rsquo;s checksum, refuses one containing private keys, and
-                        works out the wallet type, M-of-N, script, keys and first receiving address. Then add a title and
-                        purpose, give each key a plain-language name (&ldquo;Dave&rsquo;s Coldcard &mdash; home safe&rdquo;),
-                        and mark which keys need a passphrase. Nothing you type is saved in the browser.
-                        <em>If you printed a record for a nested SegWit or legacy multisig wallet before v1.37, print it
-                        again: earlier versions recorded these as single-signature.</em>
+                        work, such as Sparrow&rsquo;s wallet export). The vault checks the descriptor&rsquo;s checksum, refuses
+                        one containing private keys, and works out the wallet type, M-of-N, script, keys and first receiving
+                        address. If a key in the descriptor is missing its <code>&hellip;/&lt;0;1&gt;/*</code> path, the vault
+                        warns you instead of showing an address. Then add a title and purpose, give each key a plain-language
+                        name (&ldquo;Dave&rsquo;s Coldcard &mdash; home safe&rdquo;), and mark which keys need a passphrase.
+                        Nothing you type is saved in the browser.
+                        <em>Print a new record if either applies to you: you printed a record for a nested SegWit or legacy
+                        multisig wallet with v1.36 or earlier (these were recorded as single-signature), or you printed a
+                        record from a scanned wallet QR code before v1.38 (its first receiving address could be wrong).</em>
                     </li>
                 </ul>
                 <p class="wallet-sig-heading">Signing &amp; Transfer</p>
