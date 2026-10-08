@@ -642,6 +642,12 @@
                         entirely on your dice, so use a fair die and never let anyone see or record the rolls.
                     </li>
                 </ul>
+                <figure class="os-showcase">
+                    <a href="verifiable-dice.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="verifiable-dice.png" alt="Verifiable Dice mode with all 50 rolls entered for a 12-word seed, instructions for checking the words on SeedSigner or COLDCARD, and the Forge Seed button">
+                    </a>
+                    <figcaption><strong>Verifiable Dice</strong> after 50 rolls for a 12-word seed. The panel explains how to enter the same rolls on SeedSigner or COLDCARD and check that the words match.</figcaption>
+                </figure>
                 <p>In Mixed mode you can combine any of these sources:</p>
                 <ul class="docs-list">
                     <li><strong>Manual dice &mdash;</strong> press 1&ndash;6 for each roll (about 2.58 bits each). Backspace undoes a typo. A fairness check warns if the die looks biased.</li>
@@ -649,6 +655,12 @@
                     <li><strong>Mouse movement &mdash;</strong> 0.5 bits per sample.</li>
                     <li><strong>Camera noise &mdash;</strong> 4 bits per frame, taken only from the sensor-noise bits, and only when they change between frames.</li>
                 </ul>
+                <figure class="os-showcase">
+                    <a href="playing-cards.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="playing-cards.png" alt="Playing Cards entropy source with 16 of 52 cards entered from a shuffled deck" style="max-width: 560px;">
+                    </a>
+                    <figcaption>The <strong>Playing Cards</strong> source, part-way through a shuffled deck. Each card is credited by how many cards are left, so a full deck adds about 225 bits.</figcaption>
+                </figure>
                 <p>
                     The meter counts only the randomness <em>you</em> add (&ldquo;bits from you&rdquo;). The
                     device&rsquo;s random number generator is always mixed in as well, but isn&rsquo;t counted.
