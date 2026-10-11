@@ -788,7 +788,7 @@
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
                     <li>Open the <strong>Transfer Hub</strong> in the vault and locate the JSON file you just downloaded.</li>
                     <li>On your phone, open the <a href="https://courier.safekeepbitcoin.com" target="_blank" rel="noopener"><strong>Courier Tool</strong></a> and select <strong>Receive</strong>, then tap <strong>Open camera and scan</strong>.</li>
-                    <li>On <strong>SafeKeepVault</strong>, select the JSON file and click <strong>Transmit</strong> &rarr;<strong>Courier Tool&rarr;</strong><strong>Start Transmission</strong>. The vault displays an animated QR sequence.</li>
+                    <li>On <strong>SafeKeepVault</strong>, click <strong>Transmit</strong> next to the JSON file. It opens in the vault&rsquo;s <strong>Courier Tool</strong>, already loaded. Click <strong>Start Transmission Loop</strong>. The vault displays an animated QR sequence.</li>
                     <li>Hold your phone to the vault&rsquo;s screen. The <strong>Courier Tool</strong> will scan and reconstruct the file. Save it to your phone when prompted.</li>
                     <li>In Nunchuk, tap <strong>Add Key</strong> &rarr; <strong>Coldcard</strong> &rarr; <strong>Add COLDCARD via file (advanced)</strong> &rarr; <strong>Continue</strong>.</li>
                     <li>Navigate to the JSON file you transferred and select it.</li>
@@ -1113,6 +1113,16 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     directly from the Transfer partition. Files transmitted via QR can be received
                     directly on your computer at <a href="https://courier.safekeepbitcoin.com" target="_blank" rel="noopener">courier.safekeepbitcoin.com</a>.
                 </p>
+                <p>
+                    <strong>Transmit</strong> opens the file in the vault&rsquo;s <strong>Courier Tool</strong>, on its
+                    <strong>Transmit</strong> tab, which works like the online Courier:
+                </p>
+                <ul class="docs-list">
+                    <li><strong>File or text &mdash;</strong> two cards choose what to send: <strong>File</strong> (sent as an animated QR loop) or <strong>Text / password</strong> (a single static QR). The selected card is highlighted in orange.</li>
+                    <li><strong>The file &mdash;</strong> a file sent from the Transfer Hub is already loaded. To send a different one, click the drop zone (&ldquo;Choose a file or drop it here&rdquo;) or drop a file onto it, or pick one from the Transfer Drive list below it. The drop zone shows the file&rsquo;s name and size. For large files only, an amber warning says roughly how many minutes one loop will take and suggests raising the density, or using the Transfer Drive instead for very large files.</li>
+                    <li><strong>Density and Speed &mdash;</strong> two sliders, each showing its current value. Lower density is easier to scan; higher density needs fewer frames. Lower speed is more reliable; higher speed is faster. If the receiving camera struggles, lower either one.</li>
+                </ul>
+                <p>Click <strong>Start Transmission Loop</strong> and hold the receiving device&rsquo;s camera up to the screen until it has every frame.</p>
 
                 <figure class="os-showcase">
                     <a href="transfer%20hub.png" target="_blank" rel="noopener">
@@ -1281,7 +1291,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li>
                         <strong>Courier Tool &mdash;</strong>
                         Transfers files between air-gapped devices via animated QR
-                        codes. No USB, no network &mdash; light and a camera lens only.
+                        codes. No USB, no network &mdash; light and a camera lens only. Choose File or
+                        Text / password, drop in a file, and set the Density and Speed sliders; it works
+                        with the online Courier Tool at courier.safekeepbitcoin.com.
                     </li>
                 </ul>
                 <p class="wallet-sig-heading">Private Data</p>
