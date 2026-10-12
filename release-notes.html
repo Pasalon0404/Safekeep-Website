@@ -91,6 +91,16 @@
                 </p>
             </div>
 
+            <!-- v1.42 -->
+            <section class="content-section" id="v1-42">
+                <h2 class="section-heading">v1.42 &mdash; October 12, 2026</h2>
+                <p>A new <strong>Receive</strong> panel in the Output Descriptor tool. It works the address out from your descriptor on the offline stick, so malware on an online computer can&rsquo;t swap it. The vault has no network access and can&rsquo;t see which addresses have been used, so the intended workflow is: let your watch-only wallet (for example Sparrow on your own node) pick the next unused address, and use SafeKeep to check it.</p>
+                <ul class="docs-list">
+                    <li><strong>Show a receive address &mdash;</strong> pick an address by number with &larr; and &rarr;, starting at 0. The address is shown in groups of four so you can compare every character, with a QR code, a Copy button, and a label giving its number, path, wallet type and key fingerprints. It works for single-signature, Taproot and multisig wallets; a Silent Payment wallet shows its one fixed address.</li>
+                    <li><strong>Check an address &mdash;</strong> paste or scan an address, and SafeKeep searches the wallet&rsquo;s first 1,000 receive and change addresses. If it&rsquo;s found, you see &ldquo;&#10004; receive address #N&rdquo; (a change address is flagged as one). If it isn&rsquo;t, you get a warning not to send to it. It accepts <code>bitcoin:</code> links and uppercase addresses, and refuses addresses with a typo and testnet addresses.</li>
+                </ul>
+            </section>
+
             <!-- v1.41 -->
             <section class="content-section" id="v1-41">
                 <h2 class="section-heading">v1.41 &mdash; October 12, 2026</h2>
