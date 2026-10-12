@@ -900,7 +900,7 @@
                 <ol class="wallet-steps">
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Output Descriptor</strong> (under Advanced Tools &rarr; Keys &amp; Seeds) and build the descriptor for your wallet.</li>
                     <li>If this is a brand-new wallet that has never received funds, tick the box to skip Bitcoin Core&rsquo;s blockchain rescan. Otherwise leave it unticked, so Core scans from the start of the chain and finds every past transaction.</li>
-                    <li>Click <strong>Export for Bitcoin Core (.json)</strong>, follow the on-screen message to copy the file to your Transfer Drive, and move it to the computer running Bitcoin Core.</li>
+                    <li>Click <strong>Export for Bitcoin Core (.json)</strong>. The file saves to your Transfer Drive. Move it to the computer running Bitcoin Core by moving the flash drive, or send it from the <strong>Transfer Hub</strong>.</li>
                     <li>In the folder holding the file, create an empty watch-only wallet, then import the file. The vault shows both commands with the exact file name; they look like this:
                         <pre>bitcoin-cli -named createwallet wallet_name=safekeep-watch disable_private_keys=true blank=true
 bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMPORT-&hellip;.json)"</pre>
@@ -1191,8 +1191,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     </li>
                     <li>
                         <strong>Transfer Hub &mdash;</strong>
-                        File browser for the Transfer Drive. View, rename, or delete backup archives, transactions, and PDFs,
-                        or transmit a file to your phone as an animated QR.
+                        File browser for the Transfer Drive. View, rename, or delete backup archives, transactions, address
+                        lists (.csv) and PDFs, or transmit a file to your phone as an animated QR.
                     </li>
                 </ul>
 
@@ -1237,7 +1237,21 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Output Descriptor &mdash;</strong>
                         Builds wallet configurations for single-signature, multisig and Silent Payment setups.
                         Export and import directly into any compatible wallet, or export a watch-only import
-                        file for Bitcoin Core.
+                        file for Bitcoin Core. <strong>Export Addresses (.csv)</strong> saves a list of the wallet&rsquo;s
+                        addresses: choose how many, from 1 to 10,000, starting at the first address (index 0), and
+                        optionally the same number of change addresses. Each row has the index, chain, path and
+                        address, with no keys, and the first addresses are checked against the ones on screen before
+                        saving. (Silent Payment wallets have one fixed address, so there is no list.) All of the
+                        tool&rsquo;s exports save to the Transfer Drive, ready to send from the Transfer Hub, and an
+                        earlier export is never overwritten.
+                        <br><br>
+                        In the multisig builder, <strong>Key 1</strong> is this device: it shows its key origin and
+                        xpub, with a Copy button to give to the other cosigners, and updates with the passphrase
+                        and address type. Cosigner keys may end in <code>/&lt;0;1&gt;/*</code> or <code>/0/*</code>.
+                        Every key must be different: a key entered twice (for example one cosigner QR code scanned
+                        for two keys, or a cosigner using the same seed as Key 1) is refused, and the message names
+                        the keys. <em>If you built a multisig descriptor before v1.41 and its verification addresses
+                        showed &ldquo;error&rdquo;, build it again.</em>
                     </li>
                 </ul>
                 <p class="wallet-sig-heading">Backup &amp; Recovery</p>
