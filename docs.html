@@ -1252,6 +1252,18 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         for two keys, or a cosigner using the same seed as Key 1) is refused, and the message names
                         the keys. <em>If you built a multisig descriptor before v1.41 and its verification addresses
                         showed &ldquo;error&rdquo;, build it again.</em>
+                        <br><br>
+                        The <strong>Receive</strong> panel works out receive addresses from the descriptor here,
+                        offline, so malware on an online computer can&rsquo;t swap them. The vault can&rsquo;t see
+                        which addresses have been used, so let your watch-only wallet pick the next unused address,
+                        then check it here. <strong>Show a receive address</strong> picks an address by number
+                        (&larr; and &rarr;, from 0) and shows it in groups of four for comparing every character, with
+                        a QR code, a Copy button and a label giving its number, path, wallet type and key
+                        fingerprints. <strong>Check an address</strong> takes a pasted or scanned address (including
+                        <code>bitcoin:</code> links) and searches the first 1,000 receive and change addresses: if it&rsquo;s
+                        found you see which one (change addresses are flagged), and if not you&rsquo;re warned not to
+                        send to it. Addresses with a typo and testnet addresses are refused. A Silent Payment wallet
+                        shows its one fixed address.
                     </li>
                 </ul>
                 <p class="wallet-sig-heading">Backup &amp; Recovery</p>
