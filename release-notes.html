@@ -91,6 +91,18 @@
                 </p>
             </div>
 
+            <!-- v1.41 -->
+            <section class="content-section" id="v1-41">
+                <h2 class="section-heading">v1.41 &mdash; October 12, 2026</h2>
+                <ul class="docs-list">
+                    <li><strong>Export Addresses (.csv) &mdash;</strong> the Output Descriptor tool can save your wallet&rsquo;s addresses as a list. Choose how many, from 1 to 10,000, always starting at the first address (index 0), and optionally the same number of change addresses. Each row has the index, chain, path and address, and no keys. Before saving, the first addresses are checked against the ones shown on screen. It works for single-signature, Taproot and multisig wallets, but not Silent Payments, which have one fixed address.</li>
+                    <li><strong>Exports go to the Transfer Drive &mdash;</strong> the Output Descriptor tool&rsquo;s exports (descriptor .txt, Bitcoin Core .json and the address .csv) now save to the Transfer Drive, ready to send from the Transfer Hub. Before, they were saved inside the encrypted vault, where the Transfer Hub couldn&rsquo;t reach them. If the Transfer Drive isn&rsquo;t available, the vault says so and saves nothing, and an earlier export is never overwritten.</li>
+                    <li><strong>Multisig builder: no duplicate keys &mdash;</strong> the same key entered twice is now refused, and the message names the keys. This happens when one cosigner QR code is scanned for two keys, or a cosigner uses the same seed as Key 1. Before, the build reported success, but every verification address showed &ldquo;error&rdquo; and wallets like Sparrow read the descriptor as having fewer keys. <strong>If you built a multisig descriptor whose addresses showed &ldquo;error&rdquo;, build it again.</strong></li>
+                    <li><strong>Multisig builder: other improvements &mdash;</strong> a build whose addresses can&rsquo;t be worked out now reports an error. Cosigner keys ending in <code>/&lt;0;1&gt;/*</code> or <code>/0/*</code> are accepted. Key 1 (this device) now shows its key origin and xpub, with a Copy button, and updates with the passphrase and address type.</li>
+                    <li><strong>Transfer Hub &mdash;</strong> .csv files on the Transfer Drive are listed and can be sent.</li>
+                </ul>
+            </section>
+
             <!-- v1.40 -->
             <section class="content-section" id="v1-40">
                 <h2 class="section-heading">v1.40 &mdash; October 11, 2026</h2>
