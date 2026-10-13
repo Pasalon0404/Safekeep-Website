@@ -932,6 +932,17 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     scan a QR code displayed by your watch wallet, or load a <code>.psbt</code> file
                     directly from the Transfer Drive.
                 </p>
+                <p>
+                    <strong>Scan Unsigned PSBT</strong> also accepts a <code>.psbt</code> file sent with
+                    <a href="https://courier.safekeepbitcoin.com" target="_blank" rel="noopener">The Courier</a>, for
+                    wallets that only work with files, such as Trezor Suite. Save the unsigned transaction from your
+                    wallet, send it with The Courier from your computer&rsquo;s screen (or relay it with a phone),
+                    and point the vault&rsquo;s camera at it. You can start at any point in the loop. Each chunk is
+                    checksum-checked, and progress shows as &ldquo;chunk 5 / 12&rdquo;. The file is put back together
+                    in memory, without being saved, and loads exactly like a file from the Transfer Drive. Binary
+                    <code>.psbt</code>, base64 and hex text files are accepted; any other file is refused with a
+                    clear message.
+                </p>
 
                 <figure class="os-showcase">
                     <a href="select%20signer.png" target="_blank" rel="noopener">
@@ -1083,8 +1094,12 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     to your watch wallet. The primary method is a QR code &mdash; choose the format that
                     matches your coordinator: Standard Base64 for Sparrow and Blue Wallet, UR
                     (<code>ur:crypto-psbt</code>, an animated QR that many mobile wallets prefer), Nunchuk
-                    Raw Hex, or Electrum Raw Hex. Large PSBTs (over about 1,200 bytes) start on UR
-                    automatically, because they no longer fit cleanly in a single QR code. You can also copy
+                    Raw Hex, Electrum Raw Hex, or <strong>File (Courier)</strong>. Large PSBTs (over about 1,200 bytes) start on UR
+                    automatically, because they no longer fit cleanly in a single QR code.
+                    <strong>File (Courier)</strong> plays the signed PSBT as a Courier file loop named
+                    <code>&lt;name&gt;-signed.psbt</code>: open The Courier on your online computer, choose
+                    <strong>Receive</strong>, and save the file for your wallet to open (for example Trezor Suite).
+                    It&rsquo;s chosen automatically when the PSBT arrived through The Courier. You can also copy
                     or save the raw transaction hex for direct broadcast, or save the signed
                     <code>.psbt</code> file back to the Transfer Drive for sneakernet handoff.
                 </p>
@@ -1180,7 +1195,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li>
                         <strong>PSBT Signer &mdash;</strong>
                         Reviews, decodes, and signs PSBTs entirely offline. Transaction details
-                        are displayed for inspection before you sign. Can also ask a paired Coldcard or
+                        are displayed for inspection before you sign. Takes and returns PSBTs as QR codes,
+                        files on the Transfer Drive, or files sent with The Courier. Can also ask a paired Coldcard or
                         Trezor One for a co-signature over USB.
                     </li>
                     <li>
@@ -1319,7 +1335,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         Transfers files between air-gapped devices via animated QR
                         codes. No USB, no network &mdash; light and a camera lens only. Choose File or
                         Text / password, drop in a file, and set the Density and Speed sliders; it works
-                        with the online Courier Tool at courier.safekeepbitcoin.com.
+                        with the online Courier Tool at courier.safekeepbitcoin.com. It can also carry PSBT
+                        files to and from the PSBT Signer, for wallets that only work with files, such as
+                        Trezor Suite.
                     </li>
                 </ul>
                 <p class="wallet-sig-heading">Private Data</p>
