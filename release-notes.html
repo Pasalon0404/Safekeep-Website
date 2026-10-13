@@ -91,6 +91,16 @@
                 </p>
             </div>
 
+            <!-- v1.43 -->
+            <section class="content-section" id="v1-43">
+                <h2 class="section-heading">v1.43 &mdash; October 13, 2026</h2>
+                <p>The PSBT Signer now takes and gives files sent with <strong>The Courier</strong>, both ways. This is for wallets that only work with files, such as <strong>Trezor Suite</strong>: no Transfer Drive and no saving files on the vault.</p>
+                <ul class="docs-list">
+                    <li><strong>In &mdash;</strong> <strong>Scan Unsigned PSBT</strong> also accepts an unsigned <code>.psbt</code> file sent with The Courier, either from a computer&rsquo;s screen or relayed by a phone. Frames are collected in any order, from any point in the loop. Each chunk is checksum-checked, and progress shows as &ldquo;chunk 5 / 12&rdquo;. The file is put back together in memory without being saved, and loads exactly like a file from the Transfer Drive. Binary <code>.psbt</code>, base64 and hex text files are accepted; any other file is refused with a clear message.</li>
+                    <li><strong>Out &mdash;</strong> A new <strong>File (Courier)</strong> export format plays the signed PSBT as a Courier file loop named <code>&lt;name&gt;-signed.psbt</code>. The Courier on your online computer receives it and saves the file for your wallet to open. It&rsquo;s chosen automatically when the PSBT arrived through The Courier. Wallets that scan QR codes, such as Sparrow, can still use <strong>UR</strong> or <strong>Standard</strong>.</li>
+                </ul>
+            </section>
+
             <!-- v1.42 -->
             <section class="content-section" id="v1-42">
                 <h2 class="section-heading">v1.42 &mdash; October 12, 2026</h2>
