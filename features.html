@@ -376,44 +376,6 @@
 })();
 </script>
 
-<script>
-(function () {
-    var overlay  = document.getElementById('lightbox');
-    var img      = document.getElementById('lightbox-img');
-    var closeBtn = document.getElementById('lightbox-close');
-    var scrollY  = 0;
-
-    document.querySelectorAll('.os-showcase img').forEach(function (el) {
-        el.addEventListener('click', function () {
-            img.src = el.src;
-            img.alt = el.alt;
-            scrollY = window.scrollY;
-            overlay.classList.add('active');
-            // Lock scroll on iOS and Android
-            document.body.style.position = 'fixed';
-            document.body.style.top = '-' + scrollY + 'px';
-            document.body.style.width = '100%';
-        });
-    });
-
-    function closeLightbox() {
-        overlay.classList.remove('active');
-        // Restore scroll position
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, scrollY);
-        img.src = '';
-    }
-
-    overlay.addEventListener('click', closeLightbox);
-    closeBtn.addEventListener('click', function(e) { e.stopPropagation(); closeLightbox(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
-
-    // Prevent clicking the image itself from closing
-    img.addEventListener('click', function(e) { e.stopPropagation(); });
-})();
-</script>
     <!-- Page counter (GoatCounter): no cookies, no personal data. The script is a copy kept on
          this site (vendor/goatcounter-count.js), so no outside server can change these pages. -->
     <script data-goatcounter="https://safekeep.goatcounter.com/count" async src="vendor/goatcounter-count.js"></script>
