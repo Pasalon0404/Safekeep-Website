@@ -1,0 +1,6 @@
+# SafeKeepVault: all pages may be read by search engines and AI assistants.
+# A guide for AI assistants: https://safekeepbitcoin.com/llms.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://safekeepbitcoin.com/sitemap.xml
