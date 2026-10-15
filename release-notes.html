@@ -91,6 +91,19 @@
                 </p>
             </div>
 
+            <!-- v1.44 -->
+            <section class="content-section" id="v1-44">
+                <h2 class="section-heading">v1.44 &mdash; October 15, 2026</h2>
+                <p>The multisig builder in the <strong>Output Descriptor</strong> tool can read a cosigner&rsquo;s key straight from a <strong>Coldcard</strong> or <strong>Trezor One</strong> plugged into the vault by USB.</p>
+                <ul class="docs-list">
+                    <li><strong>Coldcard (USB) and Trezor (USB) &mdash;</strong> new buttons on each cosigner. With the device plugged into the offline SafeKeep computer, SafeKeep reads its master fingerprint and its BIP-48 multisig key for the chosen address type (<code>m/48'/0'/0'/2'</code> Native SegWit, <code>/1'</code> Nested SegWit, <code>/0'</code> Legacy) and fills in the cosigner. The key never passes through an online computer, which is especially useful for the Trezor One: it has no SD card or QR code output.</li>
+                    <li><strong>Safe by design &mdash;</strong> a locked Trezor shows the same PIN grid as signing (only grid positions are sent, never the PIN). The import only reads: nothing is paired or saved, and the device isn&rsquo;t asked to sign. Only the three multisig key paths can be read, and only mainnet keys are accepted.</li>
+                    <li><strong>Tested so far &mdash;</strong> reading from a Coldcard has been tested. Reading from a Trezor One hasn&rsquo;t been tried on a real device yet.</li>
+                    <li><strong>Mix-ups caught early &mdash;</strong> a device already used for another key is flagged, and a cosigner key for a different address type than the one selected is refused, whether it was read by USB, pasted or scanned.</li>
+                    <li><strong>Fix &mdash;</strong> with Multi-Sig selected, Seed Management&rsquo;s address note now points to the Output Descriptor tool (it used the old name &ldquo;The Script&rdquo;).</li>
+                </ul>
+            </section>
+
             <!-- v1.43 -->
             <section class="content-section" id="v1-43">
                 <h2 class="section-heading">v1.43 &mdash; October 13, 2026</h2>

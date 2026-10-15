@@ -617,7 +617,9 @@
                     <li>
                         <strong>Sign with Hardware Wallet (Temporary Session only) &mdash;</strong>
                         Co-sign a multisig transaction with a connected Coldcard or Trezor One without loading
-                        any seed into the vault. See <a href="#sign-hardware-only">Signing with only a hardware wallet</a>.
+                        any seed into the vault. (To add a Coldcard&rsquo;s or Trezor One&rsquo;s key to a multisig wallet
+                        in the first place, use the Output Descriptor tool&rsquo;s <strong>Coldcard (USB)</strong> and
+                        <strong>Trezor (USB)</strong> buttons.) See <a href="#sign-hardware-only">Signing with only a hardware wallet</a>.
                     </li>
                 </ol>
                 <h3 class="sub-heading" id="generate-seed">Generating a new seed</h3>
@@ -1268,6 +1270,19 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         for two keys, or a cosigner using the same seed as Key 1) is refused, and the message names
                         the keys. <em>If you built a multisig descriptor before v1.41 and its verification addresses
                         showed &ldquo;error&rdquo;, build it again.</em>
+                        <br><br>
+                        Each cosigner also has <strong>Coldcard (USB)</strong> and <strong>Trezor (USB)</strong> buttons.
+                        Plug the device into the offline SafeKeep computer and click one: SafeKeep reads the device&rsquo;s
+                        master fingerprint and its BIP-48 multisig key for the chosen address type
+                        (<code>m/48'/0'/0'/2'</code> Native SegWit, <code>/1'</code> Nested SegWit, <code>/0'</code> Legacy)
+                        and fills in the cosigner, so the key never passes through an online computer. This is especially
+                        useful for the Trezor One, which has no SD card or QR code output. A locked Trezor shows the same
+                        PIN grid as signing (only grid positions are sent, never the PIN). It only reads: nothing is paired
+                        or saved, and the device isn&rsquo;t asked to sign. Only those three multisig key paths can be
+                        read, and only mainnet keys are accepted. Mix-ups are caught early: a device already used for
+                        another key is flagged, and a cosigner key for a different address type than the one selected is
+                        refused, whether it was read by USB, pasted or scanned. <em>Reading from a Coldcard has been
+                        tested; reading from a Trezor One hasn&rsquo;t been tried on a real device yet.</em>
                         <br><br>
                         The <strong>Receive</strong> panel works out receive addresses from the descriptor here,
                         offline, so malware on an online computer can&rsquo;t swap them. The vault can&rsquo;t see
