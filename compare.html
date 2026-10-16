@@ -251,7 +251,7 @@
                             </tr>
                             <tr>
                                 <td>Air-gapped</td>
-                                <td class="col-skv"><span class="tag-yes">Yes</span> — QR codes or sneakernet</td>
+                                <td class="col-skv"><span class="tag-yes">Yes</span> — QR codes or sneakernet; no network drivers in the image</td>
                                 <td><span class="tag-no">No</span> — USB connected</td>
                                 <td><span class="tag-yes">Yes</span> — QR / SD card</td>
                                 <td><span class="tag-no">No</span> — USB connected</td>
@@ -349,7 +349,7 @@
                     </div>
                     <div class="threat-card">
                         <p class="threat-card-title">Network-based attacks</p>
-                        <p>Wi-Fi, Bluetooth, and Ethernet are disabled at the kernel level before the vault loads. There is no network interface for an attacker to reach, regardless of what is happening on your home network.</p>
+                        <p>The Wi-Fi, Bluetooth and Ethernet drivers are deleted from the system image, and a watchdog switches off any network interface that still appears. There is no network interface for an attacker to reach, regardless of what is happening on your home network. (Turn off Intel AMT/vPro in the BIOS too: it runs below the operating system.)</p>
                     </div>
                     <div class="threat-card">
                         <p class="threat-card-title">Closed-source firmware</p>

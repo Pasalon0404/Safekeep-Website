@@ -91,6 +91,20 @@
                 </p>
             </div>
 
+            <!-- v1.45 -->
+            <section class="content-section" id="v1-45">
+                <h2 class="section-heading">v1.45 &mdash; October 15, 2026</h2>
+                <p>Bring a wallet from another app into the <strong>Output Descriptor</strong> tool as a watch-only wallet, and a much tighter lock-down of SafeKeep OS itself.</p>
+                <ul class="docs-list">
+                    <li><strong>Import a watch-only wallet &mdash;</strong> paste or scan the output descriptor from another app (Sparrow, BlueWallet, Bitcoin Core), single-sig or multisig, including nested SegWit multisig <code>sh(wsh(&hellip;))</code>. On the <strong>Verify</strong> tab, <strong>Check Descriptor</strong> checks the checksum, refuses private keys, and shows the first receive and change addresses worked out from the descriptor. No seed is needed: without one the result is <strong>WATCH-ONLY</strong>, and with one loaded it still says <strong>MATCH</strong> or <strong>MISMATCH</strong>.</li>
+                    <li><strong>Use it like your own &mdash;</strong> <strong>Use This Descriptor (watch-only)</strong> loads it into the tool, so the Receive panel (show and check addresses), the address list (.csv), the Bitcoin Core export, the QR code and Print PDF all work for it. The PDF leaves out the seed and passphrase rows. A descriptor without the <code>&hellip;/&lt;0;1&gt;/*</code> ending gets a warning and can&rsquo;t be loaded.</li>
+                    <li><strong>No terminal, no file manager &mdash;</strong> release builds no longer include them. The session runs as the system administrator (root), so either one was a way into the whole system.</li>
+                    <li><strong>No network drivers &mdash;</strong> every network, Wi-Fi, Bluetooth, NFC, USB-network (including phone tethering) and USB-gadget driver is deleted from the image, and the build fails if one is left. Compilers, kernel headers and DKMS are removed after the build, so a new driver can&rsquo;t be compiled on the stick.</li>
+                    <li><strong>A network watchdog &mdash;</strong> if a network interface ever appears, SafeKeep switches it off and shows a red warning across the top of the app. It also warns if the firewall isn&rsquo;t loaded.</li>
+                    <li><strong>Preparing the computer &mdash;</strong> the stick controls the operating system, not the computer&rsquo;s firmware, so unplug network cables and turn off Intel AMT/vPro and the wireless radios in the BIOS/UEFI. See <a href="docs.html#prepare-computer">Preparing the computer</a>.</li>
+                </ul>
+            </section>
+
             <!-- v1.44 -->
             <section class="content-section" id="v1-44">
                 <h2 class="section-heading">v1.44 &mdash; October 15, 2026</h2>

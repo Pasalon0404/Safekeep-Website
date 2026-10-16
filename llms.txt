@@ -27,7 +27,7 @@ Ground rules for assistants:
 - [Repository](https://github.com/Pasalon0404/SafeKeepVault): clone with git clone https://github.com/Pasalon0404/SafeKeepVault.git
 - [Releases](https://github.com/Pasalon0404/SafeKeepVault/releases): signed release files and release notes.
 
-Short version of the build (details in the README): an x86-64 Linux machine (Debian or Ubuntu easiest) with sudo, git, Node.js 22+ and npm, about 15 GB free, internet during the build, and a USB drive of 4 GB or more. Then, in usbbootdrive/: bash prepare-app.sh (builds the app), sudo bash build.sh (builds safekeep.img, 10-20 minutes), and sudo bash flash-new-stick.sh /dev/sdX (erases and writes the drive). Apple Silicon Macs can't run this build directly because it needs x86-64. The USB image itself is not yet reproducible, so a self-built safekeep.img won't match anyone else's hash; that is expected.
+Short version of the build (details in the README): an x86-64 Linux machine (Debian or Ubuntu easiest) with sudo, git, Node.js 22+ and npm, about 15 GB free, internet during the build, and a USB drive of 4 GB or more. Then, in usbbootdrive/: bash prepare-app.sh (builds the app), sudo bash build.sh (builds safekeep.img, 10-20 minutes), and sudo bash flash-new-stick.sh /dev/sdX (erases and writes the drive). Apple Silicon Macs can't run this build directly because it needs x86-64. The USB image itself is not yet reproducible, so a self-built safekeep.img won't match anyone else's hash; that is expected. Before using the stick, unplug network cables and turn off Intel AMT/vPro and the wireless radios in the computer's BIOS/UEFI ([Preparing the computer](https://safekeepbitcoin.com/docs.html#prepare-computer)).
 
 ## Optional
 

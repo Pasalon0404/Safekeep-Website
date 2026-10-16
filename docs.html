@@ -291,6 +291,8 @@
                     <li><a href="#hardware">System Requirements &amp; Components</a>
                         <ul>
                             <li><a href="#system-requirements">System Requirements</a></li>
+                            <li><a href="#stay-offline">How SafeKeep OS Stays Offline</a></li>
+                            <li><a href="#prepare-computer">Preparing the Computer</a></li>
                             <li><a href="#components">Components</a></li>
                         </ul>
                     </li>
@@ -369,6 +371,23 @@
                     it automatically disables all outside connections&mdash;like Ethernet, Wi-Fi and storage devices&mdash;to
                     keep your data completely isolated.
                 </p>
+                <h3 class="sub-heading" id="stay-offline">How SafeKeep OS stays offline</h3>
+                <ul class="docs-list">
+                    <li><strong>No network drivers &mdash;</strong> every network, Wi-Fi, Bluetooth, NFC, USB-network (including phone tethering) and USB-gadget driver is deleted from the image. The build fails if one is left behind.</li>
+                    <li><strong>No network services &mdash;</strong> the network managers are switched off for good, the radios are blocked, and a firewall drops everything as a last line of defense.</li>
+                    <li><strong>No terminal and no file manager &mdash;</strong> release builds don&rsquo;t include them, so there is no way to open a command line on the stick.</li>
+                    <li><strong>No compilers &mdash;</strong> compilers, kernel headers and DKMS are removed after the build, so a new driver can&rsquo;t be compiled on the stick.</li>
+                    <li><strong>A watchdog &mdash;</strong> if a network interface ever appears, SafeKeep switches it off and shows a red warning across the top of the app. It also warns if the firewall isn&rsquo;t loaded.</li>
+                </ul>
+                <h3 class="sub-heading" id="prepare-computer">Preparing the computer</h3>
+                <p>
+                    The stick controls the operating system, not the computer&rsquo;s own firmware. For the strongest air gap:
+                </p>
+                <ul class="docs-list">
+                    <li><strong>Unplug the network cable &mdash;</strong> and don&rsquo;t plug in USB network adapters or phones.</li>
+                    <li><strong>Turn off Intel AMT / vPro &mdash;</strong> on business laptops (such as HP ZBook, Dell Latitude and Lenovo ThinkPad), in the BIOS/UEFI setup. AMT runs in the computer&rsquo;s management chip, separately from any operating system, and can use the built-in Intel Ethernet (and on some models Wi-Fi) by itself.</li>
+                    <li><strong>Turn off Wi-Fi and Bluetooth in the BIOS/UEFI &mdash;</strong> if it offers the option, or use a computer whose wireless card has been removed.</li>
+                </ul>
 
                 <h3 class="sub-heading" id="system-requirements">System Requirements</h3>
                 <ul class="docs-list">
@@ -1295,6 +1314,17 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         found you see which one (change addresses are flagged), and if not you&rsquo;re warned not to
                         send to it. Addresses with a typo and testnet addresses are refused. A Silent Payment wallet
                         shows its one fixed address.
+                        <br><br>
+                        <strong>Import a wallet from another app (watch-only)</strong>: paste or scan the output
+                        descriptor exported by Sparrow, BlueWallet or Bitcoin Core, single-sig or multisig, including
+                        nested SegWit multisig <code>sh(wsh(&hellip;))</code>. On the <strong>Verify</strong> tab,
+                        <strong>Check Descriptor</strong> checks the checksum, refuses private keys, and shows the first
+                        receive and change addresses worked out from the descriptor. No seed is needed: without one the
+                        result is <strong>WATCH-ONLY</strong>; with a seed loaded it still says <strong>MATCH</strong> or
+                        <strong>MISMATCH</strong>. <strong>Use This Descriptor (watch-only)</strong> then loads it into
+                        the tool, so the Receive panel, the address list (.csv), the Bitcoin Core export, the QR code and
+                        Print PDF all work for it; the PDF leaves out the seed and passphrase rows. A descriptor without the
+                        <code>&hellip;/&lt;0;1&gt;/*</code> ending gets a warning and can&rsquo;t be loaded.
                     </li>
                 </ul>
                 <p class="wallet-sig-heading">Backup &amp; Recovery</p>
