@@ -328,6 +328,8 @@
                         </ul>
                     </li>
                     <li><a href="#sessions">Locking &amp; Device Options</a></li>
+                    <li><a href="#updating">Updating to a New Version</a></li>
+                    <li><a href="#recover-without">Recovering Without SafeKeep</a></li>
                     <li><a href="#tools">The Tool Arsenal</a>
                         <ul>
                             <li><a href="#primary-tools">Main Tools</a></li>
@@ -429,7 +431,7 @@
                         and external storage. When combined with the <strong>Courier Tool</strong>&mdash;our high-density
                         QR tool&mdash;this creates a secure, bidirectional data flow.
                         <ul style="margin: 0.65rem 0 0 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.93rem; color: var(--text-muted); line-height: 1.6;">
-                            <li><strong>Seamless QR Unlocking:</strong> By storing your vault password in a manager on your mobile device, you can generate a QR code from that password (see Step 1). Simply display your phone to the host&rsquo;s webcam to unlock your encrypted vault instantly&mdash;combining elite cryptographic strength with a streamlined, convenient way to unlock your wallet.</li>
+                            <li><strong>Seamless QR Unlocking:</strong> By storing your vault password in a manager on your mobile device, you can generate a QR code from that password (see Step 1). Simply display your phone to the host&rsquo;s webcam to unlock your encrypted vault instantly&mdash;combining elite cryptographic strength with a streamlined, convenient way to unlock your wallet. Keep the QR image inside the password manager, never in your photo library.</li>
                             <li><strong>Port Security:</strong> About 30 seconds after boot, the vault blocks any new keyboard or mouse that is plugged in, to defend against &ldquo;BadUSB&rdquo; devices that pretend to be a keyboard and type commands. Other USB storage is never mounted. The only exceptions are a <strong>Coldcard</strong> or <strong>Trezor One</strong> used for co-signing, which can be plugged in at any time and can never act as a keyboard or mouse. File-based transfers should be managed by moving the drive between machines while the vault is powered down.</li>
                         </ul>
                     </li>
@@ -472,11 +474,24 @@
                 <h3 class="sub-heading">Generate Your Unlock QR Code</h3>
                 <p>
                     Typing a 20+ character random password on every boot is impractical. Instead,
-                    convert it to a QR code using the widget below. Save the QR image to your phone&rsquo;s
-                    secure photo library or an encrypted note in your password manager. On every subsequent
+                    convert it to a QR code using the widget below and save the image as an attachment
+                    or locked note in your password manager. On every subsequent
                     boot, simply hold your phone up to the vault&rsquo;s webcam &mdash; the system reads
                     the QR and unlocks the vault instantly, with no typing required. This converter runs entirely in your browser &mdash; <strong>safekeepbitcoin.com</strong> does not store your password.
                 </p>
+                <div class="notice-block">
+                    <p class="notice-title">The QR Code Is the Password</p>
+                    <p>
+                        Anyone who sees or copies the QR image can unlock your vault, so protect it
+                        exactly like the password itself:
+                    </p>
+                    <ul class="docs-list">
+                        <li><strong>Keep it out of your photo library &mdash;</strong> phones copy photos to iCloud or Google Photos automatically, so a picture of the code ends up on someone else&rsquo;s server. Don&rsquo;t take a screenshot of it either.</li>
+                        <li><strong>Store it only in your password manager &mdash;</strong> as an attachment or locked note, opened only when you unlock the vault.</li>
+                        <li><strong>Delete the downloaded file &mdash;</strong> once it is in your password manager, remove it from your computer&rsquo;s Downloads folder.</li>
+                        <li><strong>Prefer not to type it here? &mdash;</strong> this page is on the internet. The code runs only in your browser, but if you would rather not paste your vault password into any web page, skip the QR and type the password at the unlock prompt instead.</li>
+                    </ul>
+                </div>
 
                 <!-- QR Generator Widget -->
                 <div class="qr-widget">
@@ -513,9 +528,10 @@
                                 Save to File
                             </button>
                             <p class="qr-hint">
-                                Save this image to your phone&rsquo;s secure photo library
-                                or a locked note in your password manager. Display it to
-                                the vault&rsquo;s webcam on every boot to unlock instantly.
+                                Save this image in your password manager, not your photo
+                                library (photos sync to the cloud), then delete the downloaded
+                                file. Display it to the vault&rsquo;s webcam on every boot to
+                                unlock instantly.
                             </p>
                         </div>
                     </div>
@@ -560,7 +576,7 @@
             <section class="content-section" id="first-boot">
                 <h2 class="section-heading">Step 3: Initialization &amp; Encryption</h2>
                 <p>
-                    Insert the USB flash drive, then power on or restart your computer. During startup, most systems allow you to choose a temporary boot device by pressing a function key such as F2, F8, F9, ESC, etc. immediately after powering on. On Macs with Intel processors, hold the Option key during startup.  <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
+                    Insert the USB flash drive, then power on or restart your computer. During startup, most systems allow you to choose a temporary boot device by pressing a function key such as F2, F8, F9, ESC, etc. immediately after powering on. On Macs with Intel processors, hold the Option key during startup. If the computer won&rsquo;t start from the stick, or shows a Secure Boot or &ldquo;security violation&rdquo; message, turn off <strong>Secure Boot</strong> in the BIOS/UEFI setup: SafeKeepVault&rsquo;s boot loader isn&rsquo;t signed for Secure Boot.  <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
                 </p>
                 <p>
                     Before anything else, the vault runs a <strong>start-up self-check</strong>: it feeds
@@ -832,7 +848,7 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-sparrow">Sparrow <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>Use these settings and steps for Sparrow. This workflow is file-based &mdash; use the <strong>Courier Tool</strong> to transmit the JSON file from the vault to your phone, then share it to your computer via a cloud service, or move the flash drive directly to your online machine (sneakernet).</p>
+                <p>Use these settings and steps for Sparrow. This workflow is file-based &mdash; move the flash drive to your online computer (sneakernet), or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
 
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
@@ -842,7 +858,7 @@
                 </div>
                 <ol class="wallet-steps">
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
-                    <li>Transfer the JSON file to your online computer using sneakernet or the phone &rarr; cloud method described above.</li>
+                    <li>Transfer the JSON file to your online computer by sneakernet or the Courier Tool, as described above.</li>
                     <li>Open Sparrow and go to <strong>File &rarr; Open Wallet</strong>.</li>
                     <li>Navigate to and select the JSON file you transferred. Sparrow reads the key data and populates the wallet configuration automatically.</li>
                     <li>Click <strong>Create Wallet</strong> to save.</li>
@@ -856,7 +872,7 @@
                     <span><strong>Key Format:</strong> SLIP-132</span>
                 </div>
                 <ol class="wallet-steps">
-                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. Repeat for each co-signer key. Transfer all files to your online computer using sneakernet or the phone &rarr; cloud method described above.</li>
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. Repeat for each co-signer key. Transfer all files to your online computer by sneakernet or the Courier Tool, as described above.</li>
                     <li>Open Sparrow and go to <strong>File &rarr; New Wallet</strong>. Give your wallet a name.</li>
                     <li>Select <strong>Multi Signature</strong> and configure your cosigner quorum (e.g., 2-of-3).</li>
                     <li>For the first keystore, click <strong>xPub / Watch Only Wallet</strong>, then click <strong>Import</strong> &rarr; <strong>Airgapped Hardware Wallet</strong> &rarr; <strong>Import File</strong> &rarr; <strong>Coldcard Multisig</strong>. Navigate to and select the first key file.</li>
@@ -865,7 +881,7 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-specter">Specter Desktop <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>Use these settings and steps for Specter Desktop. This workflow is file-based &mdash; use the <strong>Courier Tool</strong> to transmit the JSON file from the vault to your phone, then share it to your computer via a cloud service, or move the flash drive directly to your online machine (sneakernet).</p>
+                <p>Use these settings and steps for Specter Desktop. This workflow is file-based &mdash; move the flash drive to your online computer (sneakernet), or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
 
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
@@ -875,7 +891,7 @@
                 </div>
                 <ol class="wallet-steps">
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
-                    <li>Transfer the JSON file to your online computer using sneakernet or the phone &rarr; cloud method described above.</li>
+                    <li>Transfer the JSON file to your online computer by sneakernet or the Courier Tool, as described above.</li>
                     <li>Open Specter Desktop and click <strong>Add Device</strong>.</li>
                     <li>Select device type <strong>Other</strong>, then click <strong>Upload from SD</strong> to import your xpub. Navigate to and select the JSON file, then click <strong>Continue</strong>.</li>
                     <li>Specter confirms the device has been added. Click <strong>Create Single Key Wallet</strong>.</li>
@@ -895,7 +911,7 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-electrum">Electrum <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>Use these settings and steps for Electrum. This workflow is file-based &mdash; use the <strong>Courier Tool</strong> to transmit the JSON file from the vault to your phone, then share it to your computer via a cloud service, or move the flash drive directly to your online machine (sneakernet).</p>
+                <p>Use these settings and steps for Electrum. This workflow is file-based &mdash; move the flash drive to your online computer (sneakernet), or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
@@ -1198,6 +1214,54 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         restored on every boot. Temporary Sessions never read or save them.
                     </li>
                 </ul>
+            </section>
+
+            <!-- Updating to a New Version -->
+            <section class="content-section" id="updating">
+                <h2 class="section-heading">Updating to a New Version</h2>
+                <p>
+                    Flashing a new release <strong>erases the whole flash drive</strong>, including your
+                    encrypted vault and the Transfer Drive. Before you update, move what you want to keep
+                    into an encrypted backup and copy it off the stick. If you only ever use Temporary
+                    Sessions, there is nothing to save: just flash the new release.
+                </p>
+                <ol class="docs-list">
+                    <li><strong>1. Note your fingerprint &mdash;</strong> write down the master fingerprint and Seed Nickname shown on the Dashboard, so you can confirm the same seed after the update.</li>
+                    <li><strong>2. Make an encrypted backup &mdash;</strong> open <strong>Encrypted Backup</strong> (Advanced Tools &rarr; Backup &amp; Recovery) and select what to keep: Encrypted Notes, Application Settings, Saved Passphrases and 2FA Backup. We recommend leaving <strong>Master Seed</strong> unticked and re-entering your seed from your paper backup in step 6 instead: it keeps the seed off the Transfer Drive, and it proves your paper backup works. The backup is saved to the Transfer Drive as a <code>.7z</code> file.</li>
+                    <li><strong>3. Copy the backup off the stick &mdash;</strong> power down the vault, plug the flash drive into your everyday computer, and copy the <code>.7z</code> file from the <strong>TRANSFER</strong> drive to that computer or to another USB drive. It is encrypted, so it is safe to hold there briefly.</li>
+                    <li><strong>4. Download, verify and flash the new release &mdash;</strong> follow the <a href="download.html">Download page</a>, including all three verification steps.</li>
+                    <li><strong>5. Put the backup back &mdash;</strong> unplug and replug the freshly flashed drive so the computer sees its new <strong>TRANSFER</strong> drive, then copy the <code>.7z</code> file onto it.</li>
+                    <li><strong>6. Boot and restore &mdash;</strong> boot the vault and create the encrypted vault as on first use (you can keep the same vault password and unlock QR). On the welcome screen choose <strong>Unlock .7z Backup</strong>, pick the file and enter its password. If the backup didn&rsquo;t include your seed, choose <strong>Restore from Words</strong> and enter it from your paper backup.</li>
+                    <li><strong>7. Check, then clean up &mdash;</strong> confirm the Dashboard shows the fingerprint and Seed Nickname you noted in step 1. Then delete the <code>.7z</code> copy from your everyday computer, and from the Transfer Drive using the <strong>Transfer Hub</strong>.</li>
+                </ol>
+                <p>
+                    Your watch-only wallets need no changes: the same seed gives the same keys and
+                    addresses on every version.
+                </p>
+            </section>
+
+            <!-- Recovering Without SafeKeep -->
+            <section class="content-section" id="recover-without">
+                <h2 class="section-heading">Recovering Without SafeKeep</h2>
+                <p>
+                    <strong>SafeKeepVault</strong> uses the same standards as other Bitcoin wallets, so your
+                    bitcoin never depends on SafeKeep. If the flash drive is lost, or you or your heirs ever
+                    want to stop using SafeKeep, your physical backups are enough to recover with other
+                    software. Do this on an offline computer or a hardware wallet, never on a computer you
+                    use online.
+                </p>
+                <ul class="docs-list">
+                    <li><strong>Single-signature wallets &mdash;</strong> enter your seed words, and your BIP-39 passphrase if you use one, into any BIP-39 wallet (for example Sparrow, Coldcard, Trezor or SeedSigner). Choose the same address type you used (Native SegWit, Taproot, Nested SegWit or Legacy): SafeKeep uses the standard paths for each (BIP-84, 86, 49 and 44). Check that the master fingerprint matches the one on your records.</li>
+                    <li><strong>Multisig wallets &mdash;</strong> you need the wallet&rsquo;s output descriptor, which is printed on your <strong>Wallet Record</strong>, plus enough of the keys to meet the threshold. Import the descriptor into a coordinator such as Sparrow to see the wallet, then sign with the seeds or hardware wallets that hold the keys.</li>
+                    <li><strong>Seed XOR shares &mdash;</strong> SafeKeep uses the same Seed XOR method as Coldcard, so a Coldcard can combine all the shares back into your seed.</li>
+                    <li><strong>Shamir (SLIP-39) shares &mdash;</strong> recover them with SafeKeepVault. Don&rsquo;t restore them on a Trezor: that opens a different, empty wallet. Each printed share explains how to recover without SafeKeep, using any SLIP-39 tool that shows the raw &ldquo;master secret&rdquo;.</li>
+                    <li><strong>BIP-85 child seeds &mdash;</strong> each child is an ordinary seed: restore it from its own words, or derive it again from the master seed with any BIP-85 tool (Coldcard has one).</li>
+                </ul>
+                <p>
+                    Passphrases saved in the Passphrase Library live only inside the vault. Keep a physical
+                    copy of every passphrase you depend on, or that wallet can&rsquo;t be recovered without the
+                    flash drive.
+                </p>
             </section>
 
             <!-- Tool Arsenal (kept, Inheritance Map → Wallet Record) -->
