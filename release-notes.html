@@ -91,6 +91,24 @@
                 </p>
             </div>
 
+            <!-- v1.46 -->
+            <section class="content-section" id="v1-46">
+                <h2 class="section-heading">v1.46 &mdash; October 17, 2026</h2>
+                <p>The <strong>PSBT Signer</strong> now checks every transaction against the wallets you own and shows exactly what it spends, and a mistyped passphrase can no longer slip through.</p>
+                <ul class="docs-list">
+                    <li><strong>Saved wallets &mdash;</strong> in the <strong>Output Descriptor</strong> tool, <strong>Save to Vault</strong> keeps a wallet&rsquo;s watch-only descriptor in the encrypted vault, with a name you choose. The PSBT Signer then says which of your wallets a transaction spends from, and warns when an input matches none of them. It works this out itself from the descriptor and never takes the PSBT&rsquo;s word for it.</li>
+                    <li><strong>Change you no longer have to check by hand &mdash;</strong> when a change output is one of your saved wallet&rsquo;s own addresses, it is verified, even in PSBTs that leave out the multisig details (for example BlueWallet&rsquo;s compact QR exports). A payment to another of your own wallets still needs its checkbox.</li>
+                    <li><strong>What the transaction does &mdash;</strong> the review starts with a summary: how much you are sending, the mining fee, the <strong>total leaving your wallet</strong>, and the change coming back. Below it, the inputs being spent, with each one&rsquo;s amount, address, saved wallet and, for multisig, how many signatures it has so far.</li>
+                    <li><strong>Lock time and replace-by-fee &mdash;</strong> the review shows whether the transaction can&rsquo;t be mined before a block or date, and whether its fee can be raised later. An input that is time-locked (for example an inheritance or recovery path) gets a warning.</li>
+                    <li><strong>Compare with the address you were given &mdash;</strong> each payment card has a box to paste or scan the address the recipient gave you. SafeKeep compares every character: &ldquo;Identical&rdquo;, or &ldquo;Different address. Don&rsquo;t sign&rdquo; with the differences highlighted. You still tick the box yourself.</li>
+                    <li><strong>Fees for older addresses &mdash;</strong> spending from legacy <code>1&hellip;</code> addresses now shows the mining fee and fee rate instead of &ldquo;unknown&rdquo;. SafeKeep checks that the previous transaction a PSBT includes really is the one being spent. A PSBT that fails this check could hide part of the fee, so signing it is blocked.</li>
+                    <li><strong>Type your passphrase twice &mdash;</strong> a typed BIP-39 passphrase must be typed again before the Dashboard applies it or the Output Descriptor tool uses it. A typo would open a different, empty wallet or hand your cosigners the wrong key. In multisig, Key 1 stays hidden until it&rsquo;s confirmed. Passphrases loaded from the Passphrase Library don&rsquo;t need retyping.</li>
+                    <li><strong>Auto-Off &mdash;</strong> a third idle timer in Device Options powers SafeKeep off after a set number of idle minutes (default 30, 0 = stay on), with a 60-second warning. It also applies at the password prompt.</li>
+                    <li><strong>Shamir recovery shows both readings &mdash;</strong> recovering SLIP-39 shares shows the wallet as made with SafeKeep and as made on a Trezor, each with its fingerprint and first address. Only <strong>Restore This Wallet</strong> (made with SafeKeep) saves anything, so a Trezor share set is never saved as the wrong wallet.</li>
+                    <li><strong>Verify reads wallet exports &mdash;</strong> <strong>Check Descriptor</strong> also takes BlueWallet and Coldcard multisig setup files, BSMS records, Sparrow and Bitcoin Core descriptor files and single keys, converts them to a descriptor on the vault and shows the result before the check. A new <strong>Load File</strong> button reads them from the Transfer Drive.</li>
+                </ul>
+            </section>
+
             <!-- v1.45 -->
             <section class="content-section" id="v1-45">
                 <h2 class="section-heading">v1.45 &mdash; October 15, 2026</h2>

@@ -640,8 +640,12 @@
                     <li>
                         <strong>Recover Shamir Backup (SLIP-39) &mdash;</strong>
                         Utilize the Shamir Backup tool to reconstruct a seed from Shamir&rsquo;s Secret
-                        Sharing (SLIP-39) shares. Simply input the required number of shares to meet
-                        your designated threshold, and your seed phrase will be restored into the vault.
+                        Sharing (SLIP-39) shares. Enter enough shares to meet your threshold and click
+                        <strong>Combine &amp; Recover</strong>. The vault shows two readings, each with its
+                        fingerprint and first address: <strong>Made with SafeKeep</strong>, with a
+                        <strong>Restore This Wallet</strong> button, and <strong>Made on a Trezor or another
+                        SLIP-39 wallet</strong>, which SafeKeep can&rsquo;t open yet. Nothing is saved until you
+                        click Restore, so shares made on a Trezor are never saved as the wrong wallet.
                     </li>
                     <li>
                         <strong>Unlock .7z Backup &mdash;</strong>
@@ -1017,6 +1021,13 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     QR of the address for independent verification on a second device, and the mining
                     fee and fee rate.
                 </p>
+                <ul class="docs-list">
+                    <li><strong>Which wallet it spends from &mdash;</strong> if you saved your wallet in the <strong>Output Descriptor</strong> tool (see <a href="#advanced-tools">Advanced Tools</a>), a banner names the saved wallet the inputs come from, or warns when an input matches none of your saved wallets. A change output that is one of your saved wallet&rsquo;s own addresses is marked verified, even when the PSBT leaves out the multisig details.</li>
+                    <li><strong>Summary &mdash;</strong> how much you are sending, the mining fee, the <strong>total leaving your wallet</strong>, and the change coming back. Open <strong>Spending N inputs</strong> to see each input&rsquo;s amount, address, saved wallet and, for multisig, how many signatures it has so far.</li>
+                    <li><strong>Lock time and replace-by-fee &mdash;</strong> whether the transaction can&rsquo;t be mined before a certain block or date, and whether its fee can be raised later. An input that is time-locked (for example an inheritance or recovery path) gets a warning.</li>
+                    <li><strong>Compare with the address you were given &mdash;</strong> on each destination card, paste or scan the address the recipient gave you. SafeKeep compares every character and shows <strong>Identical</strong>, or <strong>Different address. Don&rsquo;t sign</strong> with the differences highlighted. It never ticks the verification box for you.</li>
+                    <li><strong>Older addresses &mdash;</strong> when a transaction spends from legacy <code>1&hellip;</code> addresses, the vault checks that the previous transaction included in the PSBT is really the one being spent, then shows the fee. If it isn&rsquo;t, the fee could be far higher than it looks, so signing is blocked.</li>
+                </ul>
                 <p>
                     Check the box confirming you have independently verified the destination address and
                     amount. The <strong>Sign Transaction</strong> button remains locked until this
@@ -1044,7 +1055,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     a temporary seed you entered or scanned for this transaction only. If the wallet uses a
                     BIP-39 passphrase, type it in or load it from the <strong>Library</strong> first: a
                     passphrase changes the wallet&rsquo;s fingerprint, so the vault cannot sign for that
-                    wallet without it. A temporary seed is never saved to disk and is cleared from memory
+                    wallet without it. A typed passphrase must be typed twice before the Dashboard applies it,
+                    so a typo can&rsquo;t open a different, empty wallet. A temporary seed is never saved to disk and is cleared from memory
                     after signing or when you leave the tool.
                 </p>
 
@@ -1202,6 +1214,12 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         locks itself or the screen goes dark. Set either to 0 to turn it off.
                     </li>
                     <li>
+                        <strong>Auto-Off &mdash;</strong>
+                        Also in <strong>Device Options</strong>, set how many idle minutes pass before SafeKeep
+                        powers itself off, clearing its memory (default 30). A 60-second warning comes first, and it
+                        also applies at the password prompt. Set it to 0 to stay on.
+                    </li>
+                    <li>
                         <strong>Return to Master Vault &mdash;</strong>
                         From a Temporary Session, open <strong>Device Options</strong> and click
                         <strong>Return to Master Vault</strong> to wipe the temporary seed from memory and go
@@ -1254,7 +1272,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li><strong>Single-signature wallets &mdash;</strong> enter your seed words, and your BIP-39 passphrase if you use one, into any BIP-39 wallet (for example Sparrow, Coldcard, Trezor or SeedSigner). Choose the same address type you used (Native SegWit, Taproot, Nested SegWit or Legacy): SafeKeep uses the standard paths for each (BIP-84, 86, 49 and 44). Check that the master fingerprint matches the one on your records.</li>
                     <li><strong>Multisig wallets &mdash;</strong> you need the wallet&rsquo;s output descriptor, which is printed on your <strong>Wallet Record</strong>, plus enough of the keys to meet the threshold. Import the descriptor into a coordinator such as Sparrow to see the wallet, then sign with the seeds or hardware wallets that hold the keys.</li>
                     <li><strong>Seed XOR shares &mdash;</strong> SafeKeep uses the same Seed XOR method as Coldcard, so a Coldcard can combine all the shares back into your seed.</li>
-                    <li><strong>Shamir (SLIP-39) shares &mdash;</strong> recover them with SafeKeepVault. Don&rsquo;t restore them on a Trezor: that opens a different, empty wallet. Each printed share explains how to recover without SafeKeep, using any SLIP-39 tool that shows the raw &ldquo;master secret&rdquo;.</li>
+                    <li><strong>Shamir (SLIP-39) shares &mdash;</strong> recover them with SafeKeepVault and choose <strong>Made with SafeKeep</strong>. Don&rsquo;t restore them on a Trezor: that opens a different, empty wallet. Each printed share explains how to recover without SafeKeep, using any SLIP-39 tool that shows the raw &ldquo;master secret&rdquo;.</li>
                     <li><strong>BIP-85 child seeds &mdash;</strong> each child is an ordinary seed: restore it from its own words, or derive it again from the master seed with any BIP-85 tool (Coldcard has one).</li>
                 </ul>
                 <p>
@@ -1354,6 +1372,17 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         the keys. <em>If you built a multisig descriptor before v1.41 and its verification addresses
                         showed &ldquo;error&rdquo;, build it again.</em>
                         <br><br>
+                        A typed passphrase must be typed a second time before the tool uses it, so a typo can&rsquo;t
+                        give you (or your cosigners) the key of a different, empty wallet. In multisig, Key 1 stays
+                        hidden until the passphrase is confirmed. A passphrase loaded from the Library doesn&rsquo;t need
+                        retyping.
+                        <br><br>
+                        <strong>Save to Vault</strong>: give a built or imported descriptor a name and click
+                        <strong>Save Wallet</strong>. The vault keeps it in the encrypted partition, and the
+                        <strong>PSBT Signer</strong> then shows which of your wallets a transaction spends from and
+                        confirms that its change comes back to you (see <a href="#sign-review">Reviewing the
+                        Transaction</a>). Your saved wallets are listed at the top of the tool, each with a <strong>Remove</strong> button.
+                        <br><br>
                         Each cosigner also has <strong>Coldcard (USB)</strong> and <strong>Trezor (USB)</strong> buttons.
                         Plug the device into the offline SafeKeep computer and click one: SafeKeep reads the device&rsquo;s
                         master fingerprint and its BIP-48 multisig key for the chosen address type
@@ -1404,6 +1433,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         Splits your seed into Shamir (SLIP-39) shares for distributed backup. Recovery requires
                         only a portion of the shares (2-of-3, 3-of-5, etc.) to restore. Recover these shares with
                         <strong>SafeKeepVault</strong>: restoring them on a Trezor opens a different, empty wallet.
+                        When recovering, SafeKeep shows both readings (made with SafeKeep, made on a Trezor) and
+                        saves only the one you choose.
                     </li>
                     <li>
                         <strong>Encrypted Backup &mdash;</strong>
