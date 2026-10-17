@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="newfavicon.png">
-    <meta name="description" content="Print blank QR code grids for manual SeedQR encoding. 21x21 for 12-word seeds, 25x25 for 24-word seeds. Works offline, prints to standard 8.5×11 paper.">
+    <meta name="description" content="Print blank QR code grids for manual SeedQR encoding. 21x21 for Compact 12-word seeds, 25x25 for Compact 24-word or Standard 12-word seeds. Works offline, prints to standard 8.5×11 paper.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download QR Template &mdash; SafeKeepVault</title>
     <link rel="stylesheet" href="style.css">
@@ -290,15 +290,25 @@
                 <ul class="docs-list">
                     <li>
                         <strong>21 &times; 21 &mdash;</strong>
-                        The Compact SeedQR format for 12-word seeds. Fewer modules to fill, smaller
+                        Compact SeedQR for a 12-word seed. Fewer modules to fill, smaller
                         physical footprint.
                     </li>
                     <li>
                         <strong>25 &times; 25 &mdash;</strong>
-                        The Standard SeedQR format for 24-word seeds. Supports the full 256-bit
-                        entropy of a standard BIP-39 master seed.
+                        Compact SeedQR for a 24-word seed, or Standard SeedQR for a 12-word seed.
+                        Both use the same grid.
+                    </li>
+                    <li>
+                        <strong>29 &times; 29 &mdash;</strong>
+                        Standard SeedQR for a 24-word seed. No template is offered here: in the vault, open
+                        <strong>Seed QR Code</strong>, create the Standard code, and click
+                        <strong>Print Blank Grid</strong> to print a grid of the matching size.
                     </li>
                 </ul>
+                <p>
+                    Compact is SafeKeepVault&rsquo;s default. Check which format the vault shows before you
+                    pick a template: a code only fits the grid size it was made for.
+                </p>
                 <p>
                     The three pre-drawn corner squares are the QR finder patterns &mdash; they are
                     always filled in and are included on the printed template. Mark only the data
@@ -314,11 +324,11 @@
                 <div class="qr-size-options">
                     <button class="qr-size-btn" id="btn-21" onclick="selectSize(21)">
                         <span class="qr-size-label">21 &times; 21</span>
-                        <span class="qr-size-desc">Compact SeedQR &mdash; 12-word seed</span>
+                        <span class="qr-size-desc">Compact SeedQR &mdash; 12 words</span>
                     </button>
                     <button class="qr-size-btn" id="btn-25" onclick="selectSize(25)">
                         <span class="qr-size-label">25 &times; 25</span>
-                        <span class="qr-size-desc">Standard SeedQR &mdash; 24-word seed</span>
+                        <span class="qr-size-desc">Compact 24 words &middot; Standard 12 words</span>
                     </button>
                 </div>
 

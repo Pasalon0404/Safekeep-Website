@@ -199,8 +199,18 @@
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Import the maintainer's public key</span>
-<span class="term-prompt">$ </span><span class="term-cmd">gpg --import developer-pubkey.asc</span></pre>
+<span class="term-prompt">$ </span><span class="term-cmd">gpg --import developer-pubkey.asc</span>
+
+<span class="term-comment"># Check the key's fingerprint</span>
+<span class="term-prompt">$ </span><span class="term-cmd">gpg --fingerprint anton@safekeepbitcoin.com</span>
+<span class="term-output">      A333 EB82 6F70 A79A 736F  0994 8EA7 DD8C EDBA 86C2</span>
+<span class="term-output">uid           Anton &lt;anton@safekeepbitcoin.com&gt;</span></pre>
                     </div>
+                    <p class="verify-note">
+                        The fingerprint must match <strong>A333 EB82 6F70 A79A 736F 0994 8EA7 DD8C EDBA 86C2</strong> exactly.
+                        This page, the key file and the release all come from the developer&rsquo;s own accounts, so if
+                        you can, also compare the fingerprint with a copy from somewhere else.
+                    </p>
                     <p class="verify-note">
                         GPG is pre-installed on most Linux distributions. macOS users will need to
                         install it, typically via Homebrew (<code>brew install gnupg</code>).
@@ -226,11 +236,11 @@
 <span class="term-prompt">$ </span><span class="term-cmd">gpg --verify SHA256SUMS.txt.asc SHA256SUMS.txt</span>
 
 <span class="term-output">gpg: Signature made ...</span>
-<span class="term-output">gpg: using RSA key XXXXXXXXXXXXXXXX</span>
-<span class="term-good">gpg: Good signature from "SafeKeepVault Maintainer ..."</span></pre>
+<span class="term-output">gpg: using RSA key A333EB826F70A79A736F09948EA7DD8CEDBA86C2</span>
+<span class="term-good">gpg: Good signature from "Anton &lt;anton@safekeepbitcoin.com&gt;"</span></pre>
                     </div>
                     <p class="verify-note">
-                        You must see <strong>Good signature</strong>. A warning that the key is &ldquo;not certified with a trusted signature&rdquo; is normal for newly imported keys and can be ignored. A <strong>BAD signature</strong> or key mismatch means the file was tampered with &mdash; do not proceed.
+                        You must see <strong>Good signature from &ldquo;Anton &lt;anton@safekeepbitcoin.com&gt;&rdquo;</strong>. A warning that the key is &ldquo;not certified with a trusted signature&rdquo; is normal for newly imported keys and can be ignored. A <strong>BAD signature</strong> or key mismatch means the file was tampered with &mdash; do not proceed.
                     </p>
                 </div>
 
@@ -242,6 +252,8 @@
                     </div>
                     <p class="verify-step-desc">
                         Confirm that the downloaded file matches the SHA-256 hash recorded in the verified manifest.
+                        First unzip <code>SafeKeep-Release-v1.45.zip</code> and put the extracted <code>SafeKeep-Release-v1.45.img</code>
+                        in the same folder as <code>SHA256SUMS.txt</code>: the manifest lists the <code>.img</code>, not the zip.
                     </p>
                     <div class="os-tabs">
                         <span class="os-tab-label active">Linux</span>
@@ -347,6 +359,16 @@
                         Once the drive is flashed, configure your computer&rsquo;s UEFI/BIOS settings
                         to boot from USB. Insert the drive and power on. <strong>SafeKeepVault</strong>
                         initializes in under 30 seconds into a hardened, air-gapped environment with all network interfaces locked down.
+                    </p>
+                    <p class="verify-note">
+                        If the computer won&rsquo;t start from the stick, or shows a Secure Boot or &ldquo;security
+                        violation&rdquo; message, turn off <strong>Secure Boot</strong> in the BIOS/UEFI setup:
+                        SafeKeepVault&rsquo;s boot loader isn&rsquo;t signed for Secure Boot.
+                    </p>
+                    <p class="verify-note">
+                        <strong>Updating an existing stick?</strong> Flashing erases the whole drive, including
+                        your encrypted vault. Follow <a href="docs.html#updating">Updating to a New Version</a>
+                        first to back up and restore what&rsquo;s on it.
                     </p>
                 </div>
 
