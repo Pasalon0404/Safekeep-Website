@@ -395,7 +395,7 @@
                 <ul class="docs-list">
                     <li>
                         <strong>A Boot Drive &mdash;</strong>
-                        A standard USB flash drive flashed with the <strong>SafeKeepVault</strong> image.
+                        A standard USB flash drive of <strong>8 GB or more</strong>, flashed with the <strong>SafeKeepVault</strong> image.
                         Once you boot your computer from this drive, the system runs in
                         total isolation. Your internal storage remains unmounted and entirely untouched
                         throughout the session.
@@ -681,6 +681,12 @@
                         <strong>50 times for 12 words</strong> or <strong>99 times for 24 words</strong>, then enter the
                         same rolls in the same order on the other device: the words must match exactly. Security depends
                         entirely on your dice, so use a fair die and never let anyone see or record the rolls.
+                        <br><br>
+                        You can also check on Ian Coleman&rsquo;s BIP39 tool: tick <em>Show entropy details</em>, choose
+                        entropy type <strong>Base 10</strong> (not Dice, which counts a 6 as 0 and gives different words),
+                        set Mnemonic Length to the same word count (not &ldquo;Use Raw Entropy&rdquo;), and type the rolls
+                        as digits 1&ndash;6. <strong>Only do this with practice rolls</strong>, or with the tool&rsquo;s
+                        offline copy on a computer that never goes online again: your rolls are your seed.
                     </li>
                 </ul>
                 <figure class="os-showcase">
@@ -1220,6 +1226,11 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         also applies at the password prompt. Set it to 0 to stay on.
                     </li>
                     <li>
+                        <strong>Update SafeKeep &mdash;</strong>
+                        Also in <strong>Device Options</strong>: install a newer version from a signed update file on
+                        the Transfer Drive, without reflashing. See <a href="#updating">Updating to a New Version</a>.
+                    </li>
+                    <li>
                         <strong>Return to Master Vault &mdash;</strong>
                         From a Temporary Session, open <strong>Device Options</strong> and click
                         <strong>Return to Master Vault</strong> to wipe the temporary seed from memory and go
@@ -1237,11 +1248,36 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
             <!-- Updating to a New Version -->
             <section class="content-section" id="updating">
                 <h2 class="section-heading">Updating to a New Version</h2>
+                <h3 class="sub-heading" id="update-in-place">Update in place (v1.47 and later)</h3>
                 <p>
-                    Flashing a new release <strong>erases the whole flash drive</strong>, including your
-                    encrypted vault and the Transfer Drive. Before you update, move what you want to keep
-                    into an encrypted backup and copy it off the stick. If you only ever use Temporary
-                    Sessions, there is nothing to save: just flash the new release.
+                    From v1.47, the stick keeps two copies of SafeKeep&rsquo;s operating system. An update is
+                    written into the spare copy while the current one keeps running, checked, and only then made
+                    the one that starts. Your encrypted vault and the Transfer Drive are not touched, and nothing
+                    needs to be re-entered.
+                </p>
+                <ol class="docs-list">
+                    <li><strong>1. Download the update file &mdash;</strong> on your everyday computer, download <code>SafeKeep-Update-v&hellip;.tar</code> from the official release on GitHub (linked from the <a href="download.html">Download page</a>). It is signed: SafeKeep checks the signature itself before installing anything.</li>
+                    <li><strong>2. Copy it onto the Transfer Drive &mdash;</strong> plug the SafeKeep stick into that computer and copy the file onto its <strong>TRANSFER</strong> drive. Eject the stick properly.</li>
+                    <li><strong>3. Check for the update &mdash;</strong> boot SafeKeep and unlock your vault (a Temporary Session can&rsquo;t update). Open <strong>Device Options &rarr; Update SafeKeep &rarr; Check for update</strong>. SafeKeep shows the new version, its build stamp and the app&rsquo;s SHA-256 only if the file carries the maintainer&rsquo;s signature and is newer than what you&rsquo;re running. You can compare that SHA-256 with the <code>boot.html</code> line of the release&rsquo;s <code>SHA256SUMS</code>.</li>
+                    <li><strong>4. Install and restart &mdash;</strong> click <strong>Install</strong>, wait for it to finish (a few minutes), then <strong>Restart now</strong>. The update file is deleted from the Transfer Drive afterwards.</li>
+                </ol>
+                <p>
+                    If anything is wrong after restarting, choose <strong>SafeKeepVault (previous version)</strong>
+                    in the menu that appears for three seconds at startup: the version you updated from is kept
+                    until the next update. If an update fails, the version you&rsquo;re running is unchanged, and
+                    <strong>Show update log</strong> says what went wrong. Making an Encrypted Backup before updating
+                    is still a good habit.
+                </p>
+
+                <h3 class="sub-heading" id="update-reflash">Updating from v1.46 or earlier (once)</h3>
+                <p>
+                    Sticks set up with v1.46 or earlier have the older layout and can&rsquo;t update in place, so
+                    moving to v1.47 needs one last reflash, onto a <strong>flash drive of 8 GB or more</strong>.
+                    Flashing <strong>erases the whole flash drive</strong>, including your encrypted vault and the
+                    Transfer Drive, so first move what you want to keep into an encrypted backup and copy it off the
+                    stick. If your current stick is smaller than 8 GB, flash v1.47 onto a new one and keep the old stick
+                    until you&rsquo;ve checked the new one. If you only ever use Temporary Sessions, there is nothing to
+                    save: just flash the new release.
                 </p>
                 <ol class="docs-list">
                     <li><strong>1. Note your fingerprint &mdash;</strong> write down the master fingerprint and Seed Nickname shown on the Dashboard, so you can confirm the same seed after the update.</li>

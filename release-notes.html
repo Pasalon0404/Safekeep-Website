@@ -91,6 +91,20 @@
                 </p>
             </div>
 
+            <!-- v1.47 -->
+            <section class="content-section" id="v1-47">
+                <h2 class="section-heading">v1.47 &mdash; October 19, 2026</h2>
+                <p>SafeKeep can now update itself from a signed file, without reflashing and without touching your vault. Getting there takes one last reflash, onto a flash drive of 8 GB or more.</p>
+                <ul class="docs-list">
+                    <li><strong>Update SafeKeep &mdash;</strong> a new section in <strong>Device Options</strong>. Copy a signed update file onto the Transfer Drive, click <strong>Check for update</strong>, then <strong>Install</strong> and <strong>Restart now</strong>. SafeKeep installs it only if it carries the maintainer&rsquo;s signature, checked against the key built into the stick, and only if it is newer than what you&rsquo;re running. Before installing it shows the version, the build stamp and the app&rsquo;s SHA-256, to compare with the release on GitHub. The first update file will come with v1.48.</li>
+                    <li><strong>Two copies of the system &mdash;</strong> the stick now holds two copies of SafeKeep&rsquo;s operating system. An update is written into the spare copy and checked before it is switched on, so a power cut or a bad file never leaves a stick that won&rsquo;t start. The version you updated from stays available as <strong>previous version</strong> in the start-up menu.</li>
+                    <li><strong>8 GB flash drives &mdash;</strong> the two copies and a Transfer Drive big enough for an update file (now 2.5 GB) need a flash drive of <strong>8 GB or more</strong>. The download is still about 1.3 GB.</li>
+                    <li><strong>One last reflash &mdash;</strong> sticks set up with v1.46 or earlier can&rsquo;t update in place. Back up, flash v1.47 and restore once, as the <a href="docs.html#update-reflash">update guide</a> explains. If your stick is smaller than 8 GB, flash v1.47 onto a new one.</li>
+                    <li><strong>A sound for each QR code read &mdash;</strong> every scanner in the app plays the soft tick of the hover sound when it reads a QR code, and again for each new frame of an animated QR, so you can hear a transaction coming in. It follows the sound settings in Device Options.</li>
+                    <li><strong>Check Verifiable Dice on Ian Coleman&rsquo;s tool &mdash;</strong> the Verifiable Dice panel explains how: choose entropy type <strong>Base 10</strong> (its Dice type counts a 6 as 0 and gives different words) and the same word count. Do this only with practice rolls, or with the tool&rsquo;s offline copy on a computer that never goes online again.</li>
+                </ul>
+            </section>
+
             <!-- v1.46 -->
             <section class="content-section" id="v1-46">
                 <h2 class="section-heading">v1.46 &mdash; October 17, 2026</h2>
