@@ -594,8 +594,17 @@
                     creation of your Encrypted Storage Partition. This persistent volume is where your
                     keys and vault data reside between sessions. When prompted to set your vault
                     password, select the scan QR option and display the QR code you saved in Step 1 to the webcam. The scanner will
-                    read it instantly and use it to encrypt the partition. Every subsequent boot works
+                    read it instantly and use it to encrypt the partition. If it hasn&rsquo;t read a code after 30 seconds,
+                    you&rsquo;re taken back to choose scanning or typing. If you type the password instead, it is shown as
+                    you type and asked for twice, so a typo can&rsquo;t lock you out. Every subsequent boot works
                     the same way &mdash; just scan and you&rsquo;re in.
+                </p>
+                <p>
+                    Once the vault is created, choose <strong>Continue now</strong>: you go straight to the unlock prompt,
+                    scan or type the same password, and <strong>SafeKeepVault</strong> starts, with no restart. If you
+                    plan to restore from a <code>.7z</code> backup that isn&rsquo;t on the stick yet, choose
+                    <strong>Shut down to copy a backup onto the stick</strong> instead: copy the backup onto the
+                    <strong>TRANSFER</strong> drive from another computer, then put the stick back and power on.
                 </p>
                 <p>
                     Alternatively, at the decryption prompt you may choose to bypass the encrypted vault
@@ -1272,10 +1281,10 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 <h3 class="sub-heading" id="update-reflash">Updating from v1.46 or earlier (once)</h3>
                 <p>
                     Sticks set up with v1.46 or earlier have the older layout and can&rsquo;t update in place, so
-                    moving to v1.47 needs one last reflash, onto a <strong>flash drive of 8 GB or more</strong>.
+                    moving to v1.47 or later needs one last reflash, onto a <strong>flash drive of 8 GB or more</strong>.
                     Flashing <strong>erases the whole flash drive</strong>, including your encrypted vault and the
                     Transfer Drive, so first move what you want to keep into an encrypted backup and copy it off the
-                    stick. If your current stick is smaller than 8 GB, flash v1.47 onto a new one and keep the old stick
+                    stick. If your current stick is smaller than 8 GB, flash the new release onto a new one and keep the old stick
                     until you&rsquo;ve checked the new one. If you only ever use Temporary Sessions, there is nothing to
                     save: just flash the new release.
                 </p>
@@ -1285,7 +1294,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li><strong>3. Copy the backup off the stick &mdash;</strong> power down the vault, plug the flash drive into your everyday computer, and copy the <code>.7z</code> file from the <strong>TRANSFER</strong> drive to that computer or to another USB drive. It is encrypted, so it is safe to hold there briefly.</li>
                     <li><strong>4. Download, verify and flash the new release &mdash;</strong> follow the <a href="download.html">Download page</a>, including all three verification steps.</li>
                     <li><strong>5. Put the backup back &mdash;</strong> unplug and replug the freshly flashed drive so the computer sees its new <strong>TRANSFER</strong> drive, then copy the <code>.7z</code> file onto it.</li>
-                    <li><strong>6. Boot and restore &mdash;</strong> boot the vault and create the encrypted vault as on first use (you can keep the same vault password and unlock QR). On the welcome screen choose <strong>Unlock .7z Backup</strong>, pick the file and enter its password. If the backup didn&rsquo;t include your seed, choose <strong>Restore from Words</strong> and enter it from your paper backup.</li>
+                    <li><strong>6. Boot and restore &mdash;</strong> boot the vault and create the encrypted vault as on first use (you can keep the same vault password and unlock QR), then choose <strong>Continue now</strong> and unlock it. On the welcome screen choose <strong>Unlock .7z Backup</strong>, pick the file and enter its password. If the backup didn&rsquo;t include your seed, choose <strong>Restore from Words</strong> and enter it from your paper backup.</li>
                     <li><strong>7. Check, then clean up &mdash;</strong> confirm the Dashboard shows the fingerprint and Seed Nickname you noted in step 1. Then delete the <code>.7z</code> copy from your everyday computer, and from the Transfer Drive using the <strong>Transfer Hub</strong>.</li>
                 </ol>
                 <p>
@@ -1476,7 +1485,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Encrypted Backup &mdash;</strong>
                         Exports a fully encrypted backup of your vault to the transfer drive.
                         Everything inside is sealed &mdash; file names included &mdash; until the
-                        correct password is entered.
+                        correct password is entered. Type the password twice, or scan it once from a QR code.
                     </li>
                     <li>
                         <strong>Wallet Record &mdash;</strong>

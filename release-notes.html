@@ -91,6 +91,20 @@
                 </p>
             </div>
 
+            <!-- v1.48 -->
+            <section class="content-section" id="v1-48">
+                <h2 class="section-heading">v1.48 &mdash; October 20, 2026</h2>
+                <p>The first version you can install without reflashing, plus a quicker first start and smoother backups.</p>
+                <ul class="docs-list">
+                    <li><strong>Update from v1.47 in place &mdash;</strong> this release comes with the first signed update file, <code>SafeKeep-Update-v1.48.tar</code>. On a v1.47 stick, copy it onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault and Transfer Drive are not touched. Sticks set up with v1.46 or earlier still need the one last reflash described in the <a href="docs.html#update-reflash">update guide</a>.</li>
+                    <li><strong>No restart after setting up the vault &mdash;</strong> once the encrypted vault is created, choose <strong>Continue now</strong> to go straight to the unlock prompt and start SafeKeep. If you&rsquo;re restoring from a <code>.7z</code> backup that isn&rsquo;t on the stick yet, choose <strong>Shut down to copy a backup onto the stick</strong> instead.</li>
+                    <li><strong>Setting the vault password &mdash;</strong> a typed password is shown as you type it and asked for twice, so a typo can&rsquo;t lock you out of a new vault. If the QR scan doesn&rsquo;t read a code within 30 seconds, you&rsquo;re taken back to choose scanning or typing again. Setup also shows the size of the vault it creates.</li>
+                    <li><strong>Factory reset restarts once &mdash;</strong> after the vault is destroyed, setting up a new one starts straight away instead of after a second restart.</li>
+                    <li><strong>Interrupted setup recovers &mdash;</strong> if the computer lost power while the vault was being created, the next start says so, removes the unfinished (empty) vault and runs setup again.</li>
+                    <li><strong>Encrypted Backup &mdash;</strong> a backup from a brand-new vault no longer fails with &ldquo;7z exited with code 1&rdquo; when <strong>Application Settings</strong> is ticked before any setting has been saved. Scanning the backup password from a QR code now fills both password fields, so you scan it once.</li>
+                </ul>
+            </section>
+
             <!-- v1.47 -->
             <section class="content-section" id="v1-47">
                 <h2 class="section-heading">v1.47 &mdash; October 19, 2026</h2>
