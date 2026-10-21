@@ -690,6 +690,9 @@
                         <strong>50 times for 12 words</strong> or <strong>99 times for 24 words</strong>, then enter the
                         same rolls in the same order on the other device: the words must match exactly. Security depends
                         entirely on your dice, so use a fair die and never let anyone see or record the rolls.
+                        SafeKeep refuses rolls that follow a pattern, such as 123456 over and over or long runs of
+                        one face, because a seed made from them could be guessed. If the rolls only look unusual,
+                        you tick a box to confirm they came from real dice before the seed is made.
                         <br><br>
                         You can also check on Ian Coleman&rsquo;s BIP39 tool: tick <em>Show entropy details</em>, choose
                         entropy type <strong>Base 10</strong> (not Dice, which counts a 6 as 0 and gives different words),
@@ -708,7 +711,7 @@
                 <ul class="docs-list">
                     <li><strong>Manual dice &mdash;</strong> press 1&ndash;6 for each roll (about 2.58 bits each). Backspace undoes a typo. A fairness check warns if the die looks biased.</li>
                     <li><strong>Playing cards &mdash;</strong> shuffle a 52-card deck thoroughly (at least 7 riffle shuffles), then enter the cards from the top: rank (A, 2&ndash;9, T or 0, J, Q, K), then suit (S, H, D, C). A full deck adds about 225 bits. A card already entered is refused, Backspace undoes the last card, and <strong>Reshuffle &amp; Start a New Deck</strong> begins again.</li>
-                    <li><strong>Mouse movement &mdash;</strong> 0.5 bits per sample.</li>
+                    <li><strong>Mouse movement &mdash;</strong> 0.25 bits per sample, and never more than half the meter: add dice, cards or camera noise for the rest.</li>
                     <li><strong>Camera noise &mdash;</strong> 4 bits per frame, taken only from the sensor-noise bits, and only when they change between frames.</li>
                 </ul>
                 <figure class="os-showcase">
@@ -720,13 +723,15 @@
                 <p>
                     The meter counts only the randomness <em>you</em> add (&ldquo;bits from you&rdquo;). The
                     device&rsquo;s random number generator is always mixed in as well, but isn&rsquo;t counted.
+                    Before every seed, SafeKeep tests that random number generator and makes no seed if its
+                    output looks broken.
                 </p>
 
                 <figure class="os-showcase">
                     <a href="dice-fairness.png" target="_blank" rel="noopener">
                         <img class="img-elevated" src="dice-fairness.png" alt="Manual Dice card with 60 rolls entered and a fairness check reporting the die looks fair" style="max-width: 560px;">
                     </a>
-                    <figcaption>When you add physical dice rolls in the Entropy Generator (under <strong>Advanced: Provide Manual Physical Entropy</strong>), a fairness check counts each face and, after 30 rolls, says whether the die looks fair, possibly biased or likely biased. It&rsquo;s advice only and never blocks you.</figcaption>
+                    <figcaption>When you add physical dice rolls in the Entropy Generator (under <strong>Advanced: Provide Manual Physical Entropy</strong>), a fairness check counts each face and, after 30 rolls, says whether the die looks fair, possibly biased or likely biased. In Mixed mode it&rsquo;s advice only. In Verifiable Dice, where the rolls are the whole seed, patterned rolls are refused.</figcaption>
                 </figure>
                 <p>
                     Once a seed is loaded, the vault shows a
