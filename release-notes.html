@@ -91,6 +91,19 @@
                 </p>
             </div>
 
+            <!-- v1.50 -->
+            <section class="content-section" id="v1-50">
+                <h2 class="section-heading">v1.50 &mdash; October 21, 2026</h2>
+                <p>Safer seed generation: SafeKeep now checks its randomness before every seed and refuses dice rolls that could be guessed.</p>
+                <ul class="docs-list">
+                    <li><strong>Update in place &mdash;</strong> on a v1.47, v1.48 or v1.49 stick, copy <code>SafeKeep-Update-v1.50.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched. Updating <em>from</em> v1.48 can still end with a screen of scrolling errors on <strong>Restart now</strong>: the update is already complete, so holding the power button is safe.</li>
+                    <li><strong>Random number check &mdash;</strong> before making any seed, SafeKeep tests the computer&rsquo;s random number generator. If its output looks broken (for example lopsided, repeating or counting up), no seed is made and you see why.</li>
+                    <li><strong>Patterned dice refused &mdash;</strong> in Verifiable Dice mode the rolls are the whole seed, so SafeKeep now refuses rolls that follow a pattern, such as 123456 over and over or long runs of one face. Rolls that only look unusual need you to tick a box confirming they came from real dice.</li>
+                    <li><strong>Stronger mixing &mdash;</strong> in Mixed mode your dice, cards, mouse and camera input is now combined with a fresh draw from the computer&rsquo;s random number generator using SHA-256, so the seed is at least as strong as the better of the two.</li>
+                    <li><strong>Mouse counts for less &mdash;</strong> mouse movement now adds 0.25 bits a sample and can fill at most half the meter, so the rest has to come from dice, cards or camera noise. After a seed is made, everything you added is cleared, so the next seed starts fresh.</li>
+                </ul>
+            </section>
+
             <!-- v1.49 -->
             <section class="content-section" id="v1-49">
                 <h2 class="section-heading">v1.49 &mdash; October 20, 2026</h2>
