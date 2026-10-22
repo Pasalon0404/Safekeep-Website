@@ -458,6 +458,12 @@
                         &ldquo;forgot password&rdquo; reset and no remote wipe. The password is the
                         absolute lock.
                     </p>
+                    <p>
+                        <strong>SafeKeepVault</strong> checks it for you: during setup, a password that is easy to
+                        guess (a common password, a name and a year, a few words) is refused, and one that is only
+                        fair asks you to confirm. No password manager? Setup can generate a strong one for you
+                        (see <a href="#encrypted-vault">The Encrypted Vault</a>).
+                    </p>
                 </div>
 
                 <h3 class="sub-heading">Generate a High-Entropy Password</h3>
@@ -601,6 +607,27 @@
                     you&rsquo;re taken back to choose scanning or typing. If you type the password instead, it is shown as
                     you type and asked for twice, so a typo can&rsquo;t lock you out. Every subsequent boot works
                     the same way &mdash; just scan and you&rsquo;re in.
+                </p>
+                <p>
+                    <strong>Strength check.</strong> Setup rates the password before it locks the vault with it.
+                    A <strong>Weak</strong> one is refused and you choose another; a <strong>Fair</strong> one shows
+                    why it could be stronger, and you choose another or <strong>Use this one anyway</strong>. A long
+                    random password from a password manager is <strong>Strong</strong> and goes straight through.
+                </p>
+                <p>
+                    <strong>No password manager? Choose Generate One for Me.</strong> SafeKeepVault makes a strong
+                    password of 6 random words and shows it as a QR code and as numbered words. Save it one way or
+                    both: scan the QR code into your phone&rsquo;s password manager (with the phone&rsquo;s camera,
+                    or the <a href="courier.html">Courier Tool</a>&rsquo;s Receive tab and <strong>Copy to
+                    clipboard</strong>), or write the words down. Then <strong>Check Your Copy</strong>: choose
+                    <strong>Scan it back from my phone</strong> and show the saved QR code to the camera, or
+                    <strong>Type the words</strong> from your paper. Only then is the vault locked with it. To
+                    unlock, scan the QR code, or type the words in lowercase with one space between them.
+                </p>
+                <p>
+                    Changed your mind half-way? <strong>Cancel</strong> takes you back a step. Closing the first
+                    choice offers <strong>Go back to setup</strong> or <strong>Shut down</strong>; after a shutdown,
+                    setup starts again the next time you start the computer from the stick.
                 </p>
                 <p>
                     Once the vault is created, choose <strong>Continue now</strong>: you go straight to the unlock prompt,
@@ -1243,6 +1270,15 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         also applies at the password prompt. Set it to 0 to stay on.
                     </li>
                     <li>
+                        <strong>Change Master Passphrase &mdash;</strong>
+                        In <strong>Device Options &rarr; Master Passphrase</strong>, which also shows how strong the
+                        password that unlocked the vault is. <strong>Lock and Change</strong> locks the vault, then
+                        asks for your current password and a new one, on the same screens as setup (scan, type, or
+                        Generate One for Me, with the same strength check). What is in your vault is not changed.
+                        Then you unlock with the new password; the old one no longer opens the vault. If your vault
+                        was set up with an easy-to-guess password, the Dashboard shows a red warning with a button to change it.
+                    </li>
+                    <li>
                         <strong>Update SafeKeep &mdash;</strong>
                         Also in <strong>Device Options</strong>: install a newer version from a signed update file on
                         the Transfer Drive, without reflashing. See <a href="#updating">Updating to a New Version</a>.
@@ -1494,6 +1530,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         Exports a fully encrypted backup of your vault to the transfer drive.
                         Everything inside is sealed &mdash; file names included &mdash; until the
                         correct password is entered. Type the password twice, or scan it once from a QR code.
+                        A bar shows how strong the password is, and a weak one is refused: a backup can be copied
+                        to a computer and guessed far faster than the vault. Your vault password works if it came
+                        from a password manager or is 6 or more random words.
                     </li>
                     <li>
                         <strong>Wallet Record &mdash;</strong>
