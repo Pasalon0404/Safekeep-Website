@@ -91,6 +91,21 @@
                 </p>
             </div>
 
+            <!-- v1.51 -->
+            <section class="content-section" id="v1-51">
+                <h2 class="section-heading">v1.51 &mdash; October 22, 2026</h2>
+                <p>A stronger vault password: SafeKeep refuses one that is easy to guess, can generate a strong one for you, and lets you change it without resetting the stick.</p>
+                <ul class="docs-list">
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.51.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault and your vault password are not touched.</li>
+                    <li><strong>Weak passwords refused &mdash;</strong> when you set up a vault, SafeKeep rates the password. One that is easy to guess, such as a common password, a name and a year, or a few words, is refused. One that is only fair asks you to confirm. A long random password from a password manager goes straight through, as before.</li>
+                    <li><strong>Generate One for Me &mdash;</strong> no password manager? At setup, SafeKeep makes a strong password of 6 random words and shows it as a QR code and as words. Save it one way or both: scan the QR code into your phone&rsquo;s password manager, or write the words down. Then check your copy by scanning it back from your phone or typing the words, before the vault is locked with it.</li>
+                    <li><strong>Change Master Passphrase &mdash;</strong> in <strong>Device Options</strong>. SafeKeep locks, asks for your current password and a new one on the same screens as setup, and changes it without touching what is in your vault. Then you unlock with the new one.</li>
+                    <li><strong>Weak password warning &mdash;</strong> if your vault was set up with an easy-to-guess password, the Dashboard says so and offers to change it.</li>
+                    <li><strong>Backup password strength &mdash;</strong> the Encrypted Backup screen shows how strong the backup password is, and refuses a weak one: a backup can be copied to a computer and guessed far faster than the vault.</li>
+                    <li><strong>Setup fixes &mdash;</strong> Cancel during setup now goes back a step (or offers to shut down) instead of ending at a black screen, and every setup screen fits a 1080p display.</li>
+                </ul>
+            </section>
+
             <!-- v1.50 -->
             <section class="content-section" id="v1-50">
                 <h2 class="section-heading">v1.50 &mdash; October 21, 2026</h2>
