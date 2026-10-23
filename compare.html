@@ -195,7 +195,7 @@
                     </li>
                     <li>
                         <strong>The privacy-conscious buyer &mdash;</strong>
-                        Purchasing a hardware wallet means placing an order with your name, address, and payment details attached to a Bitcoin product. <strong>SafeKeepVault</strong> runs on hardware you already own or can buy anonymously, with no account, no registration, and no shipping record connecting you to a cold storage device.
+                        Purchasing a hardware wallet means placing an order with your name, address, and payment details attached to a Bitcoin product. <strong>SafeKeepVault</strong> runs on hardware you already own or can buy anonymously, with no account, no registration, and no shipping record connecting you to a cold storage device. Those records do leak: in 2026 a breach at Trezor&rsquo;s shipping partner exposed about 80,700 customers&rsquo; names and home addresses, and Ledger&rsquo;s 2020 customer-data leak is still used for phishing today.
                     </li>
                     <li>
                         <strong>The existing hodler who wants a second signing device &mdash;</strong>
@@ -214,9 +214,26 @@
 
             <!-- Intro -->
             <section class="content-section">
-                <h2 class="section-heading">Not a Replacement. An Alternative.</h2>
+                <h2 class="section-heading">What 2026 Taught Us</h2>
                 <p>
-                    Dedicated hardware wallets — Trezor, Coldcard, Ledger — are superbly-engineered products with strong track records. <strong>SafeKeepVault</strong> is not trying to replace them. It is a different approach that makes different trade-offs, and for some users and use cases it will be the better fit.
+                    Dedicated hardware wallets have a real strength that <strong>SafeKeepVault</strong> doesn&rsquo;t: a secure element chip that keeps the key inside tamper-resistant silicon. But 2026 showed that the chip is only part of the story. Each of the big three had a serious incident, and none of them involved breaking a secure element:
+                </p>
+                <ul class="docs-list">
+                    <li>
+                        <strong>Coldcard, July 2026 &mdash;</strong>
+                        a firmware bug introduced in 2021 made seeds generated on the device far weaker than designed. Attackers reconstructed the keys offline and took well over $100 million in bitcoin. Coinkite says the devices themselves were not hacked; seeds made with enough dice rolls were not at risk. Owners should follow <a href="https://blog.coinkite.com/coldcard-mk3-seed-generation-warning" target="_blank" rel="noopener">Coinkite&rsquo;s advisory</a>.
+                    </li>
+                    <li>
+                        <strong>Ledger, October 2026 &mdash;</strong>
+                        devices sold through a Southeast Asian reseller contained a hidden implant that read the 24-word recovery phrase off the screen during setup and sent it out over a mobile network. Ledger says the secure element was not modified. On-chain researchers estimate losses of up to $93 million (<a href="https://www.coindesk.com/tech/2026/10/13/ledger-says-spy-chip-inside-cryptobilis-ledger-devices-transmitted-wallet-keys-over-mobile-network" target="_blank" rel="noopener">CoinDesk</a>).
+                    </li>
+                    <li>
+                        <strong>Trezor, August&ndash;September 2026 &mdash;</strong>
+                        a breach at Trezor&rsquo;s shipping partner exposed the names, addresses and phone numbers of about 80,700 customers. No devices, keys or funds were affected, but those buyers are now targets for phishing (<a href="https://trezor.io/de/blog/news/recent-customer-data-exposed-in-shipping-provider-incident" target="_blank" rel="noopener">Trezor&rsquo;s statement</a>).
+                    </li>
+                </ul>
+                <p>
+                    The weak points were how seeds are generated, the path a device takes to reach you, and the order with your name on it &mdash; things you can&rsquo;t inspect on a sealed device. <strong>SafeKeepVault</strong> makes those parts checkable: no device is shipped to you, the app is a reproducible build you can rebuild and compare byte for byte, Verifiable Dice lets you check your seed&rsquo;s math on a second device, and there is no order or account tied to you. That doesn&rsquo;t make it risk-free: software has bugs too, and while signing, your keys sit in an ordinary computer&rsquo;s memory (see the Threat Model below). It is a different set of trade-offs &mdash; on its own, or alongside a hardware wallet.
                 </p>
             </section>
 
@@ -238,23 +255,23 @@
                             <tr>
                                 <td>Cost</td>
                                 <td class="col-skv">Free (+ ~$10 USB flash drive)</td>
-                                <td>$50 &ndash; $200</td>
-                                <td>$150 &ndash; $250</td>
-                                <td>$80 &ndash; $280</td>
+                                <td>~$60 &ndash; $250</td>
+                                <td>~$190 &ndash; $320</td>
+                                <td>~$80 &ndash; $400</td>
                             </tr>
                             <tr>
                                 <td>Fully open source</td>
                                 <td class="col-skv"><span class="tag-yes">Yes</span> — OS &amp; Application Software</td>
-                                <td><span class="tag-yes">Yes</span> — hardware &amp; firmware</td>
-                                <td><span class="tag-part">Partial</span> — firmware open, hardware closed</td>
-                                <td><span class="tag-no">No</span> — firmware is closed source</td>
+                                <td><span class="tag-yes">Yes</span> — firmware &amp; hardware designs (the secure-element chip is closed)</td>
+                                <td><span class="tag-part">Partial</span> — source is published, but its licence (MIT + Commons Clause) isn&rsquo;t open source</td>
+                                <td><span class="tag-no">No</span> — device OS is closed (Bitcoin app is open)</td>
                             </tr>
                             <tr>
                                 <td>Air-gapped</td>
                                 <td class="col-skv"><span class="tag-yes">Yes</span> — QR codes or sneakernet; no network drivers in the image</td>
-                                <td><span class="tag-no">No</span> — USB connected</td>
-                                <td><span class="tag-yes">Yes</span> — QR / SD card</td>
-                                <td><span class="tag-no">No</span> — USB connected</td>
+                                <td><span class="tag-no">No</span> — USB (the Safe 7 also has Bluetooth)</td>
+                                <td><span class="tag-yes">Yes</span> — SD card or NFC; QR codes on the Q</td>
+                                <td><span class="tag-no">No</span> — USB, plus Bluetooth on Nano X, Flex and Stax</td>
                             </tr>
                             <tr>
                                 <td>Dedicated hardware required</td>
@@ -266,16 +283,16 @@
                             <tr>
                                 <td>Secure element chip</td>
                                 <td class="col-skv"><span class="tag-no">No</span> &mdash; AES-256 encrypted partition (LUKS) + strong password</td>
-                                <td><span class="tag-part">Model T: No &nbsp;|&nbsp; Safe 3/5: Yes</span></td>
+                                <td><span class="tag-yes">Yes</span> — Safe 3, 5 and 7 (older Model One and Model T: no)</td>
                                 <td><span class="tag-yes">Yes</span></td>
                                 <td><span class="tag-yes">Yes</span></td>
                             </tr>
                             <tr>
                                 <td>Display size</td>
                                 <td class="col-skv">Full laptop / desktop screen</td>
-                                <td>Small touchscreen</td>
-                                <td>Small monochrome screen</td>
-                                <td>Small screen</td>
+                                <td>Small screen &mdash; colour touchscreen on Safe 5 and 7</td>
+                                <td>Small screen &mdash; the Q has a 3.2-inch colour screen and keyboard</td>
+                                <td>Small screen &mdash; larger E Ink touchscreen on Flex and Stax</td>
                             </tr>
                             <tr>
                                 <td>PSBT review detail</td>
@@ -300,7 +317,7 @@
                             </tr>
                             <tr>
                                 <td>Multisig support</td>
-                                <td class="col-skv"><span class="tag-yes">Yes</span> — multiple temporary keys in one session</td>
+                                <td class="col-skv"><span class="tag-yes">Yes</span> — builds multisig wallets, can hold several keys in one session, and reads cosigner keys from a Coldcard or Trezor One by USB</td>
                                 <td><span class="tag-yes">Yes</span></td>
                                 <td><span class="tag-yes">Yes</span></td>
                                 <td><span class="tag-yes">Yes</span></td>
@@ -308,9 +325,16 @@
                             <tr>
                                 <td>Shamir / XOR seed splitting</td>
                                 <td class="col-skv"><span class="tag-yes">Yes</span> — both SLIP-39 Shamir &amp; Seed XOR built in (Shamir shares are recovered in SafeKeepVault, not on a Trezor)</td>
-                                <td><span class="tag-yes">Yes</span> — SLIP-39 (Safe 3, Safe 5, Model T)</td>
+                                <td><span class="tag-yes">Yes</span> — SLIP-39 (Safe 3, 5, 7 and Model T)</td>
                                 <td><span class="tag-part">Yes</span> — Seed XOR only (no SLIP-39)</td>
                                 <td><span class="tag-no">No</span></td>
+                            </tr>
+                            <tr>
+                                <td>Seed generation you can check</td>
+                                <td class="col-skv"><span class="tag-yes">Yes</span> — Verifiable Dice (same method as SeedSigner and COLDCARD) lets you check the seed elsewhere; the computer&rsquo;s random number generator is health-checked</td>
+                                <td><span class="tag-part">Partial</span> — device randomness combined with randomness from the computer; no dice option</td>
+                                <td><span class="tag-part">Partial</span> — optional dice rolls. A 2021&ndash;2026 firmware bug weakened seeds made without enough dice (see above).</td>
+                                <td><span class="tag-no">No</span> — secure element&rsquo;s own random number generator; no way to add or check your own randomness</td>
                             </tr>
                             <tr>
                                 <td>Inheritance planning tools</td>
@@ -321,16 +345,16 @@
                             </tr>
                             <tr>
                                 <td>Supply chain protection</td>
-                                <td class="col-skv">No device shipped — self-flashed from GPG-signed, SHA-256 verified image. The app is a reproducible build with a GitHub attestation and a Bitcoin timestamp. No hardware to intercept.</td>
-                                <td>Physical device shipped. Tamper-evident packaging. Open-source firmware allows independent verification.</td>
-                                <td>Physical device shipped. Numbered tamper-evident bag verified on first boot. Open-source firmware allows independent verification.</td>
-                                <td>Physical device shipped. No tamper-evident packaging; relies on cryptographic Secure Element (Genuine Check) attestation.</td>
+                                <td class="col-skv">No wallet device shipped — you flash an ordinary USB stick from a GPG-signed, SHA-256 verified image. The app is a reproducible build with a GitHub attestation and a Bitcoin timestamp. No order or account tied to you.</td>
+                                <td>Physical device shipped. Tamper-evident packaging; Trezor Suite checks the secure element is genuine. Buyers&rsquo; addresses leaked in 2026 (see above).</td>
+                                <td>Physical device shipped. Numbered tamper-evident bag verified on first boot. Firmware source is published and builds are reproducible.</td>
+                                <td>Physical device shipped. Genuine Check verifies the secure element, not the rest of the device; the 2026 implant left the secure element untouched (see above).</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 0.5rem;">
-                    Prices approximate as of 2026. Hardware wallet firmware and features change — verify current specs on each manufacturer's site.
+                    Prices approximate as of October 2026, for each maker&rsquo;s current models. Hardware wallet firmware and features change — verify current specs on each manufacturer&rsquo;s site.
                 </p>
             </section>
 
@@ -396,15 +420,16 @@
                     </li>
                     <li>
                         <strong>Choose Trezor if &mdash;</strong>
-                        you want a beginner-friendly, plug-and-play device with a strong reputation and an easy setup. The Model T has a touchscreen, and the Safe series adds a secure element. A good choice if convenience and simplicity are your priority.
+                        you want a beginner-friendly, plug-and-play device with fully open firmware and an easy setup. The Safe 3, 5 and 7 all have a secure element, and the Safe 5 and 7 have colour touchscreens. A good choice if convenience and simplicity are your priority. Buy directly from Trezor rather than a reseller, and expect phishing if your details were in the 2026 shipping-partner breach.
                     </li>
                     <li>
                         <strong>Choose Coldcard if &mdash;</strong>
-                        you are an advanced user who wants Bitcoin-only, air-gapped signing via QR or SD card, and a secure element chip. Coldcard is the preferred choice for the technically-demanding Bitcoin self-custody crowd. It is a direct peer to <strong>SafeKeepVault</strong> on the air-gap front, with the added benefit of purpose-built hardware.
+                        you are an advanced user who wants Bitcoin-only, air-gapped signing via SD card, NFC or (on the Q) QR codes, and a secure element chip. It is a direct peer to <strong>SafeKeepVault</strong> on the air-gap front, with the added benefit of purpose-built hardware. If your Coldcard seed was created before the 2026 fix without enough dice rolls, follow Coinkite&rsquo;s advisory and move to a new seed.
                     </li>
                     <li>
                         <strong>Choose Ledger if &mdash;</strong>
-                        you want a hardware wallet with a polished interface, extensive compatibility, and a large, established user base. It is a strong option for users who prioritize ease of use, broad software and service integration, and a streamlined setup experience over specialized Bitcoin-focused functionality.
+                        you want a hardware wallet with a polished interface, extensive compatibility, and a large, established user base. It is a strong option for users who prioritize ease of use, broad software and service integration, and a streamlined setup experience over specialized Bitcoin-focused functionality. Buy only from Ledger directly: the 2026 implant was found in devices sold through a reseller.
+                    </li>
                     <li>
                         <strong>Use both if &mdash;</strong>
                         you are running a multisig setup. <strong>SafeKeepVault</strong> pairs naturally with any hardware wallet as a second signer — your Coldcard or Trezor provides hardware-level physical resistance, while <strong>SafeKeepVault</strong> provides the full-screen verification and the advanced key management tools neither device offers on its own. Plug a Coldcard or Trezor One straight into the vault and both signatures can be collected in one sitting, with each device still approving on its own screen.
