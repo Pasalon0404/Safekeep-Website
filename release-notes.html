@@ -91,6 +91,21 @@
                 </p>
             </div>
 
+            <!-- v1.52 -->
+            <section class="content-section" id="v1-52">
+                <h2 class="section-heading">v1.52 &mdash; October 23, 2026</h2>
+                <p>Seed XOR and Shamir Backup, rebuilt: one share at a time, each one checked against your paper before you move on.</p>
+                <ul class="docs-list">
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.52.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
+                    <li><strong>One share at a time &mdash;</strong> Seed XOR Splitter and Shamir Backup now work the same way. Choose how many shares (&ldquo;all 3 needed&rdquo;, or &ldquo;any 2 of 3&rdquo;), then SafeKeep shows each share on its own screen, with Print and Show QR. Write it down, then type it back with word suggestions, or scan its QR code. A wrong word is pointed out by its position. At the end SafeKeep checks that the shares you typed rebuild your seed exactly.</li>
+                    <li><strong>Check Shares I Already Have &mdash;</strong> in both tools. Type in or scan shares you made earlier, and SafeKeep tells you whether they rebuild your vault seed, without ever showing the seed.</li>
+                    <li><strong>Easier recovery &mdash;</strong> on the welcome screen, Restore via Seed XOR and Recover Shamir Backup use the same word boxes with suggestions. Shamir recovery checks each share as you add it, says how many more you need, and now accepts more shares than the minimum.</li>
+                    <li><strong>Removed &mdash;</strong> the Copy buttons, Seed XOR&rsquo;s Merge tab (combine shares from the welcome screen, or check them with Check Shares) and the long pages showing every share at once.</li>
+                    <li><strong>Shamir prints &mdash;</strong> a printed Shamir share no longer shows your seed&rsquo;s last word, which gave away a little of the seed. The fingerprint still identifies it. And a BIP-39 passphrase on the Dashboard is no longer used as the shares&rsquo; passphrase without asking.</li>
+                    <li><strong>Quieter start &mdash;</strong> the brief &ldquo;Download started&rdquo; message and the flash of a Mount Transfer Drive box after unlocking are gone. Nothing was ever downloaded: that is how the app passes requests to the system.</li>
+                </ul>
+            </section>
+
             <!-- v1.51 -->
             <section class="content-section" id="v1-51">
                 <h2 class="section-heading">v1.51 &mdash; October 22, 2026</h2>

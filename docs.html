@@ -670,16 +670,21 @@
                     </li>
                     <li>
                         <strong>Restore via Seed XOR &mdash;</strong>
-                        Reconstruct a seed phrase by combining multiple backup shares previously split
-                        with any Seed XOR tool. The shares are merged exclusively in
-                        memory; the individual components are never stored on the drive, maintaining
-                        the integrity of your distributed backup scheme. A share entered twice, or shares
-                        that cancel out to an empty seed, are rejected.
+                        Reconstruct a seed phrase by combining the shares made with SafeKeep&rsquo;s Seed XOR
+                        Splitter or any other Seed XOR tool, such as a Coldcard. Type each share into the word
+                        boxes, which suggest words as you type, or scan its QR code. The shares are combined
+                        only in memory; the individual shares are never stored on the drive. A share with a
+                        wrong word, a share entered twice, or shares that cancel out to an empty seed are
+                        rejected, and SafeKeep shows the recovered fingerprint to compare with your share
+                        cards before anything is saved.
                     </li>
                     <li>
                         <strong>Recover Shamir Backup (SLIP-39) &mdash;</strong>
-                        Utilize the Shamir Backup tool to reconstruct a seed from Shamir&rsquo;s Secret
-                        Sharing (SLIP-39) shares. Enter enough shares to meet your threshold and click
+                        Reconstruct a seed from Shamir&rsquo;s Secret Sharing (SLIP-39) shares. Type each share
+                        into the word boxes (20 or 33 words, with suggestions) or scan its QR code, and click
+                        <strong>Add Share</strong>. Each share is checked as you add it: a wrong word, a share
+                        from a different set or the same share twice is refused, and SafeKeep tells you how
+                        many shares the set needs. Extra shares beyond that are fine. Then click
                         <strong>Combine &amp; Recover</strong>. The vault shows two readings, each with its
                         fingerprint and first address: <strong>Made with SafeKeep</strong>, with a
                         <strong>Restore This Wallet</strong> button, and <strong>Made on a Trezor or another
@@ -1513,14 +1518,23 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 <ul class="docs-list">
                     <li>
                         <strong>Seed XOR Splitter &mdash;</strong>
-                        Splits your seed into XOR shares for distributed cold storage. Reconstructs your master seed by combining these shares:
-                        merging shows the recovered fingerprint to compare with your share cards, and rejects a share entered twice
-                        or shares that cancel out to an empty seed.
+                        Splits your vault seed into 2, 3 or 4 XOR shares for distributed cold storage. Every share
+                        is needed to recover, and each one looks like an ordinary 12- or 24-word seed. SafeKeep shows
+                        one share at a time, with <strong>Print</strong> and <strong>Show QR</strong>: write it down,
+                        then type it back or scan it, and SafeKeep checks it word by word. At the end it confirms the
+                        shares rebuild your seed exactly. <strong>Check Shares I Already Have</strong> tests shares you
+                        made earlier against your vault seed without ever showing the seed. To turn shares back into a
+                        seed, use <strong>Restore via Seed XOR</strong> on the welcome screen (on a new stick, or in a
+                        Temporary session).
                     </li>
                     <li>
                         <strong>Shamir Backup &mdash;</strong>
-                        Splits your seed into Shamir (SLIP-39) shares for distributed backup. Recovery requires
-                        only a portion of the shares (2-of-3, 3-of-5, etc.) to restore. Recover these shares with
+                        Splits your vault seed into Shamir (SLIP-39) shares for distributed backup: any 2 of 3,
+                        3 of 5, 4 of 7 or your own choice, so you can lose some shares and still recover. It works
+                        like the Seed XOR Splitter: one share at a time, each checked against your paper, then a
+                        final check. If you set a share passphrase under <strong>Advanced</strong>, the final check
+                        asks for it again from memory; without it the shares can&rsquo;t be recovered.
+                        <strong>Check Shares I Already Have</strong> works the same way. Recover these shares with
                         <strong>SafeKeepVault</strong>: restoring them on a Trezor opens a different, empty wallet.
                         When recovering, SafeKeep shows both readings (made with SafeKeep, made on a Trezor) and
                         saves only the one you choose.
