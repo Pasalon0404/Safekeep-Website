@@ -91,6 +91,18 @@
                 </p>
             </div>
 
+            <!-- v1.54 -->
+            <section class="content-section" id="v1-54">
+                <h2 class="section-heading">v1.54 &mdash; October 27, 2026</h2>
+                <p>Most PCs now start SafeKeepVault with Secure Boot left on.</p>
+                <ul class="docs-list">
+                    <li><strong>Secure Boot can stay on &mdash;</strong> the stick&rsquo;s boot loader is now Ubuntu&rsquo;s signed one (a shim signed by Microsoft, then GRUB and the kernel signed by Canonical), so a PC with Secure Boot on starts it without changing settings. On Windows PCs with BitLocker, that also avoids the recovery-key prompt that turning Secure Boot off can cause. Secure Boot checks the boot loader and kernel, not the rest of the stick: verify your download as always.</li>
+                    <li><strong>Flash a new stick to get it &mdash;</strong> the boot loader lives on the stick&rsquo;s boot partition, which updating in place never changes. Flash <code>SafeKeep-Release-v1.54.zip</code> onto a stick (back up your vault first). A stick you update keeps working as now, with Secure Boot off.</li>
+                    <li><strong>Still needs Secure Boot off &mdash;</strong> newer PCs that trust only Microsoft&rsquo;s 2023 certificates, &ldquo;Secured-core&rdquo; PCs with the Microsoft third-party certificate switched off, and Intel Macs with the T2 chip (Startup Security Utility &rarr; No Security).</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.54.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
+                </ul>
+            </section>
+
             <!-- v1.53 -->
             <section class="content-section" id="v1-53">
                 <h2 class="section-heading">v1.53 &mdash; October 27, 2026</h2>
