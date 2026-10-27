@@ -978,26 +978,35 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-electrum">Electrum <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>Use these settings and steps for Electrum. This workflow is file-based &mdash; move the flash drive to your online computer (sneakernet), or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
+                <p>Use these settings and steps for Electrum. You move each key from the vault to Electrum by QR code, with no file to carry: open <a href="courier.html">courier.safekeepbitcoin.com</a> on your online computer, choose <strong>Receive</strong>, click <strong>Open camera and scan</strong>, and point its webcam at the vault&rsquo;s screen. The Courier shows the key it read with a <strong>Copy to clipboard</strong> button, and you paste it into Electrum. Don&rsquo;t send the key through a cloud service, email or chat app: it is your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
+                <p>Electrum doesn&rsquo;t support Taproot, so choose Native SegWit (the default), Nested SegWit or Legacy as the Address Type.</p>
+
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
                     <span><strong>Wallet Type:</strong> Single-Sig</span>
-                    <span><strong>Key Format:</strong> Electrum Compatible JSON</span>
+                    <span><strong>Key Format:</strong> SLIP-132</span>
                 </div>
                 <ol class="wallet-steps">
-                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
-                    <li>Transfer the file to your online machine and open Electrum.</li>
-                    <li>Go to <strong>File &rarr; Open</strong> and select the exported JSON file. Electrum will load it as a watch-only wallet. Electrum will identify the JSON as a Coldcard and ask you to connect it — click <strong>No</strong>.</li>
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Show QR</strong>. The key starts with <strong>zpub</strong> for Native SegWit, <strong>ypub</strong> for Nested SegWit or <strong>xpub</strong> for Legacy.</li>
+                    <li>On your online computer, scan the QR code with the Courier and click <strong>Copy to clipboard</strong>, as described above.</li>
+                    <li>In Electrum, go to <strong>File &rarr; New/Restore</strong>, name the wallet, and choose <strong>Standard wallet</strong>.</li>
+                    <li>Choose <strong>Use a master key</strong>, paste the key, and click <strong>Next</strong>. Electrum creates a watch-only wallet and shows your balance and transaction history.</li>
                 </ol>
 
                 <p class="wallet-sig-heading">Multisig</p>
                 <div class="vault-export-settings">
-                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
-                    <span><strong>Wallet Type:</strong> N/A</span>
-                    <span><strong>Key Format:</strong> N/A</span>
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings (repeat for each co-signer key)</span>
+                    <span><strong>Wallet Type:</strong> Multi-Sig (BIP-48)</span>
+                    <span><strong>Key Format:</strong> SLIP-132</span>
                 </div>
-                <p style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.6;">Multisig with Electrum is not currently supported. In the meantime, you can set up your multisig wallet in Sparrow or Specter Desktop using the instructions above.</p>
+                <ol class="wallet-steps">
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Show QR</strong>. A multisig key starts with a capital letter: <strong>Zpub</strong> for Native SegWit, <strong>Ypub</strong> for Nested SegWit, or <strong>xpub</strong> for Legacy. Use the same Address Type for every co-signer.</li>
+                    <li>In Electrum, go to <strong>File &rarr; New/Restore</strong>, name the wallet, and choose <strong>Multi-signature wallet</strong>. Set the number of co-signers and how many signatures are required (e.g., 2-of-3).</li>
+                    <li>For the first co-signer, choose <strong>Use a master key</strong>. Scan the vault&rsquo;s QR code with the Courier, click <strong>Copy to clipboard</strong>, paste the key into Electrum, and click <strong>Next</strong>.</li>
+                    <li>For each remaining co-signer, choose <strong>Enter cosigner key</strong>. In the vault, load that co-signer&rsquo;s seed and show its key the same way, then scan, copy and paste it into Electrum.</li>
+                    <li>Once every key is entered, Electrum creates the watch-only multisig wallet. Before sending funds to it, check that Electrum&rsquo;s first receive address matches the one the vault&rsquo;s <strong>Output Descriptor</strong> tool (under Advanced Tools &rarr; Keys &amp; Seeds) shows for the same wallet.</li>
+                </ol>
 
                 <h3 class="wallet-heading" id="ww-core">Bitcoin Core <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; your own node, v0.21 or later)</span></h3>
                 <p>If you run your own Bitcoin Core node, you can import the wallet into it as a watch-only descriptor wallet. This works for single-signature and multisig wallets, and uses the <strong>Output Descriptor</strong> tool rather than Seed Management.</p>
