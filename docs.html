@@ -585,7 +585,7 @@
             <section class="content-section" id="first-boot">
                 <h2 class="section-heading">Step 3: Initialization &amp; Encryption</h2>
                 <p>
-                    Insert the USB flash drive, then power on or restart your computer. During startup, most systems allow you to choose a temporary boot device by pressing a function key such as F2, F8, F9, ESC, etc. immediately after powering on. On Macs with Intel processors, hold the Option key during startup. If the computer won&rsquo;t start from the stick, or shows a Secure Boot or &ldquo;security violation&rdquo; message, turn off <strong>Secure Boot</strong> in the BIOS/UEFI setup: SafeKeepVault&rsquo;s boot loader isn&rsquo;t signed for Secure Boot.  <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
+                    Insert the USB flash drive, then power on or restart your computer. During startup, most systems allow you to choose a temporary boot device by pressing a function key such as F2, F8, F9, ESC, etc. immediately after powering on. On Macs with Intel processors, hold the Option key during startup and choose <strong>SafeKeep</strong> (sticks set up before v1.53 show as &ldquo;EFI Boot&rdquo;). If the computer won&rsquo;t start from the stick, or shows a Secure Boot or &ldquo;security violation&rdquo; message, turn off <strong>Secure Boot</strong> in the BIOS/UEFI setup: SafeKeepVault&rsquo;s boot loader isn&rsquo;t signed for Secure Boot.  <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
                 </p>
                 <p>
                     Before anything else, the vault runs a <strong>start-up self-check</strong>: it feeds
@@ -872,7 +872,7 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-nunchuk">Nunchuk <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
-                <p>Use these settings and steps for Nunchuk. This workflow is file-based &mdash; use the <strong>Courier Tool</strong> to transmit the JSON file from the vault to your phone.</p>
+                <p>Use these settings and steps for Nunchuk. Nunchuk scans the key straight off the vault&rsquo;s screen as an animated QR code &mdash; no file to transfer.</p>
 
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
@@ -881,17 +881,12 @@
                     <span><strong>Key Format:</strong> Hardware Wallet JSON (Minimal)</span>
                 </div>
                 <ol class="wallet-steps">
-                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
-                    <li>Open the <strong>Transfer Hub</strong> in the vault and locate the JSON file you just downloaded.</li>
-                    <li>On your phone, open the <a href="https://courier.safekeepbitcoin.com" target="_blank" rel="noopener"><strong>Courier Tool</strong></a> and select <strong>Receive</strong>, then tap <strong>Open camera and scan</strong>.</li>
-                    <li>On <strong>SafeKeepVault</strong>, click <strong>Transmit</strong> next to the JSON file. It opens in the vault&rsquo;s <strong>Courier Tool</strong>, already loaded. Click <strong>Start Transmission Loop</strong>. The vault displays an animated QR sequence.</li>
-                    <li>Hold your phone to the vault&rsquo;s screen. The <strong>Courier Tool</strong> will scan and reconstruct the file. Save it to your phone when prompted.</li>
-                    <li>In Nunchuk, tap <strong>Add Key</strong> &rarr; <strong>Coldcard</strong> &rarr; <strong>Add COLDCARD via file (advanced)</strong> &rarr; <strong>Continue</strong>.</li>
-                    <li>Navigate to the JSON file you transferred and select it.</li>
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, click <strong>Show QR</strong>, then <strong>Play as animated QR</strong>.</li>
+                    <li>In Nunchuk, tap <strong>Add Key</strong> and choose <strong>Passport</strong>, then scan the animated QR code on the vault&rsquo;s screen. Hold the phone steady until Nunchuk finishes reading.</li>
                     <li>Name your key and tap <strong>Add Key</strong>. Your signing key is now registered.</li>
                     <li>Return to the Nunchuk home screen and tap <strong>+</strong> to add a wallet.</li>
                     <li>Select <strong>Custom Wallet</strong>, name it, choose the address type you used in step&nbsp;1, and tap <strong>Continue</strong>.</li>
-                    <li>Select the key you created in step&nbsp;8, tap <strong>Continue</strong>, then <strong>Create Wallet</strong>.</li>
+                    <li>Select the key you created in step&nbsp;3, tap <strong>Continue</strong>, then <strong>Create Wallet</strong>.</li>
                 </ol>
 
                 <p class="wallet-sig-heading">Multisig</p>
@@ -907,9 +902,22 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-sparrow">Sparrow <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>Use these settings and steps for Sparrow. This workflow is file-based &mdash; move the flash drive to your online computer (sneakernet), or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
+                <p>Use these settings and steps for Sparrow. For a single-signature wallet, Sparrow can scan the key straight off the vault&rsquo;s screen. To use a file instead, move the flash drive to your online computer (sneakernet), or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
 
-                <p class="wallet-sig-heading">Single Signature</p>
+                <p class="wallet-sig-heading">Single Signature &mdash; by scanning</p>
+                <div class="vault-export-settings">
+                    <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
+                    <span><strong>Wallet Type:</strong> Single-Sig</span>
+                    <span><strong>Key Format:</strong> BC-UR Account</span>
+                </div>
+                <ol class="wallet-steps">
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Show QR</strong>.</li>
+                    <li>In Sparrow, go to <strong>File &rarr; New Wallet</strong>, name it, and choose the same script type as your Address Type in the vault.</li>
+                    <li>Under <strong>Keystores</strong>, choose <strong>Airgapped Hardware Wallet</strong>, pick a device with a <strong>Scan...</strong> button (for example Passport or Keystone), and point your webcam at the vault&rsquo;s screen.</li>
+                    <li>Check the master fingerprint and derivation Sparrow shows against the vault, then click <strong>Apply</strong>.</li>
+                </ol>
+
+                <p class="wallet-sig-heading">Single Signature &mdash; by file</p>
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
                     <span><strong>Wallet Type:</strong> Single-Sig</span>
@@ -1399,7 +1407,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li>
                         <strong>Seed Management &mdash;</strong>
                         Exports your public key and output descriptor for watch-only wallet setup in
-                        Sparrow, Electrum, Nunchuk, Blue Wallet, Specter, or any compatible coordinator.
+                        Sparrow, Electrum, Nunchuk, Blue Wallet, Specter, or any compatible coordinator,
+                        as a file or a QR code. Dense codes can play as an animated QR, which Nunchuk and
+                        Sparrow scan straight off the screen. A passphrase you type must be typed twice.
                         Your private keys never leave.
                     </li>
                     <li>
@@ -1424,7 +1434,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li>
                         <strong>BIP-85 Child Seeds &mdash;</strong>
                         Generates separate child wallets from your master seed &mdash; isolated wallets
-                        for different purposes, all recoverable from one backup.
+                        for different purposes, all recoverable from one backup. Uses the passphrase applied
+                        on the Dashboard; one you type must be typed twice, since a typo would make children
+                        your backup can&rsquo;t rebuild.
                     </li>
                     <li>
                         <strong>Seed QR Code &mdash;</strong>
@@ -1523,7 +1535,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         one share at a time, with <strong>Print</strong> and <strong>Show QR</strong>: write it down,
                         then type it back or scan it, and SafeKeep checks it word by word. At the end it confirms the
                         shares rebuild your seed exactly. <strong>Check Shares I Already Have</strong> tests shares you
-                        made earlier against your vault seed without ever showing the seed. To turn shares back into a
+                        made earlier (of either length) against your vault seed, and can show the seed words they
+                        rebuild if you ask. To turn shares back into a
                         seed, use <strong>Restore via Seed XOR</strong> on the welcome screen (on a new stick, or in a
                         Temporary session).
                     </li>
