@@ -91,6 +91,23 @@
                 </p>
             </div>
 
+            <!-- v1.53 -->
+            <section class="content-section" id="v1-53">
+                <h2 class="section-heading">v1.53 &mdash; October 27, 2026</h2>
+                <p>Add SafeKeep to Nunchuk or Sparrow by scanning its screen, with animated QR codes for anything dense.</p>
+                <ul class="docs-list">
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.53.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
+                    <li><strong>Add SafeKeep to your wallet by scanning &mdash;</strong> no more saving a file and carrying it over with the Courier. For <strong>Nunchuk</strong>, choose Hardware Wallet JSON in Seed Management, press Show QR, then Play as animated QR, and add a key as a Passport in Nunchuk. For <strong>Sparrow</strong>, choose BC-UR Account and add an Airgapped Hardware Wallet keystore by scanning. See <a href="docs.html#ww-nunchuk">Nunchuk</a> and <a href="docs.html#ww-sparrow">Sparrow</a>.</li>
+                    <li><strong>Animated QR codes &mdash;</strong> a QR code dense enough to trouble a camera, such as a Hardware Wallet JSON export or a larger multisig descriptor, now offers Play as animated QR: the same text in a loop of much simpler codes, which Sparrow, Nunchuk, Keystone, BlueWallet and other wallets read.</li>
+                    <li><strong>Seed Management &mdash;</strong> a passphrase you type must be typed twice: a typo used to show, and export, a different empty wallet without warning. The BIP-380 key format now gives the full output descriptor, exactly as the Output Descriptor tool makes it.</li>
+                    <li><strong>BIP-85 Child Seeds &mdash;</strong> the passphrase fills in from the Dashboard, and one you type must be typed twice: a typo used to make child seeds your backup could never rebuild.</li>
+                    <li><strong>Check Shares I Already Have &mdash;</strong> can now show the seed words the shares rebuild, labelled as your vault seed or clearly as a different one, and checks shares of either length.</li>
+                    <li><strong>Things come into view &mdash;</strong> QR codes, camera scan windows and the welcome screen&rsquo;s restore panels scroll onto the screen by themselves.</li>
+                    <li><strong>&ldquo;SafeKeep&rdquo; in the Mac boot menu &mdash;</strong> holding Option on a Mac shows the stick as SafeKeep instead of &ldquo;EFI Boot&rdquo;, on sticks flashed from this release.</li>
+                    <li><strong>Smaller fixes &mdash;</strong> messages no longer use names from early builds (&ldquo;codex&rdquo;, &ldquo;cipher&rdquo;), and the browser is pinned to one checked version.</li>
+                </ul>
+            </section>
+
             <!-- v1.52 -->
             <section class="content-section" id="v1-52">
                 <h2 class="section-heading">v1.52 &mdash; October 23, 2026</h2>
