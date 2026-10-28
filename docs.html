@@ -1496,7 +1496,10 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Save Wallet</strong>. The vault keeps it in the encrypted partition, and the
                         <strong>PSBT Signer</strong> then shows which of your wallets a transaction spends from and
                         confirms that its change comes back to you (see <a href="#sign-review">Reviewing the
-                        Transaction</a>). Your saved wallets are listed at the top of the tool, each with a <strong>Remove</strong> button.
+                        Transaction</a>). Your saved wallets are listed at the top of the tool, each with <strong>Open</strong> and
+                        <strong>Remove</strong> buttons. <strong>Open</strong> shows the wallet&rsquo;s descriptor and
+                        addresses and sets the form above to it: for a multisig, the other cosigners&rsquo; keys are filled
+                        in, so <strong>Generate Descriptor</strong> rebuilds the same wallet.
                         <br><br>
                         Each cosigner also has <strong>Coldcard (USB)</strong> and <strong>Trezor (USB)</strong> buttons.
                         Plug the device into the offline SafeKeep computer and click one: SafeKeep reads the device&rsquo;s
