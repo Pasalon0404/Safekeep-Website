@@ -626,10 +626,13 @@
                 </p>
                 <p>
                     Once the vault is created, choose <strong>Continue now</strong>: you go straight to the unlock prompt,
-                    scan or type the same password, and <strong>SafeKeepVault</strong> starts, with no restart. If you
-                    plan to restore from a <code>.7z</code> backup that isn&rsquo;t on the stick yet, choose
-                    <strong>Shut down to copy a backup onto the stick</strong> instead: copy the backup onto the
-                    <strong>TRANSFER</strong> drive from another computer, then put the stick back and power on.
+                    scan or type the same password, and <strong>SafeKeepVault</strong> starts, with no restart. To
+                    restore from a <code>.7z</code> backup that isn&rsquo;t on the stick yet, continue too: on the
+                    welcome screen choose <strong>Unlock .7z Backup</strong>, then <strong>Receive a Backup with the
+                    Courier</strong>, and send the backup from the <a href="courier.html">Courier Tool</a> on your phone
+                    or another computer. If this computer has no camera, choose <strong>Shut down to copy a backup onto
+                    the stick</strong> instead: copy the backup onto the <strong>TRANSFER</strong> drive from another
+                    computer, then put the stick back and power on.
                 </p>
                 <p>
                     Alternatively, at the decryption prompt you may choose to bypass the encrypted vault
@@ -690,7 +693,9 @@
                         <strong>Unlock .7z Backup &mdash;</strong>
                         Import a previously encrypted vault archive created using the Encrypted Backup tool. This
                         restores your entire environment&mdash;including all stored keys, passphrases, and
-                        custom configurations&mdash;onto a new or freshly flashed boot drive.
+                        custom configurations&mdash;onto a new or freshly flashed boot drive. A backup that isn&rsquo;t
+                        on the stick yet can be received with the Courier: <strong>Receive a Backup with the
+                        Courier</strong>.
                     </li>
                     <li>
                         <strong>Sign with Hardware Wallet (Temporary Session only) &mdash;</strong>
@@ -1351,11 +1356,11 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 </p>
                 <ol class="docs-list">
                     <li><strong>1. Note your fingerprint &mdash;</strong> write down the master fingerprint and Seed Nickname shown on the Dashboard, so you can confirm the same seed after the update.</li>
-                    <li><strong>2. Make an encrypted backup &mdash;</strong> open <strong>Encrypted Backup</strong> (Advanced Tools &rarr; Backup &amp; Recovery) and select what to keep: Encrypted Notes, Application Settings, Saved Passphrases and 2FA Backup. We recommend leaving <strong>Master Seed</strong> unticked and re-entering your seed from your paper backup in step 6 instead: it keeps the seed off the Transfer Drive, and it proves your paper backup works. The backup is saved to the Transfer Drive as a <code>.7z</code> file.</li>
-                    <li><strong>3. Copy the backup off the stick &mdash;</strong> power down the vault, plug the flash drive into your everyday computer, and copy the <code>.7z</code> file from the <strong>TRANSFER</strong> drive to that computer or to another USB drive. It is encrypted, so it is safe to hold there briefly.</li>
+                    <li><strong>2. Make an encrypted backup &mdash;</strong> open <strong>Encrypted Backup</strong> (Advanced Tools &rarr; Backup &amp; Recovery) and select what to keep: Encrypted Notes, Application Settings, Saved Passphrases and 2FA Backup. We recommend leaving <strong>Master Seed</strong> unticked and re-entering your seed from your paper backup in step 6 instead: it keeps the seed off the Transfer Drive, and it proves your paper backup works. The backup is saved to the Transfer Drive as a <code>.7z</code> file. Click <strong>Check this backup</strong> and enter its password to confirm it opens.</li>
+                    <li><strong>3. Copy the backup off the stick &mdash;</strong> click <strong>Send with the Courier</strong> and receive the backup on your phone with the <a href="courier.html">Courier Tool</a>. Or power down the vault, plug the flash drive into your everyday computer, and copy the <code>.7z</code> file from the <strong>TRANSFER</strong> drive to that computer or to another USB drive. It is encrypted, so it is safe to hold there briefly.</li>
                     <li><strong>4. Download, verify and flash the new release &mdash;</strong> follow the <a href="download.html">Download page</a>, including all three verification steps.</li>
-                    <li><strong>5. Put the backup back &mdash;</strong> unplug and replug the freshly flashed drive so the computer sees its new <strong>TRANSFER</strong> drive, then copy the <code>.7z</code> file onto it.</li>
-                    <li><strong>6. Boot and restore &mdash;</strong> boot the vault and create the encrypted vault as on first use (you can keep the same vault password and unlock QR), then choose <strong>Continue now</strong> and unlock it. On the welcome screen choose <strong>Unlock .7z Backup</strong>, pick the file and enter its password. If the backup didn&rsquo;t include your seed, choose <strong>Restore from Words</strong> and enter it from your paper backup.</li>
+                    <li><strong>5. Put the backup back &mdash;</strong> if you sent it to your phone, skip this step: you receive it with the Courier in step 6. Otherwise unplug and replug the freshly flashed drive so the computer sees its new <strong>TRANSFER</strong> drive, then copy the <code>.7z</code> file onto it.</li>
+                    <li><strong>6. Boot and restore &mdash;</strong> boot the vault and create the encrypted vault as on first use (you can keep the same vault password and unlock QR), then choose <strong>Continue now</strong> and unlock it. On the welcome screen choose <strong>Unlock .7z Backup</strong> (with a backup on your phone, first <strong>Receive a Backup with the Courier</strong> and play it from the Courier Tool), pick the file and enter its password. If the backup didn&rsquo;t include your seed, choose <strong>Restore from Words</strong> and enter it from your paper backup.</li>
                     <li><strong>7. Check, then clean up &mdash;</strong> confirm the Dashboard shows the fingerprint and Seed Nickname you noted in step 1. Then delete the <code>.7z</code> copy from your everyday computer, and from the Transfer Drive using the <strong>Transfer Hub</strong>.</li>
                 </ol>
                 <p>
@@ -1563,7 +1568,11 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         correct password is entered. Type the password twice, or scan it once from a QR code.
                         A bar shows how strong the password is, and a weak one is refused: a backup can be copied
                         to a computer and guessed far faster than the vault. Your vault password works if it came
-                        from a password manager or is 6 or more random words.
+                        from a password manager or is 6 or more random words. After the backup is made,
+                        <strong>Send with the Courier</strong> sends it to your phone, and <strong>Check this
+                        backup</strong> confirms it opens with its password. <strong>Check a Backup</strong>, on the
+                        same screen, does this for any backup on the Transfer Drive: it shows whether the backup&rsquo;s
+                        seed is the one loaded now and what else it holds, and restores nothing.
                     </li>
                     <li>
                         <strong>Wallet Record &mdash;</strong>
