@@ -91,6 +91,18 @@
                 </p>
             </div>
 
+            <!-- v1.56 -->
+            <section class="content-section" id="v1-56">
+                <h2 class="section-heading">v1.56 &mdash; October 28, 2026</h2>
+                <p>Opening a saved wallet in the Output Descriptor tool now sets the form to that wallet.</p>
+                <ul class="docs-list">
+                    <li><strong>Multisig &mdash;</strong> opening a saved 2-of-3 (or any M-of-N) switches the form to Multisig with the wallet&rsquo;s threshold and address type, and fills in the other cosigners&rsquo; keys and fingerprints, so <strong>Generate Descriptor</strong> rebuilds the same wallet. Before, the cosigner keys stayed empty and Generate Descriptor gave an error.</li>
+                    <li><strong>Single-sig &mdash;</strong> opening a single-sig wallet switches the form to Single-Sig with its address type.</li>
+                    <li><strong>No leftovers &mdash;</strong> cosigner keys from a wallet you opened before are cleared. If the form can&rsquo;t rebuild a wallet (for example it uses a passphrase you haven&rsquo;t entered), the message says why.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.56.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>.</li>
+                </ul>
+            </section>
+
             <!-- v1.55 -->
             <section class="content-section" id="v1-55">
                 <h2 class="section-heading">v1.55 &mdash; October 28, 2026</h2>
