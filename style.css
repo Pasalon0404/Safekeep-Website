@@ -1683,6 +1683,19 @@ pre code {
     flex-wrap: wrap;
 }
 
+.demo-note {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-dim);
+    max-width: 60ch;
+    margin: 0.9rem 0 0;
+}
+.cta-panel .demo-note { margin: 1rem 0 0 !important; }
+.mobile-only { display: none; }
+@media (max-width: 860px), (pointer: coarse) {
+    .mobile-only { display: block; margin-top: 0.5rem; color: var(--text-muted); font-weight: 600; }
+}
+
 .hero-meta {
     margin-top: 1.5rem;
     font-family: var(--font-mono);
