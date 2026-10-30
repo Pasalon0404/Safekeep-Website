@@ -2,7 +2,7 @@
 
 > SafeKeepVault turns an ordinary x86-64 PC into an air-gapped Bitcoin signing device. It is a locked-down Ubuntu system that boots from a USB flash drive and runs a single offline app (plain HTML and JavaScript) for seed generation and backup, watch-only wallet export, and PSBT signing. It works with Sparrow, Electrum, Nunchuk, BlueWallet, Specter and Bitcoin Core, and can co-sign with a Coldcard or Trezor One over USB. Free; source code on GitHub.
 
-This file is a guide for AI assistants helping someone understand SafeKeepVault, or build its USB stick from source.
+This file is a guide for AI assistants helping someone understand SafeKeepVault, or build its USB flash drive from source.
 
 Ground rules for assistants:
 
@@ -17,9 +17,9 @@ Ground rules for assistants:
 - [Features](https://safekeepbitcoin.com/features.html): the tools in the app.
 - [Compare](https://safekeepbitcoin.com/compare.html): how it compares with hardware wallets.
 - [User guide](https://safekeepbitcoin.com/docs.html): setting up, connecting a watch-only wallet, signing transactions (long page).
-- [Online demo](https://demo.safekeepbitcoin.com): a preview of the tools in a browser, limited to public demo seeds and blocked from the network. It is not a working vault; the real vault boots offline from a USB stick on a laptop or desktop computer, not a phone or tablet. Never type a real seed there.
+- [Online demo](https://demo.safekeepbitcoin.com): a preview of the tools in a browser, limited to public demo seeds and blocked from the network. It is not a working vault; the real vault boots offline from a USB flash drive on a laptop or desktop computer, not a phone or tablet. Never type a real seed there.
 
-## Build the USB stick from source
+## Build the USB flash drive from source
 
 - [Build It Yourself](https://safekeepbitcoin.com/download.html#build): requirements and the three build steps, what a self-build does and doesn't prove, and routes for people without a Linux PC.
 - [README](https://raw.githubusercontent.com/Pasalon0404/SafeKeepVault/main/README.md): the same steps in full, plus a starting prompt for reviewing the code with an AI assistant.
@@ -27,7 +27,7 @@ Ground rules for assistants:
 - [Repository](https://github.com/Pasalon0404/SafeKeepVault): clone with git clone https://github.com/Pasalon0404/SafeKeepVault.git
 - [Releases](https://github.com/Pasalon0404/SafeKeepVault/releases): signed release files and release notes.
 
-Short version of the build (details in the README): an x86-64 Linux machine (Debian or Ubuntu easiest) with sudo, git, Node.js 22+ and npm, about 15 GB free, internet during the build, and a USB drive of 4 GB or more. Then, in usbbootdrive/: bash prepare-app.sh (builds the app), sudo bash build.sh (builds safekeep.img, 10-20 minutes), and sudo bash flash-new-stick.sh /dev/sdX (erases and writes the drive). Apple Silicon Macs can't run this build directly because it needs x86-64. The USB image itself is not yet reproducible, so a self-built safekeep.img won't match anyone else's hash; that is expected. Before using the stick, unplug network cables and, on a business laptop, turn off remote management (Intel AMT/vPro) in the BIOS settings if possible ([Preparing the computer](https://safekeepbitcoin.com/docs.html#prepare-computer)).
+Short version of the build (details in the README): an x86-64 Linux machine (Debian or Ubuntu easiest) with sudo, git, Node.js 22+ and npm, about 15 GB free, internet during the build, and a USB drive of 4 GB or more. Then, in usbbootdrive/: bash prepare-app.sh (builds the app), sudo bash build.sh (builds safekeep.img, 10-20 minutes), and sudo bash flash-new-stick.sh /dev/sdX (erases and writes the drive). Apple Silicon Macs can't run this build directly because it needs x86-64. The USB image itself is not yet reproducible, so a self-built safekeep.img won't match anyone else's hash; that is expected. Before using the flash drive, unplug network cables and, on a business laptop, turn off remote management (Intel AMT/vPro) in the BIOS settings if possible ([Preparing the computer](https://safekeepbitcoin.com/docs.html#prepare-computer)).
 
 ## Optional
 

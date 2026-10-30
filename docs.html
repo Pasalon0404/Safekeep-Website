@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="newfavicon.png">
-    <meta name="description" content="Step-by-step guide to getting started with SafeKeepVault: generate your vault password, download, flash, boot, and set up your watch wallet.">
+    <meta name="description" content="Step-by-step guide to getting started with SafeKeepVault: generate your vault password, download, flash, boot, and set up your watch-only wallet.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeKeepVault &mdash; Getting Started</title>
     <link rel="stylesheet" href="style.css">
@@ -208,14 +208,11 @@
     <div class="top-nav-inner">
         <a href="index.html" class="top-nav-brand">SafeKeep<span>Bitcoin</span></a>
         <ul class="top-nav-links">
-            <li class="hide-mobile"><a href="index.html">Home</a></li>
             <li class="hide-mobile"><a href="features.html">Features</a></li>
             <li class="hide-mobile"><a href="compare.html">Compare</a></li>
             <li class="hide-mobile"><a href="docs.html" class="active">Docs</a></li>
             <li class="hide-mobile"><a href="courier.html">Courier</a></li>
-            <li class="hide-mobile"><a href="print-qr.html">Print QR</a></li>
             <li class="hide-mobile"><a href="about.html">About</a></li>
-            <li class="hide-mobile"><a href="donate.html">Donate</a></li>
             <li class="hide-mobile"><a href="download.html" class="nav-download">Download</a></li>
         </ul>
         <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile-menu">
@@ -225,12 +222,10 @@
     </div>
     <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
         <ul>
-            <li><a href="index.html">Home</a></li>
             <li><a href="features.html">Features</a></li>
             <li><a href="compare.html">Compare</a></li>
             <li><a href="docs.html" class="active">Docs</a></li>
             <li><a href="courier.html">Courier</a></li>
-            <li><a href="print-qr.html">Print QR</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="download.html" class="nav-download">Download</a></li>
@@ -306,9 +301,9 @@
                         </ul>
                     </li>
                     <li><a href="#transfer-drive">Step 4: The Transfer Drive</a></li>
-                    <li><a href="#watch-wallet">Watch Wallet Creation</a>
+                    <li><a href="#watch-wallet">Watch-Only Wallet Creation</a>
                         <ul>
-                            <li><a href="#ww-bluewallet">Blue Wallet</a></li>
+                            <li><a href="#ww-bluewallet">BlueWallet</a></li>
                             <li><a href="#ww-nunchuk">Nunchuk</a></li>
                             <li><a href="#ww-sparrow">Sparrow</a></li>
                             <li><a href="#ww-specter">Specter Desktop</a></li>
@@ -377,8 +372,8 @@
                 <ul class="docs-list">
                     <li><strong>No network drivers &mdash;</strong> every network, Wi-Fi, Bluetooth, NFC, USB-network (including phone tethering) and USB-gadget driver is deleted from the image. The build fails if one is left behind.</li>
                     <li><strong>No network services &mdash;</strong> the network managers are switched off for good, the radios are blocked, and a firewall drops everything as a last line of defense.</li>
-                    <li><strong>No terminal and no file manager &mdash;</strong> release builds don&rsquo;t include them, so there is no way to open a command line on the stick.</li>
-                    <li><strong>No compilers &mdash;</strong> compilers, kernel headers and DKMS are removed after the build, so a new driver can&rsquo;t be compiled on the stick.</li>
+                    <li><strong>No terminal and no file manager &mdash;</strong> release builds don&rsquo;t include them, so there is no way to open a command line in SafeKeepVault.</li>
+                    <li><strong>No compilers &mdash;</strong> compilers, kernel headers and DKMS are removed after the build, so a new driver can&rsquo;t be compiled in SafeKeepVault.</li>
                     <li><strong>A watchdog &mdash;</strong> if a network interface ever appears, SafeKeep switches it off and shows a red warning across the top of the app. It also warns if the firewall isn&rsquo;t loaded.</li>
                 </ul>
                 <h3 class="sub-heading" id="prepare-computer">Preparing the computer</h3>
@@ -580,7 +575,7 @@
             <section class="content-section" id="first-boot">
                 <h2 class="section-heading">Step 3: Initialization &amp; Encryption</h2>
                 <p>
-                    Insert the USB flash drive, then power on or restart your computer. During startup, most systems allow you to choose a temporary boot device by pressing a function key such as F2, F8, F9, ESC, etc. immediately after powering on. On Macs with Intel processors, hold the Option key during startup and choose <strong>SafeKeep</strong> (sticks set up before v1.53 show as &ldquo;EFI Boot&rdquo;). Most PCs start SafeKeepVault with Secure Boot left on. If yours refuses the stick, with a Secure Boot or &ldquo;security violation&rdquo; message or no stick in the boot menu, turn off <strong>Secure Boot</strong> in the BIOS/UEFI setup, or allow the &ldquo;Microsoft 3rd-party UEFI CA&rdquo; if your PC offers that option. Turning Secure Boot off can make Windows ask for your BitLocker recovery key the next time it starts, so have it to hand. Intel Macs with the T2 chip (2018&ndash;2020) need Startup Security Utility set to &ldquo;No Security&rdquo;. Sticks made before v1.54 still need Secure Boot off until they are reflashed.  <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
+                    Insert the USB flash drive, then power on or restart your computer. During startup, most systems allow you to choose a temporary boot device by pressing a function key such as F2, F8, F9, ESC, etc. immediately after powering on. On Macs with Intel processors, hold the Option key during startup and choose <strong>SafeKeep</strong> (flash drives set up before v1.53 show as &ldquo;EFI Boot&rdquo;). Most PCs start SafeKeepVault with Secure Boot left on. If yours refuses the flash drive, with a Secure Boot or &ldquo;security violation&rdquo; message or no flash drive in the boot menu, turn off <strong>Secure Boot</strong> in the BIOS/UEFI setup, or allow the &ldquo;Microsoft 3rd-party UEFI CA&rdquo; if your PC offers that option. Turning Secure Boot off can make Windows ask for your BitLocker recovery key the next time it starts, so keep it handy. Intel Macs with the T2 chip (2018&ndash;2020) need Startup Security Utility set to &ldquo;No Security&rdquo;. Flash drives made before v1.54 still need Secure Boot off until they are reflashed.  <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
                 </p>
                 <p>
                     Before anything else, the vault runs a <strong>start-up self-check</strong>: it feeds
@@ -622,17 +617,17 @@
                 <p>
                     Changed your mind half-way? <strong>Cancel</strong> takes you back a step. Closing the first
                     choice offers <strong>Go back to setup</strong> or <strong>Shut down</strong>; after a shutdown,
-                    setup starts again the next time you start the computer from the stick.
+                    setup starts again the next time you start the computer from the flash drive.
                 </p>
                 <p>
                     Once the vault is created, choose <strong>Continue now</strong>: you go straight to the unlock prompt,
                     scan or type the same password, and <strong>SafeKeepVault</strong> starts, with no restart. To
-                    restore from a <code>.7z</code> backup that isn&rsquo;t on the stick yet, continue too: on the
+                    restore from a <code>.7z</code> backup that isn&rsquo;t on the flash drive yet, continue too: on the
                     welcome screen choose <strong>Unlock .7z Backup</strong>, then <strong>Receive a Backup with the
                     Courier</strong>, and send the backup from the <a href="courier.html">Courier Tool</a> on your phone
                     or another computer. If this computer has no camera, choose <strong>Shut down to copy a backup onto
-                    the stick</strong> instead: copy the backup onto the <strong>TRANSFER</strong> drive from another
-                    computer, then put the stick back and power on.
+                    the flash drive</strong> instead: copy the backup onto the <strong>TRANSFER</strong> drive from another
+                    computer, then put the flash drive back and power on.
                 </p>
                 <p>
                     Alternatively, at the decryption prompt you may choose to bypass the encrypted vault
@@ -694,7 +689,7 @@
                         Import a previously encrypted vault archive created using the Encrypted Backup tool. This
                         restores your entire environment&mdash;including all stored keys, passphrases, and
                         custom configurations&mdash;onto a new or freshly flashed boot drive. A backup that isn&rsquo;t
-                        on the stick yet can be received with the Courier: <strong>Receive a Backup with the
+                        on the flash drive yet can be received with the Courier: <strong>Receive a Backup with the
                         Courier</strong>.
                     </li>
                     <li>
@@ -777,9 +772,9 @@
                 </p>
                 <p>
                     Next to every master fingerprint (on the Dashboard, in the tool sidebar and in the PSBT
-                    Signer), the vault draws a small coloured <strong>LifeHash</strong> pattern made from that
+                    Signer), the vault draws a small colored <strong>LifeHash</strong> pattern made from that
                     fingerprint. It is the same picture Sparrow Wallet shows for the same wallet, so you can
-                    tell at a glance that your watch wallet and the vault hold the same key. Always confirm
+                    tell at a glance that your watch-only wallet and the vault hold the same key. Always confirm
                     the fingerprint itself too: the picture is a quick check, not a replacement.
                 </p>
             </section>
@@ -793,7 +788,7 @@
                     and exported reports all pass through here. When the flash drive is inserted into your
                     everyday Mac or Windows computer, this partition mounts like a normal drive, giving your
                     wallet software direct access to any files the vault has written to it &mdash; this is
-                    how sneakernet file transfer works.
+                    how you carry files between the two computers.
                 </p>
                 <div class="notice-block">
                     <p class="notice-title">No setup needed</p>
@@ -812,16 +807,16 @@
 
             <!-- Watch Wallet Creation -->
             <section class="content-section" id="watch-wallet">
-                <h2 class="section-heading">Watch Wallet Creation</h2>
+                <h2 class="section-heading">Watch-Only Wallet Creation</h2>
                 <p>
                     Your vault holds the private keys; a watch-only wallet on your everyday device holds
-                    the public keys. The watch wallet tracks your balances, generates receive addresses,
+                    the public keys. The watch-only wallet tracks your balances, generates receive addresses,
                     and builds unsigned transactions &mdash; all without ever touching a private key.
-                    When it&rsquo;s time to spend, the watch wallet hands off an unsigned PSBT to the vault
+                    When it&rsquo;s time to spend, the watch-only wallet hands off an unsigned PSBT to the vault
                     for signing, then broadcasts the result.
                 </p>
                 <p>
-                    To set up a watch wallet, you first need to export your public key or output descriptor
+                    To set up a watch-only wallet, you first need to export your public key or output descriptor
                     from the vault. Open the <strong>Seed Management</strong> tool and select your desired script type (Native SegWit,
                     Taproot, etc.), then export the extended public key. The export lands
                     on your Transfer Drive as a file, or can be transmitted directly via QR. Transfer it to your online device and follow the setup steps for your
@@ -840,8 +835,8 @@
                     <figcaption>Address type and wallet type selection. Match these settings to the export settings listed for your chosen wallet below.</figcaption>
                 </figure>
 
-                <h3 class="wallet-heading" id="ww-bluewallet">Blue Wallet <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
-                <p>Use these settings and steps for Blue Wallet. Keys are transferred directly via QR code &mdash; no file transfer required.</p>
+                <h3 class="wallet-heading" id="ww-bluewallet">BlueWallet <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Mobile &mdash; iOS &amp; Android)</span></h3>
+                <p>Use these settings and steps for BlueWallet. Keys are transferred directly via QR code &mdash; no file transfer required.</p>
 
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
@@ -853,7 +848,7 @@
                     <li>Tap <strong>Add Wallet</strong> and choose type <strong>Bitcoin</strong>.</li>
                     <li>Tap <strong>Import Wallet</strong>.</li>
                     <li>Tap <strong>Scan or import a file</strong>.</li>
-                    <li>Click Show QR on <strong>SafeKeepVault</strong> and scan the QR code with your phone. Blue Wallet imports the xpub and fingerprint automatically and creates your watch wallet.</li>
+                    <li>Click Show QR on <strong>SafeKeepVault</strong> and scan the QR code with your phone. BlueWallet imports the xpub and fingerprint automatically and creates your watch-only wallet.</li>
                 </ol>
 
                 <p class="wallet-sig-heading">Multisig</p>
@@ -902,7 +897,7 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-sparrow">Sparrow <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>Use these settings and steps for Sparrow. For a single-signature wallet, Sparrow can scan the key straight off the vault&rsquo;s screen. To use a file instead, move the flash drive to your online computer (sneakernet), or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
+                <p>Use these settings and steps for Sparrow. For a single-signature wallet, Sparrow can scan the key straight off the vault&rsquo;s screen. To use a file instead, move the flash drive to your online computer, or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
 
                 <p class="wallet-sig-heading">Single Signature &mdash; by scanning</p>
                 <div class="vault-export-settings">
@@ -925,7 +920,7 @@
                 </div>
                 <ol class="wallet-steps">
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
-                    <li>Transfer the JSON file to your online computer by sneakernet or the Courier Tool, as described above.</li>
+                    <li>Transfer the JSON file to your online computer on the flash drive or with the Courier Tool, as described above.</li>
                     <li>Open Sparrow and go to <strong>File &rarr; Open Wallet</strong>.</li>
                     <li>Navigate to and select the JSON file you transferred. Sparrow reads the key data and populates the wallet configuration automatically.</li>
                     <li>Click <strong>Create Wallet</strong> to save.</li>
@@ -939,7 +934,7 @@
                     <span><strong>Key Format:</strong> SLIP-132</span>
                 </div>
                 <ol class="wallet-steps">
-                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. Repeat for each co-signer key. Transfer all files to your online computer by sneakernet or the Courier Tool, as described above.</li>
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. Repeat for each co-signer key. Transfer all files to your online computer on the flash drive or with the Courier Tool, as described above.</li>
                     <li>Open Sparrow and go to <strong>File &rarr; New Wallet</strong>. Give your wallet a name.</li>
                     <li>Select <strong>Multi Signature</strong> and configure your cosigner quorum (e.g., 2-of-3).</li>
                     <li>For the first keystore, click <strong>xPub / Watch Only Wallet</strong>, then click <strong>Import</strong> &rarr; <strong>Airgapped Hardware Wallet</strong> &rarr; <strong>Import File</strong> &rarr; <strong>Coldcard Multisig</strong>. Navigate to and select the first key file.</li>
@@ -948,7 +943,7 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-specter">Specter Desktop <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>Use these settings and steps for Specter Desktop. This workflow is file-based &mdash; move the flash drive to your online computer (sneakernet), or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
+                <p>Use these settings and steps for Specter Desktop. This workflow is file-based &mdash; move the flash drive to your online computer, or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
 
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
@@ -958,7 +953,7 @@
                 </div>
                 <ol class="wallet-steps">
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
-                    <li>Transfer the JSON file to your online computer by sneakernet or the Courier Tool, as described above.</li>
+                    <li>Transfer the JSON file to your online computer on the flash drive or with the Courier Tool, as described above.</li>
                     <li>Open Specter Desktop and click <strong>Add Device</strong>.</li>
                     <li>Select device type <strong>Other</strong>, then click <strong>Upload from SD</strong> to import your xpub. Navigate to and select the JSON file, then click <strong>Continue</strong>.</li>
                     <li>Specter confirms the device has been added. Click <strong>Create Single Key Wallet</strong>.</li>
@@ -1034,15 +1029,15 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
             <section class="content-section" id="signing">
                 <h2 class="section-heading">Signing a Transaction</h2>
                 <p>
-                    Once your watch wallet has built a transaction and exported it as a PSBT, bring it into
+                    Once your watch-only wallet has built a transaction and exported it as a PSBT, bring it into
                     <strong>SafeKeepVault</strong> to sign. The vault reviews the details  &mdash; you inspect and verify the destination address and amount before
-                    signing is unlocked. The signed result is then returned to your watch wallet to broadcast.
+                    signing is unlocked. The signed result is then returned to your watch-only wallet to broadcast.
                 </p>
 
                 <h3 class="sub-heading" id="sign-ingest">Loading the PSBT</h3>
                 <p>
                     From the Dashboard, click <strong>PSBT Signer</strong> to open the tool. You are given two options for loading the unsigned transaction:
-                    scan a QR code displayed by your watch wallet, or load a <code>.psbt</code> file
+                    scan a QR code displayed by your watch-only wallet, or load a <code>.psbt</code> file
                     directly from the Transfer Drive.
                 </p>
                 <p>
@@ -1068,7 +1063,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <a href="select%20signing%20type.png" target="_blank" rel="noopener">
                         <img class="img-elevated" src="select%20signing%20type.png" alt="PSBT Signer ingest screen with Scan Unsigned PSBT and Load PSBT from Transfer Drive options">
                     </a>
-                    <figcaption>Select <strong>Scan Unsigned PSBT</strong> to activate the webcam and scan the QR code displayed by your watch wallet (static or animated UR and BBQr codes), or choose <strong>Load PSBT from Transfer Drive</strong> to import the file directly.</figcaption>
+                    <figcaption>Select <strong>Scan Unsigned PSBT</strong> to activate the webcam and scan the QR code displayed by your watch-only wallet (static or animated UR and BBQr codes), or choose <strong>Load PSBT from Transfer Drive</strong> to import the file directly.</figcaption>
                 </figure>
 
 
@@ -1212,8 +1207,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 <h3 class="sub-heading" id="sign-export">Exporting the Result</h3>
                 <p>
                     Once signed, the <strong>Export</strong> tab offers several ways to return the result
-                    to your watch wallet. The primary method is a QR code &mdash; choose the format that
-                    matches your coordinator: Standard Base64 for Sparrow and Blue Wallet, UR
+                    to your watch-only wallet. The primary method is a QR code &mdash; choose the format that
+                    matches your coordinator: Standard Base64 for Sparrow and BlueWallet, UR
                     (<code>ur:crypto-psbt</code>, an animated QR that many mobile wallets prefer), Nunchuk
                     Raw Hex, Electrum Raw Hex, or <strong>File (Courier)</strong>. Large PSBTs (over about 1,200 bytes) start on UR
                     automatically, because they no longer fit cleanly in a single QR code.
@@ -1222,21 +1217,21 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <strong>Receive</strong>, and save the file for your wallet to open (for example Trezor Suite).
                     It&rsquo;s chosen automatically when the PSBT arrived through The Courier. You can also copy
                     or save the raw transaction hex for direct broadcast, or save the signed
-                    <code>.psbt</code> file back to the Transfer Drive for sneakernet handoff.
+                    <code>.psbt</code> file back to the Transfer Drive to carry to your online computer.
                 </p>
 
                 <figure class="os-showcase">
                     <a href="tx%20finalized.png" target="_blank" rel="noopener">
                         <img class="img-elevated" src="tx%20finalized.png" alt="Transaction finalized export screen showing QR code export, raw transaction hex, and fallback Transfer Drive export options">
                     </a>
-                    <figcaption>The <strong>Export</strong> screen. Point your watch wallet&rsquo;s camera at the QR code to import the signed transaction, or use the Transfer Drive fallback for sneakernet handoff. Once broadcast, you&rsquo;re done.</figcaption>
+                    <figcaption>The <strong>Export</strong> screen. Point your watch-only wallet&rsquo;s camera at the QR code to import the signed transaction, or carry it over on the Transfer Drive. Once broadcast, you&rsquo;re done.</figcaption>
                 </figure>
 
                 <figure class="os-showcase">
                     <a href="select%20format.png" target="_blank" rel="noopener">
                         <img class="img-elevated" src="select%20format.png" alt="Export format selection screen showing QR format options for different wallet coordinators">
                     </a>
-                    <figcaption>Choose the export format that matches your watch wallet. Different coordinators expect different formats &mdash; select the one for yours to ensure the signed transaction imports correctly. Shown here: <strong>UR</strong>, an animated QR code.</figcaption>
+                    <figcaption>Choose the export format that matches your watch-only wallet. Different coordinators expect different formats &mdash; select the one for yours to ensure the signed transaction imports correctly. Shown here: <strong>UR</strong>, an animated QR code.</figcaption>
                 </figure>
 
                 <h3 class="sub-heading" id="sign-transfer-hub">Exporting via the Transfer Hub</h3>
@@ -1264,7 +1259,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <a href="transfer%20hub.png" target="_blank" rel="noopener">
                         <img class="img-elevated" src="transfer%20hub.png" alt="SafeKeepVault Transfer Hub showing a list of files on the Transfer Drive including signed PSBT files ready for export">
                     </a>
-                    <figcaption>The <strong>Transfer Hub</strong> lists all files on the Transfer partition. Locate your signed <code>.psbt</code> file and transmit it via QR or collect it via sneakernet to complete the workflow.</figcaption>
+                    <figcaption>The <strong>Transfer Hub</strong> lists all files on the Transfer partition. Locate your signed <code>.psbt</code> file and transmit it via QR or carry it over on the flash drive to complete the workflow.</figcaption>
                 </figure>
             </section>
 
@@ -1313,7 +1308,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         load a different temporary seed in place.
                     </li>
                     <li>
-                        <strong>Settings that stick &mdash;</strong>
+                        <strong>Settings that are kept &mdash;</strong>
                         Theme, display scale, sound and the idle timers are saved in your encrypted vault and
                         restored on every boot. Temporary Sessions never read or save them.
                     </li>
@@ -1325,14 +1320,14 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 <h2 class="section-heading">Updating to a New Version</h2>
                 <h3 class="sub-heading" id="update-in-place">Update in place (v1.47 and later)</h3>
                 <p>
-                    From v1.47, the stick keeps two copies of SafeKeep&rsquo;s operating system. An update is
+                    From v1.47, the flash drive keeps two copies of SafeKeep&rsquo;s operating system. An update is
                     written into the spare copy while the current one keeps running, checked, and only then made
                     the one that starts. Your encrypted vault and the Transfer Drive are not touched, and nothing
                     needs to be re-entered.
                 </p>
                 <ol class="docs-list">
                     <li><strong>1. Download the update file &mdash;</strong> on your everyday computer, download <code>SafeKeep-Update-v&hellip;.tar</code> from the official release on GitHub (linked from the <a href="download.html">Download page</a>). It is signed: SafeKeep checks the signature itself before installing anything.</li>
-                    <li><strong>2. Copy it onto the Transfer Drive &mdash;</strong> plug the SafeKeep stick into that computer and copy the file onto its <strong>TRANSFER</strong> drive. Eject the stick properly.</li>
+                    <li><strong>2. Copy it onto the Transfer Drive &mdash;</strong> plug the SafeKeep flash drive into that computer and copy the file onto its <strong>TRANSFER</strong> drive. Eject the flash drive properly.</li>
                     <li><strong>3. Check for the update &mdash;</strong> boot SafeKeep and unlock your vault (a Temporary Session can&rsquo;t update). Open <strong>Device Options &rarr; Update SafeKeep &rarr; Check for update</strong>. SafeKeep shows the new version, its build stamp and the app&rsquo;s SHA-256 only if the file carries the maintainer&rsquo;s signature and is newer than what you&rsquo;re running. You can compare that SHA-256 with the <code>boot.html</code> line of the release&rsquo;s <code>SHA256SUMS</code>.</li>
                     <li><strong>4. Install and restart &mdash;</strong> click <strong>Install</strong>, wait for it to finish (a few minutes), then <strong>Restart now</strong>. The update file is deleted from the Transfer Drive afterwards. Updating from v1.48: that restart can end with a screen of scrolling errors; the update is already complete, so hold the power button to switch off, then start again.</li>
                 </ol>
@@ -1346,18 +1341,18 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
 
                 <h3 class="sub-heading" id="update-reflash">Updating from v1.46 or earlier (once)</h3>
                 <p>
-                    Sticks set up with v1.46 or earlier have the older layout and can&rsquo;t update in place, so
+                    Flash drives set up with v1.46 or earlier have the older layout and can&rsquo;t update in place, so
                     moving to v1.47 or later needs one last reflash, onto a <strong>flash drive of 8 GB or more</strong>.
                     Flashing <strong>erases the whole flash drive</strong>, including your encrypted vault and the
                     Transfer Drive, so first move what you want to keep into an encrypted backup and copy it off the
-                    stick. If your current stick is smaller than 8 GB, flash the new release onto a new one and keep the old stick
+                    flash drive. If your current flash drive is smaller than 8 GB, flash the new release onto a new one and keep the old flash drive
                     until you&rsquo;ve checked the new one. If you only ever use Temporary Sessions, there is nothing to
                     save: just flash the new release.
                 </p>
                 <ol class="docs-list">
                     <li><strong>1. Note your fingerprint &mdash;</strong> write down the master fingerprint and Seed Nickname shown on the Dashboard, so you can confirm the same seed after the update.</li>
                     <li><strong>2. Make an encrypted backup &mdash;</strong> open <strong>Encrypted Backup</strong> (Advanced Tools &rarr; Backup &amp; Recovery) and select what to keep: Encrypted Notes, Application Settings, Saved Passphrases and 2FA Backup. We recommend leaving <strong>Master Seed</strong> unticked and re-entering your seed from your paper backup in step 6 instead: it keeps the seed off the Transfer Drive, and it proves your paper backup works. The backup is saved to the Transfer Drive as a <code>.7z</code> file. Click <strong>Check this backup</strong> and enter its password to confirm it opens.</li>
-                    <li><strong>3. Copy the backup off the stick &mdash;</strong> click <strong>Send with the Courier</strong> and receive the backup on your phone with the <a href="courier.html">Courier Tool</a>. Or power down the vault, plug the flash drive into your everyday computer, and copy the <code>.7z</code> file from the <strong>TRANSFER</strong> drive to that computer or to another USB drive. It is encrypted, so it is safe to hold there briefly.</li>
+                    <li><strong>3. Copy the backup off the flash drive &mdash;</strong> click <strong>Send with the Courier</strong> and receive the backup on your phone with the <a href="courier.html">Courier Tool</a>. Or power down the vault, plug the flash drive into your everyday computer, and copy the <code>.7z</code> file from the <strong>TRANSFER</strong> drive to that computer or to another USB drive. It is encrypted, so it is safe to hold there briefly.</li>
                     <li><strong>4. Download, verify and flash the new release &mdash;</strong> follow the <a href="download.html">Download page</a>, including all three verification steps.</li>
                     <li><strong>5. Put the backup back &mdash;</strong> if you sent it to your phone, skip this step: you receive it with the Courier in step 6. Otherwise unplug and replug the freshly flashed drive so the computer sees its new <strong>TRANSFER</strong> drive, then copy the <code>.7z</code> file onto it.</li>
                     <li><strong>6. Boot and restore &mdash;</strong> boot the vault and create the encrypted vault as on first use (you can keep the same vault password and unlock QR), then choose <strong>Continue now</strong> and unlock it. On the welcome screen choose <strong>Unlock .7z Backup</strong> (with a backup on your phone, first <strong>Receive a Backup with the Courier</strong> and play it from the Courier Tool), pick the file and enter its password. If the backup didn&rsquo;t include your seed, choose <strong>Restore from Words</strong> and enter it from your paper backup.</li>
@@ -1416,7 +1411,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li>
                         <strong>Seed Management &mdash;</strong>
                         Exports your public key and output descriptor for watch-only wallet setup in
-                        Sparrow, Electrum, Nunchuk, Blue Wallet, Specter, or any compatible coordinator,
+                        Sparrow, Electrum, Nunchuk, BlueWallet, Specter, or any compatible coordinator,
                         as a file or a QR code. Dense codes can play as an animated QR, which Nunchuk and
                         Sparrow scan straight off the screen. A passphrase you type must be typed twice.
                         Your private keys never leave.
@@ -1549,7 +1544,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         shares rebuild your seed exactly. <strong>Check Shares I Already Have</strong> tests shares you
                         made earlier (of either length) against your vault seed, and can show the seed words they
                         rebuild if you ask. To turn shares back into a
-                        seed, use <strong>Restore via Seed XOR</strong> on the welcome screen (on a new stick, or in a
+                        seed, use <strong>Restore via Seed XOR</strong> on the welcome screen (on a new flash drive, or in a
                         Temporary session).
                     </li>
                     <li>

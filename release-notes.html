@@ -15,14 +15,11 @@
     <div class="top-nav-inner">
         <a href="index.html" class="top-nav-brand">SafeKeep<span>Bitcoin</span></a>
         <ul class="top-nav-links">
-            <li class="hide-mobile"><a href="index.html">Home</a></li>
             <li class="hide-mobile"><a href="features.html">Features</a></li>
             <li class="hide-mobile"><a href="compare.html">Compare</a></li>
             <li class="hide-mobile"><a href="docs.html">Docs</a></li>
             <li class="hide-mobile"><a href="courier.html">Courier</a></li>
-            <li class="hide-mobile"><a href="print-qr.html">Print QR</a></li>
             <li class="hide-mobile"><a href="about.html">About</a></li>
-            <li class="hide-mobile"><a href="donate.html">Donate</a></li>
             <li class="hide-mobile"><a href="download.html" class="nav-download">Download</a></li>
         </ul>
         <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile-menu">
@@ -32,12 +29,10 @@
     </div>
     <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
         <ul>
-            <li><a href="index.html">Home</a></li>
             <li><a href="features.html">Features</a></li>
             <li><a href="compare.html">Compare</a></li>
             <li><a href="docs.html">Docs</a></li>
             <li><a href="courier.html">Courier</a></li>
-            <li><a href="print-qr.html">Print QR</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="download.html" class="nav-download">Download</a></li>
@@ -91,6 +86,20 @@
                 </p>
             </div>
 
+            <!-- Highlights: the summary of recent releases, kept short; add new changes to the matching point -->
+            <div style="margin: 1.5rem 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-md);">
+                <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.35rem;">Recent releases (up to v1.56)</p>
+                <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.6rem;">Updates without reflashing, backups you can check, and a clearer transaction review</p>
+                <ul style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; padding-left: 1.2rem;">
+                    <li style="margin: 0 0 0.5rem;"><strong>Updates without reflashing.</strong> Install a signed update from the Transfer Drive, with the previous version one menu choice away (v1.47). Most PCs now start the flash drive with Secure Boot left on (v1.54).</li>
+                    <li style="margin: 0 0 0.5rem;"><strong>Backups you can check.</strong> Send a backup to your phone with the Courier, check that it opens, and restore a new flash drive from it, all without an online computer (v1.55). Seed XOR and Shamir shares are made one at a time and checked against your paper (v1.52).</li>
+                    <li style="margin: 0 0 0.5rem;"><strong>Safer seeds and passwords.</strong> The random number generator is tested before every seed, patterned dice rolls are refused (v1.50), and so are easy-to-guess vault passwords (v1.51).</li>
+                    <li style="margin: 0 0 0.5rem;"><strong>A clearer transaction review.</strong> Save your wallets in the vault and the <strong>PSBT Signer</strong> confirms which one is spending and that the change comes back to you. It shows the total leaving your wallet and lets you compare each address character by character (v1.46).</li>
+                    <li style="margin: 0 0 0.5rem;"><strong>Works with more wallets.</strong> Nunchuk and Sparrow add your key by scanning the screen (v1.53); import from Sparrow, BlueWallet or Bitcoin Core (v1.45); co-sign with a <strong>Coldcard</strong> or <strong>Trezor One</strong> over USB (v1.44); file-only wallets such as Trezor Suite work through <strong>The Courier</strong> (v1.43).</li>
+                    <li style="margin: 0;"><strong>Less to attack.</strong> Every network driver, the terminal and the file manager are gone from SafeKeep OS (v1.45).</li>
+                </ul>
+            </div>
+
             <!-- v1.56 -->
             <section class="content-section" id="v1-56">
                 <h2 class="section-heading">v1.56 &mdash; October 28, 2026</h2>
@@ -99,20 +108,20 @@
                     <li><strong>Multisig &mdash;</strong> opening a saved 2-of-3 (or any M-of-N) switches the form to Multisig with the wallet&rsquo;s threshold and address type, and fills in the other cosigners&rsquo; keys and fingerprints, so <strong>Generate Descriptor</strong> rebuilds the same wallet. Before, the cosigner keys stayed empty and Generate Descriptor gave an error.</li>
                     <li><strong>Single-sig &mdash;</strong> opening a single-sig wallet switches the form to Single-Sig with its address type.</li>
                     <li><strong>No leftovers &mdash;</strong> cosigner keys from a wallet you opened before are cleared. If the form can&rsquo;t rebuild a wallet (for example it uses a passphrase you haven&rsquo;t entered), the message says why.</li>
-                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.56.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.56.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>.</li>
                 </ul>
             </section>
 
             <!-- v1.55 -->
             <section class="content-section" id="v1-55">
                 <h2 class="section-heading">v1.55 &mdash; October 28, 2026</h2>
-                <p>Backups no longer need an online computer: send one to your phone, check that it opens, and restore a new stick from it.</p>
+                <p>Backups no longer need an online computer: send one to your phone, check that it opens, and restore a new flash drive from it.</p>
                 <ul class="docs-list">
-                    <li><strong>Restore a new stick with the Courier &mdash;</strong> on the welcome screen, choose <strong>Unlock .7z Backup</strong>, then <strong>Receive a Backup with the Courier</strong>, and play your <code>.7z</code> backup from the <a href="courier.html">Courier Tool</a> on a phone or another computer. SafeKeep saves it to the Transfer Drive and selects it, ready for its password, so a new stick never has to be plugged into another computer. No camera? Copying the backup onto the stick&rsquo;s TRANSFER drive works as before.</li>
+                    <li><strong>Restore a new flash drive with the Courier &mdash;</strong> on the welcome screen, choose <strong>Unlock .7z Backup</strong>, then <strong>Receive a Backup with the Courier</strong>, and play your <code>.7z</code> backup from the <a href="courier.html">Courier Tool</a> on a phone or another computer. SafeKeep saves it to the Transfer Drive and selects it, ready for its password, so a new flash drive never has to be plugged into another computer. No camera? Copying the backup onto the flash drive&rsquo;s TRANSFER drive works as before.</li>
                     <li><strong>Send a new backup to your phone &mdash;</strong> after <strong>Export Backup</strong>, <strong>Send with the Courier</strong> plays the new backup as a Courier loop, so your phone can keep a copy.</li>
                     <li><strong>Check a Backup &mdash;</strong> open a backup with its password (typed or scanned from its QR code) and see what it holds: whether its Master Seed is the one loaded now, how many notes and saved passphrases it has, and whether settings are included. Nothing is restored or changed, so you can find out a backup works before you need it.</li>
                     <li><strong>Less left in memory &mdash;</strong> a backup unlocked for a restore that is never finished is deleted from memory after two minutes, instead of staying until you shut down.</li>
-                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.55.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Everything in this release reaches updated sticks.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.55.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Everything in this release reaches updated flash drives.</li>
                 </ul>
             </section>
 
@@ -121,10 +130,10 @@
                 <h2 class="section-heading">v1.54 &mdash; October 27, 2026</h2>
                 <p>Most PCs now start SafeKeepVault with Secure Boot left on.</p>
                 <ul class="docs-list">
-                    <li><strong>Secure Boot can stay on &mdash;</strong> the stick&rsquo;s boot loader is now Ubuntu&rsquo;s signed one (a shim signed by Microsoft, then GRUB and the kernel signed by Canonical), so a PC with Secure Boot on starts it without changing settings. On Windows PCs with BitLocker, that also avoids the recovery-key prompt that turning Secure Boot off can cause. Secure Boot checks the boot loader and kernel, not the rest of the stick: verify your download as always.</li>
-                    <li><strong>Flash a new stick to get it &mdash;</strong> the boot loader lives on the stick&rsquo;s boot partition, which updating in place never changes. Flash <code>SafeKeep-Release-v1.54.zip</code> onto a stick (back up your vault first). A stick you update keeps working as now, with Secure Boot off.</li>
+                    <li><strong>Secure Boot can stay on &mdash;</strong> the flash drive&rsquo;s boot loader is now Ubuntu&rsquo;s signed one (a shim signed by Microsoft, then GRUB and the kernel signed by Canonical), so a PC with Secure Boot on starts it without changing settings. On Windows PCs with BitLocker, that also avoids the recovery-key prompt that turning Secure Boot off can cause. Secure Boot checks the boot loader and kernel, not the rest of the flash drive: verify your download as always.</li>
+                    <li><strong>Flash a new flash drive to get it &mdash;</strong> the boot loader lives on the flash drive&rsquo;s boot partition, which updating in place never changes. Flash <code>SafeKeep-Release-v1.54.zip</code> onto a flash drive (back up your vault first). A flash drive you update keeps working as now, with Secure Boot off.</li>
                     <li><strong>Still needs Secure Boot off &mdash;</strong> newer PCs that trust only Microsoft&rsquo;s 2023 certificates, &ldquo;Secured-core&rdquo; PCs with the Microsoft third-party certificate switched off, and Intel Macs with the T2 chip (Startup Security Utility &rarr; No Security).</li>
-                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.54.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.54.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
                 </ul>
             </section>
 
@@ -133,14 +142,14 @@
                 <h2 class="section-heading">v1.53 &mdash; October 27, 2026</h2>
                 <p>Add SafeKeep to Nunchuk or Sparrow by scanning its screen, with animated QR codes for anything dense.</p>
                 <ul class="docs-list">
-                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.53.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.53.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
                     <li><strong>Add SafeKeep to your wallet by scanning &mdash;</strong> no more saving a file and carrying it over with the Courier. For <strong>Nunchuk</strong>, choose Hardware Wallet JSON in Seed Management, press Show QR, then Play as animated QR, and add a key as a Passport in Nunchuk. For <strong>Sparrow</strong>, choose BC-UR Account and add an Airgapped Hardware Wallet keystore by scanning. See <a href="docs.html#ww-nunchuk">Nunchuk</a> and <a href="docs.html#ww-sparrow">Sparrow</a>.</li>
                     <li><strong>Animated QR codes &mdash;</strong> a QR code dense enough to trouble a camera, such as a Hardware Wallet JSON export or a larger multisig descriptor, now offers Play as animated QR: the same text in a loop of much simpler codes, which Sparrow, Nunchuk, Keystone, BlueWallet and other wallets read.</li>
                     <li><strong>Seed Management &mdash;</strong> a passphrase you type must be typed twice: a typo used to show, and export, a different empty wallet without warning. The BIP-380 key format now gives the full output descriptor, exactly as the Output Descriptor tool makes it.</li>
                     <li><strong>BIP-85 Child Seeds &mdash;</strong> the passphrase fills in from the Dashboard, and one you type must be typed twice: a typo used to make child seeds your backup could never rebuild.</li>
                     <li><strong>Check Shares I Already Have &mdash;</strong> can now show the seed words the shares rebuild, labelled as your vault seed or clearly as a different one, and checks shares of either length.</li>
                     <li><strong>Things come into view &mdash;</strong> QR codes, camera scan windows and the welcome screen&rsquo;s restore panels scroll onto the screen by themselves.</li>
-                    <li><strong>&ldquo;SafeKeep&rdquo; in the Mac boot menu &mdash;</strong> holding Option on a Mac shows the stick as SafeKeep instead of &ldquo;EFI Boot&rdquo;, on sticks flashed from this release.</li>
+                    <li><strong>&ldquo;SafeKeep&rdquo; in the Mac boot menu &mdash;</strong> holding Option on a Mac shows the flash drive as SafeKeep instead of &ldquo;EFI Boot&rdquo;, on flash drives flashed from this release.</li>
                     <li><strong>Smaller fixes &mdash;</strong> messages no longer use names from early builds (&ldquo;codex&rdquo;, &ldquo;cipher&rdquo;), and the browser is pinned to one checked version.</li>
                 </ul>
             </section>
@@ -150,7 +159,7 @@
                 <h2 class="section-heading">v1.52 &mdash; October 23, 2026</h2>
                 <p>Seed XOR and Shamir Backup, rebuilt: one share at a time, each one checked against your paper before you move on.</p>
                 <ul class="docs-list">
-                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.52.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.52.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
                     <li><strong>One share at a time &mdash;</strong> Seed XOR Splitter and Shamir Backup now work the same way. Choose how many shares (&ldquo;all 3 needed&rdquo;, or &ldquo;any 2 of 3&rdquo;), then SafeKeep shows each share on its own screen, with Print and Show QR. Write it down, then type it back with word suggestions, or scan its QR code. A wrong word is pointed out by its position. At the end SafeKeep checks that the shares you typed rebuild your seed exactly.</li>
                     <li><strong>Check Shares I Already Have &mdash;</strong> in both tools. Type in or scan shares you made earlier, and SafeKeep tells you whether they rebuild your vault seed, without ever showing the seed.</li>
                     <li><strong>Easier recovery &mdash;</strong> on the welcome screen, Restore via Seed XOR and Recover Shamir Backup use the same word boxes with suggestions. Shamir recovery checks each share as you add it, says how many more you need, and now accepts more shares than the minimum.</li>
@@ -163,9 +172,9 @@
             <!-- v1.51 -->
             <section class="content-section" id="v1-51">
                 <h2 class="section-heading">v1.51 &mdash; October 22, 2026</h2>
-                <p>A stronger vault password: SafeKeep refuses one that is easy to guess, can generate a strong one for you, and lets you change it without resetting the stick.</p>
+                <p>A stronger vault password: SafeKeep refuses one that is easy to guess, can generate a strong one for you, and lets you change it without resetting the flash drive.</p>
                 <ul class="docs-list">
-                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later stick, copy <code>SafeKeep-Update-v1.51.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault and your vault password are not touched.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.51.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault and your vault password are not touched.</li>
                     <li><strong>Weak passwords refused &mdash;</strong> when you set up a vault, SafeKeep rates the password. One that is easy to guess, such as a common password, a name and a year, or a few words, is refused. One that is only fair asks you to confirm. A long random password from a password manager goes straight through, as before.</li>
                     <li><strong>Generate One for Me &mdash;</strong> no password manager? At setup, SafeKeep makes a strong password of 6 random words and shows it as a QR code and as words. Save it one way or both: scan the QR code into your phone&rsquo;s password manager, or write the words down. Then check your copy by scanning it back from your phone or typing the words, before the vault is locked with it.</li>
                     <li><strong>Change Master Passphrase &mdash;</strong> in <strong>Device Options</strong>. SafeKeep locks, asks for your current password and a new one on the same screens as setup, and changes it without touching what is in your vault. Then you unlock with the new one.</li>
@@ -180,7 +189,7 @@
                 <h2 class="section-heading">v1.50 &mdash; October 21, 2026</h2>
                 <p>Safer seed generation: SafeKeep now checks its randomness before every seed and refuses dice rolls that could be guessed.</p>
                 <ul class="docs-list">
-                    <li><strong>Update in place &mdash;</strong> on a v1.47, v1.48 or v1.49 stick, copy <code>SafeKeep-Update-v1.50.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched. Updating <em>from</em> v1.48 can still end with a screen of scrolling errors on <strong>Restart now</strong>: the update is already complete, so holding the power button is safe.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47, v1.48 or v1.49 flash drive, copy <code>SafeKeep-Update-v1.50.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched. Updating <em>from</em> v1.48 can still end with a screen of scrolling errors on <strong>Restart now</strong>: the update is already complete, so holding the power button is safe.</li>
                     <li><strong>Random number check &mdash;</strong> before making any seed, SafeKeep tests the computer&rsquo;s random number generator. If its output looks broken (for example lopsided, repeating or counting up), no seed is made and you see why.</li>
                     <li><strong>Patterned dice refused &mdash;</strong> in Verifiable Dice mode the rolls are the whole seed, so SafeKeep now refuses rolls that follow a pattern, such as 123456 over and over or long runs of one face. Rolls that only look unusual need you to tick a box confirming they came from real dice.</li>
                     <li><strong>Stronger mixing &mdash;</strong> in Mixed mode your dice, cards, mouse and camera input is now combined with a fresh draw from the computer&rsquo;s random number generator using SHA-256, so the seed is at least as strong as the better of the two.</li>
@@ -193,8 +202,8 @@
                 <h2 class="section-heading">v1.49 &mdash; October 20, 2026</h2>
                 <p>A cleaner start and finish: a new boot logo, a shutdown screen you can actually see, and no more stuck restarts after an update.</p>
                 <ul class="docs-list">
-                    <li><strong>Update in place &mdash;</strong> on a v1.47 or v1.48 stick, copy <code>SafeKeep-Update-v1.49.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
-                    <li><strong>Restart after an update &mdash;</strong> clicking <strong>Restart now</strong> after installing an update could end with a screen of scrolling errors, and the computer had to be switched off with the power button. The update itself was always complete and safe. SafeKeep no longer ejects its own USB stick while shutting down, which caused it. Updating <em>from</em> v1.48 can still show those errors once, because v1.48 does that restart: holding the power button is safe.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or v1.48 flash drive, copy <code>SafeKeep-Update-v1.49.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched.</li>
+                    <li><strong>Restart after an update &mdash;</strong> clicking <strong>Restart now</strong> after installing an update could end with a screen of scrolling errors, and the computer had to be switched off with the power button. The update itself was always complete and safe. SafeKeep no longer ejects its own USB flash drive while shutting down, which caused it. Updating <em>from</em> v1.48 can still show those errors once, because v1.48 does that restart: holding the power button is safe.</li>
                     <li><strong>New boot logo &mdash;</strong> SAFEKEEP VAULT in bold Bitcoin-orange blocks on the start-up and shutdown screens.</li>
                     <li><strong>Shutdown screen &mdash;</strong> &ldquo;Session ended. Powering off&hellip;&rdquo; now actually appears when you power off or restart.</li>
                     <li><strong>Factory Reset &mdash;</strong> the description in Device Options now says what a reset does: it erases everything in the encrypted vault, restarts, destroys the vault&rsquo;s keys and starts setup for a new vault, leaving the Transfer Drive alone.</li>
@@ -206,8 +215,8 @@
                 <h2 class="section-heading">v1.48 &mdash; October 20, 2026</h2>
                 <p>The first version you can install without reflashing, plus a quicker first start and smoother backups.</p>
                 <ul class="docs-list">
-                    <li><strong>Update from v1.47 in place &mdash;</strong> this release comes with the first signed update file, <code>SafeKeep-Update-v1.48.tar</code>. On a v1.47 stick, copy it onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault and Transfer Drive are not touched. Sticks set up with v1.46 or earlier still need the one last reflash described in the <a href="docs.html#update-reflash">update guide</a>.</li>
-                    <li><strong>No restart after setting up the vault &mdash;</strong> once the encrypted vault is created, choose <strong>Continue now</strong> to go straight to the unlock prompt and start SafeKeep. If you&rsquo;re restoring from a <code>.7z</code> backup that isn&rsquo;t on the stick yet, choose <strong>Shut down to copy a backup onto the stick</strong> instead.</li>
+                    <li><strong>Update from v1.47 in place &mdash;</strong> this release comes with the first signed update file, <code>SafeKeep-Update-v1.48.tar</code>. On a v1.47 flash drive, copy it onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault and Transfer Drive are not touched. Flash drives set up with v1.46 or earlier still need the one last reflash described in the <a href="docs.html#update-reflash">update guide</a>.</li>
+                    <li><strong>No restart after setting up the vault &mdash;</strong> once the encrypted vault is created, choose <strong>Continue now</strong> to go straight to the unlock prompt and start SafeKeep. If you&rsquo;re restoring from a <code>.7z</code> backup that isn&rsquo;t on the flash drive yet, choose <strong>Shut down to copy a backup onto the flash drive</strong> instead.</li>
                     <li><strong>Setting the vault password &mdash;</strong> a typed password is shown as you type it and asked for twice, so a typo can&rsquo;t lock you out of a new vault. If the QR scan doesn&rsquo;t read a code within 30 seconds, you&rsquo;re taken back to choose scanning or typing again. Setup also shows the size of the vault it creates.</li>
                     <li><strong>Factory reset restarts once &mdash;</strong> after the vault is destroyed, setting up a new one starts straight away instead of after a second restart.</li>
                     <li><strong>Interrupted setup recovers &mdash;</strong> if the computer lost power while the vault was being created, the next start says so, removes the unfinished (empty) vault and runs setup again.</li>
@@ -220,10 +229,10 @@
                 <h2 class="section-heading">v1.47 &mdash; October 19, 2026</h2>
                 <p>SafeKeep can now update itself from a signed file, without reflashing and without touching your vault. Getting there takes one last reflash, onto a flash drive of 8 GB or more.</p>
                 <ul class="docs-list">
-                    <li><strong>Update SafeKeep &mdash;</strong> a new section in <strong>Device Options</strong>. Copy a signed update file onto the Transfer Drive, click <strong>Check for update</strong>, then <strong>Install</strong> and <strong>Restart now</strong>. SafeKeep installs it only if it carries the maintainer&rsquo;s signature, checked against the key built into the stick, and only if it is newer than what you&rsquo;re running. Before installing it shows the version, the build stamp and the app&rsquo;s SHA-256, to compare with the release on GitHub. The first update file will come with v1.48.</li>
-                    <li><strong>Two copies of the system &mdash;</strong> the stick now holds two copies of SafeKeep&rsquo;s operating system. An update is written into the spare copy and checked before it is switched on, so a power cut or a bad file never leaves a stick that won&rsquo;t start. The version you updated from stays available as <strong>previous version</strong> in the start-up menu.</li>
+                    <li><strong>Update SafeKeep &mdash;</strong> a new section in <strong>Device Options</strong>. Copy a signed update file onto the Transfer Drive, click <strong>Check for update</strong>, then <strong>Install</strong> and <strong>Restart now</strong>. SafeKeep installs it only if it carries the maintainer&rsquo;s signature, checked against the key built into the flash drive, and only if it is newer than what you&rsquo;re running. Before installing it shows the version, the build stamp and the app&rsquo;s SHA-256, to compare with the release on GitHub. The first update file will come with v1.48.</li>
+                    <li><strong>Two copies of the system &mdash;</strong> the flash drive now holds two copies of SafeKeep&rsquo;s operating system. An update is written into the spare copy and checked before it is switched on, so a power cut or a bad file never leaves a flash drive that won&rsquo;t start. The version you updated from stays available as <strong>previous version</strong> in the start-up menu.</li>
                     <li><strong>8 GB flash drives &mdash;</strong> the two copies and a Transfer Drive big enough for an update file (now 2.5 GB) need a flash drive of <strong>8 GB or more</strong>. The download is still about 1.3 GB.</li>
-                    <li><strong>One last reflash &mdash;</strong> sticks set up with v1.46 or earlier can&rsquo;t update in place. Back up, flash v1.47 and restore once, as the <a href="docs.html#update-reflash">update guide</a> explains. If your stick is smaller than 8 GB, flash v1.47 onto a new one.</li>
+                    <li><strong>One last reflash &mdash;</strong> flash drives set up with v1.46 or earlier can&rsquo;t update in place. Back up, flash v1.47 and restore once, as the <a href="docs.html#update-reflash">update guide</a> explains. If your flash drive is smaller than 8 GB, flash v1.47 onto a new one.</li>
                     <li><strong>A sound for each QR code read &mdash;</strong> every scanner in the app plays the soft tick of the hover sound when it reads a QR code, and again for each new frame of an animated QR, so you can hear a transaction coming in. It follows the sound settings in Device Options.</li>
                     <li><strong>Check Verifiable Dice on Ian Coleman&rsquo;s tool &mdash;</strong> the Verifiable Dice panel explains how: choose entropy type <strong>Base 10</strong> (its Dice type counts a 6 as 0 and gives different words) and the same word count. Do this only with practice rolls, or with the tool&rsquo;s offline copy on a computer that never goes online again.</li>
                 </ul>
@@ -255,9 +264,9 @@
                     <li><strong>Import a watch-only wallet &mdash;</strong> paste or scan the output descriptor from another app (Sparrow, BlueWallet, Bitcoin Core), single-sig or multisig, including nested SegWit multisig <code>sh(wsh(&hellip;))</code>. On the <strong>Verify</strong> tab, <strong>Check Descriptor</strong> checks the checksum, refuses private keys, and shows the first receive and change addresses worked out from the descriptor. No seed is needed: without one the result is <strong>WATCH-ONLY</strong>, and with one loaded it still says <strong>MATCH</strong> or <strong>MISMATCH</strong>.</li>
                     <li><strong>Use it like your own &mdash;</strong> <strong>Use This Descriptor (watch-only)</strong> loads it into the tool, so the Receive panel (show and check addresses), the address list (.csv), the Bitcoin Core export, the QR code and Print PDF all work for it. The PDF leaves out the seed and passphrase rows. A descriptor without the <code>&hellip;/&lt;0;1&gt;/*</code> ending gets a warning and can&rsquo;t be loaded.</li>
                     <li><strong>No terminal, no file manager &mdash;</strong> release builds no longer include them. The session runs as the system administrator (root), so either one was a way into the whole system.</li>
-                    <li><strong>No network drivers &mdash;</strong> every network, Wi-Fi, Bluetooth, NFC, USB-network (including phone tethering) and USB-gadget driver is deleted from the image, and the build fails if one is left. Compilers, kernel headers and DKMS are removed after the build, so a new driver can&rsquo;t be compiled on the stick.</li>
+                    <li><strong>No network drivers &mdash;</strong> every network, Wi-Fi, Bluetooth, NFC, USB-network (including phone tethering) and USB-gadget driver is deleted from the image, and the build fails if one is left. Compilers, kernel headers and DKMS are removed after the build, so a new driver can&rsquo;t be compiled on the flash drive.</li>
                     <li><strong>A network watchdog &mdash;</strong> if a network interface ever appears, SafeKeep switches it off and shows a red warning across the top of the app. It also warns if the firewall isn&rsquo;t loaded.</li>
-                    <li><strong>Preparing the computer &mdash;</strong> the stick controls the operating system, not the computer&rsquo;s firmware, so unplug network cables and turn off Intel AMT/vPro and the wireless radios in the BIOS/UEFI. See <a href="docs.html#prepare-computer">Preparing the computer</a>.</li>
+                    <li><strong>Preparing the computer &mdash;</strong> the flash drive controls the operating system, not the computer&rsquo;s firmware, so unplug network cables and turn off Intel AMT/vPro and the wireless radios in the BIOS/UEFI. See <a href="docs.html#prepare-computer">Preparing the computer</a>.</li>
                 </ul>
             </section>
 
@@ -287,7 +296,7 @@
             <!-- v1.42 -->
             <section class="content-section" id="v1-42">
                 <h2 class="section-heading">v1.42 &mdash; October 12, 2026</h2>
-                <p>A new <strong>Receive</strong> panel in the Output Descriptor tool. It works the address out from your descriptor on the offline stick, so malware on an online computer can&rsquo;t swap it. The vault has no network access and can&rsquo;t see which addresses have been used, so the intended workflow is: let your watch-only wallet (for example Sparrow on your own node) pick the next unused address, and use SafeKeep to check it.</p>
+                <p>A new <strong>Receive</strong> panel in the Output Descriptor tool. It works the address out from your descriptor on the offline flash drive, so malware on an online computer can&rsquo;t swap it. The vault has no network access and can&rsquo;t see which addresses have been used, so the intended workflow is: let your watch-only wallet (for example Sparrow on your own node) pick the next unused address, and use SafeKeep to check it.</p>
                 <ul class="docs-list">
                     <li><strong>Show a receive address &mdash;</strong> pick an address by number with &larr; and &rarr;, starting at 0. The address is shown in groups of four so you can compare every character, with a QR code, a Copy button, and a label giving its number, path, wallet type and key fingerprints. It works for single-signature, Taproot and multisig wallets; a Silent Payment wallet shows its one fixed address.</li>
                     <li><strong>Check an address &mdash;</strong> paste or scan an address, and SafeKeep searches the wallet&rsquo;s first 1,000 receive and change addresses. If it&rsquo;s found, you see &ldquo;&#10004; receive address #N&rdquo; (a change address is flagged as one). If it isn&rsquo;t, you get a warning not to send to it. It accepts <code>bitcoin:</code> links and uppercase addresses, and refuses addresses with a typo and testnet addresses.</li>
@@ -341,7 +350,7 @@
                 <ul class="docs-list">
                     <li><strong>Start-up self-check &mdash;</strong> before you can enter anything, the vault runs published Bitcoin test vectors (seed words, key derivation, addresses for every wallet type, signatures) through its own code. If this computer gives a single wrong answer, the vault stops with a plain error screen instead of risking a wrong key or address.</li>
                     <li><strong>Safer signing &mdash;</strong> the vault now refuses any signature type that doesn&rsquo;t cover the whole transaction (anything other than <code>SIGHASH_ALL</code>), including for Silent Payment inputs. Such signatures could let someone change where the funds go. The review screen explains the block, and Force Sign cannot override it.</li>
-                    <li><strong>LifeHash icons &mdash;</strong> a small coloured pattern drawn from the master fingerprint, on the Dashboard, the tool sidebar and the PSBT Signer. It matches the picture Sparrow Wallet shows for the same wallet.</li>
+                    <li><strong>LifeHash icons &mdash;</strong> a small colored pattern drawn from the master fingerprint, on the Dashboard, the tool sidebar and the PSBT Signer. It matches the picture Sparrow Wallet shows for the same wallet.</li>
                     <li><strong>Dice fairness check &mdash;</strong> the Entropy Generator scores your physical dice rolls and, after 30 rolls, tells you whether the die looks fair, possibly biased or likely biased. It&rsquo;s advice only and never blocks you.</li>
                     <li><strong>Bitcoin Core export &mdash;</strong> the Output Descriptor tool exports a watch-only import file for your own Bitcoin Core node, with the commands to load it.</li>
                     <li><strong>Verifiable releases &mdash;</strong> each app release now comes with a checksum, the maintainer&rsquo;s signature, a GitHub build attestation and a Bitcoin timestamp, and the app is a reproducible build: rebuilding the release&rsquo;s source gives byte-for-byte the same file. See <a href="download.html#verify-app">how to verify</a>.</li>
