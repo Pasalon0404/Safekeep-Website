@@ -18,10 +18,8 @@
         }
 
         .qr-widget-label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
             color: var(--text-muted);
             margin-bottom: 0.6rem;
         }
@@ -184,10 +182,8 @@
 
         .vault-export-settings-label {
             width: 100%;
-            font-size: 0.72rem;
+            font-size: 0.82rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.07em;
             color: var(--text-muted);
             margin-bottom: 0.15rem;
         }
@@ -296,25 +292,25 @@
                 <p class="docs-toc-label">On this page</p>
                 <ul>
                     <li><a href="quickstart.html">New here? Quick Start (8 steps) &rarr;</a></li>
-                    <li><a href="#hardware">System Requirements &amp; Components</a>
+                    <li><a href="#hardware">System requirements &amp; components</a>
                         <ul>
-                            <li><a href="#system-requirements">System Requirements</a></li>
-                            <li><a href="#stay-offline">How SafeKeep OS Stays Offline</a></li>
-                            <li><a href="#prepare-computer">Preparing the Computer</a></li>
+                            <li><a href="#system-requirements">System requirements</a></li>
+                            <li><a href="#stay-offline">How SafeKeep OS stays offline</a></li>
+                            <li><a href="#prepare-computer">Preparing the computer</a></li>
                             <li><a href="#components">Components</a></li>
                         </ul>
                     </li>
-                    <li><a href="#vault-password">Step 1: Vault Password &amp; QR Generation</a></li>
-                    <li><a href="#download-flash">Step 2: Download &amp; Image Creation</a></li>
-                    <li><a href="#first-boot">Step 3: Initialization &amp; Encryption</a>
+                    <li><a href="#vault-password">Step 1: Vault password &amp; QR code</a></li>
+                    <li><a href="#download-flash">Step 2: Download &amp; flash the drive</a></li>
+                    <li><a href="#first-boot">Step 3: First boot &amp; encryption</a>
                         <ul>
-                            <li><a href="#encrypted-vault">One-Time Configuration</a></li>
-                            <li><a href="#config-options">Initial Configuration Options</a></li>
-                            <li><a href="#generate-seed">Generating a New Seed</a></li>
+                            <li><a href="#encrypted-vault">One-time setup</a></li>
+                            <li><a href="#config-options">Initial configuration options</a></li>
+                            <li><a href="#generate-seed">Generating a new seed</a></li>
                         </ul>
                     </li>
-                    <li><a href="#transfer-drive">Step 4: The Transfer Drive</a></li>
-                    <li><a href="#watch-wallet">Watch-Only Wallet Creation</a>
+                    <li><a href="#transfer-drive">Step 4: The transfer drive</a></li>
+                    <li><a href="#watch-wallet">Creating a watch-only wallet</a>
                         <ul>
                             <li><a href="#ww-bluewallet">BlueWallet</a></li>
                             <li><a href="#ww-nunchuk">Nunchuk</a></li>
@@ -324,24 +320,24 @@
                             <li><a href="#ww-core">Bitcoin Core</a></li>
                         </ul>
                     </li>
-                    <li><a href="#signing">Signing a Transaction</a>
+                    <li><a href="#signing">Signing a transaction</a>
                         <ul>
                             <li><a href="#sign-ingest">Loading the PSBT</a></li>
-                            <li><a href="#sign-review">Reviewing the Transaction</a></li>
+                            <li><a href="#sign-review">Reviewing the transaction</a></li>
                             <li><a href="#sign-sign">Signing</a></li>
                             <li><a href="#sign-hardware">Co-signing with a Coldcard or Trezor</a></li>
                             <li><a href="#sign-hardware-only">Signing with only a hardware wallet</a></li>
-                            <li><a href="#sign-export">Exporting the Result</a></li>
+                            <li><a href="#sign-export">Exporting the result</a></li>
                             <li><a href="#sign-transfer-hub">Exporting via the Transfer Hub</a></li>
                         </ul>
                     </li>
-                    <li><a href="#sessions">Locking &amp; Device Options</a></li>
-                    <li><a href="#updating">Updating to a New Version</a></li>
-                    <li><a href="#recover-without">Recovering Without SafeKeep</a></li>
-                    <li><a href="#tools">The Tool Arsenal</a>
+                    <li><a href="#sessions">Locking &amp; device options</a></li>
+                    <li><a href="#updating">Updating to a new version</a></li>
+                    <li><a href="#recover-without">Recovering without SafeKeepVault</a></li>
+                    <li><a href="#tools">The tools</a>
                         <ul>
-                            <li><a href="#primary-tools">Main Tools</a></li>
-                            <li><a href="#advanced-tools">Advanced Tools</a></li>
+                            <li><a href="#primary-tools">Main tools</a></li>
+                            <li><a href="#advanced-tools">Advanced tools</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -374,7 +370,7 @@
 
             <!-- System Requirements & Components (moved, no longer a numbered step) -->
             <section class="content-section" id="hardware">
-                <h2 class="section-heading">System Requirements &amp; Components</h2>
+                <h2 class="section-heading">System requirements &amp; components</h2>
                 <p>
                     <strong>SafeKeepVault</strong> creates a secure, offline environment without you
                     needing to take your computer apart or buy extra gear. The moment it starts up,
@@ -394,7 +390,7 @@
                     For the strongest air gap, unplug the computer&rsquo;s network cable before you start, and don&rsquo;t plug in USB network adapters or phones. On a business laptop, turn off remote management in the BIOS settings if you can.
                 </p>
 
-                <h3 class="sub-heading" id="system-requirements">System Requirements</h3>
+                <h3 class="sub-heading" id="system-requirements">System requirements</h3>
                 <ul class="docs-list">
                     <li>
                         <strong>A Boot Drive &mdash;</strong>
@@ -443,7 +439,7 @@
 
             <!-- Step 1: Vault Password & QR Generation (NEW) -->
             <section class="content-section" id="vault-password">
-                <h2 class="section-heading">Step 1: Vault Password &amp; QR Generation</h2>
+                <h2 class="section-heading">Step 1: Vault password &amp; QR code</h2>
                 <p>
                     Before you boot <strong>SafeKeepVault</strong> for the first time, you need a
                     vault password ready to go. This password will encrypt the persistent partition
@@ -469,7 +465,7 @@
                     </p>
                 </div>
 
-                <h3 class="sub-heading">Generate a High-Entropy Password</h3>
+                <h3 class="sub-heading">Generate a high-entropy password</h3>
                 <p>
                     Open your password manager and generate a new credential for
                     <strong>SafeKeepVault</strong>. Use a fully random string of <strong>at least 20
@@ -480,7 +476,7 @@
                     down in plaintext anywhere.
                 </p>
 
-                <h3 class="sub-heading">Generate Your Unlock QR Code</h3>
+                <h3 class="sub-heading">Generate your unlock QR code</h3>
                 <p>
                     Typing a 20+ character random password on every boot is impractical. Instead,
                     convert it to a QR code using the widget below and save the image on your phone,
@@ -507,7 +503,7 @@
 
                 <!-- QR Generator Widget -->
                 <div class="qr-widget">
-                    <p class="qr-widget-label">Vault Password &rarr; QR Code</p>
+                    <p class="qr-widget-label">Vault password &rarr; QR code</p>
                     <div class="qr-input-wrap">
                         <input
                             type="password"
@@ -553,7 +549,7 @@
 
             <!-- Step 2: Download & Image Creation (was Step 1) -->
             <section class="content-section" id="download-flash">
-                <h2 class="section-heading">Step 2: Download &amp; Image Creation</h2>
+                <h2 class="section-heading">Step 2: Download &amp; flash the drive</h2>
                 <p>
                     <strong>Download the Software</strong> &mdash;
                     Visit the <a href="download.html">Download page</a> to obtain the latest release.
@@ -586,7 +582,7 @@
 
             <!-- Step 3: Initialization & Encryption (same) -->
             <section class="content-section" id="first-boot">
-                <h2 class="section-heading">Step 3: Initialization &amp; Encryption</h2>
+                <h2 class="section-heading">Step 3: First boot &amp; encryption</h2>
                 <p>
                     Insert the USB flash drive, then power on or restart your computer. During startup, most systems allow you to choose a temporary boot device by pressing a function key such as F2, F8, F9, ESC, etc. immediately after powering on. On Macs with Intel processors, hold the Option key during startup and choose <strong>SafeKeep</strong> (flash drives set up before v1.53 show as &ldquo;EFI Boot&rdquo;). Most PCs start SafeKeepVault with Secure Boot left on. If yours refuses the flash drive, with a Secure Boot or &ldquo;security violation&rdquo; message or no flash drive in the boot menu, turn off <strong>Secure Boot</strong> in the BIOS/UEFI setup, or allow the &ldquo;Microsoft 3rd-party UEFI CA&rdquo; if your PC offers that option. Turning Secure Boot off can make Windows ask for your BitLocker recovery key the next time it starts, so keep it handy. Intel Macs with the T2 chip (2018&ndash;2020) need Startup Security Utility set to &ldquo;No Security&rdquo;. Flash drives made before v1.54 still need Secure Boot off until they are reflashed.  <strong>SafeKeepVault</strong> skips the usual desktop screen, booting straight into a clean, secure space built only for running the software.
                 </p>
@@ -600,7 +596,7 @@
                     verified drive or on different hardware.
                 </p>
 
-                <h3 class="sub-heading" id="encrypted-vault">One-Time Configuration: The Encrypted Vault</h3>
+                <h3 class="sub-heading" id="encrypted-vault">One-time setup: the encrypted vault</h3>
                 <p>
                     Upon your initial boot, <strong>SafeKeepVault</strong> will guide you through the
                     creation of your Encrypted Storage Partition. This persistent volume is where your
@@ -651,7 +647,7 @@
                     and need no persistent storage on the drive.
                 </p>
 
-                <h3 class="sub-heading" id="config-options">Initial Configuration Options</h3>
+                <h3 class="sub-heading" id="config-options">Initial configuration options</h3>
                 <p>Once the vault is initialized, you are presented with five methods to manage your seed phrase. In a Temporary Session, a sixth option, <strong>Sign with Hardware Wallet</strong>, also appears.</p>
 
                 <figure class="os-showcase">
@@ -792,9 +788,9 @@
                 </p>
             </section>
 
-            <!-- Step 4: The Transfer Drive (mounted automatically since v1.34) -->
+            <!-- Step 4: The transfer drive (mounted automatically since v1.34) -->
             <section class="content-section" id="transfer-drive">
-                <h2 class="section-heading">Step 4: The Transfer Drive</h2>
+                <h2 class="section-heading">Step 4: The transfer drive</h2>
                 <p>
                     The Transfer Drive is the dedicated partition on your flash drive used to move
                     files in and out of the vault &mdash; signed transactions, PSBT files, encrypted backups,
@@ -820,7 +816,7 @@
 
             <!-- Watch Wallet Creation -->
             <section class="content-section" id="watch-wallet">
-                <h2 class="section-heading">Watch-Only Wallet Creation</h2>
+                <h2 class="section-heading">Creating a watch-only wallet</h2>
                 <p>
                     Your vault holds the private keys; a watch-only wallet on your everyday device holds
                     the public keys. The watch-only wallet tracks your balances, generates receive addresses,
@@ -1038,9 +1034,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
 
             </section>
 
-            <!-- Signing a Transaction -->
+            <!-- Signing a transaction -->
             <section class="content-section" id="signing">
-                <h2 class="section-heading">Signing a Transaction</h2>
+                <h2 class="section-heading">Signing a transaction</h2>
                 <p>
                     Once your watch-only wallet has built a transaction and exported it as a PSBT, bring it into
                     <strong>SafeKeepVault</strong> to sign. The vault reviews the details  &mdash; you inspect and verify the destination address and amount before
@@ -1092,7 +1088,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <figcaption>The Transfer Drive file picker lists all available <code>.psbt</code> files. Select the unsigned transaction to proceed.</figcaption>
                 </figure>
 
-                <h3 class="sub-heading" id="sign-review">Reviewing the Transaction</h3>
+                <h3 class="sub-heading" id="sign-review">Reviewing the transaction</h3>
                 <p>
                     Display the QR code generated by your wallet software and hold it up to
                     <strong>SafeKeepVault&rsquo;s</strong> webcam. Once scanned, the vault moves to the
@@ -1102,7 +1098,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     fee and fee rate.
                 </p>
                 <ul class="docs-list">
-                    <li><strong>Which wallet it spends from &mdash;</strong> if you saved your wallet in the <strong>Output Descriptor</strong> tool (see <a href="#advanced-tools">Advanced Tools</a>), a banner names the saved wallet the inputs come from, or warns when an input matches none of your saved wallets. A change output that is one of your saved wallet&rsquo;s own addresses is marked verified, even when the PSBT leaves out the multisig details.</li>
+                    <li><strong>Which wallet it spends from &mdash;</strong> if you saved your wallet in the <strong>Output Descriptor</strong> tool (see <a href="#advanced-tools">Advanced tools</a>), a banner names the saved wallet the inputs come from, or warns when an input matches none of your saved wallets. A change output that is one of your saved wallet&rsquo;s own addresses is marked verified, even when the PSBT leaves out the multisig details.</li>
                     <li><strong>Summary &mdash;</strong> how much you are sending, the mining fee, the <strong>total leaving your wallet</strong>, and the change coming back. Open <strong>Spending N inputs</strong> to see each input&rsquo;s amount, address, saved wallet and, for multisig, how many signatures it has so far.</li>
                     <li><strong>Lock time and replace-by-fee &mdash;</strong> whether the transaction can&rsquo;t be mined before a certain block or date, and whether its fee can be raised later. An input that is time-locked (for example an inheritance or recovery path) gets a warning.</li>
                     <li><strong>Compare with the address you were given &mdash;</strong> on each destination card, paste or scan the address the recipient gave you. SafeKeep compares every character and shows <strong>Identical</strong>, or <strong>Different address. Don&rsquo;t sign</strong> with the differences highlighted. It never ticks the verification box for you.</li>
@@ -1217,7 +1213,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <figcaption>In a <strong>Temporary Session</strong>, <strong>Sign with Hardware Wallet</strong> opens the PSBT Signer with no seed loaded.</figcaption>
                 </figure>
 
-                <h3 class="sub-heading" id="sign-export">Exporting the Result</h3>
+                <h3 class="sub-heading" id="sign-export">Exporting the result</h3>
                 <p>
                     Once signed, the <strong>Export</strong> tab offers several ways to return the result
                     to your watch-only wallet. The primary method is a QR code &mdash; choose the format that
@@ -1278,7 +1274,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
 
             <!-- Locking & Device Options -->
             <section class="content-section" id="sessions">
-                <h2 class="section-heading">Locking &amp; Device Options</h2>
+                <h2 class="section-heading">Locking &amp; device options</h2>
                 <ul class="docs-list">
                     <li>
                         <strong>Lock Vault &mdash;</strong>
@@ -1311,7 +1307,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li>
                         <strong>Update SafeKeep &mdash;</strong>
                         Also in <strong>Device Options</strong>: install a newer version from a signed update file on
-                        the Transfer Drive, without reflashing. See <a href="#updating">Updating to a New Version</a>.
+                        the Transfer Drive, without reflashing. See <a href="#updating">Updating to a new version</a>.
                     </li>
                     <li>
                         <strong>Return to Master Vault &mdash;</strong>
@@ -1328,9 +1324,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 </ul>
             </section>
 
-            <!-- Updating to a New Version -->
+            <!-- Updating to a new version -->
             <section class="content-section" id="updating">
-                <h2 class="section-heading">Updating to a New Version</h2>
+                <h2 class="section-heading">Updating to a new version</h2>
                 <h3 class="sub-heading" id="update-in-place">Update in place (v1.47 and later)</h3>
                 <p>
                     From v1.47, the flash drive keeps two copies of SafeKeep&rsquo;s operating system. An update is
@@ -1377,9 +1373,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 </p>
             </section>
 
-            <!-- Recovering Without SafeKeep -->
+            <!-- Recovering without SafeKeepVault -->
             <section class="content-section" id="recover-without">
-                <h2 class="section-heading">Recovering Without SafeKeep</h2>
+                <h2 class="section-heading">Recovering without SafeKeepVault</h2>
                 <p>
                     <strong>SafeKeepVault</strong> uses the same standards as other Bitcoin wallets, so your
                     bitcoin never depends on SafeKeep. If the flash drive is lost, or you or your heirs ever
@@ -1403,7 +1399,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
 
             <!-- Tool Arsenal (kept, Inheritance Map → Wallet Record) -->
             <section class="content-section" id="tools">
-                <h2 class="section-heading">The Tool Arsenal</h2>
+                <h2 class="section-heading">The tools</h2>
                 <p>
                     Beyond the core signing workflow, <strong>SafeKeepVault</strong> includes a broad
                     suite of tools covering the full range of Bitcoin self-custody tasks &mdash; from
@@ -1412,7 +1408,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     that supports standard formats.
                 </p>
 
-                <h3 class="sub-heading" id="primary-tools">Main Tools</h3>
+                <h3 class="sub-heading" id="primary-tools">Main tools</h3>
                 <ul class="docs-list">
                     <li>
                         <strong>PSBT Signer &mdash;</strong>
@@ -1436,7 +1432,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     </li>
                 </ul>
 
-                <h3 class="sub-heading" id="advanced-tools">Advanced Tools</h3>
+                <h3 class="sub-heading" id="advanced-tools">Advanced tools</h3>
                 <p>The thirteen advanced tools are grouped on the Dashboard by what they do.</p>
                 <p class="wallet-sig-heading">Keys &amp; Seeds</p>
                 <ul class="docs-list">
@@ -1665,7 +1661,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 </ul>
             </div>
             <div>
-                <h4>Tools &amp; Docs</h4>
+                <h4>Tools &amp; docs</h4>
                 <ul>
                     <li><a href="docs.html">Documentation</a></li>
                     <li><a href="quickstart.html">Quick Start</a></li>
