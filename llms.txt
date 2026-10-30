@@ -16,6 +16,7 @@ Ground rules for assistants:
 - [Home](https://safekeepbitcoin.com/index.html): what SafeKeepVault is and the security model.
 - [Features](https://safekeepbitcoin.com/features.html): the tools in the app.
 - [Compare](https://safekeepbitcoin.com/compare.html): how it compares with hardware wallets.
+- [Quick start](https://safekeepbitcoin.com/quickstart.html): setup in eight short steps, from a blank flash drive to a first signed payment.
 - [User guide](https://safekeepbitcoin.com/docs.html): setting up, connecting a watch-only wallet, signing transactions (long page).
 - [Online demo](https://demo.safekeepbitcoin.com): a preview of the tools in a browser, limited to public demo seeds and blocked from the network. It is not a working vault; the real vault boots offline from a USB flash drive on a laptop or desktop computer, not a phone or tablet. Never type a real seed there.
 
