@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="newfavicon.png">
-    <meta name="description" content="SafeKeepVault turns any laptop into an air-gapped Bitcoin hardware wallet. Free, open-source, and runs entirely from a USB flash drive. No new hardware required.">
+    <meta name="description" content="Keep your bitcoin keys offline using a computer you already own. SafeKeepVault runs from a USB flash drive, never connects to the internet, and is free and open source. No hardware wallet to buy.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafeKeepVault &mdash; Begin your self-custody journey</title>
+    <title>SafeKeepVault &mdash; Keep your bitcoin keys offline on a computer you already own</title>
     <link rel="stylesheet" href="style.css">
     <script type="application/ld+json">
     {
@@ -100,120 +100,47 @@
             <header class="hero">
                 <span class="hero-eyebrow"><span class="dot"></span> Free &amp; Open Source &middot; Bitcoin Only</span>
                 <h1 class="hero-title">SafeKeep<span>Vault</span></h1>
-                <p class="hero-subtitle">Your Hardware. Your Keys. Your Bitcoin.</p>
+                <p class="hero-subtitle">Keep your bitcoin keys offline, using a computer you already own.</p>
                 <p class="hero-lede">
-                    A custom-hardened Linux OS that flashes to any USB flash drive, turning the
-                    laptop already on your desk into a true air-gapped Bitcoin cold-storage device.
-                    Zero cost of entry. No new hardware. No black boxes.
+                    SafeKeepVault turns a laptop and a USB flash drive into a safe place to create, back up
+                    and use your bitcoin keys. It never connects to the internet, so hackers and malware
+                    can&rsquo;t reach your keys, and there&rsquo;s no hardware wallet to buy.
                 </p>
                 <div class="hero-cta">
-                    <a href="download.html" class="btn-primary">Download SafeKeepVault</a>
-                    <a href="features.html" class="btn-secondary">Explore the 16 tools</a>
+                    <a href="download.html" class="btn-primary">Download free</a>
+                    <a href="#how-it-works" class="btn-secondary">See how it works</a>
                     <a href="https://demo.safekeepbitcoin.com/" class="btn-secondary" target="_blank" rel="noopener">Try the online demo</a>
                 </div>
                 <p class="demo-note">
                     The online demo is a preview: you can look through every tool, but it only works with
                     public demo seeds, so it can&rsquo;t protect real bitcoin. To use the tools for real, start
-                    SafeKeepVault from a USB stick on a laptop or desktop computer.
+                    SafeKeepVault from a USB flash drive on a laptop or desktop computer.
                     <span class="mobile-only">On a phone? SafeKeepVault doesn&rsquo;t run on phones or tablets.
                     The demo opens here so you can look around, but it&rsquo;s easier to explore on a computer.</span>
                 </p>
-
-                <ul class="trust-badges">
-                    <li>
-                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        True Air Gap
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        AES-256 Encrypted
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        Fully Auditable
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
-                        No Blind Signing
-                    </li>
-                </ul>
-                <p class="hero-meta">Verified release <strong>v1.56</strong> &middot; SHA-256 + GPG signed &middot; Runs on any x86 PC</p>
-                <p class="hero-meta">Prefer to build it yourself? <a href="download.html#build" style="text-decoration: underline;">Build the USB stick from source</a> &middot; <a href="llms.txt" style="text-decoration: underline;">Guide for AI assistants</a></p>
+                <p class="hero-meta">Verified release <strong>v1.56</strong> &middot; SHA-256 + GPG signed &middot; Runs on most Windows and Linux PCs and Intel Macs</p>
             </header>
 
-            <!-- Section 1: Introduction -->
-            <section class="content-section">
-                <h2 class="section-heading">The Ultimate Bitcoin Cold Storage Device is Already on Your Desk.</h2>
-                <p>
-                    <strong>SafeKeepVault</strong> is a custom-hardened Linux OS that flashes to any USB flash drive, instantly turning your existing PC into a powerful, secure Bitcoin cold storage device.
-                </p>
-                <ul class="feature-grid">
+            <!-- How it works -->
+            <section class="content-section" id="how-it-works">
+                <h2 class="section-heading">How it works</h2>
+                <ol class="feature-grid steps-grid">
                     <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-                        <h3>Open Source</h3>
-                        <p>Fully auditable code &mdash; every line is public and verifiable. No black boxes, no proprietary firmware.</p>
+                        <div class="fc-icon fc-step">1</div>
+                        <h3>Put it on a flash drive</h3>
+                        <p>Download SafeKeepVault and copy it onto any USB flash drive of 8&nbsp;GB or more. The guide checks that your download is genuine first.</p>
                     </li>
                     <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5h3a2 2 0 0 1 0 4h-3zm0 0V8m0 5.5V16m1.5-8v8"/></svg></div>
-                        <h3>Bitcoin Only</h3>
-                        <p>Built exclusively for Bitcoin self-custody. No altcoin distractions, no bloat.</p>
+                        <div class="fc-icon fc-step">2</div>
+                        <h3>Start your computer from it</h3>
+                        <p>SafeKeepVault runs from the flash drive with no internet connection at all. It never opens your computer&rsquo;s own drive, so Windows and your files stay as they were.</p>
                     </li>
                     <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                        <h3>True Air Gap</h3>
-                        <p>The network, Wi-Fi and Bluetooth drivers are removed from the system entirely, and storage interfaces are locked before your session begins. Data passes in and out via QR code or the Transfer Drive &mdash; your keys never have a path to the internet.</p>
+                        <div class="fc-icon fc-step">3</div>
+                        <h3>Approve payments offline</h3>
+                        <p>Your usual wallet app shows your balance and prepares each payment. You check it on SafeKeepVault&rsquo;s full-size screen, approve it there, and pass it back by QR code. Your keys never go online.</p>
                     </li>
-                    <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7V5a2 2 0 0 1 2-2h2M4 17v2a2 2 0 0 0 2 2h2m8-18h2a2 2 0 0 1 2 2v2m0 8v2a2 2 0 0 1-2 2h-2"/></svg></div>
-                        <h3>No Ecosystem Lock</h3>
-                        <p>Works with Sparrow, Specter, Electrum, Nunchuk, Blue Wallet, and others, and co-signs with, and reads multisig keys from, a Coldcard or Trezor plugged straight into the vault. Use the coordinator and devices you already know.</p>
-                    </li>
-                    <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg></div>
-                        <h3>No Blind Signing</h3>
-                        <p>Every transaction is fully decoded and displayed before your key is involved. You see the total leaving your wallet, compare each destination with the address you were given, and verify the amount on a full-size screen before signing is unlocked.</p>
-                    </li>
-                    <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                        <h3>Passphrase Support</h3>
-                        <p>Full BIP-39 passphrase support. Add a 25th word to your seed for an additional layer of protection that makes your seed phrase useless without it.</p>
-                    </li>
-                    <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="12" r="3"/><path d="M8.7 7.5l6.6 3M8.7 16.5l6.6-3"/></svg></div>
-                        <h3>Shamir &amp; Seed XOR Backup</h3>
-                        <p>Split your seed into multiple shares using Shamir Secret Sharing or Seed XOR. Distribute the pieces so no single location holds your complete backup.</p>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Section 2: Hardware -->
-            <section class="content-section" id="features">
-                <h2 class="section-heading">Repurpose, Don't Replace</h2>
-                <p>
-                    If you have a PC and an 8GB flash drive, you already have everything you need. A full-size screen and keyboard make verifying transaction details effortless, and <strong>SafeKeepVault&rsquo;s</strong> sixteen built-in tools handle every step of the self-custody workflow &mdash; from generating your first seed phrase to signing complex multisig transactions.
-                </p>
-                <ul class="feature-grid">
-                    <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
-                        <h3>Universal Compatibility</h3>
-                        <p>Runs on any x86 laptop or desktop using a standard 8GB+ flash drive. Supports most internal webcams or external cameras.</p>
-                    </li>
-                    <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg></div>
-                        <h3>Watch Wallet Integration</h3>
-                        <p>Works seamlessly with your favorite Bitcoin wallet software. Export your public key, build transactions in your coordinator, and sign them air-gapped using <strong>SafeKeepVault</strong>.</p>
-                    </li>
-                    <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3m4 4v.01M17 21h.01M21 14v3"/></svg></div>
-                        <h3>QR-Powered Unlock</h3>
-                        <p>Store your vault password as a QR code on your phone. Display it to the webcam on every boot to decrypt instantly &mdash; no long password to type.</p>
-                    </li>
-                    <li class="feature-card">
-                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
-                        <h3>Encrypted Storage</h3>
-                        <p>Safely locks away your seed phrase in a dedicated, AES-256 encrypted partition on the flash drive.</p>
-                    </li>
-                </ul>
+                </ol>
             </section>
 
             <!-- Screenshot -->
@@ -221,62 +148,120 @@
                 <a href="dashboard.png" target="_blank" rel="noopener">
                     <img
                     src="dashboard.png"
-                    alt="SafeKeepVault OS — desktop interface showing the vault dashboard"
+                    alt="The SafeKeepVault dashboard, running offline from a USB flash drive"
                 >
                 </a>
                 <figcaption>
-                    The <strong>SafeKeepVault</strong> interface &mdash; sixteen tools, one air-gapped
-                    session, zero network exposure.
+                    The <strong>SafeKeepVault</strong> dashboard. Everything you do with your keys
+                    happens on this offline screen.
                 </figcaption>
             </figure>
 
-            <!-- At a glance -->
+            <!-- Why -->
             <section class="content-section">
-                <h2 class="section-heading">Comprehensive Utility.</h2>
-                <div class="stat-strip">
-                    <div class="stat">
-                        <span class="stat-num">16</span>
-                        <span class="stat-label">Tools covering the full self-custody workflow</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-num">$0</span>
-                        <span class="stat-label">Cost of entry &mdash; reuse hardware you own</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-num">&lt;30s</span>
-                        <span class="stat-label">Boot into a hardened, air-gapped session</span>
-                    </div>
-                </div>
-                <ul class="spec-list">
-                    <li>
-                        <span class="spec-label">16-Tool Suite</span>
-                        <span class="spec-desc"><strong>SafeKeepVault</strong> covers every step of the self-custody workflow &mdash; seed generation, signing, multisig coordination, encrypted backups, and more &mdash; in a single, offline environment.</span>
+                <h2 class="section-heading">Why use it</h2>
+                <ul class="feature-grid">
+                    <li class="feature-card">
+                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+                        <h3>Costs nothing</h3>
+                        <p>SafeKeepVault is free and open source. If you have a laptop or desktop and a flash drive, you already have everything you need.</p>
                     </li>
-                    <li>
-                        <span class="spec-label">Temporary or Encrypted</span>
-                        <span class="spec-desc">The choice is yours at every boot: operate in Temporary Mode for a session that leaves no trace, or use the Encrypted Vault to store your seed securely.</span>
+                    <li class="feature-card">
+                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <h3>No order with your name on it</h3>
+                        <p>Buying a hardware wallet ties your name and home address to bitcoin. Here there&rsquo;s nothing to order, nothing shipped and no account.</p>
                     </li>
-                    <li>
-                        <span class="spec-label">Optical Transmission</span>
-                        <span class="spec-desc">Move unsigned and signed transactions between devices via high-density QR codes &mdash; no cables, no exposed ports, no physical connection to a networked machine.</span>
+                    <li class="feature-card">
+                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg></div>
+                        <h3>See exactly where your money goes</h3>
+                        <p>Before you approve a payment, a full-size screen shows who gets paid, how much, the fee and the change coming back to you, with no scrolling on a tiny display.</p>
+                    </li>
+                    <li class="feature-card">
+                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7V5a2 2 0 0 1 2-2h2M4 17v2a2 2 0 0 0 2 2h2m8-18h2a2 2 0 0 1 2 2v2m0 8v2a2 2 0 0 1-2 2h-2"/></svg></div>
+                        <h3>Works with the wallets you know</h3>
+                        <p>Watch your balance in Sparrow, BlueWallet, Nunchuk, Electrum, Specter or Bitcoin Core. A Coldcard or Trezor can join in as a second signer.</p>
+                    </li>
+                    <li class="feature-card">
+                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="12" r="3"/><path d="M8.7 7.5l6.6 3M8.7 16.5l6.6-3"/></svg></div>
+                        <h3>Back up your keys properly</h3>
+                        <p>Create your seed with dice you can double-check, add a passphrase, split your backup into pieces kept in different places, and print a one-page record for your family.</p>
+                    </li>
+                    <li class="feature-card">
+                        <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+                        <h3>Nothing hidden</h3>
+                        <p>Every line of code is public and every release is signed, so you can check what you&rsquo;re running instead of taking anyone&rsquo;s word for it.</p>
                     </li>
                 </ul>
+                <p class="section-more"><a href="features.html">See all 16 tools &rarr;</a></p>
+            </section>
+
+            <!-- Fit -->
+            <section class="content-section">
+                <h2 class="section-heading">Is it right for you?</h2>
+                <div class="fit-grid">
+                    <div class="fit-card">
+                        <h3>A good fit if you&hellip;</h3>
+                        <ul>
+                            <li>have a laptop or desktop you can start from a flash drive now and then</li>
+                            <li>would rather not buy a hardware wallet, or want a second signer alongside one</li>
+                            <li>want to check every payment on a full-size screen</li>
+                            <li>are happy to follow a step-by-step setup guide</li>
+                        </ul>
+                    </div>
+                    <div class="fit-card">
+                        <h3>A hardware wallet may suit you better if you&hellip;</h3>
+                        <ul>
+                            <li>want something plug-and-play, with nothing to set up</li>
+                            <li>want your keys inside a tamper-resistant chip. While it signs, SafeKeepVault holds your keys in an ordinary computer&rsquo;s memory.</li>
+                            <li>only have a phone or tablet</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="section-more"><a href="compare.html">Compare SafeKeepVault with hardware wallets &rarr;</a></p>
+            </section>
+
+            <!-- FAQ -->
+            <section class="content-section">
+                <h2 class="section-heading">Common questions</h2>
+                <div class="faq">
+                    <details>
+                        <summary>Do I need to buy anything?</summary>
+                        <p>No. You need a laptop or desktop and a USB flash drive of 8&nbsp;GB or more. A webcam is useful for scanning QR codes, and most laptops have one.</p>
+                    </details>
+                    <details>
+                        <summary>Which computers does it run on?</summary>
+                        <p>Most Windows and Linux laptops and desktops with an Intel or AMD processor, and Intel Macs. It doesn&rsquo;t run on Apple Silicon Macs (M1 and later), phones or tablets.</p>
+                    </details>
+                    <details>
+                        <summary>Will it change anything on my computer?</summary>
+                        <p>No. SafeKeepVault runs from the flash drive and never opens your computer&rsquo;s own drive. You may need to change a startup setting so the computer starts from the flash drive; the <a href="docs.html">guide</a> shows how. Take the flash drive out and your computer starts as normal.</p>
+                    </details>
+                    <details>
+                        <summary>What if I lose the flash drive?</summary>
+                        <p>Your keys are stored on it encrypted, so whoever finds it also needs your vault password. Use a long, random one. Your seed words are your real backup: keep them safe on paper and you can set up a new flash drive and carry on.</p>
+                    </details>
+                    <details>
+                        <summary>Is it as safe as a hardware wallet?</summary>
+                        <p>It makes different trade-offs. Nothing is shipped to you, there&rsquo;s no order with your name on it, the screen is bigger and all the code is open. On the other hand, while it signs, your keys sit in an ordinary computer&rsquo;s memory rather than a tamper-resistant chip. Many people use both, each holding one key of a multisig wallet. The <a href="compare.html">comparison</a> covers this in detail.</p>
+                    </details>
+                    <details>
+                        <summary>Can I try it first?</summary>
+                        <p>Yes. The <a href="https://demo.safekeepbitcoin.com/" target="_blank" rel="noopener">online demo</a> lets you look through every tool using public demo seeds. It isn&rsquo;t a working vault, so never type your real seed words into it.</p>
+                    </details>
+                </div>
             </section>
 
             <!-- CTA panel -->
             <section class="cta-panel">
-                <h2>Start protecting your Bitcoin today.</h2>
-                <p>Download the signed image, verify it in two minutes, and boot into your own air-gapped vault &mdash; no new hardware required.</p>
+                <h2>Ready to try it?</h2>
+                <p>Download SafeKeepVault, check that it&rsquo;s genuine (about two minutes), and put it on a flash drive. The setup guide walks you through each step.</p>
                 <div class="cta-row">
                     <a href="download.html" class="btn-primary">Download</a>
-                    <a href="https://demo.safekeepbitcoin.com/" class="btn-secondary" target="_blank" rel="noopener">Try the online demo</a>
+                    <a href="docs.html" class="btn-secondary">Read the setup guide</a>
                     <a href="donate.html" class="btn-secondary">&#9825; Donate</a>
                 </div>
-                <p class="demo-note">
-                    The demo shows the tools with public demo seeds only. The real vault runs offline from a
-                    USB stick on a laptop or desktop computer, not on a phone.
-                </p>
             </section>
+            <p class="hero-meta">Prefer to build it yourself? <a href="download.html#build" style="text-decoration: underline;">Build it from source</a> &middot; <a href="llms.txt" style="text-decoration: underline;">Guide for AI assistants</a></p>
 
         </main>
     </div>

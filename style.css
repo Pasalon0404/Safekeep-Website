@@ -1791,6 +1791,40 @@ pre code {
     margin: 0 !important;
 }
 
+/* ---- Home page: steps, fit check, FAQ ---- */
+.steps-grid { grid-template-columns: repeat(3, 1fr); }
+.feature-card .fc-step {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--accent);
+}
+.section-more { margin: 1rem 0 0; font-size: 0.9rem; }
+.section-more a { color: var(--accent); font-weight: 600; }
+.fit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+}
+.fit-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.15rem 1.2rem 1.25rem;
+}
+.fit-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin: 0 0 0.6rem; }
+.fit-card ul { margin: 0; padding-left: 1.1rem; }
+.fit-card li { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 0.4rem; }
+.fit-card li:last-child { margin-bottom: 0; }
+.faq { margin-top: 1.25rem; border-top: 1px solid var(--border); }
+.faq details { border-bottom: 1px solid var(--border); padding: 0.85rem 0; }
+.faq summary { cursor: pointer; font-weight: 600; color: var(--text); }
+.faq details p { margin: 0.6rem 0 0 !important; font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; }
+.faq details a { text-decoration: underline; }
+@media (max-width: 860px) {
+    .steps-grid, .fit-grid { grid-template-columns: 1fr; }
+}
+
 /* ---- Stat / proof strip ---- */
 .stat-strip {
     display: grid;
