@@ -442,10 +442,8 @@ a {
 
 /* Sub-section headings (h3) within a content section */
 .sub-heading {
-    font-size: 0.92rem;
+    font-size: 1rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
     color: var(--text);
     margin: 1.75rem 0 0.75rem;
     padding-bottom: 0.4rem;
@@ -454,10 +452,8 @@ a {
 
 /* Compact subsection headings — separator line above each new concept */
 .subsection-heading {
-    font-size: 0.88rem;
+    font-size: 1rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
     color: var(--text);
     margin: 0 0 0.35rem;
     padding-top: 1.5rem;
@@ -662,10 +658,8 @@ pre code {
 .spec-label {
     display: block;
     font-family: var(--font-sans);
-    font-size: 0.92rem;
+    font-size: 0.98rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
     color: var(--text);
     margin-bottom: 0.2rem;
     line-height: 1.35;
@@ -1059,10 +1053,8 @@ pre code {
 }
 
 .download-verify-label {
-    font-size: 0.79rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
     color: var(--text-muted);
     margin-bottom: 0.45rem;
 }
@@ -1199,8 +1191,6 @@ pre code {
     font-family: var(--font-mono);
     font-size: 0.79rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
     background: #2d2d2d;
     color: #c0c0c0;
     padding: 0.4rem 0.9rem;
@@ -1370,10 +1360,8 @@ pre code {
 }
 
 .addr-type-label {
-    font-size: 0.77rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
     color: #6a9955;
     margin-bottom: 0.5rem;
 }
@@ -1479,11 +1467,9 @@ pre code {
 .sha256-label {
     display: block;
     font-family: var(--font-mono);
-    font-size: 0.77rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
     margin-bottom: 0.5rem;
 }
 
@@ -1516,8 +1502,6 @@ pre code {
     background: var(--accent);
     padding: 0.2em 0.7em;
     border-radius: var(--radius-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
     margin-bottom: 1rem;
 }
 
@@ -1541,8 +1525,6 @@ pre code {
     font-family: var(--font-mono);
     font-size: 0.76rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
     padding: 0.15em 0.55em;
     border-radius: var(--radius-sm);
     white-space: nowrap;
@@ -1921,10 +1903,8 @@ pre code {
     max-width: 30ch;
 }
 .site-footer-rich h4 {
-    font-size: 0.72rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
     color: var(--text-dim);
     margin: 0 0 0.85rem;
 }
