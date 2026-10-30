@@ -579,22 +579,19 @@ a {
 
 /* Notice / disclaimer block */
 .notice-block {
-    border: 1px solid var(--accent-ring);
-    border-left: 3px solid var(--accent);
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 1.25rem 1.5rem;
+    padding: 1.1rem 1.35rem;
     margin: 1.75rem 0;
-    background: var(--accent-soft);
+    background: var(--surface-2);
 }
 
 .notice-block .notice-title {
     font-family: var(--font-sans);
-    font-size: 0.72rem;
+    font-size: 1rem;
     font-weight: 700;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 0.6rem;
+    color: var(--text);
+    margin: 0 0 0.4rem;
 }
 
 .notice-block p {
