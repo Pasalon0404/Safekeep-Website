@@ -85,30 +85,8 @@
                 <p class="page-hero-label">v1.56 Release</p>
                 <h1 class="page-hero-title">Download</h1>
                 <p class="page-hero-tagline">
-                    Signed and verified bootable image for the latest version of <strong>SafeKeepVault</strong>. Follow the instructions below to verify your download and get set up.
-                </p>
-            </div>
-
-            <!-- One-time upgrade to the two-slot layout -->
-            <div class="notice-block">
-                <p class="notice-title">Already on v1.47 or later? Update in place, no reflash</p>
-                <p>
-                    Download the signed update file
-                    <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.56/SafeKeep-Update-v1.56.tar"><code>SafeKeep-Update-v1.56.tar</code></a>,
-                    copy it onto your flash drive&rsquo;s <strong>TRANSFER</strong> drive and install it from
-                    <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched. The
-                    <a href="docs.html#update-in-place">update guide</a> has the steps.
-                </p>
-            </div>
-
-            <div class="notice-block">
-                <p class="notice-title">Coming from v1.46 or earlier? Reflash once, then update in place</p>
-                <p>
-                    v1.47 changed how the flash drive is laid out, so it can update itself from then on. That needs a
-                    <strong>USB flash drive of 8 GB or more</strong>, and one last reflash: back up, flash v1.56,
-                    restore. The <a href="docs.html#updating">update guide</a> walks you through it. After that,
-                    future versions install from <strong>Device Options &rarr; Update SafeKeep</strong>, without
-                    reflashing and without touching your vault.
+                    Three steps: download <strong>SafeKeepVault</strong>, check that it&rsquo;s genuine, and put it on a USB flash
+                    drive of 8&nbsp;GB or more. Already have a SafeKeepVault flash drive? See <a href="#update">Updating</a>.
                 </p>
             </div>
 
@@ -116,24 +94,17 @@
             <div class="notice-block">
                 <p class="notice-title">Not ready to set up a USB flash drive? See the tools in the online demo</p>
                 <p>
-                    The <a href="https://demo.safekeepbitcoin.com/" target="_blank" rel="noopener">online demo</a> is a preview of
-                    SafeKeepVault in your browser. It lets you look through every tool, but it isn&rsquo;t a working vault:
-                    it only works with public demo seeds that anyone can spend from, it never shows seeds created in it,
-                    and it can&rsquo;t send anything over the network. To protect real bitcoin you need the USB flash drive,
-                    which runs the same tools offline on your own computer. Because the demo runs on an online device,
-                    <strong>never type your real seed words, passphrases or passwords into it, and never send bitcoin to a
-                    demo address.</strong>
-                </p>
-                <p>
-                    SafeKeepVault runs on a laptop or desktop computer, started from the USB flash drive. It doesn&rsquo;t run on
-                    phones or tablets. You can open the demo on a phone to look around, but it&rsquo;s easier to explore on a
-                    computer screen.
+                    The <a href="https://demo.safekeepbitcoin.com/" target="_blank" rel="noopener">online demo</a> lets you
+                    look through every tool in your browser, but it isn&rsquo;t a working vault: it only works with public demo
+                    seeds that anyone can spend from. <strong>Never type your real seed words, passphrases or passwords into it,
+                    and never send bitcoin to a demo address.</strong> SafeKeepVault itself runs on a laptop or desktop computer,
+                    not on a phone or tablet.
                 </p>
             </div>
 
             <!-- Section 1: Download -->
             <section class="content-section" id="release">
-                <h2 class="section-heading">Latest Release</h2>
+                <h2 class="section-heading">Download the latest release</h2>
                 <p>
                     <strong>SafeKeepVault</strong> is a bootable disk image. Flash it to a USB flash drive
                     using <a href="https://etcher.balena.io/" target="_blank" rel="noopener">Balena Etcher</a> (Mac or Windows)
@@ -206,7 +177,7 @@
 
             <!-- Section 3: Don't Trust, Verify -->
             <section class="content-section" id="verify">
-                <h2 class="section-heading">Don&rsquo;t Trust, Verify</h2>
+                <h2 class="section-heading">Check that it&rsquo;s genuine</h2>
                 <p>
                     A tampered image could silently steal your seed. Verification takes about two minutes — complete all three steps before writing to your USB drive.
                 </p>
@@ -315,31 +286,11 @@
                     </p>
                 </div>
 
-                <h3 class="sub-heading" id="verify-app">Extra checks for the app itself</h3>
-                <p>
-                    The app inside this image is byte-for-byte the official v1.56 GitHub release build of
-                    <code>boot.html</code> (SHA-256 <code>94196bdd&hellip;560f32</code>, matching that release&rsquo;s
-                    <code>SHA256SUMS</code>). Since v1.36, every release of the app is published on GitHub with four
-                    independent ways to check it. Each one guards against something different:
-                </p>
-                <ul class="docs-list">
-                    <li><strong>Checksum (<code>SHA256SUMS</code>) &mdash;</strong> the file isn&rsquo;t corrupted. On its own it proves nothing about who made it.</li>
-                    <li><strong>Maintainer signature (<code>SHA256SUMS.asc</code>) &mdash;</strong> the developer key above signed these exact hashes. It is added by hand shortly after a release appears.</li>
-                    <li><strong>GitHub build attestation &mdash;</strong> GitHub&rsquo;s own build service produced these exact bytes from the tagged source code. It doesn&rsquo;t rely on the developer&rsquo;s key.</li>
-                    <li><strong>Bitcoin timestamp (<code>boot.html.ots</code>) &mdash;</strong> an OpenTimestamps proof that the file existed no later than a particular Bitcoin block, independently of GitHub.</li>
-                    <li><strong>Reproducible build &mdash;</strong> the strongest check: anyone can rebuild the app from source and get byte-for-byte the same file, so you don&rsquo;t have to trust the build machine at all.</li>
-                </ul>
-                <p>
-                    The <a href="https://github.com/Pasalon0404/SafeKeepVault/blob/main/VERIFYING.md" target="_blank" rel="noopener">verification guide (VERIFYING.md)</a>
-                    has the exact commands for each check. The version stamp on the vault&rsquo;s welcome screen and dashboard
-                    (for example <code>v1.56 &middot; build 411 &middot; 91ccb58</code>) names the exact source commit the app was built from.
-                </p>
-
             </section>
 
             <!-- Section 3: Flash & Boot -->
             <section class="content-section" id="flash">
-                <h2 class="section-heading">Flash &amp; Boot</h2>
+                <h2 class="section-heading">Put it on a flash drive and start it</h2>
                 <p>
                     Write the image to a dedicated USB flash drive (8 GB or larger). The host machine&rsquo;s
                     internal drive is completely bypassed and remains untouched throughout the session.
@@ -409,9 +360,36 @@
 
             </section>
 
+            <!-- Updating an existing flash drive -->
+            <section class="content-section" id="update">
+                <h2 class="section-heading">Updating a flash drive you already have</h2>
+            <!-- One-time upgrade to the two-slot layout -->
+            <div class="notice-block">
+                <p class="notice-title">Already on v1.47 or later? Update in place, no reflash</p>
+                <p>
+                    Download the signed update file
+                    <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.56/SafeKeep-Update-v1.56.tar"><code>SafeKeep-Update-v1.56.tar</code></a>,
+                    copy it onto your flash drive&rsquo;s <strong>TRANSFER</strong> drive and install it from
+                    <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched. The
+                    <a href="docs.html#update-in-place">update guide</a> has the steps.
+                </p>
+            </div>
+
+            <div class="notice-block">
+                <p class="notice-title">Coming from v1.46 or earlier? Reflash once, then update in place</p>
+                <p>
+                    v1.47 changed how the flash drive is laid out, so it can update itself from then on. That needs a
+                    <strong>USB flash drive of 8 GB or more</strong>, and one last reflash: back up, flash v1.56,
+                    restore. The <a href="docs.html#updating">update guide</a> walks you through it. After that,
+                    future versions install from <strong>Device Options &rarr; Update SafeKeep</strong>, without
+                    reflashing and without touching your vault.
+                </p>
+            </div>
+            </section>
+
             <!-- Section 4: Build It Yourself -->
             <section class="content-section" id="build">
-                <h2 class="section-heading">Build It Yourself</h2>
+                <h2 class="section-heading">For advanced users: build it yourself</h2>
                 <p>
                     Verifying the signature proves the release came from the developer. Building from source
                     goes one step further: the image you flash contains exactly the code you reviewed, so a
@@ -513,6 +491,27 @@
                 <div class="cta-row" style="margin-top: 1.75rem;">
                     <a href="donate.html" class="btn-secondary">&#9825; Donate</a>
                 </div>
+
+                <h3 class="sub-heading" id="verify-app">Extra checks for the app itself</h3>
+                <p>
+                    The app inside this image is byte-for-byte the official v1.56 GitHub release build of
+                    <code>boot.html</code> (SHA-256 <code>94196bdd&hellip;560f32</code>, matching that release&rsquo;s
+                    <code>SHA256SUMS</code>). Since v1.36, every release of the app is published on GitHub with four
+                    independent ways to check it. Each one guards against something different:
+                </p>
+                <ul class="docs-list">
+                    <li><strong>Checksum (<code>SHA256SUMS</code>) &mdash;</strong> the file isn&rsquo;t corrupted. On its own it proves nothing about who made it.</li>
+                    <li><strong>Maintainer signature (<code>SHA256SUMS.asc</code>) &mdash;</strong> the developer key above signed these exact hashes. It is added by hand shortly after a release appears.</li>
+                    <li><strong>GitHub build attestation &mdash;</strong> GitHub&rsquo;s own build service produced these exact bytes from the tagged source code. It doesn&rsquo;t rely on the developer&rsquo;s key.</li>
+                    <li><strong>Bitcoin timestamp (<code>boot.html.ots</code>) &mdash;</strong> an OpenTimestamps proof that the file existed no later than a particular Bitcoin block, independently of GitHub.</li>
+                    <li><strong>Reproducible build &mdash;</strong> the strongest check: anyone can rebuild the app from source and get byte-for-byte the same file, so you don&rsquo;t have to trust the build machine at all.</li>
+                </ul>
+                <p>
+                    The <a href="https://github.com/Pasalon0404/SafeKeepVault/blob/main/VERIFYING.md" target="_blank" rel="noopener">verification guide (VERIFYING.md)</a>
+                    has the exact commands for each check. The version stamp on the vault&rsquo;s welcome screen and dashboard
+                    (for example <code>v1.56 &middot; build 411 &middot; 91ccb58</code>) names the exact source commit the app was built from.
+                </p>
+
             </section>
 
         </main>

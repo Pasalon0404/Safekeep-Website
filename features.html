@@ -85,85 +85,84 @@
                 <p class="page-hero-label">What&rsquo;s inside the vault</p>
                 <h1 class="page-hero-title">Features</h1>
                 <p class="page-hero-tagline">
-                    Designed to keep your keys offline &middot; Built for Bitcoin self-custody
+                    How SafeKeepVault keeps your keys offline, and the tools that come with it.
                 </p>
             </div>
 
 
-            <!-- Section 1: Fortress -->
+            <!-- Section 1: Offline by design -->
             <section class="content-section">
-<h3 class="subsection-heading">Architectural Security</h3>
+                <h2 class="section-heading">Built to stay offline</h2>
                 <p>
-                    <strong>SafeKeepVault</strong> boots directly into a hardened, air-gapped environment with all network interfaces disabled and no access to your host machine’s storage. Security isn’t a setting you configure &mdash; it’s the starting state.
+                    <strong>SafeKeepVault</strong> starts your computer in a locked-down system that can&rsquo;t go online and
+                    doesn&rsquo;t touch the computer&rsquo;s own drive. There&rsquo;s nothing to configure: this is how it starts every time.
                 </p>
-
-                <h3 class="subsection-heading">Absolute Air-Gap &mdash; Total Network Isolation</h3>
-                <p><strong>SafeKeepVault</strong> has no network, Wi-Fi or Bluetooth drivers at all: they are deleted from the system image when it is built. Your private keys are completely isolated and never have the chance to reach any network interface.</p>
                 <ul class="spec-list">
                     <li>
-                        <span class="spec-label">Start-up Self-Check</span>
-                        <span class="spec-desc">Before you can enter anything, the vault runs published Bitcoin test vectors (seed words, key derivation, addresses, signatures) through its own code. If this computer gets a single answer wrong, the vault stops instead of risking a wrong key or address.</span>
+                        <span class="spec-label">No way online</span>
+                        <span class="spec-desc">Every network, Wi-Fi, Bluetooth, NFC and USB-network driver is removed from the system, along with the terminal, the file manager and the compilers. A watchdog switches off any network connection that appears and shows a red warning. For the strongest air gap, also unplug the network cable.</span>
                     </li>
                     <li>
-                        <span class="spec-label">No Network Drivers, No Shell</span>
-                        <span class="spec-desc">Every network, Wi-Fi, Bluetooth, NFC and USB-network driver is removed from the image, along with the terminal, the file manager and the compilers. A watchdog switches off any network interface that appears and shows a red warning. For the strongest air gap, also unplug the network cable.</span>
+                        <span class="spec-label">Checks itself first</span>
+                        <span class="spec-desc">Before you can enter anything, the vault runs published Bitcoin test cases (seed words, keys, addresses, signatures) through its own code. If this computer gets a single answer wrong, the vault stops instead of risking a wrong key or address.</span>
                     </li>
                     <li>
-                        <span class="spec-label">Hardware Lockdown</span>
-                        <span class="spec-desc">Non-essential peripherals are deactivated. The system communicates only with your display, keyboard, mouse, camera, the flash drive itself, and a Coldcard or Trezor One if you choose to co-sign with one. About 30 seconds after boot, any newly plugged-in keyboard or mouse is blocked, to defend against &ldquo;BadUSB&rdquo; devices that pretend to be a keyboard.</span>
-                    </li>
-                </ul>
-
-                <h3 class="subsection-heading">Zero-Footprint Operations &mdash; Host Integrity</h3>
-                <p><strong>SafeKeepVault</strong> operates in complete isolation from your computer's internal storage. Your hard drive is never mounted, read, or modified, ensuring your host OS remains untouched.</p>
-                <ul class="spec-list">
-                    <li>
-                        <span class="spec-label">Volatile Memory Execution</span>
-                        <span class="spec-desc">SafeKeep OS runs from RAM and never mounts your computer&rsquo;s own drives, so nothing from a session is written to the computer. Keys you load are held only in memory and are cleared when you lock or shut down. The only thing saved is your encrypted vault, on the flash drive itself; a Temporary Session saves nothing at all.</span>
-                    </li>
-                </ul>
-
-                <h3 class="subsection-heading">Temporary or Encrypted Versatility &mdash; Persistent or Temporary</h3>
-                <p>Choose your workflow for every session. Utilize the Encrypted Vault to securely store keys for recurring use, or run in Temporary Session for using a different private key or multi-signature setup.</p>
-                <ul class="spec-list">
-                    <li>
-                        <span class="spec-label">Streamlined Authentication</span>
-                        <span class="spec-desc">Access your encrypted storage securely and conveniently. Authenticate by scanning a secure QR code via your mobile device or through traditional password entry.</span>
+                        <span class="spec-label">Blocks fake keyboards</span>
+                        <span class="spec-desc">It talks only to your screen, keyboard, mouse, camera, the flash drive, and a Coldcard or Trezor One if you co-sign with one. About 30 seconds after it starts, any newly plugged-in keyboard or mouse is blocked, so a USB device pretending to be a keyboard can&rsquo;t type commands.</span>
                     </li>
                     <li>
-                        <span class="spec-label">True Lock</span>
-                        <span class="spec-desc">Locking closes the app, clears your keys from memory and closes the encrypted partition, returning to the password prompt. Set an Auto-Lock timer, or leave a Temporary Session and return to your master vault without rebooting.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">No Branded Hardware</span>
-                        <span class="spec-desc">Transform any standard PC into a signing station without buying a hardware wallet, so there&rsquo;s no order or shipping record tied to a Bitcoin device. The flash drive itself isn&rsquo;t disguised: its boot menu and drive names say SafeKeep, so keep it as private as the hardware wallet it replaces.</span>
+                        <span class="spec-label">Leaves your computer untouched</span>
+                        <span class="spec-desc">SafeKeepVault runs from memory and never opens your computer&rsquo;s own drive, so nothing from a session is written to it. Keys are cleared from memory when you lock or shut down.</span>
                     </li>
                 </ul>
             </section>
 
-            <!-- Section 2: Arsenal -->
             <section class="content-section">
-                <h2 class="section-heading">The Arsenal</h2>
+                <h2 class="section-heading">Keep your seed, or keep nothing</h2>
+                <ul class="spec-list">
+                    <li>
+                        <span class="spec-label">Encrypted vault</span>
+                        <span class="spec-desc">Store your seed, passphrases, wallets and notes on the flash drive, encrypted with AES-256. Unlock it by typing your password, or by showing a QR code of it from your phone to the camera.</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Temporary Session</span>
+                        <span class="spec-desc">Load a different seed for one session, for example a second key of a multisig wallet. Nothing from it is saved, and you can go back to your vault without restarting.</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">A real lock</span>
+                        <span class="spec-desc">Locking clears your keys from memory and closes the encrypted vault, back to the password prompt. An Auto-Lock timer can do it for you.</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">No device to order</span>
+                        <span class="spec-desc">There&rsquo;s no order or shipping record tied to a Bitcoin device. The flash drive itself isn&rsquo;t disguised, though: its startup menu and drive names say SafeKeep, so keep it as private as the hardware wallet it replaces.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Section 2: Tools -->
+            <section class="content-section">
+                <h2 class="section-heading">16 tools</h2>
                 <p>
-                    A comprehensive suite of sixteen specialized tools covering the entire Bitcoin lifecycle: generation, backup, sharding, derivation, signing, and inheritance planning. Every utility operates within a strictly air-gapped environment, producing standardized outputs compatible with any industry-standard wallet or coordinator.
+                    Everything you need to create, back up and use your keys, from your first seed to signing a multisig payment.
+                    Each tool works offline and produces standard formats your wallet app understands.
                 </p>
                 <ul class="tools-list">
-                    <li><span class="tool-name">PSBT Signer</span></li>
-                    <li><span class="tool-name">Seed Management</span></li>
-                    <li><span class="tool-name">Transfer Hub</span></li>
-                    <li><span class="tool-name">Entropy Generator</span></li>
-                    <li><span class="tool-name">BIP-85 Child Seeds</span></li>
-                    <li><span class="tool-name">Seed QR Code</span></li>
-                    <li><span class="tool-name">Passphrase Library</span></li>
-                    <li><span class="tool-name">Output Descriptor</span></li>
-                    <li><span class="tool-name">Seed XOR Splitter</span></li>
-                    <li><span class="tool-name">Shamir Backup</span></li>
-                    <li><span class="tool-name">Encrypted Backup</span></li>
-                    <li><span class="tool-name">Wallet Record</span></li>
-                    <li><span class="tool-name">Message Signer</span></li>
-                    <li><span class="tool-name">Courier Tool</span></li>
-                    <li><span class="tool-name">Encrypted Notes</span></li>
-                    <li><span class="tool-name">2FA Backup</span></li>
+                    <li><span class="tool-name">PSBT Signer</span><span class="tool-sub">Check and sign a transaction</span></li>
+                    <li><span class="tool-name">Seed Management</span><span class="tool-sub">View seed words, public keys and addresses</span></li>
+                    <li><span class="tool-name">Transfer Hub</span><span class="tool-sub">Manage files on the Transfer Drive</span></li>
+                    <li><span class="tool-name">Entropy Generator</span><span class="tool-sub">Create a seed from dice, cards or other randomness</span></li>
+                    <li><span class="tool-name">BIP-85 Child Seeds</span><span class="tool-sub">Make separate seeds from your main one</span></li>
+                    <li><span class="tool-name">Seed QR Code</span><span class="tool-sub">Turn your seed into a QR code</span></li>
+                    <li><span class="tool-name">Passphrase Library</span><span class="tool-sub">Save and load passphrases</span></li>
+                    <li><span class="tool-name">Output Descriptor</span><span class="tool-sub">Build, check and export wallets</span></li>
+                    <li><span class="tool-name">Seed XOR Splitter</span><span class="tool-sub">Split your seed into XOR shares</span></li>
+                    <li><span class="tool-name">Shamir Backup</span><span class="tool-sub">Split your seed into Shamir shares</span></li>
+                    <li><span class="tool-name">Encrypted Backup</span><span class="tool-sub">Back up the whole vault to one encrypted file</span></li>
+                    <li><span class="tool-name">Wallet Record</span><span class="tool-sub">Print a one-page record of a wallet</span></li>
+                    <li><span class="tool-name">Message Signer</span><span class="tool-sub">Prove you own an address</span></li>
+                    <li><span class="tool-name">Courier Tool</span><span class="tool-sub">Send data to another device by QR code</span></li>
+                    <li><span class="tool-name">Encrypted Notes</span><span class="tool-sub">Keep private notes in the vault</span></li>
+                    <li><span class="tool-name">2FA Backup</span><span class="tool-sub">Back up authenticator app codes</span></li>
                 </ul>
             </section>
 
@@ -232,56 +231,30 @@
 
             <!-- Section 3: Wallet Compatibility -->
             <section class="content-section" id="compatibility">
-                <h2 class="section-heading">Seamless Ecosystem Integration</h2>
+                <h2 class="section-heading">Works with the wallets you already use</h2>
                 <p>
-                    <strong>SafeKeepVault</strong> acts as a secure shield for the wallet software you already use. While your regular wallet tracks your balances, <strong>SafeKeepVault</strong> keeps your private keys completely offline and out of reach.
+                    Your usual wallet app keeps track of your balance using only your public key, so it can see your
+                    bitcoin but can&rsquo;t spend it (a <em>watch-only wallet</em>). When you want to spend, it prepares the
+                    payment and passes it to <strong>SafeKeepVault</strong> by QR code or on the flash drive. You check it,
+                    sign it offline and pass it back for your wallet app to send.
                 </p>
                 <p>
-                    To get started, export your public key information from <strong>SafeKeepVault</strong> and import it into your wallet of choice &mdash; like Sparrow, Specter, Electrum, Nunchuk, or BlueWallet &mdash; to create a watch-only wallet. Your watch-only wallet can track your balance and transaction history in full without ever touching your private keys.
+                    Step-by-step setup guides:
+                    <a href="docs.html#ww-bluewallet">BlueWallet</a> &middot;
+                    <a href="docs.html#ww-nunchuk">Nunchuk</a> &middot;
+                    <a href="docs.html#ww-sparrow">Sparrow</a> &middot;
+                    <a href="docs.html#ww-specter">Specter</a> &middot;
+                    <a href="docs.html#ww-electrum">Electrum</a> &middot;
+                    <a href="docs.html#ww-core">Bitcoin Core</a>
                 </p>
+                <h3 class="subsection-heading">Multisig</h3>
                 <p>
-                    When it&rsquo;s time to spend, your watch-only wallet builds the transaction and hands it off as a PSBT file. Move it over to <strong>SafeKeepVault</strong> by QR code or on the flash drive, sign it while fully offline, and send it back to your regular wallet to broadcast. Your keys stay totally disconnected from the internet, exactly where they belong.
+                    <strong>SafeKeepVault</strong> can hold one key of a 2-of-3 or larger multisig wallet alongside a Coldcard,
+                    Trezor or other signing device, or hold several keys itself for one session. A <strong>Coldcard</strong> or
+                    <strong>Trezor One</strong> can also plug straight into the vault: it reads the device&rsquo;s key when you set
+                    up the wallet, and asks it for its signature after the vault adds its own. You approve each signature on the
+                    device&rsquo;s own screen.
                 </p>
-                <h3 class="subsection-heading">Advanced Multisig Coordination</h3>
-                <p>
-                    <strong>SafeKeepVault</strong> is a first-class participant in any multi-signature setup. If you already own a Coldcard, Trezor, or any other signing device, <strong>SafeKeepVault</strong> works alongside it seamlessly &mdash; contributing one key in a 2-of-3 or larger quorum just like any dedicated hardware wallet would. No need to replace what you already have.
-                </p>
-                <p>
-                    A <strong>Coldcard</strong> or <strong>Trezor One</strong> can even be plugged straight into the vault. Pair it once in Device Options, and after the vault adds its own signature the PSBT Signer can ask the device for the second one over USB &mdash; no files or QR codes passed back and forth. You approve every signature on the hardware wallet&rsquo;s own screen, and the vault only ever talks to the device you paired.
-                </p>
-                <p>
-                    Setting up the multisig wallet works the same way: in the Output Descriptor tool, <strong>Coldcard (USB)</strong> and <strong>Trezor (USB)</strong> read a cosigner&rsquo;s fingerprint and multisig key straight from the device plugged into the vault, so that key never passes through an online computer. This is especially useful for the Trezor One, which has no SD card or QR code output.
-                </p>
-                <p>
-                    If you prefer an all-in-one approach, <strong>SafeKeepVault</strong> can also hold and sign with multiple keys itself. Load your primary key from encrypted storage, then temporarily bring in additional keys to meet the required threshold. Those extra keys exist only in volatile memory &mdash; the moment you finish or shut down, they are wiped completely and permanently, leaving no trace on the drive.
-                </p>
-                <h3 class="subsection-heading">Native Compatibility</h3>
-                <ul class="spec-list">
-                    <li>
-                        <span class="spec-label">BlueWallet</span>
-                        <span class="spec-desc">Export your public key to BlueWallet and monitor your balance from your phone. Your signing keys never leave <strong>SafeKeepVault</strong> &mdash; BlueWallet sees your funds, but can't touch them.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Nunchuk</span>
-                        <span class="spec-desc">Nunchuk handles transaction coordination and broadcasting from your phone while <strong>SafeKeepVault</strong> serves as your offline signing device. Scan the unsigned transaction, sign it on the vault, and send the result back &mdash; your keys never touch a networked device.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Sparrow Wallet</span>
-                        <span class="spec-desc">Use Sparrow on your desktop to track your balances and organize transactions. When it’s time to sign, Sparrow hands the job off to <strong>SafeKeepVault</strong>—keeping your keys offline while you move data back and forth using simple files or QR codes.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Specter Desktop</span>
-                        <span class="spec-desc">A natural fit for multisig-first setups. <strong>SafeKeepVault</strong> exports descriptors and PSBTs in the formats Specter expects, making it straightforward to coordinate complex signing arrangements without ever exposing a key to an online machine.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Electrum</span>
-                        <span class="spec-desc">Set up Electrum as your watch-only coordinator and use <strong>SafeKeepVault</strong> as the offline signer. Export your public key, track your balance in Electrum, and sign transactions on the vault when it's time to spend.</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Bitcoin Core</span>
-                        <span class="spec-desc">Run your own node? The Output Descriptor tool exports a watch-only import file for Bitcoin Core (v0.21 or later). Your node tracks the wallet and can build PSBTs for the vault to sign, with no third-party server involved and no private keys in the export. It can also import a wallet from Sparrow, BlueWallet or Bitcoin Core as a watch-only wallet, to show and check its addresses offline.</span>
-                    </li>
-                </ul>
             </section>
 
 
@@ -289,10 +262,8 @@
             <section class="content-section" id="download">
                 <h2 class="section-heading">Download</h2>
                 <p>
-                    Verify the signature against the maintainer's public key
-                    before writing the image to a flash drive. The
-                    <a href="download.html#verify">verification guide</a> walks through
-                    the procedure end to end.
+                    SafeKeepVault is free. The <a href="download.html">download page</a> shows how to check that your copy is
+                    genuine and put it on a flash drive.
                 </p>
 <div class="cta-row" style="margin-top: 1.75rem;">
                     <a href="download.html" class="btn-primary">Download</a>
