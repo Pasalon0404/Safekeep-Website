@@ -609,6 +609,14 @@ a {
     color: var(--text-muted);
 }
 
+/* Links in notice boxes were the same color as the text, so they didn't look clickable */
+.notice-block a:not([class]) {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: underline;
+    border-bottom: none;
+}
+
 /* Code */
 code {
     font-family: var(--font-mono);
@@ -1705,27 +1713,9 @@ pre code {
 }
 .hero-meta strong { color: var(--text-muted); font-weight: 600; }
 
-/* Home page hero: centered over the full width of the content below it */
-.hero { text-align: center; }
-.hero-lede, .hero .demo-note { margin-left: auto; margin-right: auto; }
-.hero-cta { justify-content: center; }
-.hero::before {
-    background: radial-gradient(60% 100% at 50% 0%, var(--accent-soft) 0%, transparent 70%);
-}
-.hero::after {
-    -webkit-mask-image: radial-gradient(70% 60% at 50% 20%, #000 0%, transparent 75%);
-            mask-image: radial-gradient(70% 60% at 50% 20%, #000 0%, transparent 75%);
-}
-
-/* ---- Trust badge row ---- */
-.trust-badges {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    padding: 0;
-    margin: 1.75rem 0 0;
-}
+/* Home page hero: left-aligned, with the text running the full width of
+   the content below it instead of a narrow column */
+.hero-lede, .hero .demo-note { max-width: none; }
 
 .trust-badges li {
     display: inline-flex;
