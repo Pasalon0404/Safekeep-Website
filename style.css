@@ -1837,6 +1837,33 @@ pre code {
     .steps-grid, .fit-grid { grid-template-columns: 1fr; }
 }
 
+/* ---- Quick start: numbered steps ---- */
+.quick-steps { list-style: none; counter-reset: qs; padding: 0; margin: 0; }
+.quick-steps > li {
+    counter-increment: qs;
+    position: relative;
+    padding: 0 0 1.5rem 3rem;
+    margin: 0 0 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+.quick-steps > li:last-child { border-bottom: none; margin-bottom: 0; }
+.quick-steps > li::before {
+    content: counter(qs);
+    position: absolute; left: 0; top: 0;
+    width: 2rem; height: 2rem;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-ring);
+    color: var(--accent);
+    font-weight: 800;
+}
+.quick-steps h2 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 0.25rem 0 0.5rem; }
+.quick-steps h2::before { content: none; }
+.quick-steps p { margin: 0 0 0.5rem; }
+.quick-more { font-size: 0.9rem; }
+.quick-more a { color: var(--accent); font-weight: 600; }
+
 /* ---- Stat / proof strip ---- */
 .stat-strip {
     display: grid;
