@@ -15,14 +15,11 @@
     <div class="top-nav-inner">
         <a href="index.html" class="top-nav-brand">SafeKeep<span>Bitcoin</span></a>
         <ul class="top-nav-links">
-            <li class="hide-mobile"><a href="index.html">Home</a></li>
             <li class="hide-mobile"><a href="features.html">Features</a></li>
             <li class="hide-mobile"><a href="compare.html">Compare</a></li>
             <li class="hide-mobile"><a href="docs.html">Docs</a></li>
             <li class="hide-mobile"><a href="courier.html">Courier</a></li>
-            <li class="hide-mobile"><a href="print-qr.html">Print QR</a></li>
             <li class="hide-mobile"><a href="about.html">About</a></li>
-            <li class="hide-mobile"><a href="donate.html">Donate</a></li>
             <li class="hide-mobile"><a href="download.html" class="nav-download active">Download</a></li>
         </ul>
         <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile-menu">
@@ -32,12 +29,10 @@
     </div>
     <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
         <ul>
-            <li><a href="index.html">Home</a></li>
             <li><a href="features.html">Features</a></li>
             <li><a href="compare.html">Compare</a></li>
             <li><a href="docs.html">Docs</a></li>
             <li><a href="courier.html">Courier</a></li>
-            <li><a href="print-qr.html">Print QR</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="download.html" class="nav-download active">Download</a></li>
@@ -96,7 +91,7 @@
                 <p>
                     Download the signed update file
                     <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.56/SafeKeep-Update-v1.56.tar"><code>SafeKeep-Update-v1.56.tar</code></a>,
-                    copy it onto your stick&rsquo;s <strong>TRANSFER</strong> drive and install it from
+                    copy it onto your flash drive&rsquo;s <strong>TRANSFER</strong> drive and install it from
                     <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched. The
                     <a href="docs.html#update-in-place">update guide</a> has the steps.
                 </p>
@@ -105,7 +100,7 @@
             <div class="notice-block">
                 <p class="notice-title">Coming from v1.46 or earlier? Reflash once, then update in place</p>
                 <p>
-                    v1.47 changed how the stick is laid out, so it can update itself from then on. That needs a
+                    v1.47 changed how the flash drive is laid out, so it can update itself from then on. That needs a
                     <strong>USB flash drive of 8 GB or more</strong>, and one last reflash: back up, flash v1.56,
                     restore. The <a href="docs.html#updating">update guide</a> walks you through it. After that,
                     future versions install from <strong>Device Options &rarr; Update SafeKeep</strong>, without
@@ -115,18 +110,18 @@
 
             <!-- Online demo -->
             <div class="notice-block">
-                <p class="notice-title">Not ready to flash a USB stick? See the tools in the online demo</p>
+                <p class="notice-title">Not ready to set up a USB flash drive? See the tools in the online demo</p>
                 <p>
                     The <a href="https://demo.safekeepbitcoin.com/" target="_blank" rel="noopener">online demo</a> is a preview of
                     SafeKeepVault in your browser. It lets you look through every tool, but it isn&rsquo;t a working vault:
                     it only works with public demo seeds that anyone can spend from, it never shows seeds created in it,
-                    and it can&rsquo;t send anything over the network. To protect real bitcoin you need the USB stick,
+                    and it can&rsquo;t send anything over the network. To protect real bitcoin you need the USB flash drive,
                     which runs the same tools offline on your own computer. Because the demo runs on an online device,
                     <strong>never type your real seed words, passphrases or passwords into it, and never send bitcoin to a
                     demo address.</strong>
                 </p>
                 <p>
-                    SafeKeepVault runs on a laptop or desktop computer, started from the USB stick. It doesn&rsquo;t run on
+                    SafeKeepVault runs on a laptop or desktop computer, started from the USB flash drive. It doesn&rsquo;t run on
                     phones or tablets. You can open the demo on a phone to look around, but it&rsquo;s easier to explore on a
                     computer screen.
                 </p>
@@ -392,17 +387,17 @@
                     </p>
                     <p class="verify-note">
                         Most PCs start <strong>SafeKeepVault</strong> with Secure Boot left on: its boot loader and
-                        kernel come from Ubuntu and are signed. If yours refuses the stick, with a Secure Boot or
-                        &ldquo;security violation&rdquo; message or no stick in the boot menu, turn off
+                        kernel come from Ubuntu and are signed. If yours refuses the flash drive, with a Secure Boot or
+                        &ldquo;security violation&rdquo; message or no flash drive in the boot menu, turn off
                         <strong>Secure Boot</strong> in the BIOS/UEFI setup, or allow the &ldquo;Microsoft 3rd-party
                         UEFI CA&rdquo; if your PC offers that option. If Windows on this computer uses BitLocker, have
                         your BitLocker recovery key handy before you change Secure Boot: Windows may ask for it the
                         next time it starts. Intel Macs with the T2 chip (2018&ndash;2020) need Startup Security
-                        Utility set to &ldquo;No Security&rdquo;. Sticks made before v1.54 still need Secure Boot
+                        Utility set to &ldquo;No Security&rdquo;. Flash drives made before v1.54 still need Secure Boot
                         off until they are reflashed.
                     </p>
                     <p class="verify-note">
-                        <strong>Updating an existing stick?</strong> Flashing erases the whole drive, including
+                        <strong>Updating an existing flash drive?</strong> Flashing erases the whole drive, including
                         your encrypted vault. Follow <a href="docs.html#updating">Updating to a New Version</a>
                         first to back up and restore what&rsquo;s on it.
                     </p>
@@ -489,7 +484,7 @@
                     <p>These routes haven&rsquo;t been tested end to end yet. If you try one, please report how it went.</p>
                 </div>
                 <ul class="docs-list">
-                    <li><strong>Windows PCs and Intel Macs &mdash;</strong> boot Ubuntu 24.04 from a USB stick in &ldquo;Try Ubuntu&rdquo; mode, or use a Linux virtual machine (VirtualBox, VMware, Hyper-V). A live session runs in RAM, so keep the work folder on an external drive with about 15&nbsp;GB free.</li>
+                    <li><strong>Windows PCs and Intel Macs &mdash;</strong> boot Ubuntu 24.04 from a USB flash drive in &ldquo;Try Ubuntu&rdquo; mode, or use a Linux virtual machine (VirtualBox, VMware, Hyper-V). A live session runs in RAM, so keep the work folder on an external drive with about 15&nbsp;GB free.</li>
                     <li><strong>Apple Silicon Macs (M1&ndash;M4) &mdash;</strong> virtual machines there run ARM Linux, and this build needs x86-64. Emulating x86-64 is very slow. Borrowing a PC or renting an x86-64 Linux server works better.</li>
                     <li><strong>A rented Linux server &mdash;</strong> works for anyone, with one caveat: the build then runs on someone else&rsquo;s computer.</li>
                     <li><strong>Flashing on Mac or Windows &mdash;</strong> use <a href="https://etcher.balena.io/" target="_blank" rel="noopener">balenaEtcher</a>, or <a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a> in &ldquo;DD image&rdquo; mode. Check the image&rsquo;s SHA-256 first.</li>

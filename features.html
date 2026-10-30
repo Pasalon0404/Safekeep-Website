@@ -15,14 +15,11 @@
     <div class="top-nav-inner">
         <a href="index.html" class="top-nav-brand">SafeKeep<span>Bitcoin</span></a>
         <ul class="top-nav-links">
-            <li class="hide-mobile"><a href="index.html">Home</a></li>
             <li class="hide-mobile"><a href="features.html" class="active">Features</a></li>
             <li class="hide-mobile"><a href="compare.html">Compare</a></li>
             <li class="hide-mobile"><a href="docs.html">Docs</a></li>
             <li class="hide-mobile"><a href="courier.html">Courier</a></li>
-            <li class="hide-mobile"><a href="print-qr.html">Print QR</a></li>
             <li class="hide-mobile"><a href="about.html">About</a></li>
-            <li class="hide-mobile"><a href="donate.html">Donate</a></li>
             <li class="hide-mobile"><a href="download.html" class="nav-download">Download</a></li>
         </ul>
         <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile-menu">
@@ -32,12 +29,10 @@
     </div>
     <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
         <ul>
-            <li><a href="index.html">Home</a></li>
             <li><a href="features.html" class="active">Features</a></li>
             <li><a href="compare.html">Compare</a></li>
             <li><a href="docs.html">Docs</a></li>
             <li><a href="courier.html">Courier</a></li>
-            <li><a href="print-qr.html">Print QR</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="download.html" class="nav-download">Download</a></li>
@@ -91,20 +86,6 @@
             </div>
 
 
-            <!-- What's New Banner -->
-            <div style="margin: 1.5rem 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius-md);">
-                <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.35rem;">Recent releases (up to v1.56)</p>
-                <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.6rem;">Updates without reflashing, backups you can check, and a clearer transaction review</p>
-                <ul style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 0.75rem; padding-left: 1.2rem;">
-                    <li style="margin: 0 0 0.5rem;"><strong>Updates without reflashing.</strong> Install a signed update from the Transfer Drive, with the previous version one menu choice away (v1.47). Most PCs now start the stick with Secure Boot left on (v1.54).</li>
-                    <li style="margin: 0 0 0.5rem;"><strong>Backups you can check.</strong> Send a backup to your phone with the Courier, check that it opens, and restore a new stick from it, all without an online computer (v1.55). Seed XOR and Shamir shares are made one at a time and checked against your paper (v1.52).</li>
-                    <li style="margin: 0 0 0.5rem;"><strong>Safer seeds and passwords.</strong> The random number generator is tested before every seed, patterned dice rolls are refused (v1.50), and so are easy-to-guess vault passwords (v1.51).</li>
-                    <li style="margin: 0 0 0.5rem;"><strong>A clearer transaction review.</strong> Save your wallets in the vault and the <strong>PSBT Signer</strong> confirms which one is spending and that the change comes back to you. It shows the total leaving your wallet and lets you compare each address character by character (v1.46).</li>
-                    <li style="margin: 0 0 0.5rem;"><strong>Works with more wallets.</strong> Nunchuk and Sparrow add your key by scanning the screen (v1.53); import from Sparrow, BlueWallet or Bitcoin Core (v1.45); co-sign with a <strong>Coldcard</strong> or <strong>Trezor One</strong> over USB (v1.44); file-only wallets such as Trezor Suite work through <strong>The Courier</strong> (v1.43).</li>
-                    <li style="margin: 0;"><strong>Less to attack.</strong> Every network driver, the terminal and the file manager are gone from SafeKeep OS (v1.45).</li>
-                </ul>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.6;"><a href="release-notes.html" style="color: var(--accent); font-weight: 600;">See every release in the release notes &rarr;</a></p>
-            </div>
             <!-- Section 1: Fortress -->
             <section class="content-section">
 <h3 class="subsection-heading">Architectural Security</h3>
@@ -121,7 +102,7 @@
                     </li>
                     <li>
                         <span class="spec-label">No Network Drivers, No Shell</span>
-                        <span class="spec-desc">Every network, Wi-Fi, Bluetooth, NFC and USB-network driver is removed from the image, along with the terminal, the file manager and the compilers. A watchdog switches off any network interface that appears and shows a red warning. For the strongest air gap, also unplug network cables and turn off Intel AMT/vPro and the radios in the BIOS/UEFI.</span>
+                        <span class="spec-desc">Every network, Wi-Fi, Bluetooth, NFC and USB-network driver is removed from the image, along with the terminal, the file manager and the compilers. A watchdog switches off any network interface that appears and shows a red warning. For the strongest air gap, also unplug the network cable.</span>
                     </li>
                     <li>
                         <span class="spec-label">Hardware Lockdown</span>
@@ -139,7 +120,7 @@
                 </ul>
 
                 <h3 class="subsection-heading">Temporary or Encrypted Versatility &mdash; Persistent or Temporary</h3>
-                <p>Choose your workflow for every session. Utilize the Encrypted Vault to securely store keys for recurring use, or run in Temporary Mode for using a different private key or multi-signature setup.</p>
+                <p>Choose your workflow for every session. Utilize the Encrypted Vault to securely store keys for recurring use, or run in Temporary Session for using a different private key or multi-signature setup.</p>
                 <ul class="spec-list">
                     <li>
                         <span class="spec-label">Streamlined Authentication</span>
@@ -151,7 +132,7 @@
                     </li>
                     <li>
                         <span class="spec-label">No Branded Hardware</span>
-                        <span class="spec-desc">Transform any standard PC into a signing station without buying a hardware wallet, so there&rsquo;s no order or shipping record tied to a Bitcoin device. The stick itself isn&rsquo;t disguised: its boot menu and drive names say SafeKeep, so keep it as private as the hardware wallet it replaces.</span>
+                        <span class="spec-desc">Transform any standard PC into a signing station without buying a hardware wallet, so there&rsquo;s no order or shipping record tied to a Bitcoin device. The flash drive itself isn&rsquo;t disguised: its boot menu and drive names say SafeKeep, so keep it as private as the hardware wallet it replaces.</span>
                     </li>
                 </ul>
             </section>
@@ -252,10 +233,10 @@
                     <strong>SafeKeepVault</strong> acts as a secure shield for the wallet software you already use. While your regular wallet tracks your balances, <strong>SafeKeepVault</strong> keeps your private keys completely offline and out of reach.
                 </p>
                 <p>
-                    To get started, export your public key information from <strong>SafeKeepVault</strong> and import it into your wallet of choice &mdash; like Sparrow, Specter, Electrum, Nunchuk, or Blue Wallet &mdash; to create a watch-only wallet. Your watch wallet can track your balance and transaction history in full without ever touching your private keys.
+                    To get started, export your public key information from <strong>SafeKeepVault</strong> and import it into your wallet of choice &mdash; like Sparrow, Specter, Electrum, Nunchuk, or BlueWallet &mdash; to create a watch-only wallet. Your watch-only wallet can track your balance and transaction history in full without ever touching your private keys.
                 </p>
                 <p>
-                    When it&rsquo;s time to spend, your watch wallet builds the transaction and hands it off as a PSBT file. Move it over to <strong>SafeKeepVault</strong> by QR code or sneakernet, sign it while fully offline, and send it back to your regular wallet to broadcast. Your keys stay totally disconnected from the internet, exactly where they belong.
+                    When it&rsquo;s time to spend, your watch-only wallet builds the transaction and hands it off as a PSBT file. Move it over to <strong>SafeKeepVault</strong> by QR code or on the flash drive, sign it while fully offline, and send it back to your regular wallet to broadcast. Your keys stay totally disconnected from the internet, exactly where they belong.
                 </p>
                 <h3 class="subsection-heading">Advanced Multisig Coordination</h3>
                 <p>
@@ -273,8 +254,8 @@
                 <h3 class="subsection-heading">Native Compatibility</h3>
                 <ul class="spec-list">
                     <li>
-                        <span class="spec-label">Blue Wallet</span>
-                        <span class="spec-desc">Export your public key to Blue Wallet and monitor your balance from your phone. Your signing keys never leave <strong>SafeKeepVault</strong> &mdash; Blue Wallet sees your funds, but can't touch them.</span>
+                        <span class="spec-label">BlueWallet</span>
+                        <span class="spec-desc">Export your public key to BlueWallet and monitor your balance from your phone. Your signing keys never leave <strong>SafeKeepVault</strong> &mdash; BlueWallet sees your funds, but can't touch them.</span>
                     </li>
                     <li>
                         <span class="spec-label">Nunchuk</span>

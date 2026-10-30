@@ -110,14 +110,11 @@
     <div class="top-nav-inner">
         <a href="index.html" class="top-nav-brand">SafeKeep<span>Bitcoin</span></a>
         <ul class="top-nav-links">
-            <li class="hide-mobile"><a href="index.html">Home</a></li>
             <li class="hide-mobile"><a href="features.html">Features</a></li>
             <li class="hide-mobile"><a href="compare.html" class="active">Compare</a></li>
             <li class="hide-mobile"><a href="docs.html">Docs</a></li>
             <li class="hide-mobile"><a href="courier.html">Courier</a></li>
-            <li class="hide-mobile"><a href="print-qr.html">Print QR</a></li>
             <li class="hide-mobile"><a href="about.html">About</a></li>
-            <li class="hide-mobile"><a href="donate.html">Donate</a></li>
             <li class="hide-mobile"><a href="download.html" class="nav-download">Download</a></li>
         </ul>
         <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile-menu">
@@ -127,12 +124,10 @@
     </div>
     <div class="nav-mobile-menu" id="nav-mobile-menu" aria-hidden="true">
         <ul>
-            <li><a href="index.html">Home</a></li>
             <li><a href="features.html">Features</a></li>
             <li><a href="compare.html" class="active">Compare</a></li>
             <li><a href="docs.html">Docs</a></li>
             <li><a href="courier.html">Courier</a></li>
-            <li><a href="print-qr.html">Print QR</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="download.html" class="nav-download">Download</a></li>
@@ -263,12 +258,12 @@
                                 <td>Fully open source</td>
                                 <td class="col-skv"><span class="tag-yes">Yes</span> — OS &amp; Application Software</td>
                                 <td><span class="tag-yes">Yes</span> — firmware &amp; hardware designs (the secure-element chip is closed)</td>
-                                <td><span class="tag-part">Partial</span> — source is published, but its licence (MIT + Commons Clause) isn&rsquo;t open source</td>
+                                <td><span class="tag-part">Partial</span> — source is published, but its license (MIT + Commons Clause) isn&rsquo;t open source</td>
                                 <td><span class="tag-no">No</span> — device OS is closed (Bitcoin app is open)</td>
                             </tr>
                             <tr>
                                 <td>Air-gapped</td>
-                                <td class="col-skv"><span class="tag-yes">Yes</span> — QR codes or sneakernet; no network drivers in the image</td>
+                                <td class="col-skv"><span class="tag-yes">Yes</span> — QR codes or files carried on the flash drive; no network drivers in the image</td>
                                 <td><span class="tag-no">No</span> — USB (the Safe 7 also has Bluetooth)</td>
                                 <td><span class="tag-yes">Yes</span> — SD card or NFC; QR codes on the Q</td>
                                 <td><span class="tag-no">No</span> — USB, plus Bluetooth on Nano X, Flex and Stax</td>
@@ -290,8 +285,8 @@
                             <tr>
                                 <td>Display size</td>
                                 <td class="col-skv">Full laptop / desktop screen</td>
-                                <td>Small screen &mdash; colour touchscreen on Safe 5 and 7</td>
-                                <td>Small screen &mdash; the Q has a 3.2-inch colour screen and keyboard</td>
+                                <td>Small screen &mdash; color touchscreen on Safe 5 and 7</td>
+                                <td>Small screen &mdash; the Q has a 3.2-inch color screen and keyboard</td>
                                 <td>Small screen &mdash; larger E Ink touchscreen on Flex and Stax</td>
                             </tr>
                             <tr>
@@ -345,7 +340,7 @@
                             </tr>
                             <tr>
                                 <td>Supply chain protection</td>
-                                <td class="col-skv">No wallet device shipped — you flash an ordinary USB stick from a GPG-signed, SHA-256 verified image. The app is a reproducible build with a GitHub attestation and a Bitcoin timestamp. No order or account tied to you.</td>
+                                <td class="col-skv">No wallet device shipped — you set up an ordinary USB flash drive from a GPG-signed, SHA-256 verified image. The app is a reproducible build with a GitHub attestation and a Bitcoin timestamp. No order or account tied to you.</td>
                                 <td>Physical device shipped. Tamper-evident packaging; Trezor Suite checks the secure element is genuine. Buyers&rsquo; addresses leaked in 2026 (see above).</td>
                                 <td>Physical device shipped. Numbered tamper-evident bag verified on first boot. Firmware source is published and builds are reproducible.</td>
                                 <td>Physical device shipped. Genuine Check verifies the secure element, not the rest of the device; the 2026 implant left the secure element untouched (see above).</td>
@@ -373,7 +368,7 @@
                     </div>
                     <div class="threat-card">
                         <p class="threat-card-title">Network-based attacks</p>
-                        <p>The Wi-Fi, Bluetooth and Ethernet drivers are deleted from the system image, and a watchdog switches off any network interface that still appears. There is no network interface for an attacker to reach, regardless of what is happening on your home network. (Turn off Intel AMT/vPro in the BIOS too: it runs below the operating system.)</p>
+                        <p>The Wi-Fi, Bluetooth and Ethernet drivers are deleted from the system image, and a watchdog switches off any network interface that still appears. There is no network interface for an attacker to reach, regardless of what is happening on your home network.</p>
                     </div>
                     <div class="threat-card">
                         <p class="threat-card-title">Closed-source firmware</p>
@@ -397,7 +392,7 @@
                     </div>
                     <div class="threat-card">
                         <p class="threat-card-title">Physical seizure</p>
-                        <p>If someone has your flash drive and your vault password, they have your keys — and because the encrypted volume can be copied and attacked offline, your password is the entire defense. There is no secure-element PIN counter to rate-limit guesses or wipe the device after repeated failures. So use a long, fully random password from a password manager, and treat the QR unlock credential as exactly as sensitive as the seed itself: a cloud photo backup or a shoulder-surfed screen is enough to leak it. A dedicated hardware wallet with a PIN-locked secure element adds physical resistance a USB drive cannot match. For users who want to remove the risk entirely, Temporary Mode stores nothing on the drive at all — without the seed, a seized drive is worthless.</p>
+                        <p>If someone has your flash drive and your vault password, they have your keys — and because the encrypted volume can be copied and attacked offline, your password is the entire defense. There is no secure-element PIN counter to rate-limit guesses or wipe the device after repeated failures. So use a long, fully random password from a password manager, and treat the QR unlock credential as exactly as sensitive as the seed itself: a cloud photo backup or a shoulder-surfed screen is enough to leak it. A dedicated hardware wallet with a PIN-locked secure element adds physical resistance a USB drive cannot match. For users who want to remove the risk entirely, Temporary Session stores nothing on the drive at all — without the seed, a seized drive is worthless.</p>
                     </div>
                     <div class="threat-card">
                         <p class="threat-card-title">Hardware-level attacks</p>
@@ -420,7 +415,7 @@
                     </li>
                     <li>
                         <strong>Choose Trezor if &mdash;</strong>
-                        you want a beginner-friendly, plug-and-play device with fully open firmware and an easy setup. The Safe 3, 5 and 7 all have a secure element, and the Safe 5 and 7 have colour touchscreens. A good choice if convenience and simplicity are your priority. Buy directly from Trezor rather than a reseller, and expect phishing if your details were in the 2026 shipping-partner breach.
+                        you want a beginner-friendly, plug-and-play device with fully open firmware and an easy setup. The Safe 3, 5 and 7 all have a secure element, and the Safe 5 and 7 have color touchscreens. A good choice if convenience and simplicity are your priority. Buy directly from Trezor rather than a reseller, and expect phishing if your details were in the 2026 shipping-partner breach.
                     </li>
                     <li>
                         <strong>Choose Coldcard if &mdash;</strong>
