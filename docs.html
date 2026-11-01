@@ -831,6 +831,12 @@
                     on your Transfer Drive as a file, or can be transmitted directly via QR. Transfer it to your online device and follow the setup steps for your
                     chosen wallet below.
                 </p>
+                <p>
+                    Since v1.57 the vault can walk you through it: on the Dashboard, click
+                    <strong>Connect a wallet app</strong> and pick Blue Wallet, Electrum, Nunchuk, Sparrow, Specter
+                    or Another wallet. SafeKeep opens <strong>Seed Management</strong> with the right export for that
+                    app (an animated QR for Nunchuk, a file on the Transfer Drive for Specter) and lists what to tap in the app.
+                </p>
                 <figure class="os-showcase">
                     <a href="seed%20management.png" target="_blank" rel="noopener">
                         <img class="img-elevated" src="seed%20management.png" alt="SafeKeepVault Seed Management tool showing key format and wallet type export options">
@@ -1409,6 +1415,11 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 </p>
 
                 <h3 class="sub-heading" id="primary-tools">Main tools</h3>
+                <p>
+                    The Dashboard shows the loaded seed&rsquo;s fingerprint and nickname, a short <strong>Health</strong>
+                    list (when this flash drive last made a backup, whether the Transfer Drive is ready, and the version),
+                    and tiles for the everyday tasks: Sign, Show an address, Back up, Connect a wallet app and Transfer.
+                </p>
                 <ul class="docs-list">
                     <li>
                         <strong>PSBT Signer &mdash;</strong>
@@ -1424,6 +1435,12 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         as a file or a QR code. Dense codes can play as an animated QR, which Nunchuk and
                         Sparrow scan straight off the screen. A passphrase you type must be typed twice.
                         Your private keys never leave.
+                    </li>
+                    <li>
+                        <strong>Show an address &mdash;</strong>
+                        Shows the next receive address of this seed&rsquo;s wallets, or of a saved wallet, as a large QR
+                        code, so you can receive without your everyday device. <strong>New address</strong> moves to the
+                        next one, and the vault remembers on the flash drive which address each wallet is up to.
                     </li>
                     <li>
                         <strong>Transfer Hub &mdash;</strong>
