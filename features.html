@@ -125,6 +125,10 @@
                         <span class="spec-desc">Store your seed, passphrases, wallets and notes on the flash drive, encrypted with AES-256. Unlock it by typing your password, or by showing a QR code of it from your phone to the camera.</span>
                     </li>
                     <li>
+                        <span class="spec-label">Or keep only the vault</span>
+                        <span class="spec-desc">With <strong>Seed storage</strong> turned off, the flash drive keeps your passphrases, saved wallets and notes but not your seed. You scan your SeedQR or type your words each time you start, so someone with the flash drive and its password still can&rsquo;t spend. Keep your SeedQR and written words safe: they are then the only copies.</span>
+                    </li>
+                    <li>
                         <span class="spec-label">Temporary Session</span>
                         <span class="spec-desc">Load a different seed for one session, for example a second key of a multisig wallet. Nothing from it is saved, and you can go back to your vault without restarting.</span>
                     </li>
@@ -141,20 +145,22 @@
 
             <!-- Section 2: Tools -->
             <section class="content-section">
-                <h2 class="section-heading">16 tools</h2>
+                <h2 class="section-heading">18 tools</h2>
                 <p>
                     Everything you need to create, back up and use your keys, from your first seed to signing a multisig payment.
                     Each tool works offline and produces standard formats your wallet app understands.
                 </p>
                 <ul class="tools-list">
                     <li><span class="tool-name">PSBT Signer</span><span class="tool-sub">Check and sign a transaction</span></li>
+                    <li><span class="tool-name">Show an address</span><span class="tool-sub">Show the next receive address as a large QR code</span></li>
+                    <li><span class="tool-name">Connect a wallet app</span><span class="tool-sub">Step-by-step watch-only setup for your wallet app</span></li>
                     <li><span class="tool-name">Seed Management</span><span class="tool-sub">View seed words, public keys and addresses</span></li>
                     <li><span class="tool-name">Transfer Hub</span><span class="tool-sub">Manage files on the Transfer Drive</span></li>
                     <li><span class="tool-name">Entropy Generator</span><span class="tool-sub">Create a seed from dice, cards or other randomness</span></li>
                     <li><span class="tool-name">BIP-85 Child Seeds</span><span class="tool-sub">Make separate seeds from your main one</span></li>
                     <li><span class="tool-name">Seed QR Code</span><span class="tool-sub">Turn your seed into a QR code</span></li>
                     <li><span class="tool-name">Passphrase Library</span><span class="tool-sub">Save and load passphrases</span></li>
-                    <li><span class="tool-name">Output Descriptor</span><span class="tool-sub">Build, check and export wallets</span></li>
+                    <li><span class="tool-name">Output Descriptor</span><span class="tool-sub">Build, import, check and save wallets</span></li>
                     <li><span class="tool-name">Seed XOR Splitter</span><span class="tool-sub">Split your seed into XOR shares</span></li>
                     <li><span class="tool-name">Shamir Backup</span><span class="tool-sub">Split your seed into Shamir shares</span></li>
                     <li><span class="tool-name">Encrypted Backup</span><span class="tool-sub">Back up the whole vault to one encrypted file</span></li>
@@ -168,20 +174,20 @@
 
             <!-- Tools Dashboard Screenshot -->
             <figure class="os-showcase">
-                <a href="dashboard.png" target="_blank" rel="noopener">
-                    <img src="dashboard.png" alt="SafeKeepVault tools dashboard — three main tools plus thirteen advanced tools in four groups, with an active master seed">
+                <a href="v158-dashboard.png" target="_blank" rel="noopener">
+                    <img src="v158-dashboard.png" alt="SafeKeepVault Dashboard: wallet card, Health, five everyday task tiles, and all tools grouped into Keys and Seeds, Backup and Recovery, Signing and Transfer, and Private Data">
                 </a>
                 <figcaption>
-                    The <strong>SafeKeepVault</strong> tool dashboard &mdash; three main tools up front, and thirteen
-                    advanced tools grouped into Keys &amp; Seeds, Backup &amp; Recovery, Signing &amp; Transfer, and Private Data.
-                    Your active master seed phrase is loaded once and available to every tool.
+                    The <strong>SafeKeepVault</strong> Dashboard &mdash; your wallet and its health at the top, tiles for the
+                    everyday tasks (sign, show an address, back up, connect a wallet app, transfer files), then every tool
+                    grouped into Keys &amp; Seeds, Backup &amp; Recovery, Signing &amp; Transfer, and Private Data.
                 </figcaption>
             </figure>
 
             <!-- Entropy Generator Screenshot -->
             <figure class="os-showcase">
-                <a href="Entropy.png" target="_blank" rel="noopener">
-                    <img src="Entropy.png" alt="Entropy Generator — SafeKeepVault's seed generation tool">
+                <a href="v158-entropy.png" target="_blank" rel="noopener">
+                    <img src="v158-entropy.png" alt="Entropy Generator — SafeKeepVault's seed generation tool">
                 </a>
                 <figcaption>
                     The Entropy Generator &mdash; mix physical dice rolls, a shuffled deck of cards,
@@ -206,8 +212,8 @@
 
             <!-- Encrypted Notes Screenshot -->
             <figure class="os-showcase">
-                <a href="notes.png" target="_blank" rel="noopener">
-                    <img src="notes.png" alt="Encrypted Notes — SafeKeepVault's vault notes tool, showing a rich-text editor stored inside the encrypted vault">
+                <a href="v158-notes.png" target="_blank" rel="noopener">
+                    <img src="v158-notes.png" alt="Encrypted Notes — SafeKeepVault's vault notes tool, showing a rich-text editor stored inside the encrypted vault">
                 </a>
                 <figcaption>
                     Encrypted Notes &mdash; store recovery instructions, multisig coordination
