@@ -958,34 +958,32 @@
                 </ol>
 
                 <h3 class="wallet-heading" id="ww-specter">Specter Desktop <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
-                <p>Use these settings and steps for Specter Desktop. This workflow is file-based &mdash; move the flash drive to your online computer, or use the <strong>Courier Tool</strong> to send the JSON file straight to that computer: open <a href="courier.html">courier.safekeepbitcoin.com</a> on it, choose <strong>Receive</strong>, and point its webcam at the vault&rsquo;s screen. Don&rsquo;t relay the file through a cloud service, email or chat app: it holds your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
+                <p>Use these steps for Specter Desktop. The vault shows your key as a QR code and Specter scans it with the computer&rsquo;s webcam. The easiest way is <strong>Connect a wallet app &rarr; Specter</strong> on the Dashboard, which sets these options for you. Opening Specter in a browser over your home network (for example from a node) works too.</p>
 
                 <p class="wallet-sig-heading">Single Signature</p>
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
                     <span><strong>Wallet Type:</strong> Single-Sig</span>
-                    <span><strong>Key Format:</strong> BIP-32 Watch-Only JSON</span>
+                    <span><strong>Key Format:</strong> Key with origin ([fingerprint/path]xpub)</span>
                 </div>
                 <ol class="wallet-steps">
-                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and click <strong>Download JSON</strong>. The file saves to your Transfer Drive.</li>
-                    <li>Transfer the JSON file to your online computer on the flash drive or with the Courier Tool, as described above.</li>
-                    <li>Open Specter Desktop and click <strong>Add Device</strong>.</li>
-                    <li>Select device type <strong>Other</strong>, then click <strong>Upload from SD</strong> to import your xpub. Navigate to and select the JSON file, then click <strong>Continue</strong>.</li>
-                    <li>Specter confirms the device has been added. Click <strong>Create Single Key Wallet</strong>.</li>
-                    <li>Give your wallet a name and click <strong>Continue</strong> to complete setup.</li>
+                    <li>In <strong>SafeKeepVault</strong>, open <strong>Seed Management</strong>, configure the settings above, and press <strong>Show QR</strong>.</li>
+                    <li>In Specter Desktop, open <strong>Devices &rarr; Add new device</strong> and choose device type <strong>Other</strong>.</li>
+                    <li>Click <strong>Scan QR code</strong> and hold the vault&rsquo;s QR code up to the computer&rsquo;s camera. The key appears in the list.</li>
+                    <li>Give the device a name and click <strong>Continue</strong>, then <strong>Create Single Key Wallet</strong>.</li>
                 </ol>
                 <p class="wallet-sig-heading">Multisig</p>
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings</span>
                     <span><strong>Wallet Type:</strong> Multisig</span>
-                    <span><strong>Key Format:</strong> BIP-32 Watch-Only JSON</span>
+                    <span><strong>Key Format:</strong> Key with origin ([fingerprint/path]xpub)</span>
                 </div>
                 <ol class="wallet-steps">
-                    <li>Follow the same key creation steps as Single Signature above, selecting Multi-Sig (BIP-48) as the Wallet Type in SafeKeepVault. Repeat for each co-signer key</li>
-
+                    <li>Add the vault&rsquo;s key as a device the same way, with Multi-Sig (BIP-48) as the Wallet Type. Add each other co-signer as its own device.</li>
                     <li>Click <strong>Add Wallet</strong> and select <strong>Multiple Signature</strong>.</li>
                     <li>Select the devices you want in your multisig quorum and click <strong>Continue</strong>. Give your wallet a name and click <strong>Create Wallet</strong> to complete setup.</li>
                 </ol>
+                <p>Already built the wallet in SafeKeepVault&rsquo;s <strong>Output Descriptor</strong> tool? Press <strong>Show QR</strong>, choose <strong>For Specter</strong>, and in Specter use <strong>Add Wallet &rarr; Import from wallet software &rarr; Scan QR code</strong>. No camera on that computer? In Seed Management choose <strong>BIP-32 Watch-Only JSON</strong>, press <strong>Download JSON</strong>, and use Specter&rsquo;s <strong>Upload from SD</strong> instead; send the file with the <a href="courier.html">Courier Tool</a>, never through a cloud service, email or chat app.</p>
 
                 <h3 class="wallet-heading" id="ww-electrum">Electrum <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-muted);">(Desktop &mdash; Windows, macOS, Linux)</span></h3>
                 <p>Use these settings and steps for Electrum. You move each key from the vault to Electrum by QR code, with no file to carry: open <a href="courier.html">courier.safekeepbitcoin.com</a> on your online computer, choose <strong>Receive</strong>, click <strong>Open camera and scan</strong>, and point its webcam at the vault&rsquo;s screen. The Courier shows the key it read with a <strong>Copy to clipboard</strong> button, and you paste it into Electrum. Don&rsquo;t send the key through a cloud service, email or chat app: it is your extended public key, which lets whoever sees it track every balance and transaction in the wallet.</p>
@@ -1291,6 +1289,21 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         continue.
                     </li>
                     <li>
+                        <strong>Seed storage &mdash;</strong>
+                        In <strong>Device Options &rarr; Seed storage</strong> you can stop keeping your master seed on
+                        the flash drive. Unlocking then opens the vault (passphrases, saved wallets, notes and
+                        settings) but not your wallet: the welcome screen asks you to scan your SeedQR or type your
+                        words, and the seed stays in memory until you lock or shut down. Before the seed is deleted,
+                        your SeedQR or words must match it. Backups made afterwards don&rsquo;t contain the seed, so
+                        keep your SeedQR and written words safe. <strong>Keep my seed on this flash drive</strong>
+                        turns it back on.
+                    </li>
+                    <li>
+                        <strong>Leaving a Temporary Session &mdash;</strong>
+                        <strong>Unlock my vault instead</strong> on the Temporary Session welcome screen ends the
+                        session and returns to the unlock screen, without restarting.
+                    </li>
+                    <li>
                         <strong>Auto-Lock &amp; Display Sleep &mdash;</strong>
                         In <strong>Device Options</strong>, set how many idle minutes pass before the vault
                         locks itself or the screen goes dark. Set either to 0 to turn it off.
@@ -1549,11 +1562,12 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <br><br>
                         <strong>Import a wallet from another app (watch-only)</strong>: paste or scan the output
                         descriptor exported by Sparrow, BlueWallet or Bitcoin Core, single-sig or multisig, including
-                        nested SegWit multisig <code>sh(wsh(&hellip;))</code>. On the <strong>Verify</strong> tab,
-                        <strong>Check Descriptor</strong> checks the checksum, refuses private keys, and shows the first
+                        nested SegWit multisig <code>sh(wsh(&hellip;))</code>. On the <strong>Import</strong> tab, a
+                        scanned, pasted or loaded descriptor is checked at once: SafeKeep checks the checksum, refuses private keys, and shows the first
                         receive and change addresses worked out from the descriptor. No seed is needed: without one the
                         result is <strong>WATCH-ONLY</strong>; with a seed loaded it still says <strong>MATCH</strong> or
-                        <strong>MISMATCH</strong>. <strong>Use This Descriptor (watch-only)</strong> then loads it into
+                        <strong>MISMATCH</strong> and which key is yours. Name it and click <strong>Save Wallet</strong> to keep it in
+                        the vault for the PSBT Signer and Show an address, in one step. <strong>Use This Descriptor (watch-only)</strong> loads it into
                         the tool, so the Receive panel, the address list (.csv), the Bitcoin Core export, the QR code and
                         Print PDF all work for it; the PDF leaves out the seed and passphrase rows. A descriptor without the
                         <code>&hellip;/&lt;0;1&gt;/*</code> ending gets a warning and can&rsquo;t be loaded.
