@@ -92,9 +92,10 @@
 
             <!-- Highlights: the summary of recent releases, kept short; add new changes to the matching point -->
             <div style="margin: 1.5rem 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-md);">
-                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim); margin: 0 0 0.35rem;">Recent releases (up to v1.57)</p>
+                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim); margin: 0 0 0.35rem;">Recent releases (up to v1.58)</p>
                 <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.6rem;">Updates without reflashing, backups you can check, and a clearer transaction review</p>
                 <ul style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; padding-left: 1.2rem;">
+                    <li style="margin: 0 0 0.5rem;"><strong>Keep your seed off the flash drive.</strong> The vault can open without storing your seed: you scan your SeedQR or type your words at each start (v1.58).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>A new look.</strong> A Dashboard with your wallet, a Health list and tiles for everyday tasks, plus guided <strong>Show an address</strong> and <strong>Connect a wallet app</strong> (v1.57).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Updates without reflashing.</strong> Install a signed update from the Transfer Drive, with the previous version one menu choice away (v1.47). Most PCs now start the flash drive with Secure Boot left on (v1.54).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Backups you can check.</strong> Send a backup to your phone with the Courier, check that it opens, and restore a new flash drive from it, all without an online computer (v1.55). Seed XOR and Shamir shares are made one at a time and checked against your paper (v1.52).</li>
@@ -104,6 +105,21 @@
                     <li style="margin: 0;"><strong>Less to attack.</strong> Every network driver, the terminal and the file manager are gone from SafeKeep OS (v1.45).</li>
                 </ul>
             </div>
+
+            <!-- v1.58 -->
+            <section class="content-section" id="v1-58">
+                <h2 class="section-heading">v1.58 &mdash; November 2, 2026</h2>
+                <p>A vault that doesn&rsquo;t have to keep your seed, a clearer wallet card for passphrase wallets, and simpler ways to connect Specter and import a multisig.</p>
+                <ul class="docs-list">
+                    <li><strong>Seed storage &mdash;</strong> in <strong>Device Options &rarr; Seed storage</strong> you can stop keeping your master seed on the flash drive. The vault still opens with your Master Passphrase, with your passphrases, saved wallets, notes and settings; at each start you scan your SeedQR or type your words, and the seed stays in memory until you lock or shut down. Before the seed is deleted, your SeedQR or words must match it. Someone with the flash drive and its Master Passphrase still can&rsquo;t spend without your SeedQR or words.</li>
+                    <li><strong>Passphrase wallets &mdash;</strong> with a passphrase on, the wallet card is titled with that wallet&rsquo;s name from your Passphrase Library, and the three-word nickname shows as the seed&rsquo;s. Picking a passphrase from the Library on the Dashboard applies it straight away.</li>
+                    <li><strong>Import a wallet &mdash;</strong> Output Descriptor&rsquo;s <strong>Import</strong> tab reads a wallet made in Sparrow, Specter, Nunchuk or another coordinator in one scan, checks it against your seed, and saves it there and then.</li>
+                    <li><strong>Specter by QR &mdash;</strong> <strong>Connect a wallet app &rarr; Specter</strong> shows a QR code for Specter&rsquo;s <strong>Add new device &rarr; Other &rarr; Scan QR code</strong>, and Output Descriptor&rsquo;s QR has a <strong>For Specter</strong> option for importing a whole wallet.</li>
+                    <li><strong>Back from a Temporary Session &mdash;</strong> <strong>Unlock my vault instead</strong> returns to the unlock screen without restarting.</li>
+                    <li><strong>Smaller fixes &mdash;</strong> a Show words / Hide words button on seed displays, Seed Management back on the Dashboard, and saved wallets kept in Output Descriptor.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.58.tar</code> onto the Transfer Drive and install it from <strong>Device Options &rarr; Update SafeKeep</strong>.</li>
+                </ul>
+            </section>
 
             <!-- v1.57 -->
             <section class="content-section" id="v1-57">
