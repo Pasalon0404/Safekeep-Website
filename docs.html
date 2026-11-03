@@ -796,7 +796,7 @@
                     Once a seed is loaded, the Dashboard opens with a card for your wallet. It shows:
                 </p>
                 <ul class="docs-list">
-                    <li><strong>A three-word name &mdash;</strong> the <strong>Seed Nickname</strong>, such as &ldquo;Digital Wheat Crumble&rdquo;, worked out from your seed words. The same seed always gets the same three words, on any flash drive, so you can tell at a glance which seed is loaded. It is a convenience label only: it doesn&rsquo;t prove that the flash drive is genuine.</li>
+                    <li><strong>A three-word name &mdash;</strong> the <strong>seed nickname</strong>, shown in quotes, such as &ldquo;Digital Wheat Crumble&rdquo;, and labelled &ldquo;seed nickname&rdquo; with a note that it is not part of your recovery words. It is worked out from your seed words: the same seed always gets the same three words, on any flash drive, so you can tell at a glance which seed is loaded. It is a convenience label only: it doesn&rsquo;t prove that the flash drive is genuine, and it is never a substitute for your 12 or 24 recovery words.</li>
                     <li><strong>A picture &mdash;</strong> a small colored <strong>LifeHash</strong> pattern made from the wallet&rsquo;s fingerprint. It is the same picture Sparrow Wallet shows for the same wallet, so you can tell at a glance that your watch-only wallet and the vault hold the same key. Always check the fingerprint itself too: the picture is a quick check, not a replacement.</li>
                     <li><strong>The fingerprint, the word count and the passphrase &mdash;</strong> for example <code>5436D724</code>, 24 words, No passphrase.</li>
                     <li><strong>Two buttons &mdash;</strong> <strong>Use a passphrase wallet</strong> (or <strong>Change passphrase</strong> once one is applied) and <strong>Lock or switch seed</strong>.</li>
@@ -805,15 +805,15 @@
                     Next to the card, <strong>Health</strong> lists when this flash drive last made an encrypted
                     backup, whether the Transfer Drive is ready, and the SafeKeep version. Below them,
                     <strong>What would you like to do?</strong> has a tile for each everyday task:
-                    <strong>Sign a transaction</strong>, <strong>Show an address</strong>, <strong>Back up</strong>,
-                    <strong>Connect a wallet app</strong> and <strong>Transfer files</strong>. Every tool is listed
+                    <strong>Sign a transaction</strong>, <strong>Show an address</strong>, <strong>Connect a wallet app</strong>,
+                    <strong>Transfer files</strong> and <strong>Back up</strong>. Every tool is listed
                     under <strong>All tools</strong>, and <strong>Device Options</strong> is at the bottom. At the
                     top left, the <strong>Offline &middot; Protected</strong> badge sums up the security checks:
                     click it to see each one. It turns amber (&ldquo;Check security status&rdquo;) if any check fails.
                 </p>
                 <figure class="os-showcase">
-                    <a href="v158-dashboard-top.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="v158-dashboard-top.png" alt="SafeKeepVault Dashboard: the wallet card with LifeHash picture, nickname Digital Wheat Crumble, fingerprint 5436D724, 24 words and No passphrase; the Health list; and the five task tiles">
+                    <a href="v159-dashboard-top.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v159-dashboard-top.png" alt="SafeKeepVault Dashboard: the wallet card with LifeHash picture, the seed nickname &ldquo;Digital Wheat Crumble&rdquo; with a note that it is not part of the recovery words, fingerprint 5436D724, 24 words and No passphrase; the Health list; and the five task tiles">
                     </a>
                     <figcaption>The top of the Dashboard: your wallet, Health, and the five everyday tasks.</figcaption>
                 </figure>
@@ -827,7 +827,7 @@
                     <ul class="docs-list">
                         <li><strong>The title</strong> becomes the passphrase&rsquo;s name from your <strong>Passphrase Library</strong>, or &ldquo;Passphrase wallet&rdquo; for one you typed.</li>
                         <li><strong>The picture and fingerprint</strong> change to the passphrase wallet&rsquo;s. This is the fingerprint your watch-only wallet should show for it.</li>
-                        <li><strong>The three words</strong> move to a chip that reads &ldquo;Seed: Digital Wheat Crumble&rdquo;. They don&rsquo;t change, because they come from the seed words alone: they tell you which seed is underneath, not which wallet is open.</li>
+                        <li><strong>The three words</strong> move to a chip that reads Seed nickname: &ldquo;Digital Wheat Crumble&rdquo;. They don&rsquo;t change, because they come from the seed words alone: they tell you which seed is underneath, not which wallet is open.</li>
                     </ul>
                     <p>
                         Click <strong>Use a passphrase wallet</strong>. A passphrase picked from the
@@ -838,10 +838,10 @@
                     </p>
                 </div>
                 <figure class="os-showcase">
-                    <a href="v158-passphrase-wallet.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="v158-passphrase-wallet.png" alt="Wallet card with a typed passphrase applied: title Passphrase wallet, fingerprint 7274DF1B, 24 words, and a chip reading Seed: Digital Wheat Crumble">
+                    <a href="v159-passphrase-wallet.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v159-passphrase-wallet.png" alt="Wallet card with a typed passphrase applied: title Passphrase wallet, fingerprint 7274DF1B, 24 words, and a chip reading Seed nickname: Digital Wheat Crumble">
                     </a>
-                    <figcaption>The same seed with a typed passphrase applied: a new title, picture and fingerprint, while &ldquo;Seed: Digital Wheat Crumble&rdquo; still names the seed underneath.</figcaption>
+                    <figcaption>The same seed with a typed passphrase applied: a new title, picture and fingerprint, while the seed nickname chip still names the seed underneath.</figcaption>
                 </figure>
                 <p>
                     On tool screens, a sidebar lists the tools, with the most-used ones at the top and the
@@ -908,7 +908,9 @@
                     Keys &amp; Seeds), choose the <strong>Address Type</strong>, <strong>Wallet Type</strong> and
                     <strong>Key Format</strong> shown in your wallet&rsquo;s box below, then press
                     <strong>Show QR</strong>, or <strong>Download JSON</strong> to save a file to the Transfer Drive.
-                    Move it to your online device and follow the steps for your wallet.
+                    After a download, SafeKeep offers <strong>Send with the Courier</strong>, which plays the file
+                    as an animated QR code for the <a href="courier.html">Courier Tool</a> on your online device. Or move
+                    the flash drive. Then follow the steps for your wallet.
                 </p>
                 <p>
                     <strong>A multisig wallet you built in another app?</strong> If you set up a multisig in Sparrow,
@@ -1302,7 +1304,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     matches your coordinator: Standard Base64 for Sparrow and BlueWallet, UR
                     (<code>ur:crypto-psbt</code>, an animated QR that many mobile wallets prefer), Nunchuk
                     Raw Hex, Electrum Raw Hex, or <strong>File (Courier)</strong>. Large PSBTs (over about 1,200 bytes) start on UR
-                    automatically, because they no longer fit cleanly in a single QR code.
+                    automatically, because they no longer fit cleanly in a single QR code. For an animated code, the
+                    <strong>Density</strong> and <strong>Speed</strong> sliders apply while it plays (Density starts the
+                    loop again from the first piece).
                     <strong>File (Courier)</strong> plays the signed PSBT as a Courier file loop named
                     <code>&lt;name&gt;-signed.psbt</code>: open The Courier on your online computer, choose
                     <strong>Receive</strong>, and save the file for your wallet to open (for example Trezor Suite).
@@ -1342,7 +1346,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 <ul class="docs-list">
                     <li><strong>File or text &mdash;</strong> two cards choose what to send: <strong>File</strong> (sent as an animated QR loop) or <strong>Text / password</strong> (a single static QR). The selected card is highlighted in orange.</li>
                     <li><strong>The file &mdash;</strong> a file sent from the Transfer Hub is already loaded. To send a different one, click the drop zone (&ldquo;Choose a file or drop it here&rdquo;) or drop a file onto it, or pick one from the Transfer Drive list below it. The drop zone shows the file&rsquo;s name and size. For large files only, an amber warning says roughly how many minutes one loop will take and suggests raising the density, or using the Transfer Drive instead for very large files.</li>
-                    <li><strong>Density and Speed &mdash;</strong> two sliders, each showing its current value. Lower density is easier to scan; higher density needs fewer frames. Lower speed is more reliable; higher speed is faster. If the receiving camera struggles, lower either one.</li>
+                    <li><strong>Density and Speed &mdash;</strong> two sliders, each showing its current value. Lower density is easier to scan; higher density needs fewer frames. Lower speed is more reliable; higher speed is faster. If the receiving camera struggles, lower either one. Both apply while the QR code is running: a new Speed takes effect on the next frame, and a new Density re-cuts the file and starts again from the first piece. The receiver notices (&ldquo;The sender changed its settings, so receiving starts over&rdquo;) and never mixes pieces from two settings. Flash drives on v1.58 or older don&rsquo;t have that check, so update them before changing Density part-way through a transfer.</li>
                 </ul>
                 <p>Click <strong>Start Transmission Loop</strong> and hold the receiving device&rsquo;s camera up to the screen until it has every frame.</p>
 
@@ -1452,7 +1456,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li><strong>1. Download the update file &mdash;</strong> on your everyday computer, download <code>SafeKeep-Update-v&hellip;.tar</code> from the official release on GitHub (linked from the <a href="download.html">Download page</a>). It is signed: SafeKeep checks the signature itself before installing anything.</li>
                     <li><strong>2. Copy it onto the Transfer Drive &mdash;</strong> plug the SafeKeep flash drive into that computer and copy the file onto its <strong>TRANSFER</strong> drive. Eject the flash drive properly.</li>
                     <li><strong>3. Check for the update &mdash;</strong> boot SafeKeep and unlock your vault (a Temporary Session can&rsquo;t update). Open <strong>Device Options &rarr; Update SafeKeep &rarr; Check for update</strong>. SafeKeep shows the new version, its build stamp and the app&rsquo;s SHA-256 only if the file carries the maintainer&rsquo;s signature and is newer than what you&rsquo;re running. You can compare that SHA-256 with the <code>boot.html</code> line of the release&rsquo;s <code>SHA256SUMS</code>.</li>
-                    <li><strong>4. Install and restart &mdash;</strong> click <strong>Install</strong>, wait for it to finish (a few minutes), then <strong>Restart now</strong>. The update file is deleted from the Transfer Drive afterwards. Updating from v1.48: that restart can end with a screen of scrolling errors; the update is already complete, so hold the power button to switch off, then start again.</li>
+                    <li><strong>4. Install and restart &mdash;</strong> click <strong>Install update</strong>, wait for it to finish (a few minutes), then <strong>Restart now</strong>. The update file is deleted from the Transfer Drive afterwards. Updating from v1.48: that restart can end with a screen of scrolling errors; the update is already complete, so hold the power button to switch off, then start again.</li>
                 </ol>
                 <p>
                     If anything is wrong after restarting, choose <strong>SafeKeepVault (previous version)</strong>
@@ -1525,13 +1529,13 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 <h3 class="sub-heading" id="primary-tools">Main tools</h3>
                 <p>
                     The Dashboard&rsquo;s <strong>What would you like to do?</strong> tiles open these: <strong>Sign a
-                    transaction</strong> (PSBT Signer), <strong>Show an address</strong>, <strong>Back up</strong>
-                    (Encrypted Backup), <strong>Connect a wallet app</strong> and <strong>Transfer files</strong>
-                    (Transfer Hub). See <a href="#wallet-card">Your wallet on the Dashboard</a> for the rest of the screen.
+                    transaction</strong> (PSBT Signer), <strong>Show an address</strong>, <strong>Connect a wallet
+                    app</strong>, <strong>Transfer files</strong> (Transfer Hub) and <strong>Back up</strong>
+                    (Encrypted Backup). See <a href="#wallet-card">Your wallet on the Dashboard</a> for the rest of the screen.
                 </p>
                 <figure class="os-showcase">
-                    <a href="v158-dashboard.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="v158-dashboard.png" alt="The full SafeKeepVault Dashboard: wallet card, Health, the five task tiles, All tools grouped into Keys and Seeds, Backup and Recovery, Signing and Transfer, and Private Data, and Device Options">
+                    <a href="v159-dashboard.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v159-dashboard.png" alt="The full SafeKeepVault Dashboard: wallet card, Health, the five task tiles, All tools grouped into Keys and Seeds, Backup and Recovery, Signing and Transfer, and Private Data, and Device Options">
                     </a>
                     <figcaption>The whole Dashboard: your wallet, the everyday tasks, every tool under <strong>All tools</strong>, and <strong>Device Options</strong> at the bottom.</figcaption>
                 </figure>
@@ -1558,8 +1562,13 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         address is shown in groups of four with its number and path. <strong>New address</strong> moves
                         to the next one, and the vault remembers on the flash drive which address each wallet is up to.
                         The vault is offline and can&rsquo;t see which addresses have already received money, so it
-                        simply moves on from the last one it showed you. <strong>Show a different address
-                        number</strong> jumps to any number.
+                        simply moves on from the last one it showed you. Under <strong>Show a different address
+                        number</strong>, the address changes as you type a number.
+                        <br><br>
+                        The list also has this seed&rsquo;s <strong>Silent Payment</strong> address
+                        (<code>sp1q&hellip;</code>). It is one reusable address: give the same one for every payment, and
+                        each payment still lands at its own unlinkable address on the blockchain, so there is no
+                        <strong>New address</strong> button for it. The sender&rsquo;s wallet must support Silent Payments.
                         <figure class="os-showcase">
                             <a href="v158-show-address.png" target="_blank" rel="noopener">
                                 <img class="img-elevated" src="v158-show-address.png" alt="Show an Address screen with the wallet list, a large QR code of receive address number 0, and the Copy address and New address buttons">
@@ -1777,7 +1786,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Courier Tool &mdash;</strong>
                         Transfers files between air-gapped devices via animated QR
                         codes. No USB, no network &mdash; light and a camera lens only. Choose File or
-                        Text / password, drop in a file, and set the Density and Speed sliders; it works
+                        Text / password, drop in a file, and set the Density and Speed sliders (they apply while
+                        the QR code runs); it works
                         with the online Courier Tool at courier.safekeepbitcoin.com. It can also carry PSBT
                         files to and from the PSBT Signer, for wallets that only work with files, such as
                         Trezor Suite.
