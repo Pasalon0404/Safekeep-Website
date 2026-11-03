@@ -92,11 +92,11 @@
 
             <!-- Highlights: the summary of recent releases, kept short; add new changes to the matching point -->
             <div style="margin: 1.5rem 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-md);">
-                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim); margin: 0 0 0.35rem;">Recent releases (up to v1.58)</p>
+                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim); margin: 0 0 0.35rem;">Recent releases (up to v1.59)</p>
                 <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.6rem;">Updates without reflashing, backups you can check, and a clearer transaction review</p>
                 <ul style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; padding-left: 1.2rem;">
                     <li style="margin: 0 0 0.5rem;"><strong>Keep your seed off the flash drive.</strong> The vault can open without storing your seed: you scan your SeedQR or type your words at each start (v1.58).</li>
-                    <li style="margin: 0 0 0.5rem;"><strong>A new look.</strong> A Dashboard with your wallet, a Health list and tiles for everyday tasks, plus guided <strong>Show an address</strong> and <strong>Connect a wallet app</strong> (v1.57).</li>
+                    <li style="margin: 0 0 0.5rem;"><strong>A new look.</strong> A Dashboard with your wallet, a Health list and tiles for everyday tasks, plus guided <strong>Show an address</strong> and <strong>Connect a wallet app</strong> (v1.57). QR codes change density and speed while they play, and Show an address lists your Silent Payment address (v1.59).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Updates without reflashing.</strong> Install a signed update from the Transfer Drive, with the previous version one menu choice away (v1.47). Most PCs now start the flash drive with Secure Boot left on (v1.54).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Backups you can check.</strong> Send a backup to your phone with the Courier, check that it opens, and restore a new flash drive from it, all without an online computer (v1.55). Seed XOR and Shamir shares are made one at a time and checked against your paper (v1.52).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Safer seeds and passwords.</strong> The random number generator is tested before every seed, patterned dice rolls are refused (v1.50), and so are easy-to-guess vault passwords (v1.51).</li>
@@ -105,6 +105,19 @@
                     <li style="margin: 0;"><strong>Less to attack.</strong> Every network driver, the terminal and the file manager are gone from SafeKeep OS (v1.45).</li>
                 </ul>
             </div>
+
+            <!-- v1.59 -->
+            <section class="content-section" id="v1-59">
+                <h2 class="section-heading">v1.59 &mdash; November 3, 2026</h2>
+                <p>QR settings that apply while the code is running, a Silent Payment address in Show an address, and a tidier Dashboard.</p>
+                <ul class="docs-list">
+                    <li><strong>QR sliders that apply right away &mdash;</strong> in the Courier (<strong>Transfer files</strong>) and the <strong>PSBT Signer</strong>, <strong>Density</strong> and <strong>Speed</strong> now take effect while the QR code is running. A new Speed applies on the next frame; a new Density re-cuts the file and starts again from the first piece. If the sender changes Density part-way through, the receiver says &ldquo;The sender changed its settings, so receiving starts over&rdquo;, and it never joins pieces from two settings into one file. The online <a href="courier.html">Courier Tool</a> has the same change. Flash drives on v1.58 or older don&rsquo;t have this check, so update them before changing Density during a transfer.</li>
+                    <li><strong>Show an address &mdash;</strong> this seed&rsquo;s Silent Payment address (<code>sp1q&hellip;</code>) is now in the list: one reusable address, so it has no <strong>New address</strong> button. The address number box updates the address as you type, with no Show button.</li>
+                    <li><strong>Seed Management &mdash;</strong> after <strong>Download JSON</strong>, SafeKeep offers <strong>Send with the Courier</strong>.</li>
+                    <li><strong>Dashboard &mdash;</strong> Health is filled in as soon as the Dashboard opens (it could be blank before). The wallet card&rsquo;s three words are shown in quotes and labelled &ldquo;seed nickname&rdquo;, with a note that they aren&rsquo;t part of your recovery words. The wallet card and Health are the same width, the task tiles read Sign a transaction, Show an address, Connect a wallet app, Transfer files, Back up, the title is a little larger, and the wallet card has the same border as the other cards.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.59.tar</code> onto the Transfer Drive, unlock, and install it from <strong>Device Options &rarr; Update SafeKeep &rarr; Check for update</strong>, then <strong>Install update</strong> and <strong>Restart now</strong>.</li>
+                </ul>
+            </section>
 
             <!-- v1.58 -->
             <section class="content-section" id="v1-58">
