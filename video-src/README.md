@@ -1,6 +1,6 @@
 # Explainer video
 
-`safekeepvault-explainer.mp4` (site root) is an 80-second, 1920x1080 overview of
+`safekeepvault-explainer.mp4` (site root) is a 77-second, 1920x1080 overview of
 SafeKeepVault: on-screen text and app screenshots, a recorded narration, and
 background music. It is embedded on the home page with
 `safekeepvault-explainer-poster.jpg` as its poster frame and
