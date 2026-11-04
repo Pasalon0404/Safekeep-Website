@@ -1,4 +1,4 @@
-// Renders explainer.html to an MP4 with voiceover and background music.
+// Renders explainer.html to an MP4 with the narration and background music.
 //
 //   node video-src/render.js [out.mp4] [fps]          full build
 //   node video-src/render.js [out.mp4] [fps] --audio  re-mix the sound only,
@@ -55,11 +55,11 @@ function run(cmd, argv) {
   // 2. Music
   execFileSync('python3', [path.join(__dirname, 'music.py'), String(duration)], { stdio: 'inherit' });
 
-  // 3. Mix: voice clips placed on the timeline, music ducked under the voice
+  // 3. Mix: narration placed on the timeline, music ducked under the voice
   const inputs = ['-i', silent, '-i', path.join(__dirname, 'music.wav')];
   const parts = [];
   voiceover.forEach((v, i) => {
-    inputs.push('-i', path.join(__dirname, 'voiceover', v.clip + '.wav'));
+    inputs.push('-i', path.join(__dirname, v.file));
     const ms = Math.round(v.at * 1000);
     parts.push(`[${i + 2}:a]aresample=48000,aformat=channel_layouts=stereo,adelay=${ms}|${ms}[v${i}]`);
   });

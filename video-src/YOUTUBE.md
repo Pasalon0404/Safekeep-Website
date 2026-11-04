@@ -1,12 +1,12 @@
 # YouTube upload kit
 
-**File:** `safekeepvault-explainer.mp4` (1920x1080, about 70 seconds, voiceover and music)
+**File:** `safekeepvault-explainer.mp4` (1920x1080, 80 seconds, narration and music)
 **Thumbnail:** `safekeepvault-explainer-poster.jpg` (1280x720)
 **Captions:** `safekeepvault-explainer.vtt` (upload under Subtitles > Upload file > With timing)
 
 ## Title
 
-SafeKeepVault in one minute: keep your bitcoin keys offline on a computer you already own
+SafeKeepVault in a minute: keep your bitcoin keys offline on a computer you already own
 
 ## Description
 
@@ -15,7 +15,9 @@ SafeKeepVault turns an ordinary laptop and a USB flash drive into an offline pla
 How it works:
 1. Put SafeKeepVault on a USB flash drive (8 GB or more).
 2. Start your computer from it. All networking and disk access are removed when it boots.
-3. Approve payments offline. Your wallet app (Sparrow, BlueWallet, Nunchuk, Electrum, Specter, Bitcoin Core) stays online; only QR codes or a USB drive cross the gap, never your keys.
+3. Create seed words, passphrases and watch-only wallets, and review and sign bitcoin transactions, all offline on a full-size screen and keyboard.
+
+Your wallet app (Sparrow, BlueWallet, Nunchuk, Electrum, Specter, Bitcoin Core) stays online. Your keys never do: only QR codes or a USB drive cross the gap, and payments come back signed.
 
 Free and open source. Every release is signed.
 
@@ -35,6 +37,3 @@ bitcoin, bitcoin self custody, cold storage, air gapped, bitcoin wallet, hardwar
 - Made for kids: No
 - Music: original, generated for this video (video-src/music.py), so there is
   no copyright claim to worry about.
-- Altered or synthetic content: the narration is a synthetic (AI) voice that
-  doesn't imitate any real person. Check YouTube's current guidance on the upload
-  form; if unsure, answering Yes only adds a small label to the video.

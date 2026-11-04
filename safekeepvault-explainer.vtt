@@ -1,74 +1,94 @@
 WEBVTT
 
 1
-00:00:00.400 --> 00:00:03.309
+00:00:00.630 --> 00:00:03.390
 Your bitcoin is only as safe as your keys.
 
 2
-00:00:03.450 --> 00:00:06.812
+00:00:04.290 --> 00:00:07.270
 And most keys are kept on devices that are online.
 
 3
-00:00:07.300 --> 00:00:09.627
+00:00:08.350 --> 00:00:10.410
 Online devices can be hacked.
 
 4
-00:00:09.750 --> 00:00:13.465
-And hardware wallets cost money, and ship to your home address.
+00:00:11.670 --> 00:00:13.660
+And hardware wallets cost money,
 
 5
-00:00:14.300 --> 00:00:19.609
-SafeKeepVault keeps your bitcoin keys offline, using a computer you already own.
+00:00:13.710 --> 00:00:15.450
+and ship to your home address.
 
 6
-00:00:19.700 --> 00:00:21.530
-It's free, and open source.
+00:00:16.350 --> 00:00:21.550
+SafeKeepVault keeps your bitcoin keys offline, using a computer you already own.
 
 7
-00:00:22.100 --> 00:00:26.996
-Here's how it works. First, copy it onto a USB flash drive.
+00:00:22.410 --> 00:00:24.330
+It's free, and open source.
 
 8
-00:00:27.150 --> 00:00:33.530
-Next, start your computer from it. All networking and disk access are removed when it boots.
+00:00:25.230 --> 00:00:26.880
+Here's how it works.
 
 9
-00:00:33.650 --> 00:00:35.794
-Then approve your payments offline.
+00:00:26.930 --> 00:00:29.970
+First, copy it onto a USB flash drive.
 
 10
-00:00:36.500 --> 00:00:40.404
-Everything happens on a full-size screen that never goes online.
+00:00:30.810 --> 00:00:33.540
+Next, start your computer from it.
 
 11
-00:00:40.600 --> 00:00:44.667
-So you see exactly who gets paid, and how much, before you sign.
+00:00:33.590 --> 00:00:36.870
+All networking and disk access are removed when it boots.
 
 12
-00:00:45.300 --> 00:00:48.595
-Your wallet app stays online. Your keys never do.
+00:00:37.930 --> 00:00:42.140
+Create seed words, passphrases, watch-only wallets,
 
 13
-00:00:48.700 --> 00:00:53.669
-Payments pass between them by QR code or USB drive and come back signed.
+00:00:42.190 --> 00:00:44.670
+and review and sign bitcoin transactions.
 
 14
-00:00:55.900 --> 00:00:57.270
-It costs nothing.
+00:00:45.490 --> 00:00:48.670
+Everything happens using a full-size screen and keyboard.
 
 15
-00:00:57.350 --> 00:00:58.810
-There's nothing to order.
+00:00:49.070 --> 00:00:53.890
+So you see exactly who gets paid, and how much, before you sign a transaction.
 
 16
-00:00:58.900 --> 00:01:00.911
-Your backups are done properly.
+00:00:54.790 --> 00:00:58.070
+Your wallet app stays online. Your keys never do.
 
 17
-00:01:01.100 --> 00:01:03.349
-And every line of code is public.
+00:00:58.970 --> 00:01:03.710
+Payments pass between them by QR code or USB drive, and come back signed.
 
 18
-00:01:04.300 --> 00:01:09.053
-SafeKeepVault. Get it free at safekeepbitcoin.com.
+00:01:04.410 --> 00:01:05.470
+It costs nothing.
+
+19
+00:01:06.190 --> 00:01:07.330
+There's nothing to order.
+
+20
+00:01:08.130 --> 00:01:10.330
+Create backups only you can restore.
+
+21
+00:01:10.930 --> 00:01:13.110
+And every line of code is public.
+
+22
+00:01:13.830 --> 00:01:15.240
+SafeKeepVault.
+
+23
+00:01:15.290 --> 00:01:18.050
+Get it free at safekeepbitcoin.com.
 
