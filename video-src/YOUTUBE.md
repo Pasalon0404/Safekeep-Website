@@ -1,6 +1,6 @@
 # YouTube upload kit
 
-**File:** `safekeepvault-explainer.mp4` (1920x1080, about 64 seconds, voiceover and music)
+**File:** `safekeepvault-explainer.mp4` (1920x1080, about 70 seconds, voiceover and music)
 **Thumbnail:** `safekeepvault-explainer-poster.jpg` (1280x720)
 **Captions:** `safekeepvault-explainer.vtt` (upload under Subtitles > Upload file > With timing)
 
@@ -14,7 +14,7 @@ SafeKeepVault turns an ordinary laptop and a USB flash drive into an offline pla
 
 How it works:
 1. Put SafeKeepVault on a USB flash drive (8 GB or more).
-2. Start your computer from it. No internet, and your normal drive is left untouched.
+2. Start your computer from it. All networking and disk access are removed when it boots.
 3. Approve payments offline. Your wallet app (Sparrow, BlueWallet, Nunchuk, Electrum, Specter, Bitcoin Core) stays online; only QR codes or a USB drive cross the gap, never your keys.
 
 Free and open source. Every release is signed.

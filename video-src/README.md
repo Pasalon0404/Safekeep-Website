@@ -1,6 +1,6 @@
 # Explainer video
 
-`safekeepvault-explainer.mp4` (site root) is a one-minute, 1920x1080 overview of
+`safekeepvault-explainer.mp4` (site root) is a roughly one-minute, 1920x1080 overview of
 SafeKeepVault: on-screen text and app screenshots, a synthetic voiceover, and
 background music. It is embedded on the home page with
 `safekeepvault-explainer-poster.jpg` as its poster frame and
@@ -14,7 +14,9 @@ as-is (see `YOUTUBE.md`).
   with `?play` to preview the picture (no sound).
 - `voiceover/`: one WAV clip per sentence, and `script.json` with the words.
   Made with the open-source Kokoro text-to-speech model (voice `af_heart`)
-  by `voiceover.py`; `pronunciation.json` fixes words it says wrongly. Names
+  by `voiceover.py`; `pronunciation.json` fixes words it says wrongly, and
+  `delivery.json` sets each line's pace, emphasis and pauses to match a human
+  reference reading of the script. Names
   are spelled out for the voice ("Safe Keep Vault").
 - `music.py`: generates the background music from code (an original track,
   no samples or licensed audio).
