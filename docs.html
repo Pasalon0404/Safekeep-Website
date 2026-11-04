@@ -307,6 +307,7 @@
                             <li><a href="#encrypted-vault">One-time setup</a></li>
                             <li><a href="#config-options">Initial configuration options</a></li>
                             <li><a href="#generate-seed">Generating a new seed</a></li>
+                            <li><a href="#draw-your-own-words">Draw Your Own Words</a></li>
                             <li><a href="#wallet-card">Your wallet on the Dashboard</a></li>
                         </ul>
                     </li>
@@ -678,7 +679,7 @@
                         Access the Entropy Generator, <strong>SafeKeepVault's</strong> seed generator.
                         Generate a seed from the device&rsquo;s random number generator in one click, or add
                         your own randomness: dice rolls, a shuffled deck of cards, mouse movement and camera
-                        sensor noise. See <a href="#generate-seed">Generating a new seed</a> below.
+                        sensor noise, or words you draw by hand. See <a href="#generate-seed">Generating a new seed</a> below.
                         A mandatory verification sequence ensures your physical backup is accurate before
                         any data is committed to the vault.
                     </li>
@@ -757,6 +758,11 @@
                         as digits 1&ndash;6. <strong>Only do this with practice rolls</strong>, or with the tool&rsquo;s
                         offline copy on a computer that never goes online again: your rolls are your seed.
                     </li>
+                    <li>
+                        <strong>Draw Your Own Words &mdash;</strong>
+                        words you draw by hand and coin flips, with nothing else mixed in. SafeKeep works out the
+                        last word. See <a href="#draw-your-own-words">Draw Your Own Words</a>.
+                    </li>
                 </ul>
                 <figure class="os-showcase">
                     <a href="verifiable-dice.png" target="_blank" rel="noopener">
@@ -789,6 +795,42 @@
                         <img class="img-elevated" src="dice-fairness.png" alt="Manual Dice card with 60 rolls entered and a fairness check reporting the die looks fair" style="max-width: 560px;">
                     </a>
                     <figcaption>When you add physical dice rolls in the Entropy Generator (under <strong>Advanced: Provide Manual Physical Entropy</strong>), a fairness check counts each face and, after 30 rolls, says whether the die looks fair, possibly biased or likely biased. In Mixed mode it&rsquo;s advice only. In Verifiable Dice, where the rolls are the whole seed, patterned rolls are refused.</figcaption>
+                </figure>
+
+                <h3 class="sub-heading" id="draw-your-own-words">Draw Your Own Words</h3>
+                <p>
+                    This mode makes a seed from your own randomness and nothing else. You draw all the words but the
+                    last by hand and flip a coin, and SafeKeep works out the last word. In the Entropy Generator, open
+                    <strong>Advanced: Provide Manual Physical Entropy</strong> and choose <strong>Draw Your Own Words</strong>.
+                </p>
+                <ol class="wallet-steps">
+                    <li>Put the 2048 BIP-39 words on slips (or the numbers 1&ndash;2048, and look each number up in the word list), mix them in a bag, and draw one. Write it down, <strong>put it back</strong>, mix again, and draw the next. Repeat until you have <strong>11 words</strong> (<strong>23</strong> for a 24-word seed).</li>
+                    <li>Flip a fair coin <strong>7 times</strong> (<strong>3 times</strong> for a 24-word seed): <strong>Heads = 1, Tails = 0</strong>.</li>
+                    <li>Enter the words and the flips in the order you drew and flipped them, tick the confirmation box, and click <strong>Forge Seed</strong>.</li>
+                </ol>
+                <div class="notice-block">
+                    <p class="notice-title">Draw the words; never choose them</p>
+                    <p>
+                        Words you pick yourself, or remember, follow patterns that an attacker can guess, however
+                        random they feel. Nothing else is mixed in, so the seed is only as random as your draw and your coin.
+                    </p>
+                </div>
+                <p>
+                    SafeKeep refuses a draw that looks made up: the same word three or more times, four or more words
+                    in a row that sit next to each other in the word list, or all the words in alphabetical order. It
+                    says what it found and asks you to draw again. You also tick a box that reads &ldquo;I drew these
+                    words at random and flipped a real coin. I didn&rsquo;t choose any of them.&rdquo; Changing a word or a
+                    flip clears the box.
+                </p>
+                <p>
+                    <strong>To check the last word,</strong> use SeedSigner&rsquo;s <strong>Tools &rarr; Calc 12th/24th word &rarr;
+                    Coin flip entropy</strong> with the same words and flips. It shows the same last word.
+                </p>
+                <figure class="os-showcase">
+                    <a href="v160-draw-your-own-words.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v160-draw-your-own-words.png" alt="Draw Your Own Words mode with 11 practice words and 7 coin flips entered, the confirmation box ticked, and the Forge Seed button">
+                    </a>
+                    <figcaption><strong>Draw Your Own Words</strong> with 11 practice words and 7 coin flips entered. These are public test words: never use words from a picture for a real seed.</figcaption>
                 </figure>
 
                 <h3 class="sub-heading" id="wallet-card">Your wallet on the Dashboard</h3>
@@ -1598,6 +1640,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         Generates your master seed from the system&rsquo;s random number generator, mixed with
                         any randomness you add: dice rolls, a shuffled deck of cards, mouse movement and camera
                         noise. Verifiable Dice mode makes a seed you can check on SeedSigner or COLDCARD.
+                        <a href="#draw-your-own-words">Draw Your Own Words</a> makes a seed from words you draw by hand and coin flips.
                         A live fairness check scores your physical dice rolls and, after 30 rolls,
                         warns if the die looks biased. See <a href="#generate-seed">Generating a new seed</a>.
                     </li>
