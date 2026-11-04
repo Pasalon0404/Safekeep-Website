@@ -1,11 +1,12 @@
 # YouTube upload kit
 
-**File:** `safekeepvault-explainer.mp4` (1920x1080, 60 seconds, silent)
+**File:** `safekeepvault-explainer.mp4` (1920x1080, about 62 seconds, voiceover and music)
 **Thumbnail:** `safekeepvault-explainer-poster.jpg` (1280x720)
+**Captions:** `safekeepvault-explainer.vtt` (upload under Subtitles > Upload file > With timing)
 
 ## Title
 
-SafeKeepVault in 60 seconds: keep your bitcoin keys offline on a computer you already own
+SafeKeepVault in one minute: keep your bitcoin keys offline on a computer you already own
 
 ## Description
 
@@ -32,5 +33,8 @@ bitcoin, bitcoin self custody, cold storage, air gapped, bitcoin wallet, hardwar
 
 - Category: Science & Technology
 - Made for kids: No
-- Music: the video is silent. If you'd like a background track, add one from
-  YouTube Studio > Editor > Audio (YouTube Audio Library tracks are free to use).
+- Music: original, generated for this video (video-src/music.py), so there is
+  no copyright claim to worry about.
+- Altered or synthetic content: the narration is a synthetic (AI) voice that
+  doesn't imitate any real person. Check YouTube's current guidance on the upload
+  form; if unsure, answering Yes only adds a small label to the video.
