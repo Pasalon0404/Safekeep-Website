@@ -67,8 +67,8 @@ function run(cmd, argv) {
   const filter = [
     ...parts,
     `${vlabels}amix=inputs=${voiceover.length}:normalize=0,apad,atrim=0:${duration},asplit=2[vo][key]`,
-    `[1:a]volume=0.32[mus]`,
-    `[mus][key]sidechaincompress=threshold=0.02:ratio=6:attack=40:release=500[duck]`,
+    `[1:a]volume=0.12[mus]`,
+    `[mus][key]sidechaincompress=threshold=0.015:ratio=8:attack=30:release=600[duck]`,
     `[vo][duck]amix=inputs=2:normalize=0,loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000[a]`,
   ].join(';');
 

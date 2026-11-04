@@ -281,7 +281,7 @@ const SCENE_FN = {
     const p1 = $('pk1'), p2 = $('pk2');
     const k1 = inout((lt - 3.6) / 1.8), k2 = inout((lt - 6.0) / 1.8);
     p1.style.opacity = lt < 3.4 ? 0 : clamp((lt - 3.4) / 0.3) * clamp(1 - (lt - 5.5) / 0.3);
-    p1.style.transform = `translate(${20 + k1 * 260}px, 52px)`;
+    p1.style.transform = `translate(${20 + k1 * 220}px, 52px)`;
     p2.style.opacity = lt < 5.8 ? 0 : clamp((lt - 5.8) / 0.3);
     p2.style.transform = `translate(${370 - k2 * 350}px, 152px)`;
     appear('s6f', lt, 7.9);
