@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SafeKeepVault explainer (video source)</title>
+<!--
+  Source for safekeepvault-explainer.mp4. Every frame is drawn by render(t),
+  so the video is rebuilt deterministically by video-src/render.js.
+  Open this file in a browser and add ?play to preview it in real time.
+-->
+<style>
+  :root {
+    --bg: #0B0D10; --panel: #14171C; --line: #262B33;
+    --text: #F2F4F7; --muted: #A2AAB5; --dim: #6B7380;
+    --accent: #F7931A; --good: #3FB950; --bad: #F85149;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+  body { font-family: 'Inter', sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; }
+  #stage { position: relative; width: 1920px; height: 1080px; overflow: hidden;
+    background: radial-gradient(ellipse 1400px 900px at 50% 40%, #151922 0%, var(--bg) 70%); }
+  .scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; }
+  .el { will-change: transform, opacity; }
+  h1 { font-size: 84px; font-weight: 800; letter-spacing: -2px; line-height: 1.1; text-align: center; }
+  h2 { font-size: 64px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.15; text-align: center; }
+  p.sub { font-size: 40px; font-weight: 500; color: var(--muted); text-align: center; line-height: 1.35; }
+  .o { color: var(--accent); }
+  .g { color: var(--good); }
+  .r { color: var(--bad); }
+  .brand { font-size: 120px; font-weight: 800; letter-spacing: -3px; }
+  .eyebrow { font-family: 'JetBrains Mono', 'DejaVu Sans Mono', monospace; font-size: 26px; letter-spacing: 6px; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .pill { display: inline-flex; align-items: center; gap: 14px; padding: 14px 28px; border: 2px solid var(--line); border-radius: 999px; background: var(--panel); font-size: 32px; font-weight: 600; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--good); box-shadow: 0 0 16px var(--good); }
+
+  /* icons */
+  .icon { width: 220px; height: 220px; }
+  .icon svg { width: 100%; height: 100%; }
+  .row { display: flex; gap: 80px; align-items: center; justify-content: center; }
+
+  /* step cards */
+  .steps { display: flex; gap: 48px; }
+  .step { width: 500px; padding: 48px 40px; background: var(--panel); border: 2px solid var(--line); border-radius: 24px; text-align: center; }
+  .step .num { width: 72px; height: 72px; border-radius: 50%; background: var(--accent); color: #111; font-weight: 800; font-size: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; }
+  .step .ic { height: 150px; margin-bottom: 28px; }
+  .step .ic svg { height: 100%; }
+  .step h3 { font-size: 40px; font-weight: 700; margin-bottom: 14px; line-height: 1.2; }
+  .step p { font-size: 28px; color: var(--muted); line-height: 1.4; }
+
+  /* screenshots */
+  .shot { position: absolute; border-radius: 18px; overflow: hidden; border: 2px solid var(--line); box-shadow: 0 40px 120px rgba(0,0,0,0.6); background: #000; }
+  .shot img { display: block; width: 100%; }
+  .caption { position: absolute; left: 0; right: 0; bottom: 70px; text-align: center; }
+  .caption > span { display: inline-block; padding: 22px 44px; background: rgba(11,13,16,0.92); border: 2px solid var(--line); border-radius: 18px; font-size: 44px; font-weight: 700; }
+
+  /* flow diagram */
+  .device { width: 460px; padding: 40px; border-radius: 28px; border: 3px solid var(--line); background: var(--panel); text-align: center; }
+  .device .ic { height: 170px; margin-bottom: 20px; }
+  .device .ic svg { height: 100%; }
+  .device h3 { font-size: 40px; font-weight: 700; }
+  .device .tag { margin-top: 18px; font-size: 28px; font-weight: 600; }
+  .lane { position: relative; width: 560px; height: 260px; }
+  .packet { position: absolute; top: 0; left: 0; display: flex; align-items: center; gap: 14px; padding: 14px 22px; border-radius: 14px; background: #1B2028; border: 2px solid var(--line); font-size: 26px; font-weight: 600; white-space: nowrap; }
+  .packet svg { width: 40px; height: 40px; }
+
+  /* benefits */
+  .benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 56px; width: 1560px; }
+  .benefit { display: flex; gap: 30px; align-items: flex-start; padding: 36px 40px; background: var(--panel); border: 2px solid var(--line); border-radius: 22px; }
+  .benefit .bi { flex: 0 0 76px; height: 76px; border-radius: 18px; background: rgba(247,147,26,0.12); display: flex; align-items: center; justify-content: center; }
+  .benefit .bi svg { width: 44px; height: 44px; }
+  .benefit h3 { font-size: 38px; font-weight: 700; margin-bottom: 8px; }
+  .benefit p { font-size: 27px; color: var(--muted); line-height: 1.4; }
+
+  .url { font-family: 'JetBrains Mono', 'DejaVu Sans Mono', monospace; font-size: 64px; font-weight: 700; color: var(--accent); }
+  .ctas { display: flex; gap: 32px; }
+  .btn { padding: 24px 48px; border-radius: 14px; font-size: 36px; font-weight: 700; }
+  .btn.p { background: var(--accent); color: #111; }
+  .btn.s { border: 2px solid var(--line); color: var(--text); background: var(--panel); }
+
+  #progress { position: absolute; left: 0; bottom: 0; height: 6px; background: var(--accent); }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- S1 hook -->
+  <div class="scene" id="s1">
+    <div class="el" id="s1a"><h1>Your bitcoin is only as safe<br>as your <span class="o">keys</span>.</h1></div>
+    <div class="el" id="s1b" style="margin-top:48px"><p class="sub">And most keys live on devices that are online.</p></div>
+  </div>
+
+  <!-- S2 problem -->
+  <div class="scene" id="s2">
+    <div class="row">
+      <div class="el" id="s2a" style="text-align:center">
+        <div class="icon" style="margin:0 auto"><svg viewBox="0 0 120 120" fill="none" stroke="#F85149" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="16" y="24" width="88" height="58" rx="6"/><path d="M40 98h40M60 82v16"/>
+          <path d="M44 44l10 10M54 44L44 54M66 44l10 10M76 44L66 54"/><path d="M46 70q14-8 28 0"/></svg></div>
+        <h3 style="font-size:40px;margin-top:20px">Online devices<br><span class="r">can be hacked</span></h3>
+      </div>
+      <div class="el" id="s2b" style="text-align:center">
+        <div class="icon" style="margin:0 auto"><svg viewBox="0 0 120 120" fill="none" stroke="#F85149" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 40l40-20 40 20v44l-40 20-40-20z"/><path d="M20 40l40 20 40-20M60 60v44"/>
+          <path d="M80 30L40 50"/></svg></div>
+        <h3 style="font-size:40px;margin-top:20px">Hardware wallets cost money<br><span class="r">and ship to your address</span></h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- S3 intro -->
+  <div class="scene" id="s3">
+    <div class="el" id="s3a"><svg width="170" height="200" viewBox="0 0 24 28" fill="none" stroke="#F7931A" stroke-width="1.6" stroke-linejoin="round"><path d="M12 26s10-5 10-12.5V5L12 1.5 2 5v8.5C2 21 12 26 12 26z" fill="rgba(247,147,26,0.12)"/><path d="M9.5 9h4a2 2 0 0 1 0 4h-4zm0 4h4.5a2 2 0 0 1 0 4H9.5zM11 7.5v1.5m0 8v1.5m2-11v1.5m0 8v1.5" stroke-linecap="round"/></svg></div>
+    <div class="el brand" id="s3b" style="margin-top:24px">SafeKeep<span class="o">Vault</span></div>
+    <div class="el" id="s3c" style="margin-top:28px"><p class="sub" style="color:var(--text);font-size:46px">Keep your bitcoin keys offline,<br>using a computer <span class="o">you already own</span>.</p></div>
+    <div class="el" id="s3d" style="margin-top:44px"><span class="eyebrow">Free · Open source · Bitcoin only</span></div>
+  </div>
+
+  <!-- S4 how it works -->
+  <div class="scene" id="s4">
+    <div class="el" id="s4h" style="margin-bottom:64px"><span class="eyebrow">How it works</span></div>
+    <div class="steps">
+      <div class="step el" id="s4a">
+        <div class="num">1</div>
+        <div class="ic"><svg viewBox="0 0 120 120" fill="none" stroke="#F7931A" stroke-width="5" stroke-linejoin="round"><rect x="38" y="44" width="44" height="66" rx="8"/><rect x="46" y="12" width="28" height="32" rx="3"/><path d="M54 24v8M66 24v8" stroke-linecap="round"/></svg></div>
+        <h3>Put it on a flash drive</h3>
+        <p>Download it free and copy it to any USB stick of 8&nbsp;GB or more.</p>
+      </div>
+      <div class="step el" id="s4b">
+        <div class="num">2</div>
+        <div class="ic"><svg viewBox="0 0 120 120" fill="none" stroke="#F7931A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="24" width="88" height="58" rx="6"/><path d="M6 96h108"/><path d="M42 50a26 26 0 0 1 36 0M50 60a14 14 0 0 1 20 0" stroke="#6B7380"/><circle cx="60" cy="68" r="2.5" fill="#6B7380" stroke="#6B7380"/><path d="M36 36l48 40" stroke="#F85149" stroke-width="6"/></svg></div>
+        <h3>Start your computer from it</h3>
+        <p>No internet, ever. Your normal drive and files are left untouched.</p>
+      </div>
+      <div class="step el" id="s4c">
+        <div class="num">3</div>
+        <div class="ic"><svg viewBox="0 0 120 120" fill="none" stroke="#F7931A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M60 108s40-20 40-50V28L60 12 20 28v30c0 30 40 50 40 50z"/><path d="M42 60l12 12 24-26" stroke="#3FB950" stroke-width="7"/></svg></div>
+        <h3>Approve payments offline</h3>
+        <p>Create and back up your seed, check addresses, sign transactions.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5 screenshots -->
+  <div class="scene" id="s5">
+    <div class="shot el" id="s5a" style="width:1500px;left:210px;top:60px"><img src="../v159-dashboard-top.png" alt=""></div>
+    <div class="shot el" id="s5b" style="width:1500px;left:210px;top:60px"><img src="../signer.png" alt="" style="width:2200px;max-width:none;margin-left:-640px;margin-top:-40px"></div>
+    <div class="caption el" id="s5c1"><span>A full-size screen, completely <span class="g">offline</span></span></div>
+    <div class="caption el" id="s5c2"><span>See exactly who gets paid, and how much, <span class="o">before you sign</span></span></div>
+  </div>
+
+  <!-- S6 flow -->
+  <div class="scene" id="s6">
+    <div class="el" id="s6h" style="margin-bottom:70px"><h2>Your wallet app stays online.<br><span class="o">Your keys never do.</span></h2></div>
+    <div class="row" style="gap:20px">
+      <div class="device el" id="s6a">
+        <div class="ic"><svg viewBox="0 0 120 120" fill="none" stroke="#A2AAB5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="36" y="8" width="48" height="96" rx="9"/><path d="M54 92h12"/><path d="M48 44a17 17 0 0 1 24 0M53 52a9 9 0 0 1 14 0" stroke="#3FB950"/></svg></div>
+        <h3>Wallet app</h3>
+        <div class="tag" style="color:var(--muted)">Sparrow, BlueWallet, Nunchuk, Electrum&hellip;</div>
+      </div>
+      <div class="lane el" id="s6lane">
+        <svg width="560" height="260" style="position:absolute;inset:0" fill="none" stroke="#262B33" stroke-width="4" stroke-dasharray="14 12"><path d="M20 80h520M20 180h520"/></svg>
+        <div class="packet" id="pk1"><svg viewBox="0 0 24 24" fill="none" stroke="#F2F4F7" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg>Unsigned payment</div>
+        <div class="packet" id="pk2" style="border-color:#3FB950"><svg viewBox="0 0 24 24" fill="none" stroke="#3FB950" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg>Signed &#10003;</div>
+      </div>
+      <div class="device el" id="s6b" style="border-color:#F7931A">
+        <div class="ic"><svg viewBox="0 0 120 120" fill="none" stroke="#F7931A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="24" width="88" height="58" rx="6"/><path d="M6 96h108"/><rect x="48" y="40" width="24" height="22" rx="3"/><path d="M53 40v-6a7 7 0 0 1 14 0v6"/></svg></div>
+        <h3>SafeKeepVault</h3>
+        <div class="tag" style="color:var(--accent)">Offline &middot; holds your keys</div>
+      </div>
+    </div>
+    <div class="el" id="s6f" style="margin-top:60px"><p class="sub" style="font-size:34px">Only QR codes or a USB drive cross the gap &mdash; never your keys.</p></div>
+  </div>
+
+  <!-- S7 benefits -->
+  <div class="scene" id="s7">
+    <div class="el" id="s7h" style="margin-bottom:56px"><span class="eyebrow">Why people use it</span></div>
+    <div class="benefits">
+      <div class="benefit el" id="b1"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#F7931A" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .8-3 2s1.3 1.7 3 2 3 .8 3 2-1.3 2-3 2c-1.4 0-2.5-.5-3-1.5M12 6v2m0 8v2"/></svg></div><div><h3>Costs nothing</h3><p>Free and open source. Use a laptop and flash drive you already have.</p></div></div>
+      <div class="benefit el" id="b2"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#F7931A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h3>Private</h3><p>Nothing to order, nothing shipped, no account. No paper trail to your door.</p></div></div>
+      <div class="benefit el" id="b3"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#F7931A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="12" r="3"/><path d="M8.7 7.5l6.6 3M8.7 16.5l6.6-3"/></svg></div><div><h3>Proper backups</h3><p>Dice you can double-check, passphrases, split backups, a printed record.</p></div></div>
+      <div class="benefit el" id="b4"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#F7931A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div><h3>Nothing hidden</h3><p>Every line of code is public and every release is signed.</p></div></div>
+    </div>
+  </div>
+
+  <!-- S8 CTA -->
+  <div class="scene" id="s8">
+    <div class="el" id="s8a"><span class="brand">SafeKeep<span class="o">Vault</span></span></div>
+    <div class="el" id="s8b" style="margin-top:20px"><p class="sub">Your keys. Your computer. Offline.</p></div>
+    <div class="el" id="s8c" style="margin-top:64px"><span class="url">safekeepbitcoin.com</span></div>
+    <div class="el ctas" id="s8d" style="margin-top:56px"><span class="btn p">Download free</span><span class="btn s">Try the online demo</span></div>
+  </div>
+
+  <div id="progress"></div>
+</div>
+
+<script>
+// ---------- timeline (seconds) ----------
+const SCENES = [
+  ['s1', 0.0, 5.0],
+  ['s2', 5.0, 10.5],
+  ['s3', 10.5, 16.5],
+  ['s4', 16.5, 26.5],
+  ['s5', 26.5, 35.5],
+  ['s6', 35.5, 45.5],
+  ['s7', 45.5, 53.5],
+  ['s8', 53.5, 60.0],
+];
+const DURATION = 60.0;
+const FADE = 0.5;
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = x => { x = clamp(x); return 1 - Math.pow(1 - x, 3); };
+const inout = x => { x = clamp(x); return x < 0.5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2; };
+const $ = id => document.getElementById(id);
+
+// fade + rise an element in at time `at` (relative to scene start)
+function appear(id, lt, at, dur = 0.6, dy = 30) {
+  const k = ease((lt - at) / dur);
+  const el = $(id);
+  el.style.opacity = k;
+  el.style.transform = `translateY(${(1 - k) * dy}px)`;
+}
+function window_(id, lt, a, b, dur = 0.5) {   // visible between a and b
+  const k = Math.min(ease((lt - a) / dur), 1 - ease((lt - (b - dur)) / dur));
+  $(id).style.opacity = clamp(k);
+}
+
+function render(t) {
+  for (const [id, a, b] of SCENES) {
+    const el = $(id);
+    const isLast = b === DURATION;
+    el.style.opacity = (t >= a && t < b) ? Math.min(clamp((t - a) / FADE), isLast ? 1 : clamp((b - t) / FADE)) : 0;
+    el.style.display = (t >= a - 0.1 && t < b + 0.1) ? 'flex' : 'none';
+    if (el.style.display === 'none') continue;
+    const lt = t - a;
+    // gentle push-in on every scene
+    el.style.transform = `scale(${1 + 0.02 * clamp(lt / (b - a))})`;
+    SCENE_FN[id](lt, b - a);
+  }
+  $('progress').style.width = (t / DURATION * 100) + '%';
+}
+
+const SCENE_FN = {
+  s1(lt) { appear('s1a', lt, 0.2, 0.8); appear('s1b', lt, 1.8); },
+  s2(lt) { appear('s2a', lt, 0.2); appear('s2b', lt, 1.6); },
+  s3(lt) {
+    const k = ease((lt - 0.1) / 0.9);
+    $('s3a').style.opacity = k; $('s3a').style.transform = `scale(${0.6 + 0.4 * k})`;
+    appear('s3b', lt, 0.6); appear('s3c', lt, 1.5); appear('s3d', lt, 2.8);
+  },
+  s4(lt) { appear('s4h', lt, 0.1); appear('s4a', lt, 0.5, 0.7, 50); appear('s4b', lt, 2.8, 0.7, 50); appear('s4c', lt, 5.1, 0.7, 50); },
+  s5(lt, d) {
+    const mid = 4.5;
+    // dashboard, slow drift up; then signer screen
+    const a = $('s5a'), b = $('s5b');
+    a.style.opacity = clamp(1 - ease((lt - mid + 0.3) / 0.6));
+    a.style.transform = `translateY(${-inout(lt / mid) * 120}px) scale(${1.0 + 0.03 * lt / mid})`;
+    b.style.opacity = ease((lt - mid + 0.3) / 0.6);
+    b.style.transform = `translateY(${-inout((lt - mid) / (d - mid)) * 260}px)`;
+    window_('s5c1', lt, 0.5, mid);
+    window_('s5c2', lt, mid + 0.3, d + 1);
+  },
+  s6(lt) {
+    appear('s6h', lt, 0.1); appear('s6a', lt, 0.9); appear('s6b', lt, 1.3); appear('s6lane', lt, 1.3, 0.4, 0);
+    // unsigned packet travels left -> right on top lane, signed returns right -> left on bottom lane
+    const p1 = $('pk1'), p2 = $('pk2');
+    const k1 = inout((lt - 2.2) / 2.0), k2 = inout((lt - 4.8) / 2.0);
+    p1.style.opacity = lt < 2.0 ? 0 : clamp((lt - 2.0) / 0.3) * clamp(1 - (lt - 4.3) / 0.3);
+    p1.style.transform = `translate(${20 + k1 * 260}px, 52px)`;
+    p2.style.opacity = lt < 4.6 ? 0 : clamp((lt - 4.6) / 0.3);
+    p2.style.transform = `translate(${370 - k2 * 350}px, 152px)`;
+    appear('s6f', lt, 7.0);
+  },
+  s7(lt) { appear('s7h', lt, 0.1); appear('b1', lt, 0.5); appear('b2', lt, 1.4); appear('b3', lt, 2.3); appear('b4', lt, 3.2); },
+  s8(lt) {
+    const k = ease((lt - 0.1) / 0.8);
+    $('s8a').style.opacity = k; $('s8a').style.transform = `scale(${0.9 + 0.1 * k})`;
+    appear('s8b', lt, 0.9); appear('s8c', lt, 1.8); appear('s8d', lt, 2.6);
+  },
+};
+
+window.DURATION = DURATION;
+window.render = render;
+render(0);
+
+// ?play previews the animation in real time in a normal browser
+if (location.search.includes('play')) {
+  const t0 = performance.now();
+  (function loop() { const t = ((performance.now() - t0) / 1000) % DURATION; render(t); requestAnimationFrame(loop); })();
+}
+</script>
+</body>
+</html>
