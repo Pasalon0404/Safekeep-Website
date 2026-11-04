@@ -92,19 +92,32 @@
 
             <!-- Highlights: the summary of recent releases, kept short; add new changes to the matching point -->
             <div style="margin: 1.5rem 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-md);">
-                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim); margin: 0 0 0.35rem;">Recent releases (up to v1.59)</p>
+                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim); margin: 0 0 0.35rem;">Recent releases (up to v1.60)</p>
                 <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.6rem;">Updates without reflashing, backups you can check, and a clearer transaction review</p>
                 <ul style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; padding-left: 1.2rem;">
                     <li style="margin: 0 0 0.5rem;"><strong>Keep your seed off the flash drive.</strong> The vault can open without storing your seed: you scan your SeedQR or type your words at each start (v1.58).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>A new look.</strong> A Dashboard with your wallet, a Health list and tiles for everyday tasks, plus guided <strong>Show an address</strong> and <strong>Connect a wallet app</strong> (v1.57). QR codes change density and speed while they play, and Show an address lists your Silent Payment address (v1.59).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Updates without reflashing.</strong> Install a signed update from the Transfer Drive, with the previous version one menu choice away (v1.47). Most PCs now start the flash drive with Secure Boot left on (v1.54).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Backups you can check.</strong> Send a backup to your phone with the Courier, check that it opens, and restore a new flash drive from it, all without an online computer (v1.55). Seed XOR and Shamir shares are made one at a time and checked against your paper (v1.52).</li>
-                    <li style="margin: 0 0 0.5rem;"><strong>Safer seeds and passwords.</strong> The random number generator is tested before every seed, patterned dice rolls are refused (v1.50), and so are easy-to-guess vault passwords (v1.51).</li>
+                    <li style="margin: 0 0 0.5rem;"><strong>Safer seeds and passwords.</strong> The random number generator is tested before every seed, patterned dice rolls are refused (v1.50), and so are easy-to-guess vault passwords (v1.51). <strong>Draw Your Own Words</strong> makes a seed from words you draw by hand and coin flips, and refuses a draw that looks made up (v1.60).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>A clearer transaction review.</strong> Save your wallets in the vault and the <strong>PSBT Signer</strong> confirms which one is spending and that the change comes back to you. It shows the total leaving your wallet and lets you compare each address character by character (v1.46).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Works with more wallets.</strong> Nunchuk and Sparrow add your key by scanning the screen (v1.53); import from Sparrow, BlueWallet or Bitcoin Core (v1.45); co-sign with a <strong>Coldcard</strong> or <strong>Trezor One</strong> over USB (v1.44); file-only wallets such as Trezor Suite work through <strong>The Courier</strong> (v1.43).</li>
                     <li style="margin: 0;"><strong>Less to attack.</strong> Every network driver, the terminal and the file manager are gone from SafeKeep OS (v1.45).</li>
                 </ul>
             </div>
+
+            <!-- v1.60 -->
+            <section class="content-section" id="v1-60">
+                <h2 class="section-heading">v1.60 &mdash; November 4, 2026</h2>
+                <p>A new way to make a seed where every bit of randomness is your own: draw the words by hand, flip a coin, and SafeKeep works out the last word.</p>
+                <ul class="docs-list">
+                    <li><strong>Draw Your Own Words &mdash;</strong> a third mode in the <strong>Entropy Generator</strong> (under <strong>Advanced</strong>), next to Mixed and Verifiable Dice. Put the 2048 BIP-39 words on slips, mix them in a bag and draw 11 words (23 for a 24-word seed), putting each slip back. Flip a fair coin 7 times (3 for 24 words): <strong>Heads = 1, Tails = 0</strong>. SafeKeep works out the last word, and nothing else is mixed in. See <a href="docs.html#draw-your-own-words">Draw Your Own Words</a> in the guide.</li>
+                    <li><strong>Check it on SeedSigner &mdash;</strong> it&rsquo;s the same calculation as SeedSigner&rsquo;s <strong>Tools &rarr; Calc 12th/24th word &rarr; Coin flip entropy</strong>, so the same words and flips give the same last word there.</li>
+                    <li><strong>Draw the words; never choose them &mdash;</strong> words you pick or remember follow patterns an attacker can guess. SafeKeep refuses a draw that looks made up: the same word three times, four neighboring words from the word list in a row, or words in alphabetical order. It also asks you to confirm that you drew the words and flipped a real coin.</li>
+                    <li><strong>License &mdash;</strong> the MIT license is now included as a <code>LICENSE</code> file in the source code.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.60.tar</code> onto the Transfer Drive, unlock, and install it from <strong>Device Options &rarr; Update SafeKeep &rarr; Check for update</strong>, then <strong>Install update</strong> and <strong>Restart now</strong>.</li>
+                </ul>
+            </section>
 
             <!-- v1.59 -->
             <section class="content-section" id="v1-59">
