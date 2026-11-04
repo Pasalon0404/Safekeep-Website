@@ -128,7 +128,7 @@
         <div class="num">2</div>
         <div class="ic"><svg viewBox="0 0 120 120" fill="none" stroke="#F7931A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="24" width="88" height="58" rx="6"/><path d="M6 96h108"/><path d="M42 50a26 26 0 0 1 36 0M50 60a14 14 0 0 1 20 0" stroke="#6B7380"/><circle cx="60" cy="68" r="2.5" fill="#6B7380" stroke="#6B7380"/><path d="M36 36l48 40" stroke="#F85149" stroke-width="6"/></svg></div>
         <h3>Start your computer from it</h3>
-        <p>No internet, ever. Your normal drive and files are left untouched.</p>
+        <p>All networking and disk access are removed when it boots.</p>
       </div>
       <div class="step el" id="s4c">
         <div class="num">3</div>
@@ -194,18 +194,35 @@
 
 <script>
 // ---------- timeline (seconds) ----------
+// [scene id, start, end]. Scene lengths follow the voiceover.
 const SCENES = [
-  ['s1', 0.0, 5.0],
-  ['s2', 5.0, 10.5],
-  ['s3', 10.5, 16.5],
-  ['s4', 16.5, 26.5],
-  ['s5', 26.5, 35.5],
-  ['s6', 35.5, 45.5],
-  ['s7', 45.5, 53.5],
-  ['s8', 53.5, 60.0],
+  ['s1',  0.0,  7.0],
+  ['s2',  7.0, 13.7],
+  ['s3', 13.7, 21.8],
+  ['s4', 21.8, 36.1],
+  ['s5', 36.1, 45.0],
+  ['s6', 45.0, 55.6],
+  ['s7', 55.6, 63.7],
+  ['s8', 63.7, 70.3],
 ];
-const DURATION = 60.0;
-const FADE = 0.5;
+const DURATION = 70.3;
+const FADE = 0.45;
+
+// Voiceover: [clip in video-src/voiceover/, scene, seconds into that scene].
+// The words of each clip are in voiceover/script.json; pace and pauses follow
+// a human reference reading (voiceover/delivery.json).
+const VO = [
+  ['s1a', 's1', 0.4], ['s1b', 's1', 3.45],
+  ['s2a', 's2', 0.3], ['s2b', 's2', 2.75],
+  ['s3a', 's3', 0.6], ['s3b', 's3', 6.0],
+  ['s4a', 's4', 0.3], ['s4b', 's4', 5.35], ['s4c', 's4', 11.85],   // s4a: "First" 1.69 s in; s4b: "All networking" 2.64 s in
+  ['s5a', 's5', 0.4], ['s5b', 's5', 4.5],
+  ['s6a', 's6', 0.3], ['s6b', 's6', 3.7],
+  ['s7a', 's7', 0.3], ['s7b', 's7', 1.75], ['s7c', 's7', 3.3], ['s7d', 's7', 5.5],
+  ['s8a', 's8', 0.6],                                               // s8a: "Get it free" 2.04 s in
+];
+const sceneStart = id => SCENES.find(s => s[0] === id)[1];
+window.VOICEOVER = VO.map(([clip, scene, at]) => ({ clip, at: +(sceneStart(scene) + at).toFixed(2) }));
 
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const ease = x => { x = clamp(x); return 1 - Math.pow(1 - x, 3); };
@@ -240,41 +257,41 @@ function render(t) {
 }
 
 const SCENE_FN = {
-  s1(lt) { appear('s1a', lt, 0.2, 0.8); appear('s1b', lt, 1.8); },
-  s2(lt) { appear('s2a', lt, 0.2); appear('s2b', lt, 1.6); },
+  s1(lt) { appear('s1a', lt, 0.2, 0.8); appear('s1b', lt, 3.35); },
+  s2(lt) { appear('s2a', lt, 0.2); appear('s2b', lt, 2.65); },
   s3(lt) {
     const k = ease((lt - 0.1) / 0.9);
     $('s3a').style.opacity = k; $('s3a').style.transform = `scale(${0.6 + 0.4 * k})`;
-    appear('s3b', lt, 0.6); appear('s3c', lt, 1.5); appear('s3d', lt, 2.8);
+    appear('s3b', lt, 0.5); appear('s3c', lt, 1.6); appear('s3d', lt, 5.9);
   },
-  s4(lt) { appear('s4h', lt, 0.1); appear('s4a', lt, 0.5, 0.7, 50); appear('s4b', lt, 2.8, 0.7, 50); appear('s4c', lt, 5.1, 0.7, 50); },
+  s4(lt) { appear('s4h', lt, 0.1); appear('s4a', lt, 1.9, 0.7, 50); appear('s4b', lt, 5.25, 0.7, 50); appear('s4c', lt, 11.75, 0.7, 50); },
   s5(lt, d) {
-    const mid = 4.5;
+    const mid = 4.3;
     // dashboard, slow drift up; then signer screen
     const a = $('s5a'), b = $('s5b');
     a.style.opacity = clamp(1 - ease((lt - mid + 0.3) / 0.6));
     a.style.transform = `translateY(${-inout(lt / mid) * 120}px) scale(${1.0 + 0.03 * lt / mid})`;
     b.style.opacity = ease((lt - mid + 0.3) / 0.6);
     b.style.transform = `translateY(${-inout((lt - mid) / (d - mid)) * 260}px)`;
-    window_('s5c1', lt, 0.5, mid);
+    window_('s5c1', lt, 0.4, mid);
     window_('s5c2', lt, mid + 0.3, d + 1);
   },
   s6(lt) {
-    appear('s6h', lt, 0.1); appear('s6a', lt, 0.9); appear('s6b', lt, 1.3); appear('s6lane', lt, 1.3, 0.4, 0);
+    appear('s6h', lt, 0.1); appear('s6a', lt, 1.0); appear('s6b', lt, 1.4); appear('s6lane', lt, 1.4, 0.4, 0);
     // unsigned packet travels left -> right on top lane, signed returns right -> left on bottom lane
     const p1 = $('pk1'), p2 = $('pk2');
-    const k1 = inout((lt - 2.2) / 2.0), k2 = inout((lt - 4.8) / 2.0);
-    p1.style.opacity = lt < 2.0 ? 0 : clamp((lt - 2.0) / 0.3) * clamp(1 - (lt - 4.3) / 0.3);
-    p1.style.transform = `translate(${20 + k1 * 260}px, 52px)`;
-    p2.style.opacity = lt < 4.6 ? 0 : clamp((lt - 4.6) / 0.3);
+    const k1 = inout((lt - 3.85) / 1.8), k2 = inout((lt - 6.25) / 1.8);
+    p1.style.opacity = lt < 3.65 ? 0 : clamp((lt - 3.65) / 0.3) * clamp(1 - (lt - 5.75) / 0.3);
+    p1.style.transform = `translate(${20 + k1 * 220}px, 52px)`;
+    p2.style.opacity = lt < 6.05 ? 0 : clamp((lt - 6.05) / 0.3);
     p2.style.transform = `translate(${370 - k2 * 350}px, 152px)`;
-    appear('s6f', lt, 7.0);
+    appear('s6f', lt, 8.5);
   },
-  s7(lt) { appear('s7h', lt, 0.1); appear('b1', lt, 0.5); appear('b2', lt, 1.4); appear('b3', lt, 2.3); appear('b4', lt, 3.2); },
+  s7(lt) { appear('s7h', lt, 0.0); appear('b1', lt, 0.2); appear('b2', lt, 1.65); appear('b3', lt, 3.2); appear('b4', lt, 5.4); },
   s8(lt) {
     const k = ease((lt - 0.1) / 0.8);
     $('s8a').style.opacity = k; $('s8a').style.transform = `scale(${0.9 + 0.1 * k})`;
-    appear('s8b', lt, 0.9); appear('s8c', lt, 1.8); appear('s8d', lt, 2.6);
+    appear('s8b', lt, 1.0); appear('s8c', lt, 2.6); appear('s8d', lt, 3.4);
   },
 };
 
@@ -282,7 +299,7 @@ window.DURATION = DURATION;
 window.render = render;
 render(0);
 
-// ?play previews the animation in real time in a normal browser
+// ?play previews the animation in real time in a normal browser (no sound)
 if (location.search.includes('play')) {
   const t0 = performance.now();
   (function loop() { const t = ((performance.now() - t0) / 1000) % DURATION; render(t); requestAnimationFrame(loop); })();

@@ -1,0 +1,170 @@
+{
+ "_about": "Delivery matched to a human reference reading (Nov 2026). speed: Kokoro speed for the clip. stress: phoneme swaps for this clip only, moving emphasis to the words the reader stressed. pauses: [position in the clip from 0 to 1, seconds] for each pause the reader took; other pauses longer than 0.15 s are shortened.",
+ "s1a": {
+  "speed": 0.85,
+  "stress": [],
+  "pauses": []
+ },
+ "s1b": {
+  "speed": 0.92,
+  "stress": [],
+  "pauses": []
+ },
+ "s2a": {
+  "speed": 0.85,
+  "stress": [],
+  "pauses": []
+ },
+ "s2b": {
+  "speed": 0.9,
+  "stress": [
+   [
+    "hˈɑːɹdwɛɹ",
+    "hˌɑːɹdwɛɹ"
+   ]
+  ],
+  "pauses": [
+   [
+    0.49,
+    0.28
+   ]
+  ]
+ },
+ "s3a": {
+  "speed": 0.85,
+  "stress": [],
+  "pauses": [
+   [
+    0.62,
+    0.2
+   ]
+  ]
+ },
+ "s3b": {
+  "speed": 1.09,
+  "stress": [
+   [
+    "ˈoʊpən",
+    "ˌoʊpən"
+   ]
+  ],
+  "pauses": []
+ },
+ "s4a": {
+  "speed": 1.0,
+  "stress": [],
+  "pauses": [
+   [
+    0.2,
+    0.69
+   ],
+   [
+    0.42,
+    0.35
+   ]
+  ]
+ },
+ "s4b": {
+  "speed": 0.85,
+  "stress": [],
+  "pauses": [
+   [
+    0.08,
+    0.21
+   ],
+   [
+    0.3,
+    0.77
+   ]
+  ]
+ },
+ "s4c": {
+  "speed": 0.94,
+  "stress": [],
+  "pauses": []
+ },
+ "s5a": {
+  "speed": 0.94,
+  "stress": [],
+  "pauses": []
+ },
+ "s5b": {
+  "speed": 0.92,
+  "stress": [],
+  "pauses": [
+   [
+    0.48,
+    0.34
+   ],
+   [
+    0.77,
+    0.18
+   ]
+  ]
+ },
+ "s6a": {
+  "speed": 0.92,
+  "stress": [
+   [
+    "jʊɹ kˈiːz nˈɛvɚ",
+    "jʊɹ kˌiːz nˈɛvɚ"
+   ]
+  ],
+  "pauses": [
+   [
+    0.57,
+    0.32
+   ]
+  ]
+ },
+ "s6b": {
+  "speed": 0.9,
+  "stress": [],
+  "pauses": []
+ },
+ "s7a": {
+  "speed": 1.12,
+  "stress": [],
+  "pauses": []
+ },
+ "s7b": {
+  "speed": 1.15,
+  "stress": [
+   [
+    "nˈʌθɪŋ tʊ",
+    "nˌʌθɪŋ tʊ"
+   ]
+  ],
+  "pauses": []
+ },
+ "s7c": {
+  "speed": 0.92,
+  "stress": [
+   [
+    "dˈʌn pɹˈɑːpɚli",
+    "dˌʌn pɹˈɑːpɚli"
+   ]
+  ],
+  "pauses": []
+ },
+ "s7d": {
+  "speed": 0.92,
+  "stress": [
+   [
+    "kˈoʊd ɪz",
+    "kˌoʊd ɪz"
+   ]
+  ],
+  "pauses": []
+ },
+ "s8a": {
+  "speed": 0.85,
+  "stress": [],
+  "pauses": [
+   [
+    0.19,
+    0.95
+   ]
+  ]
+ }
+}
