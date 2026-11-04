@@ -1,21 +1,20 @@
 {
  "s1a": "Your bitcoin is only as safe as your keys.",
- "s1b": "And most keys live on devices that are online.",
+ "s1b": "And most keys are kept on devices that are online.",
  "s2a": "Online devices can be hacked.",
  "s2b": "And hardware wallets cost money, and ship to your home address.",
  "s3a": "Safe Keep Vault keeps your bitcoin keys offline, using a computer you already own.",
  "s3b": "It's free, and open source.",
- "s4h": "Here's how it works.",
- "s4a": "Put it on a USB flash drive.",
- "s4b": "Start your computer from it, with no internet at all.",
- "s4c": "Then approve your payments, offline.",
+ "s4a": "Here's how it works. First, copy it onto a USB flash drive.",
+ "s4b": "Next, start your computer from it, with no internet at all.",
+ "s4c": "Then approve your payments offline.",
  "s5a": "Everything happens on a full-size screen that never goes online.",
  "s5b": "So you see exactly who gets paid, and how much, before you sign.",
  "s6a": "Your wallet app stays online. Your keys never do.",
- "s6b": "Payments cross over by QR code or USB drive, and come back signed.",
+ "s6b": "Payments pass between them by QR code or USB drive, and come back signed.",
  "s7a": "It costs nothing.",
  "s7b": "There's nothing to order.",
  "s7c": "Your backups are done properly.",
  "s7d": "And every line of code is public.",
- "s8a": "Safe Keep Vault. Get it free, at safe keep bitcoin dot com."
+ "s8a": "Safe Keep Vault. Get it free at safe keep bitcoin dot com."
 }

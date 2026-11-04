@@ -13,8 +13,9 @@ as-is (see `YOUTUBE.md`).
   when each voice clip plays (`VO`) are near the bottom. Open it in a browser
   with `?play` to preview the picture (no sound).
 - `voiceover/`: one WAV clip per sentence, and `script.json` with the words.
-  Made with the open-source Kokoro text-to-speech model (voice `af_heart`,
-  speed 1.05). Names are spelled out for the voice ("Safe Keep Vault").
+  Made with the open-source Kokoro text-to-speech model (voice `af_heart`)
+  by `voiceover.py`; `pronunciation.json` fixes words it says wrongly. Names
+  are spelled out for the voice ("Safe Keep Vault").
 - `music.py`: generates the background music from code (an original track,
   no samples or licensed audio).
 - `render.js`: renders the frames, makes the music, and mixes it all to MP4.
@@ -28,7 +29,7 @@ repository root:
 
     node video-src/render.js safekeepvault-explainer.mp4 30
     node video-src/captions.js
-    ffmpeg -y -ss 17 -i safekeepvault-explainer.mp4 -frames:v 1 -vf scale=1280:720 -q:v 3 safekeepvault-explainer-poster.jpg
+    ffmpeg -y -ss 18 -i safekeepvault-explainer.mp4 -frames:v 1 -vf scale=1280:720 -q:v 3 safekeepvault-explainer-poster.jpg
 
 A full render takes about 8 minutes. To change only the sound (music level,
 clip timing), add `--audio` to the render command to reuse the last frames.
@@ -37,14 +38,13 @@ so browsers fetch the new file.
 
 ## Changing the voiceover
 
-Edit the sentence in `voiceover/script.json`, then regenerate that clip with
-Kokoro (`pip install kokoro-onnx soundfile`, plus `kokoro-v1.0.onnx` and
-`voices-v1.0.bin` from the kokoro-onnx GitHub releases):
+Edit the sentence in `voiceover/script.json`, then regenerate its clip with
+`voiceover.py` (instructions for installing the Kokoro model are at the top of
+that file):
 
-    from kokoro_onnx import Kokoro
-    import soundfile as sf
-    k = Kokoro('kokoro-v1.0.onnx', 'voices-v1.0.bin')
-    audio, sr = k.create("New sentence.", voice='af_heart', speed=1.05, lang='en-us')
-    sf.write('video-src/voiceover/s1a.wav', audio, sr)
+    python video-src/voiceover.py MODEL_DIR s1b
 
-If the new clip is longer, adjust the scene timings in `explainer.html`.
+If a word comes out wrong, add an entry to `voiceover/pronunciation.json`
+swapping the model's phonemes for corrected ones (`voiceover.py` prints the
+phonemes it used for each clip). If a clip gets longer, adjust the scene
+timings (`SCENES` and `VO`) in `explainer.html` and re-run `captions.js`.

@@ -1,78 +1,74 @@
 WEBVTT
 
 1
-00:00:00.400 --> 00:00:02.850
+00:00:00.400 --> 00:00:02.950
 Your bitcoin is only as safe as your keys.
 
 2
-00:00:02.900 --> 00:00:05.912
-And most keys live on devices that are online.
+00:00:03.000 --> 00:00:06.297
+And most keys are kept on devices that are online.
 
 3
-00:00:06.500 --> 00:00:08.450
+00:00:06.800 --> 00:00:08.750
 Online devices can be hacked.
 
 4
-00:00:08.500 --> 00:00:11.970
+00:00:08.800 --> 00:00:12.308
 And hardware wallets cost money, and ship to your home address.
 
 5
-00:00:13.100 --> 00:00:17.850
+00:00:13.200 --> 00:00:18.000
 SafeKeepVault keeps your bitcoin keys offline, using a computer you already own.
 
 6
-00:00:17.900 --> 00:00:19.758
+00:00:18.050 --> 00:00:20.010
 It's free, and open source.
 
 7
-00:00:20.300 --> 00:00:21.550
-Here's how it works.
+00:00:20.500 --> 00:00:24.850
+Here's how it works. First, copy it onto a USB flash drive.
 
 8
-00:00:21.600 --> 00:00:23.650
-Put it on a USB flash drive.
+00:00:24.900 --> 00:00:28.350
+Next, start your computer from it, with no internet at all.
 
 9
-00:00:23.700 --> 00:00:26.550
-Start your computer from it, with no internet at all.
+00:00:28.400 --> 00:00:30.448
+Then approve your payments offline.
 
 10
-00:00:26.600 --> 00:00:28.675
-Then approve your payments, offline.
-
-11
-00:00:29.700 --> 00:00:33.593
+00:00:31.400 --> 00:00:35.411
 Everything happens on a full-size screen that never goes online.
 
-12
-00:00:34.200 --> 00:00:38.088
+11
+00:00:35.800 --> 00:00:39.762
 So you see exactly who gets paid, and how much, before you sign.
 
-13
-00:00:38.800 --> 00:00:41.850
+12
+00:00:40.500 --> 00:00:43.600
 Your wallet app stays online. Your keys never do.
 
-14
-00:00:41.900 --> 00:00:46.715
-Payments cross over by QR code or USB drive, and come back signed.
+13
+00:00:43.650 --> 00:00:48.835
+Payments pass between them by QR code or USB drive, and come back signed.
 
-15
-00:00:48.800 --> 00:00:50.050
+14
+00:00:50.800 --> 00:00:52.100
 It costs nothing.
 
-16
-00:00:50.100 --> 00:00:51.550
+15
+00:00:52.150 --> 00:00:53.600
 There's nothing to order.
 
-17
-00:00:51.600 --> 00:00:53.350
+16
+00:00:53.650 --> 00:00:55.400
 Your backups are done properly.
 
-18
-00:00:53.400 --> 00:00:55.429
+17
+00:00:55.450 --> 00:00:57.511
 And every line of code is public.
 
-19
-00:00:56.700 --> 00:01:00.819
-SafeKeepVault. Get it free, at safekeepbitcoin.com.
+18
+00:00:58.700 --> 00:01:02.544
+SafeKeepVault. Get it free at safekeepbitcoin.com.
 

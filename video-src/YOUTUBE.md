@@ -1,6 +1,6 @@
 # YouTube upload kit
 
-**File:** `safekeepvault-explainer.mp4` (1920x1080, about 62 seconds, voiceover and music)
+**File:** `safekeepvault-explainer.mp4` (1920x1080, about 64 seconds, voiceover and music)
 **Thumbnail:** `safekeepvault-explainer-poster.jpg` (1280x720)
 **Captions:** `safekeepvault-explainer.vtt` (upload under Subtitles > Upload file > With timing)
 
