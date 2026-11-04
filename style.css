@@ -780,6 +780,33 @@ pre code {
     letter-spacing: 0.01em;
 }
 
+/* One-minute explainer video on the home page */
+.video-showcase {
+    margin: 0 auto 2.75rem;
+    width: 100%;
+}
+
+.video-showcase video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background: #0B0D10;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow:
+        0 1px  4px  rgba(16, 24, 40, 0.10),
+        0 6px  18px rgba(16, 24, 40, 0.12),
+        0 24px 52px rgba(16, 24, 40, 0.10);
+}
+
+.video-showcase figcaption {
+    margin-top: 0.7rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
 /* =============================================
    UTILITY — elevated image
    Add class="img-elevated" directly to any <img>
