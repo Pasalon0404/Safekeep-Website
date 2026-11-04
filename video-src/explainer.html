@@ -133,8 +133,8 @@
       <div class="step el" id="s4c">
         <div class="num">3</div>
         <div class="ic"><svg viewBox="0 0 120 120" fill="none" stroke="#F7931A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M60 108s40-20 40-50V28L60 12 20 28v30c0 30 40 50 40 50z"/><path d="M42 60l12 12 24-26" stroke="#3FB950" stroke-width="7"/></svg></div>
-        <h3>Approve payments offline</h3>
-        <p>Create and back up your seed, check addresses, sign transactions.</p>
+        <h3>Keys and payments, offline</h3>
+        <p>Create seed words, passphrases and watch-only wallets. Review and sign transactions.</p>
       </div>
     </div>
   </div>
@@ -143,7 +143,7 @@
   <div class="scene" id="s5">
     <div class="shot el" id="s5a" style="width:1500px;left:210px;top:60px"><img src="../v159-dashboard-top.png" alt=""></div>
     <div class="shot el" id="s5b" style="width:1500px;left:210px;top:60px"><img src="../signer.png" alt="" style="width:2200px;max-width:none;margin-left:-640px;margin-top:-40px"></div>
-    <div class="caption el" id="s5c1"><span>A full-size screen, completely <span class="g">offline</span></span></div>
+    <div class="caption el" id="s5c1"><span>A full-size screen and keyboard, <span class="g">offline</span></span></div>
     <div class="caption el" id="s5c2"><span>See exactly who gets paid, and how much, <span class="o">before you sign</span></span></div>
   </div>
 
@@ -176,7 +176,7 @@
     <div class="benefits">
       <div class="benefit el" id="b1"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#F7931A" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .8-3 2s1.3 1.7 3 2 3 .8 3 2-1.3 2-3 2c-1.4 0-2.5-.5-3-1.5M12 6v2m0 8v2"/></svg></div><div><h3>Costs nothing</h3><p>Free and open source. Use a laptop and flash drive you already have.</p></div></div>
       <div class="benefit el" id="b2"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#F7931A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h3>Private</h3><p>Nothing to order, nothing shipped, no account. No paper trail to your door.</p></div></div>
-      <div class="benefit el" id="b3"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#F7931A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="12" r="3"/><path d="M8.7 7.5l6.6 3M8.7 16.5l6.6-3"/></svg></div><div><h3>Proper backups</h3><p>Dice you can double-check, passphrases, split backups, a printed record.</p></div></div>
+      <div class="benefit el" id="b3"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#F7931A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="12" r="3"/><path d="M8.7 7.5l6.6 3M8.7 16.5l6.6-3"/></svg></div><div><h3>Backups only you can restore</h3><p>Encrypted backups and passphrases. Split a backup across several places.</p></div></div>
       <div class="benefit el" id="b4"><div class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="#F7931A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div><h3>Nothing hidden</h3><p>Every line of code is public and every release is signed.</p></div></div>
     </div>
   </div>
@@ -194,35 +194,54 @@
 
 <script>
 // ---------- timeline (seconds) ----------
-// [scene id, start, end]. Scene lengths follow the voiceover.
-const SCENES = [
-  ['s1',  0.0,  7.0],
-  ['s2',  7.0, 13.7],
-  ['s3', 13.7, 21.8],
-  ['s4', 21.8, 36.1],
-  ['s5', 36.1, 45.0],
-  ['s6', 45.0, 55.6],
-  ['s7', 55.6, 63.7],
-  ['s8', 63.7, 70.3],
+// Everything follows the narration (narration.flac): each scene starts and
+// each card appears when its words are spoken.
+// LINES: [line, start, end, [start of each phrase], [text of each phrase]],
+// times in seconds into narration.flac.
+const NARRATION_AT = 0.5;      // where narration.flac starts in the video
+const LINES = [
+  [ 1,   0.13,   2.59, [0.13], ["Your bitcoin is only as safe as your keys."]],
+  [ 2,   3.79,   6.47, [3.79], ["And most keys are kept on devices that are online."]],
+  [ 3,   7.85,   9.61, [7.85], ["Online devices can be hacked."]],
+  [ 4,  11.17,  14.65, [11.17, 13.21], ["And hardware wallets cost money,", "and ship to your home address."]],
+  [ 5,  15.85,  20.75, [15.85], ["SafeKeepVault keeps your bitcoin keys offline, using a computer you already own."]],
+  [ 6,  21.91,  23.53, [21.91], ["It's free, and open source."]],
+  [ 7,  24.73,  29.17, [24.73, 26.43], ["Here's how it works.", "First, copy it onto a USB flash drive."]],
+  [ 8,  30.31,  36.07, [30.31, 33.09], ["Next, start your computer from it.", "All networking and disk access are removed when it boots."]],
+  [ 9,  37.43,  43.87, [37.43, 41.69], ["Create seed words, passphrases, watch-only wallets,", "and review and sign bitcoin transactions."]],
+  [10,  44.99,  47.87, [44.99], ["Everything happens using a full-size screen and keyboard."]],
+  [11,  48.57,  53.09, [48.57], ["So you see exactly who gets paid, and how much, before you sign a transaction."]],
+  [12,  54.29,  57.27, [54.29], ["Your wallet app stays online. Your keys never do."]],
+  [13,  58.47,  62.91, [58.47], ["Payments pass between them by QR code or USB drive, and come back signed."]],
+  [14,  63.91,  64.67, [63.91], ["It costs nothing."]],
+  [15,  65.69,  66.53, [65.69], ["There's nothing to order."]],
+  [16,  67.63,  69.53, [67.63], ["Create backups only you can restore."]],
+  [17,  70.43,  72.31, [70.43], ["And every line of code is public."]],
+  [18,  73.33,  77.25, [73.33, 74.79], ["SafeKeepVault.", "Get it free at safekeepbitcoin.com."]],
 ];
-const DURATION = 70.3;
-const FADE = 0.45;
+const line = n => LINES.find(l => l[0] === n);
+const L = n => NARRATION_AT + line(n)[1];            // line n starts
+const E = n => NARRATION_AT + line(n)[2];            // line n ends
+const P = (n, i) => NARRATION_AT + line(n)[3][i];    // phrase i of line n starts
 
-// Voiceover: [clip in video-src/voiceover/, scene, seconds into that scene].
-// The words of each clip are in voiceover/script.json; pace and pauses follow
-// a human reference reading (voiceover/delivery.json).
-const VO = [
-  ['s1a', 's1', 0.4], ['s1b', 's1', 3.45],
-  ['s2a', 's2', 0.3], ['s2b', 's2', 2.75],
-  ['s3a', 's3', 0.6], ['s3b', 's3', 6.0],
-  ['s4a', 's4', 0.3], ['s4b', 's4', 5.35], ['s4c', 's4', 11.85],   // s4a: "First" 1.69 s in; s4b: "All networking" 2.64 s in
-  ['s5a', 's5', 0.4], ['s5b', 's5', 4.5],
-  ['s6a', 's6', 0.3], ['s6b', 's6', 3.7],
-  ['s7a', 's7', 0.3], ['s7b', 's7', 1.75], ['s7c', 's7', 3.3], ['s7d', 's7', 5.5],
-  ['s8a', 's8', 0.6],                                               // s8a: "Get it free" 2.04 s in
-];
+// scenes and the lines they cover; each boundary sits midway between lines
+const GROUPS = [['s1', 1, 2], ['s2', 3, 4], ['s3', 5, 6], ['s4', 7, 9], ['s5', 10, 11], ['s6', 12, 13], ['s7', 14, 17], ['s8', 18, 18]];
+const DURATION = +(E(18) + 2.3).toFixed(2);
+const SCENES = GROUPS.map(([id, first, last], i) => {
+  const start = i === 0 ? 0 : (E(GROUPS[i - 1][2]) + L(first)) / 2;
+  const end = i === GROUPS.length - 1 ? DURATION : (E(last) + L(GROUPS[i + 1][1])) / 2;
+  return [id, start, end];
+});
+const FADE = 0.45;
 const sceneStart = id => SCENES.find(s => s[0] === id)[1];
-window.VOICEOVER = VO.map(([clip, scene, at]) => ({ clip, at: +(sceneStart(scene) + at).toFixed(2) }));
+const at = (id, t) => t - sceneStart(id);            // absolute time -> time into scene
+
+window.VOICEOVER = [{ file: 'narration.flac', at: NARRATION_AT }];
+window.CAPTIONS = LINES.flatMap(([n, , end, parts, texts]) => parts.map((p, i) => ({
+  start: NARRATION_AT + p,
+  end: i + 1 < parts.length ? NARRATION_AT + parts[i + 1] - 0.05 : NARRATION_AT + end + 0.3,
+  text: texts[i],
+})));
 
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const ease = x => { x = clamp(x); return 1 - Math.pow(1 - x, 3); };
@@ -257,41 +276,50 @@ function render(t) {
 }
 
 const SCENE_FN = {
-  s1(lt) { appear('s1a', lt, 0.2, 0.8); appear('s1b', lt, 3.35); },
-  s2(lt) { appear('s2a', lt, 0.2); appear('s2b', lt, 2.65); },
+  s1(lt) { appear('s1a', lt, at('s1', L(1)) - 0.2, 0.8); appear('s1b', lt, at('s1', L(2)) - 0.1); },
+  s2(lt) { appear('s2a', lt, at('s2', L(3)) - 0.1); appear('s2b', lt, at('s2', P(4, 1)) - 0.1); },
   s3(lt) {
     const k = ease((lt - 0.1) / 0.9);
     $('s3a').style.opacity = k; $('s3a').style.transform = `scale(${0.6 + 0.4 * k})`;
-    appear('s3b', lt, 0.5); appear('s3c', lt, 1.6); appear('s3d', lt, 5.9);
+    appear('s3b', lt, at('s3', L(5)) - 0.1); appear('s3c', lt, at('s3', L(5)) + 0.9); appear('s3d', lt, at('s3', L(6)) - 0.1);
   },
-  s4(lt) { appear('s4h', lt, 0.1); appear('s4a', lt, 1.9, 0.7, 50); appear('s4b', lt, 5.25, 0.7, 50); appear('s4c', lt, 11.75, 0.7, 50); },
+  s4(lt) {
+    appear('s4h', lt, 0.1);
+    appear('s4a', lt, at('s4', P(7, 1)) - 0.1, 0.7, 50);
+    appear('s4b', lt, at('s4', L(8)) - 0.1, 0.7, 50);
+    appear('s4c', lt, at('s4', L(9)) - 0.1, 0.7, 50);
+  },
   s5(lt, d) {
-    const mid = 4.3;
+    const mid = at('s5', L(11)) - 0.3;
     // dashboard, slow drift up; then signer screen
     const a = $('s5a'), b = $('s5b');
     a.style.opacity = clamp(1 - ease((lt - mid + 0.3) / 0.6));
     a.style.transform = `translateY(${-inout(lt / mid) * 120}px) scale(${1.0 + 0.03 * lt / mid})`;
     b.style.opacity = ease((lt - mid + 0.3) / 0.6);
     b.style.transform = `translateY(${-inout((lt - mid) / (d - mid)) * 260}px)`;
-    window_('s5c1', lt, 0.4, mid);
+    window_('s5c1', lt, at('s5', L(10)) - 0.1, mid);
     window_('s5c2', lt, mid + 0.3, d + 1);
   },
   s6(lt) {
-    appear('s6h', lt, 0.1); appear('s6a', lt, 1.0); appear('s6b', lt, 1.4); appear('s6lane', lt, 1.4, 0.4, 0);
-    // unsigned packet travels left -> right on top lane, signed returns right -> left on bottom lane
+    appear('s6h', lt, 0.1); appear('s6a', lt, 0.6); appear('s6b', lt, 1.0); appear('s6lane', lt, 1.0, 0.4, 0);
+    // as line 13 is spoken: unsigned payment goes over, signed one comes back
+    const go = at('s6', L(13));
     const p1 = $('pk1'), p2 = $('pk2');
-    const k1 = inout((lt - 3.85) / 1.8), k2 = inout((lt - 6.25) / 1.8);
-    p1.style.opacity = lt < 3.65 ? 0 : clamp((lt - 3.65) / 0.3) * clamp(1 - (lt - 5.75) / 0.3);
+    const k1 = inout((lt - go - 0.15) / 1.8), k2 = inout((lt - go - 2.55) / 1.8);
+    p1.style.opacity = lt < go ? 0 : clamp((lt - go) / 0.3) * clamp(1 - (lt - go - 2.05) / 0.3);
     p1.style.transform = `translate(${20 + k1 * 220}px, 52px)`;
-    p2.style.opacity = lt < 6.05 ? 0 : clamp((lt - 6.05) / 0.3);
+    p2.style.opacity = lt < go + 2.35 ? 0 : clamp((lt - go - 2.35) / 0.3);
     p2.style.transform = `translate(${370 - k2 * 350}px, 152px)`;
-    appear('s6f', lt, 8.5);
+    appear('s6f', lt, go + 2.2);
   },
-  s7(lt) { appear('s7h', lt, 0.0); appear('b1', lt, 0.2); appear('b2', lt, 1.65); appear('b3', lt, 3.2); appear('b4', lt, 5.4); },
+  s7(lt) {
+    appear('s7h', lt, 0.0);
+    ['b1', 'b2', 'b3', 'b4'].forEach((id, i) => appear(id, lt, at('s7', L(14 + i)) - 0.1));
+  },
   s8(lt) {
     const k = ease((lt - 0.1) / 0.8);
     $('s8a').style.opacity = k; $('s8a').style.transform = `scale(${0.9 + 0.1 * k})`;
-    appear('s8b', lt, 1.0); appear('s8c', lt, 2.6); appear('s8d', lt, 3.4);
+    appear('s8b', lt, at('s8', L(18)) + 0.8); appear('s8c', lt, at('s8', P(18, 1)) - 0.1); appear('s8d', lt, at('s8', P(18, 1)) + 0.9);
   },
 };
 
