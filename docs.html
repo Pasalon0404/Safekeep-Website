@@ -306,6 +306,7 @@
                         <ul>
                             <li><a href="#encrypted-vault">One-time setup</a></li>
                             <li><a href="#config-options">Initial configuration options</a></li>
+                            <li><a href="#coldcard-restore">Restoring from a COLDCARD backup</a></li>
                             <li><a href="#generate-seed">Generating a new seed</a></li>
                             <li><a href="#draw-your-own-words">Draw Your Own Words</a></li>
                             <li><a href="#wallet-card">Your wallet on the Dashboard</a></li>
@@ -648,7 +649,9 @@
                     Alternatively, at the decryption prompt you may choose to bypass the encrypted vault
                     entirely and boot into a <strong>Temporary Session</strong>. This launches
                     a volatile session without writing any data to the physical drive. Manually enter your
-                    seed, perform the necessary operations, and shut down to purge all traces instantly.
+                    seed and perform the necessary operations. When you finish, <strong>Lock</strong> clears the
+                    session from memory and returns to the unlock screen, where you can open your vault or start
+                    another Temporary Session. You don&rsquo;t need to power off to get back to your vault.
                     This mode is ideal for users who prefer to keep their keys exclusively on physical media
                     and need no persistent storage on the drive. Chose it by mistake? <strong>Unlock my vault
                     instead</strong> on the Temporary Session welcome screen ends the session and returns to the
@@ -660,15 +663,15 @@
                     Once the vault is unlocked for the first time, the welcome screen (&ldquo;Welcome to
                     SafeKeepVault&rdquo;) offers two buttons: <strong>Create a new wallet</strong> and
                     <strong>I already have a backup</strong>. The second asks what your backup looks like and shows
-                    four choices: <strong>Recovery words</strong>, <strong>Encrypted backup (.7z)</strong>,
-                    <strong>Seed XOR shares</strong> and <strong>Shamir shares (SLIP-39)</strong>. In a Temporary
+                    five choices: <strong>Recovery words</strong>, <strong>Encrypted backup (.7z)</strong>,
+                    <strong>Seed XOR shares</strong>, <strong>COLDCARD backup</strong> and <strong>Shamir shares (SLIP-39)</strong>. In a Temporary
                     Session the heading reads &ldquo;Temporary Session&rdquo;, and <strong>Sign with Hardware
                     Wallet</strong> and <strong>Unlock my vault instead</strong> also appear.
                 </p>
 
                 <figure class="os-showcase">
-                    <a href="v158-welcome.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="v158-welcome.png" alt="SafeKeepVault welcome screen with Create a new wallet, I already have a backup, and the four backup choices: Recovery words, Encrypted backup (.7z), Seed XOR shares and Shamir shares (SLIP-39)">
+                    <a href="v162-welcome.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v162-welcome.png" alt="SafeKeepVault welcome screen with Create a new wallet, I already have a backup, and the five backup choices: Recovery words, Encrypted backup (.7z), Seed XOR shares, COLDCARD backup and Shamir shares (SLIP-39)">
                     </a>
                     <figcaption>The welcome screen on a new flash drive, after clicking <strong>I already have a backup</strong>.</figcaption>
                 </figure>
@@ -721,6 +724,11 @@
                         Courier</strong>.
                     </li>
                     <li>
+                        <strong>COLDCARD backup &mdash;</strong>
+                        Open a COLDCARD&rsquo;s encrypted backup and choose what to keep: its wallet, its multisig
+                        wallets and its notes. See <a href="#coldcard-restore">Restoring from a COLDCARD backup</a>.
+                    </li>
+                    <li>
                         <strong>Sign with Hardware Wallet (Temporary Session only) &mdash;</strong>
                         Co-sign a multisig transaction with a connected Coldcard or Trezor One without loading
                         any seed into the vault. (To add a Coldcard&rsquo;s or Trezor One&rsquo;s key to a multisig wallet
@@ -728,6 +736,68 @@
                         <strong>Trezor (USB)</strong> buttons.) See <a href="#sign-hardware-only">Signing with only a hardware wallet</a>.
                     </li>
                 </ol>
+                <h3 class="sub-heading" id="coldcard-restore">Restoring from a COLDCARD backup</h3>
+                <p>
+                    On the welcome screen, choose <strong>I already have a backup &rarr; COLDCARD backup</strong>. The
+                    backup is read and decrypted in memory, and you see what&rsquo;s in it before anything is saved.
+                    There are three ways to bring it in:
+                </p>
+                <ul class="docs-list">
+                    <li>
+                        <strong>Get It from the COLDCARD over USB &mdash;</strong>
+                        plug the COLDCARD into this computer and unlock it with its PIN. It makes a fresh backup of
+                        what&rsquo;s on it now. It can&rsquo;t send older backup files from its SD card this way.
+                    </li>
+                    <li>
+                        <strong>Receive with the Courier &mdash;</strong>
+                        for an older backup file, such as one on the COLDCARD&rsquo;s SD card. Copy it to your phone or
+                        another computer first, open the <a href="courier.html">Courier Tool</a> there, choose the
+                        file and start the loop, then hold it in front of this computer&rsquo;s camera. The file stays
+                        encrypted with its 12 words.
+                    </li>
+                    <li>
+                        <strong>Choose backup file&hellip; &mdash;</strong>
+                        for a backup file already on the Transfer Drive.
+                    </li>
+                </ul>
+                <p>
+                    <strong>The 12-word password.</strong> Type the 12 words the COLDCARD showed when it made this
+                    backup, then click <strong>Open Backup</strong>. Each backup has its own new password, and these
+                    aren&rsquo;t your recovery words. If you typed your own password on a COLDCARD Q, click
+                    <strong>I typed my own password on a COLDCARD Q</strong> and enter that instead. Type the 12 words
+                    only into SafeKeep, offline.
+                </p>
+                <p>
+                    <strong>Is USB safe?</strong> The COLDCARD must be unlocked before it will make a backup. It shows
+                    the password only on its own screen and quizzes you, so the backup is sent only after you confirm
+                    there. What crosses the cable is still encrypted. If you don&rsquo;t use USB, you can turn it off on
+                    the COLDCARD: <strong>Settings &rarr; Hardware On/Off &rarr; USB</strong>.
+                </p>
+                <p>Once the backup is open, you choose what to keep:</p>
+                <ul class="docs-list">
+                    <li><strong>The wallet &mdash;</strong> the main wallet&rsquo;s recovery words, checked against the rest of the file, with its fingerprint. <strong>Restore This Wallet</strong> shows that fingerprint on the button.</li>
+                    <li><strong>Seed Vault &mdash;</strong> if the backup holds a Seed Vault, you can restore one of those seeds instead of the main wallet, or click <strong>Show words</strong> to view its words and write them down.</li>
+                    <li><strong>Multisig wallets &mdash;</strong> each one you tick is saved in <a href="#output-descriptor">Output Descriptor</a>, showing which key is yours, so the PSBT Signer checks transactions against it.</li>
+                    <li><strong>Secure Notes &amp; Passwords (COLDCARD Q) &mdash;</strong> each one you tick becomes a SafeKeep note. A title you already use gets &ldquo;(COLDCARD)&rdquo; added, so nothing is overwritten.</li>
+                </ul>
+                <p>
+                    <strong>Backups made with a passphrase.</strong> If a BIP-39 passphrase was active when the COLDCARD
+                    made the backup, the backup holds that passphrase wallet&rsquo;s master key and no recovery words.
+                    SafeKeep says so plainly. Restore with <strong>Recovery words</strong> instead, then add the
+                    passphrase on the Dashboard. If the backup has a Seed Vault, you can restore one of those seeds.
+                </p>
+                <p>
+                    A Temporary Session keeps nothing, so it can load a wallet from the backup but doesn&rsquo;t save
+                    its multisig wallets or notes. To add those to a vault you already have, see
+                    <a href="#coldcard-import">Import from a COLDCARD backup</a>.
+                </p>
+                <figure class="os-showcase">
+                    <a href="v162-coldcard-backup.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v162-coldcard-backup.png" alt="Restore from a COLDCARD Backup screen with Get It from the COLDCARD over USB, Receive with the Courier, Choose backup file, twelve boxes for the backup password and the Open Backup button" style="max-width: 560px;">
+                    </a>
+                    <figcaption><strong>Restore from a COLDCARD Backup</strong>: first the backup, then its 12-word password.</figcaption>
+                </figure>
+
                 <h3 class="sub-heading" id="generate-seed">Generating a new seed</h3>
                 <p>
                     <strong>Generate Secure Seed</strong> creates a seed from the device&rsquo;s secure random
@@ -913,6 +983,12 @@
                         once it is ready, and every tool can read from and write to it straight away.
                     </p>
                 </div>
+                <p id="file-picker">
+                    When a screen asks you to choose a file, SafeKeep lists the files on the Transfer Drive that the
+                    screen accepts, newest first. The system file dialog doesn&rsquo;t open, so Home, Other Locations and
+                    other drives aren&rsquo;t offered. If a file isn&rsquo;t listed, copy it onto the Transfer Drive or
+                    receive it with the Courier, then click <strong>Refresh</strong>.
+                </p>
                 <p>
                     Removing the drive from a live vault session is a one-way action: as a security
                     precaution, you cannot hot-swap it back in without rebooting the vault.
@@ -1203,15 +1279,16 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
 
 
                 <p>
-                    If you select <strong>Load PSBT from Transfer Drive</strong>, the vault lists every
-                    <code>.psbt</code> file currently on the partition. Click the file to load it.
+                    If you select <strong>Load PSBT from Transfer Drive</strong>, the vault
+                    <a href="#file-picker">lists the <code>.psbt</code> files on the Transfer Drive</a>, newest first.
+                    Click the file to load it.
                 </p>
 
                 <figure class="os-showcase">
-                    <a href="load%20from%20drive.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="load%20from%20drive.png" alt="PSBT Signer showing a list of .psbt files available on the Transfer Drive for selection">
+                    <a href="v162-file-picker.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v162-file-picker.png" alt="Choose a PSBT to sign, a list of .psbt files on the Transfer Drive with Refresh and Cancel buttons" style="max-width: 560px;">
                     </a>
-                    <figcaption>The Transfer Drive file picker lists all available <code>.psbt</code> files. Select the unsigned transaction to proceed.</figcaption>
+                    <figcaption>The file picker lists the <code>.psbt</code> files on the Transfer Drive. Select the unsigned transaction to proceed.</figcaption>
                 </figure>
 
                 <h3 class="sub-heading" id="sign-review">Reviewing the transaction</h3>
@@ -1333,8 +1410,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     transaction in your wallet software with the hardware wallet instead.
                 </p>
                 <figure class="os-showcase">
-                    <a href="v158-welcome-temporary.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="v158-welcome-temporary.png" alt="Temporary Session welcome screen with Create a new wallet, I already have a backup, Sign with Hardware Wallet and Unlock my vault instead">
+                    <a href="v162-welcome-temporary.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v162-welcome-temporary.png" alt="Temporary Session welcome screen with Create a new wallet, I already have a backup, Sign with Hardware Wallet and Unlock my vault instead">
                     </a>
                     <figcaption>In a <strong>Temporary Session</strong>, <strong>Sign with Hardware Wallet</strong> opens the PSBT Signer with no seed loaded. <strong>Unlock my vault instead</strong> goes back to the unlock prompt.</figcaption>
                 </figure>
@@ -1387,7 +1464,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 </p>
                 <ul class="docs-list">
                     <li><strong>File or text &mdash;</strong> two cards choose what to send: <strong>File</strong> (sent as an animated QR loop) or <strong>Text / password</strong> (a single static QR). The selected card is highlighted in orange.</li>
-                    <li><strong>The file &mdash;</strong> a file sent from the Transfer Hub is already loaded. To send a different one, click the drop zone (&ldquo;Choose a file or drop it here&rdquo;) or drop a file onto it, or pick one from the Transfer Drive list below it. The drop zone shows the file&rsquo;s name and size. For large files only, an amber warning says roughly how many minutes one loop will take and suggests raising the density, or using the Transfer Drive instead for very large files.</li>
+                    <li><strong>The file &mdash;</strong> a file sent from the Transfer Hub is already loaded. To send a different one, click the drop zone (&ldquo;Choose a file or drop it here&rdquo;), which <a href="#file-picker">lists the files on the Transfer Drive</a>, or drop a file onto it, or pick one from the Transfer Drive list below it. The drop zone shows the file&rsquo;s name and size. For large files only, an amber warning says roughly how many minutes one loop will take and suggests raising the density, or using the Transfer Drive instead for very large files.</li>
                     <li><strong>Density and Speed &mdash;</strong> two sliders, each showing its current value. Lower density is easier to scan; higher density needs fewer frames. Lower speed is more reliable; higher speed is faster. If the receiving camera struggles, lower either one. Both apply while the QR code is running: a new Speed takes effect on the next frame, and a new Density re-cuts the file and starts again from the first piece. The receiver notices (&ldquo;The sender changed its settings, so receiving starts over&rdquo;) and never mixes pieces from two settings. Flash drives on v1.58 or older don&rsquo;t have that check, so update them before changing Density part-way through a transfer.</li>
                 </ul>
                 <p>Click <strong>Start Transmission Loop</strong> and hold the receiving device&rsquo;s camera up to the screen until it has every frame.</p>
@@ -1437,7 +1514,11 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Leaving a Temporary Session &mdash;</strong>
                         <strong>Unlock my vault instead</strong> on the Temporary Session welcome screen ends the
                         session and returns to the unlock screen, without restarting. From the Dashboard of a
-                        Temporary Session, <strong>Lock or switch seed</strong> does the same.
+                        Temporary Session, <strong>Lock or switch seed</strong> does the same: Lock, not powering off, is
+                        the way back to your vault. To keep a seed, write down its words first. After a seed is made,
+                        <strong>Leave Without Keeping This Seed</strong> asks first, then wipes the seed from memory and
+                        locks. With no seed loaded, <strong>Create a new wallet</strong>, <strong>Encrypted backup</strong>
+                        and <strong>Sign with Hardware Wallet</strong> each have <strong>Back to Welcome</strong>.
                     </li>
                     <li>
                         <strong>Auto-Lock &amp; Display Sleep &mdash;</strong>
@@ -1458,6 +1539,16 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         Generate One for Me, with the same strength check). What is in your vault is not changed.
                         Then you unlock with the new password; the old one no longer opens the vault. If your vault
                         was set up with an easy-to-guess password, the Dashboard shows a red warning with a button to change it.
+                    </li>
+                    <li id="coldcard-import">
+                        <strong>Import from a COLDCARD backup &mdash;</strong>
+                        In <strong>Device Options</strong>, <strong>Import from a COLDCARD Backup</strong> adds the multisig
+                        wallets and Secure Notes you choose to this vault, with the same three ways in as
+                        <a href="#coldcard-restore">Restoring from a COLDCARD backup</a>. Tick what you want and click
+                        <strong>Import Selected</strong>. Your seed isn&rsquo;t changed, and the backup&rsquo;s own wallet
+                        isn&rsquo;t imported. You can view the words of its Seed Vault seeds, but they aren&rsquo;t imported,
+                        because SafeKeep keeps one seed per vault. It works with backups made with a passphrase too. A
+                        Temporary Session has no vault to import into.
                     </li>
                     <li>
                         <strong>Update SafeKeep &mdash;</strong>
@@ -1735,7 +1826,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Import a wallet from another app</strong>: this is the easiest way to add a multisig wallet
                         you set up in a coordinator such as Sparrow, Specter or Nunchuk, with one scan instead of entering
                         each key. On the <strong>Import</strong> tab (called Verify before v1.58), scan the wallet&rsquo;s QR
-                        code (static, animated UR, or a Courier loop), paste it, or load a file from the Transfer Drive: an
+                        code (static, animated UR, or a Courier loop), paste it, or <a href="#file-picker">choose from the list of files on the Transfer Drive</a>: an
                         output descriptor, a multisig setup file (BlueWallet, Coldcard, Sparrow&hellip;), a BSMS record or an
                         extended public key, single-sig or multisig, including nested SegWit multisig
                         <code>sh(wsh(&hellip;))</code>. A

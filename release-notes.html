@@ -92,7 +92,7 @@
 
             <!-- Highlights: the summary of recent releases, kept short; add new changes to the matching point -->
             <div style="margin: 1.5rem 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-md);">
-                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim); margin: 0 0 0.35rem;">Recent releases (up to v1.60)</p>
+                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim); margin: 0 0 0.35rem;">Recent releases (up to v1.62)</p>
                 <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.6rem;">Updates without reflashing, backups you can check, and a clearer transaction review</p>
                 <ul style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; padding-left: 1.2rem;">
                     <li style="margin: 0 0 0.5rem;"><strong>Keep your seed off the flash drive.</strong> The vault can open without storing your seed: you scan your SeedQR or type your words at each start (v1.58).</li>
@@ -101,10 +101,24 @@
                     <li style="margin: 0 0 0.5rem;"><strong>Backups you can check.</strong> Send a backup to your phone with the Courier, check that it opens, and restore a new flash drive from it, all without an online computer (v1.55). Seed XOR and Shamir shares are made one at a time and checked against your paper (v1.52).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Safer seeds and passwords.</strong> The random number generator is tested before every seed, patterned dice rolls are refused (v1.50), and so are easy-to-guess vault passwords (v1.51). <strong>Draw Your Own Words</strong> makes a seed from words you draw by hand and coin flips, and refuses a draw that looks made up (v1.60).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>A clearer transaction review.</strong> Save your wallets in the vault and the <strong>PSBT Signer</strong> confirms which one is spending and that the change comes back to you. It shows the total leaving your wallet and lets you compare each address character by character (v1.46).</li>
-                    <li style="margin: 0 0 0.5rem;"><strong>Works with more wallets.</strong> Nunchuk and Sparrow add your key by scanning the screen (v1.53); import from Sparrow, BlueWallet or Bitcoin Core (v1.45); co-sign with a <strong>Coldcard</strong> or <strong>Trezor One</strong> over USB (v1.44); file-only wallets such as Trezor Suite work through <strong>The Courier</strong> (v1.43).</li>
+                    <li style="margin: 0 0 0.5rem;"><strong>Works with more wallets.</strong> Nunchuk and Sparrow add your key by scanning the screen (v1.53); import from Sparrow, BlueWallet or Bitcoin Core (v1.45); co-sign with a <strong>Coldcard</strong> or <strong>Trezor One</strong> over USB (v1.44); file-only wallets such as Trezor Suite work through <strong>The Courier</strong> (v1.43). Bring a COLDCARD&rsquo;s wallet, multisig wallets and notes in from its backup (v1.62).</li>
                     <li style="margin: 0;"><strong>Less to attack.</strong> Every network driver, the terminal and the file manager are gone from SafeKeep OS (v1.45).</li>
                 </ul>
             </div>
+
+            <!-- v1.62 -->
+            <section class="content-section" id="v1-62">
+                <h2 class="section-heading">v1.62 &mdash; November 6, 2026</h2>
+                <p>Bring a COLDCARD&rsquo;s wallet into SafeKeep, a file picker that shows only the Transfer Drive, and no more dead ends from the welcome screen. There is no v1.61: it was withdrawn before release so these fixes could ship together.</p>
+                <ul class="docs-list">
+                    <li><strong>Restore from a COLDCARD backup &mdash;</strong> on the welcome screen, <strong>I already have a backup &rarr; COLDCARD backup</strong> shows you what&rsquo;s in the backup before anything is saved, and you tick what to keep. It brings in the wallet&rsquo;s recovery words, checked against the rest of the file. Any Seed Vault seed can be restored instead, or viewed with <strong>Show words</strong>. Multisig wallets become saved wallets, showing which key is yours. Secure Notes &amp; Passwords (COLDCARD Q) become SafeKeep notes, and a title already in use gets &ldquo;(COLDCARD)&rdquo;. A backup made with a passphrase active holds no recovery words, and SafeKeep says so. See <a href="docs.html#coldcard-restore">Restoring from a COLDCARD backup</a> in the guide.</li>
+                    <li><strong>Three ways in &mdash;</strong> over USB, where the COLDCARD makes a fresh backup and shows a new 12-word password, not your recovery words (it can&rsquo;t send older SD-card files); with the Courier, for an older file copied to a phone or computer; or from a file on the Transfer Drive.</li>
+                    <li><strong>Import into your existing vault &mdash;</strong> <strong>Device Options &rarr; Import from a COLDCARD backup</strong> adds the multisig wallets and notes you choose. Your seed isn&rsquo;t changed.</li>
+                    <li><strong>A file picker that shows only the Transfer Drive &mdash;</strong> on the flash drive there&rsquo;s no more system dialog with Home or Other Locations. SafeKeep lists the files on the Transfer Drive that the screen accepts, newest first, on four screens: the COLDCARD backup, the <strong>PSBT Signer</strong>, <strong>Output Descriptor</strong>&rsquo;s Import and <strong>Transfer files</strong>. This also fixes unescaped file names in the Transfer screen&rsquo;s list.</li>
+                    <li><strong>No dead ends from the welcome screen &mdash;</strong> <strong>Create a new wallet</strong> has <strong>Back to Welcome</strong>. After a seed is made in a Temporary Session, you can choose <strong>Leave Without Keeping This Seed</strong>. <strong>Encrypted backup</strong> and <strong>Sign with Hardware Wallet</strong> go <strong>Back to Welcome</strong> when no seed is loaded. Lock, not powering off, is the way back to the vault.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.62.tar</code> onto the Transfer Drive, unlock, and install it from <strong>Device Options &rarr; Update SafeKeep &rarr; Check for update</strong>, then <strong>Install update</strong> and <strong>Restart now</strong>.</li>
+                </ul>
+            </section>
 
             <!-- v1.60 -->
             <section class="content-section" id="v1-60">
