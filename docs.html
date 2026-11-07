@@ -2013,6 +2013,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 <ul class="docs-list">
                     <li><strong>Size &mdash;</strong> anywhere from 10 to 150 mm wide, with a slider and a number box. The <strong>Template size</strong> button sets the size of the blank template. Smaller codes are fine to scan, so try the smallest your camera reads: on a Samsung Xpress M2070, a laptop camera read a 14 mm code.</li>
                     <li><strong>Fingerprint &mdash;</strong> tick the box to print the seed fingerprint under the code.</li>
+                    <li><strong>Cutting line &mdash;</strong> tick <strong>Print a square line around it to cut along</strong> to print a thin square line around the code and, if you print it, the fingerprint. <strong>White space inside the line</strong> sets how much white stays between the code and the line, from 0.5 to 30 mm (3 mm to start). SafeKeep remembers the setting from your last printout. A close-up shows exactly the square you&rsquo;ll cut out and gives its size, and it redraws as you move the slider. With less than two squares&rsquo; worth of white, SafeKeep notes that some cameras may not read the code, so check the printout with <strong>Scan to Verify</strong>. If a very large square wouldn&rsquo;t fit on the paper, SafeKeep leaves less white and tells you.</li>
                     <li><strong>Preview &mdash;</strong> the page is shown before you print.</li>
                 </ul>
                 <div class="notice-block">
@@ -2036,6 +2037,12 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <img class="img-elevated" src="v163-seedqr-print.png" alt="The print screen: a page preview with the SeedQR and fingerprint, the printer's name, Size and Template size controls, the fingerprint box, safety notes, and the Print button">
                     </a>
                     <figcaption><strong>Print It on a USB Printer</strong>, with a SeedQR made from public test words. The orange box appears only when the vault shouldn&rsquo;t hold this seed.</figcaption>
+                </figure>
+                <figure class="os-showcase">
+                    <a href="v164-seedqr-cutting-line.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v164-seedqr-cutting-line.png" alt="The print screen with Print a square line around it to cut along ticked: the page preview shows a thin square around the SeedQR and fingerprint, with the White space inside the line slider and a close-up of the square to cut out">
+                    </a>
+                    <figcaption>The <strong>cutting line</strong>, with a SeedQR made from public test words.</figcaption>
                 </figure>
 
                 <div class="cta-row" style="margin-top: 1.75rem;">
