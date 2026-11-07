@@ -82,7 +82,7 @@
 
             <!-- Page hero -->
             <div class="page-hero">
-                <p class="page-hero-label">v1.63 Release</p>
+                <p class="page-hero-label">v1.64 Release</p>
                 <h1 class="page-hero-title">Download</h1>
                 <p class="page-hero-tagline">
                     Three steps: download <strong>SafeKeepVault</strong>, check that it&rsquo;s genuine, and put it on a USB flash
@@ -95,8 +95,9 @@
                 <p class="notice-title">Not ready to set up a USB flash drive? See the tools in the online demo</p>
                 <p>
                     The <a href="https://demo.safekeepbitcoin.com/" target="_blank" rel="noopener">online demo</a> lets you
-                    look through every tool in your browser, but it isn&rsquo;t a working vault: it only works with public demo
-                    seeds that anyone can spend from. <strong>Never type your real seed words, passphrases or passwords into it,
+                    look through the tools in your browser, but it isn&rsquo;t a working vault: it only works with public demo
+                    seeds that anyone can spend from. It doesn&rsquo;t print and doesn&rsquo;t open COLDCARD backups; those work
+                    only on the offline vault. <strong>Never type your real seed words, passphrases or passwords into it,
                     and never send bitcoin to a demo address.</strong> SafeKeepVault itself runs on a laptop or desktop computer,
                     not on a phone or tablet.
                 </p>
@@ -114,28 +115,28 @@
 
                 <div class="download-hero-block">
                     <div class="download-primary">
-                        <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.63/SafeKeep-Release-v1.63.zip"
+                        <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.64/SafeKeep-Release-v1.64.zip"
                            class="btn-download-primary">
                             Download
                         </a>
-                        <span class="download-filesize">v1.63 &middot; SHA-256 verified</span>
+                        <span class="download-filesize">v1.64 &middot; SHA-256 verified</span>
                         <div class="sha256-block">
-                            <span class="sha256-label">SHA-256 &mdash; SafeKeep-Release-v1.63.img</span>
-                            <code class="sha256-value">6d749b7c0e5a511492dbc7e82483fe7b6971c96387da25baad2890a963d43f8e</code>
+                            <span class="sha256-label">SHA-256 &mdash; SafeKeep-Release-v1.64.img</span>
+                            <code class="sha256-value">384a6e2c0f72d5c657d003f72b83a5a2c43468ba4ebfb06254887bb1251ed967</code>
                         </div>
                         <div class="sha256-block">
                             <span class="sha256-label">SHA-256 &mdash; app inside the image (boot.html)</span>
-                            <code class="sha256-value">4d4a68c1a58d789aca5bf08512e72744099d2fc4ab24cd476feb458797cf66c5</code>
+                            <code class="sha256-value">78b882d3eb20d80a965a1b5a7ce100d4f493ea3775a4ee1c0ad3026b0f2849d5</code>
                         </div>
                     </div>
 
                     <div class="download-verify-group">
                         <p class="download-verify-label">Verify your download</p>
                         <div class="download-secondary-links">
-                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.63/SHA256SUMS.txt">
+                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.64/SHA256SUMS.txt">
                                 SHA256SUMS.txt
                             </a>
-                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.63/SHA256SUMS.txt.asc">
+                            <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.64/SHA256SUMS.txt.asc">
                                 SHA256SUMS.txt.asc
                             </a>
                         </div>
@@ -158,14 +159,14 @@
                     <div class="download-verify-group" style="margin-top: 0.5rem;">
                         <p class="download-verify-label">Source code</p>
                         <div class="download-secondary-links">
-                            <a href="https://github.com/Pasalon0404/SafeKeepVault/archive/refs/tags/v1.63.zip">
-                                safekeep-source-v1.63.zip
+                            <a href="https://github.com/Pasalon0404/SafeKeepVault/archive/refs/tags/v1.64.zip">
+                                safekeep-source-v1.64.zip
                             </a>
                         </div>
                     </div>
 
                     <div class="download-audit-row">
-                        <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/tag/v1.63"
+                        <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/tag/v1.64"
                            target="_blank" rel="noopener" class="download-audit-link">
                             View release on GitHub full release notes, all assets
                         </a>
@@ -252,7 +253,7 @@
                     </div>
                     <p class="verify-step-desc">
                         Confirm that the downloaded file matches the SHA-256 hash recorded in the verified manifest.
-                        First unzip <code>SafeKeep-Release-v1.63.zip</code> and put the extracted <code>SafeKeep-Release-v1.63.img</code>
+                        First unzip <code>SafeKeep-Release-v1.64.zip</code> and put the extracted <code>SafeKeep-Release-v1.64.img</code>
                         in the same folder as <code>SHA256SUMS.txt</code>: the manifest lists the <code>.img</code>, not the zip.
                     </p>
                     <div class="os-tabs">
@@ -261,7 +262,7 @@
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Check file hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">sha256sum --check SHA256SUMS.txt</span>
-<span class="term-comment"># Expected output: SafeKeep-Release-v1.63.img: OK</span></pre>
+<span class="term-comment"># Expected output: SafeKeep-Release-v1.64.img: OK</span></pre>
                     </div>
                     <div class="os-tabs" style="margin-top: 0.75rem;">
                         <span class="os-tab-label active">macOS</span>
@@ -269,7 +270,7 @@
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Check file hash against SHA256SUMS.txt</span>
 <span class="term-prompt">$ </span><span class="term-cmd">shasum -a 256 -c SHA256SUMS.txt</span>
-<span class="term-comment"># Expected output: SafeKeep-Release-v1.63.img: OK</span></pre>
+<span class="term-comment"># Expected output: SafeKeep-Release-v1.64.img: OK</span></pre>
                     </div>
                     <p class="verify-note">
                         <strong>OK</strong> confirms the file is unmodified. <strong>FAILED</strong> means the download is corrupt or tampered with &mdash; delete it and download again.
@@ -279,7 +280,7 @@
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Generate the file hash</span>
-<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash SafeKeep-Release-v1.63.img -Algorithm SHA256</span></pre>
+<span class="term-prompt">PS </span><span class="term-cmd">Get-FileHash SafeKeep-Release-v1.64.img -Algorithm SHA256</span></pre>
                     </div>
                     <p class="verify-note">
                         Open <code>SHA256SUMS.txt</code> in Notepad and confirm the hash matches exactly. If it doesn&rsquo;t, delete the download and start over.
@@ -307,7 +308,7 @@
                         (or <a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a> for Windows):
                     </p>
                     <ol style="margin: 0.75rem 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.94rem; color: var(--text-muted); line-height: 1.6;">
-                        <li>Open the flashing utility and select the extracted <code>SafeKeep-Release-v1.63.img</code> file.</li>
+                        <li>Open the flashing utility and select the extracted <code>SafeKeep-Release-v1.64.img</code> file.</li>
                         <li>Select your target flash drive.</li>
                         <li>Click <strong>Flash</strong> and wait for the verification to complete.</li>
                     </ol>
@@ -326,7 +327,7 @@
                     </div>
                     <div class="terminal-block">
                         <pre><span class="term-comment"># Flash with dd — replace /dev/sdX with your USB device</span>
-<span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=SafeKeep-Release-v1.63.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
+<span class="term-prompt">$ </span><span class="term-cmd">sudo dd if=SafeKeep-Release-v1.64.img of=/dev/sdX bs=4M status=progress oflag=sync</span></pre>
                     </div>
                 </div>
 
@@ -373,7 +374,7 @@
                 <p class="notice-title">Already on v1.47 or later? Update in place, no reflash</p>
                 <p>
                     Download the signed update file
-                    <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.63/SafeKeep-Update-v1.63.tar"><code>SafeKeep-Update-v1.63.tar</code></a>,
+                    <a href="https://github.com/Pasalon0404/SafeKeepVault/releases/download/v1.64/SafeKeep-Update-v1.64.tar"><code>SafeKeep-Update-v1.64.tar</code></a>,
                     copy it onto your flash drive&rsquo;s <strong>TRANSFER</strong> drive and install it from
                     <strong>Device Options &rarr; Update SafeKeep</strong>. Your vault is not touched. The
                     <a href="docs.html#update-in-place">update guide</a> has the steps.
@@ -384,7 +385,7 @@
                 <p class="notice-title">Coming from v1.46 or earlier? Reflash once, then update in place</p>
                 <p>
                     v1.47 changed how the flash drive is laid out, so it can update itself from then on. That needs a
-                    <strong>USB flash drive of 8 GB or more</strong>, and one last reflash: back up, flash v1.63,
+                    <strong>USB flash drive of 8 GB or more</strong>, and one last reflash: back up, flash v1.64,
                     restore. The <a href="docs.html#updating">update guide</a> walks you through it. After that,
                     future versions install from <strong>Device Options &rarr; Update SafeKeep</strong>, without
                     reflashing and without touching your vault.
@@ -499,8 +500,8 @@
 
                 <h3 class="sub-heading" id="verify-app">Extra checks for the app itself</h3>
                 <p>
-                    The app inside this image is byte-for-byte the official v1.63 GitHub release build of
-                    <code>boot.html</code> (SHA-256 <code>4d4a68c1&hellip;97cf66c5</code>, matching that release&rsquo;s
+                    The app inside this image is byte-for-byte the official v1.64 GitHub release build of
+                    <code>boot.html</code> (SHA-256 <code>78b882d3&hellip;0f2849d5</code>, matching that release&rsquo;s
                     <code>SHA256SUMS</code>). Since v1.36, every release of the app is published on GitHub with four
                     independent ways to check it. Each one guards against something different:
                 </p>
@@ -514,7 +515,7 @@
                 <p>
                     The <a href="https://github.com/Pasalon0404/SafeKeepVault/blob/main/VERIFYING.md" target="_blank" rel="noopener">verification guide (VERIFYING.md)</a>
                     has the exact commands for each check. The version stamp on the vault&rsquo;s welcome screen and dashboard
-                    (for example <code>v1.63 &middot; build 501 &middot; 620fea9</code>) names the exact source commit the app was built from.
+                    (for example <code>v1.64 &middot; build 510 &middot; a880b0f</code>) names the exact source commit the app was built from.
                 </p>
 
             </section>
