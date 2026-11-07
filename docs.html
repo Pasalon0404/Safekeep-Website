@@ -345,6 +345,8 @@
                         <ul>
                             <li><a href="#primary-tools">Main tools</a></li>
                             <li><a href="#advanced-tools">Advanced tools</a></li>
+                            <li><a href="#draw-print-seedqr">Draw or Print my SeedQR</a></li>
+                            <li><a href="#print-seedqr-usb">Printing a SeedQR on a USB printer</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -1520,6 +1522,12 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         locks. With no seed loaded, <strong>Create a new wallet</strong>, <strong>Encrypted backup</strong>
                         and <strong>Sign with Hardware Wallet</strong> each have <strong>Back to Welcome</strong>.
                     </li>
+                    <li id="screen-brightness">
+                        <strong>Screen Brightness &mdash;</strong>
+                        In <strong>Device Options</strong>, dim the picture from 30% to 100%. This is software dimming, so
+                        it works on any screen, and 100% is the screen&rsquo;s own brightness. On many laptops the keyboard&rsquo;s
+                        brightness keys also work.
+                    </li>
                     <li>
                         <strong>Auto-Lock &amp; Display Sleep &mdash;</strong>
                         In <strong>Device Options</strong>, set how many idle minutes pass before the vault
@@ -1557,7 +1565,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     </li>
                     <li>
                         <strong>Settings that are kept &mdash;</strong>
-                        Theme, display scale, sound and the idle timers are saved in your encrypted vault and
+                        Theme, display scale, screen brightness, sound and the idle timers are saved in your encrypted vault and
                         restored on every boot. Temporary Sessions never read or save them.
                     </li>
                 </ul>
@@ -1748,7 +1756,10 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         format. SafeKeepVault, SeedSigner, Jade, Krux, Passport and Sparrow read both; BlueWallet and most
                         phone wallets read only Standard. A Standard code&rsquo;s digits can be read by any phone camera, so keep
                         it as private as the seed words. Hand-drawn or engraved copies can be verified by scanning them back in,
-                        and blank grids matching the code&rsquo;s size are available for printing.
+                        and blank grids matching the code&rsquo;s size are available for printing. To enter a different seed,
+                        <strong>Clear &amp; Enter Different Seed</strong> uses the standard word boxes with suggestions. After you generate
+                        a code, you can trace it, copy it square by square or print it on a USB laser printer. See
+                        <a href="#draw-print-seedqr">Draw or Print my SeedQR</a>.
                     </li>
                     <li>
                         <strong>Passphrase Library &mdash;</strong>
@@ -1941,6 +1952,91 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         your two-factor accounts if your phone is lost.
                     </li>
                 </ul>
+
+                <h3 class="sub-heading" id="draw-print-seedqr">Draw or Print my SeedQR</h3>
+                <p>
+                    After you generate a SeedQR in the <strong>Seed QR Code</strong> tool, <strong>Draw or Print my SeedQR</strong>
+                    offers three ways to copy it: <strong>Trace It on the Screen</strong>, <strong>Copy It Square by Square</strong>
+                    and <strong>Print It on a USB Printer</strong>. Each ends with <strong>Scan to Verify</strong>, which checks
+                    your copy with the camera.
+                </p>
+                <figure class="os-showcase">
+                    <a href="v163-seedqr-choices.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v163-seedqr-choices.png" alt="The Draw or Print my SeedQR card with three buttons: Trace It on the Screen, Copy It Square by Square, and Print It on a USB Printer">
+                    </a>
+                    <figcaption>The three ways to copy a SeedQR, shown after you generate one.</figcaption>
+                </figure>
+                <p>
+                    <strong>Get a blank template first</strong> if you&rsquo;re copying by hand. Print a 21&times;21 or 25&times;25 template
+                    from <a href="print-qr.html">Print QR</a> at 100% scale. It&rsquo;s empty, so any printer is fine. A 12-word Compact code
+                    is 21&times;21, and a 24-word Compact or 12-word Standard code is 25&times;25. A 24-word Standard code is 29&times;29, and
+                    Print QR has no template for that size, so use Compact format if you want a template.
+                </p>
+                <p><strong>Trace It on the Screen</strong> shows the code on a white screen at the template&rsquo;s real size (85.68 mm for 21&times;21, 87.88 mm for 25&times;25).</p>
+                <ol class="wallet-steps">
+                    <li>Lay the printed template on the screen. The light box opens at full brightness, and the &#9728; slider dims it.</li>
+                    <li>Change the <strong>Size</strong> until the template&rsquo;s grid lines up with the one on the screen. Use the slider, the number box, or the arrow and + / &minus; keys. Hold Shift for bigger steps.</li>
+                    <li>Press <strong>Remember as Default</strong> so it opens at that size next time. A screen&rsquo;s right size doesn&rsquo;t change, and it&rsquo;s saved in your vault.</li>
+                    <li>Fill in every square that shows dark through the paper. Press lightly, and keep cameras and windows away from the screen.</li>
+                    <li>Press <strong>Scan to Verify</strong> to check your copy.</li>
+                </ol>
+                <figure class="os-showcase">
+                    <a href="v163-seedqr-trace.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v163-seedqr-trace.png" alt="The light box: a SeedQR on a white screen with numbered rows and columns, and Size, Remember as Default, brightness and Scan to Verify controls along the top">
+                    </a>
+                    <figcaption><strong>Trace It on the Screen</strong>, showing a SeedQR made from public test words. Never use a seed from a picture.</figcaption>
+                </figure>
+                <p>
+                    <strong>Copy It Square by Square</strong> shows one 7&times;7 block at a time, numbered as the template is, and lists the
+                    dark squares of each row. Rows run top to bottom and columns left to right, starting at 1. The three big corner squares are
+                    already printed on the template. This way needs no paper on the screen, and it also suits punching steel or placing tiles.
+                    The last block&rsquo;s button is <strong>Scan to Verify</strong>.
+                </p>
+                <figure class="os-showcase">
+                    <a href="v163-seedqr-square.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v163-seedqr-square.png" alt="Square by square view: block 1 of 9 enlarged with numbered rows and columns, a small map of the whole code, and a list of the dark squares in each row">
+                    </a>
+                    <figcaption><strong>Copy It Square by Square</strong>: block 1 of 9 of a 21&times;21 code, made from public test words.</figcaption>
+                </figure>
+
+                <h3 class="sub-heading" id="print-seedqr-usb">Printing a SeedQR on a USB printer</h3>
+                <p>
+                    SafeKeep has no print system and no printer drivers, and it never prints over a network. <strong>Print It on a USB Printer</strong>
+                    draws the page itself in PCL, a printer language, and sends it straight to the printer over the USB cable. Only the printer part of
+                    a device is used, so a multifunction printer&rsquo;s scanner stays off.
+                </p>
+                <p>
+                    <strong>Which printers work:</strong> laser printers that understand PCL, which most do. SafeKeep shows the printer&rsquo;s name
+                    before you print. Some printers understand PCL without saying so, so SafeKeep lets you try. A printer that can&rsquo;t
+                    use PCL will print a garbled page or nothing, and it can&rsquo;t be used for this. Connect only one USB printer at a time.
+                </p>
+                <ul class="docs-list">
+                    <li><strong>Size &mdash;</strong> anywhere from 10 to 150 mm wide, with a slider and a number box. The <strong>Template size</strong> button sets the size of the blank template. Smaller codes are fine to scan, so try the smallest your camera reads: on a Samsung Xpress M2070, a laptop camera read a 14 mm code.</li>
+                    <li><strong>Fingerprint &mdash;</strong> tick the box to print the seed fingerprint under the code.</li>
+                    <li><strong>Preview &mdash;</strong> the page is shown before you print.</li>
+                </ul>
+                <div class="notice-block">
+                    <p class="notice-title">Before you print</p>
+                    <ul>
+                        <li>Use your own printer, connected by a USB cable.</li>
+                        <li>If the printer is also on Wi-Fi or a network, turn that off or unplug it first.</li>
+                        <li>Stay with the printer and take the page.</li>
+                        <li>Afterwards, switch the printer off. It keeps the page in its memory until then.</li>
+                    </ul>
+                </div>
+                <p>
+                    <strong>If the vault shouldn&rsquo;t hold this seed,</strong> SafeKeep tells you. That applies when the vault is set not to keep
+                    the seed, or when this SeedQR isn&rsquo;t the seed your vault keeps. To reach the printer, SafeKeep briefly saves the SeedQR in the
+                    encrypted vault on the flash drive and deletes it within a second, but a trace can stay on the flash drive. To keep it off the flash
+                    drive entirely, print from a Temporary Session instead.
+                </p>
+                <p>When the page is out, switch the printer off, then check the printout with <strong>Scan to Verify</strong>.</p>
+                <figure class="os-showcase">
+                    <a href="v163-seedqr-print.png" target="_blank" rel="noopener">
+                        <img class="img-elevated" src="v163-seedqr-print.png" alt="The print screen: a page preview with the SeedQR and fingerprint, the printer's name, Size and Template size controls, the fingerprint box, safety notes, and the Print button">
+                    </a>
+                    <figcaption><strong>Print It on a USB Printer</strong>, with a SeedQR made from public test words. The orange box appears only when the vault shouldn&rsquo;t hold this seed.</figcaption>
+                </figure>
 
                 <div class="cta-row" style="margin-top: 1.75rem;">
                     <a href="download.html" class="btn-primary">Download</a>

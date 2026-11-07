@@ -92,19 +92,36 @@
 
             <!-- Highlights: the summary of recent releases, kept short; add new changes to the matching point -->
             <div style="margin: 1.5rem 0 2.5rem; padding: 1.25rem 1.5rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-md);">
-                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim); margin: 0 0 0.35rem;">Recent releases (up to v1.62)</p>
+                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dim); margin: 0 0 0.35rem;">Recent releases (up to v1.63)</p>
                 <p style="font-size: 1rem; font-weight: 700; color: var(--text); margin: 0 0 0.6rem;">Updates without reflashing, backups you can check, and a clearer transaction review</p>
                 <ul style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; padding-left: 1.2rem;">
                     <li style="margin: 0 0 0.5rem;"><strong>Keep your seed off the flash drive.</strong> The vault can open without storing your seed: you scan your SeedQR or type your words at each start (v1.58).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>A new look.</strong> A Dashboard with your wallet, a Health list and tiles for everyday tasks, plus guided <strong>Show an address</strong> and <strong>Connect a wallet app</strong> (v1.57). QR codes change density and speed while they play, and Show an address lists your Silent Payment address (v1.59).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Updates without reflashing.</strong> Install a signed update from the Transfer Drive, with the previous version one menu choice away (v1.47). Most PCs now start the flash drive with Secure Boot left on (v1.54).</li>
-                    <li style="margin: 0 0 0.5rem;"><strong>Backups you can check.</strong> Send a backup to your phone with the Courier, check that it opens, and restore a new flash drive from it, all without an online computer (v1.55). Seed XOR and Shamir shares are made one at a time and checked against your paper (v1.52).</li>
+                    <li style="margin: 0 0 0.5rem;"><strong>Backups you can check.</strong> Send a backup to your phone with the Courier, check that it opens, and restore a new flash drive from it, all without an online computer (v1.55). Seed XOR and Shamir shares are made one at a time and checked against your paper (v1.52). Trace a SeedQR on the screen, copy it square by square, or print it on a USB laser printer, then scan it to check it (v1.63).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Safer seeds and passwords.</strong> The random number generator is tested before every seed, patterned dice rolls are refused (v1.50), and so are easy-to-guess vault passwords (v1.51). <strong>Draw Your Own Words</strong> makes a seed from words you draw by hand and coin flips, and refuses a draw that looks made up (v1.60).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>A clearer transaction review.</strong> Save your wallets in the vault and the <strong>PSBT Signer</strong> confirms which one is spending and that the change comes back to you. It shows the total leaving your wallet and lets you compare each address character by character (v1.46).</li>
                     <li style="margin: 0 0 0.5rem;"><strong>Works with more wallets.</strong> Nunchuk and Sparrow add your key by scanning the screen (v1.53); import from Sparrow, BlueWallet or Bitcoin Core (v1.45); co-sign with a <strong>Coldcard</strong> or <strong>Trezor One</strong> over USB (v1.44); file-only wallets such as Trezor Suite work through <strong>The Courier</strong> (v1.43). Bring a COLDCARD&rsquo;s wallet, multisig wallets and notes in from its backup (v1.62).</li>
                     <li style="margin: 0;"><strong>Less to attack.</strong> Every network driver, the terminal and the file manager are gone from SafeKeep OS (v1.45).</li>
                 </ul>
             </div>
+
+            <!-- v1.63 -->
+            <section class="content-section" id="v1-63">
+                <h2 class="section-heading">v1.63 &mdash; November 7, 2026</h2>
+                <p>Get your SeedQR onto paper or steel without a computer you don&rsquo;t trust: trace it on the screen, copy it square by square, or print it on a laser printer connected by USB. Plus a Screen Brightness setting that works on any screen.</p>
+                <ul class="docs-list">
+                    <li><strong>Draw or Print my SeedQR &mdash;</strong> after you generate a SeedQR, the <strong>Seed QR Code</strong> tool offers three ways to copy it. Each ends with <strong>Scan to Verify</strong>, which checks your copy with the camera.</li>
+                    <li><strong>Trace It on the Screen &mdash;</strong> the code fills a white screen at the real size of the blank templates from <a href="print-qr.html">Print QR</a> (85.68 mm for 21&times;21, 87.88 mm for 25&times;25). Lay the printed template on the screen and fill in every square that shows dark through the paper. Fine-tune the <strong>Size</strong> with the slider, the number box, or the arrow and + / &minus; keys (hold Shift for bigger steps), then press <strong>Remember as Default</strong>. It opens at full brightness, and the &#9728; slider dims it.</li>
+                    <li><strong>Copy It Square by Square &mdash;</strong> one 7&times;7 block at a time, numbered as the template is, with the dark squares of each row listed. It also suits punching steel or placing tiles.</li>
+                    <li><strong>Print It on a USB Printer &mdash;</strong> SafeKeep still has no print system and no printer drivers. It draws the page itself in PCL, the printer language most laser printers understand, and sends it straight to the printer over USB, never over a network. Only the printer part of a device is used, so a multifunction printer&rsquo;s scanner stays off.</li>
+                    <li><strong>Print size and preview &mdash;</strong> any size from 10 to 150 mm, with a <strong>Template size</strong> button. Small codes scan fine: on a Samsung Xpress M2070, a laptop camera read a 14 mm code. You can add the seed fingerprint under the code, and you see a preview of the page and the printer&rsquo;s name before you print.</li>
+                    <li><strong>Printing safely &mdash;</strong> use your own printer by USB, turn its Wi-Fi or network off, take the page, and switch the printer off afterwards, because it keeps the page in its memory until then. If the vault shouldn&rsquo;t hold this seed, SafeKeep explains that printing briefly saves it in the encrypted vault, and suggests printing from a Temporary Session instead.</li>
+                    <li><strong>Screen Brightness &mdash;</strong> <strong>Device Options &rarr; Screen Brightness</strong> dims the picture from 30% to 100% on any screen. The setting is saved in your vault. On many laptops the keyboard&rsquo;s brightness keys now work too.</li>
+                    <li><strong>Typing a seed into the tool &mdash;</strong> <strong>Clear &amp; Enter Different Seed</strong> now uses the same word boxes as the rest of SafeKeep, with suggestions as you type.</li>
+                    <li><strong>Update in place &mdash;</strong> on a v1.47 or later flash drive, copy <code>SafeKeep-Update-v1.63.tar</code> onto the Transfer Drive, unlock, and install it from <strong>Device Options &rarr; Update SafeKeep &rarr; Check for update</strong>, then <strong>Install update</strong> and <strong>Restart now</strong>.</li>
+                </ul>
+            </section>
 
             <!-- v1.62 -->
             <section class="content-section" id="v1-62">
