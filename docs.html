@@ -337,6 +337,7 @@
                     <li><a href="#sessions">Locking &amp; device options</a>
                         <ul>
                             <li><a href="#seed-storage">Seed storage</a></li>
+                            <li><a href="#coldcard-send">Sending a passphrase or seed to a Coldcard</a></li>
                         </ul>
                     </li>
                     <li><a href="#updating">Updating to a new version</a></li>
@@ -347,6 +348,8 @@
                             <li><a href="#advanced-tools">Advanced tools</a></li>
                             <li><a href="#draw-print-seedqr">Draw or Print my SeedQR</a></li>
                             <li><a href="#print-seedqr-usb">Printing a SeedQR on a USB printer</a></li>
+                            <li><a href="#seed-vault">Seed Vault</a></li>
+                            <li><a href="#seed-vault-multisig">Multisig from your Seed Vault</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -778,7 +781,7 @@
                 <p>Once the backup is open, you choose what to keep:</p>
                 <ul class="docs-list">
                     <li><strong>The wallet &mdash;</strong> the main wallet&rsquo;s recovery words, checked against the rest of the file, with its fingerprint. <strong>Restore This Wallet</strong> shows that fingerprint on the button.</li>
-                    <li><strong>Seed Vault &mdash;</strong> if the backup holds a Seed Vault, you can restore one of those seeds instead of the main wallet, or click <strong>Show words</strong> to view its words and write them down.</li>
+                    <li><strong>Seed Vault &mdash;</strong> if the backup holds a Seed Vault, you can restore one of those seeds instead of the main wallet, or click <strong>Show words</strong> to view its words and write them down. The seeds you check are kept in this vault&rsquo;s <a href="#seed-vault">Seed Vault</a>, so you can switch to them from the Dashboard (not in a Temporary Session, or on a flash drive set not to keep the seed).</li>
                     <li><strong>Multisig wallets &mdash;</strong> each one you tick is saved in <a href="#output-descriptor">Output Descriptor</a>, showing which key is yours, so the PSBT Signer checks transactions against it.</li>
                     <li><strong>Secure Notes &amp; Passwords (COLDCARD Q) &mdash;</strong> each one you tick becomes a SafeKeep note. A title you already use gets &ldquo;(COLDCARD)&rdquo; added, so nothing is overwritten.</li>
                 </ul>
@@ -1146,7 +1149,7 @@
                 </ol>
 
                 <p class="wallet-sig-heading">Multisig</p>
-                <p>The quickest way is by scanning: choose Key Format <strong>BC-UR Account (ur:crypto-account)</strong> with Wallet Type <strong>Multi-Sig (BIP-48)</strong>, press <strong>Show QR</strong>, and in Sparrow use <strong>File &rarr; New Wallet</strong>, <strong>Policy Type: Multi Signature</strong>, then on SafeKeep&rsquo;s keystore tab <strong>Airgapped Hardware Wallet</strong> and a device with a <strong>Scan&hellip;</strong> button. Add the other cosigners the same way, then <strong>Apply</strong>. </p>
+                <p>The quickest way is by scanning: on the Dashboard, open <strong>Connect a wallet app &rarr; Sparrow &rarr; Multisig</strong>, which shows the key as Hardware Wallet JSON. In Sparrow use <strong>File &rarr; New Wallet</strong>, <strong>Policy Type: Multi Signature</strong>, then on SafeKeep&rsquo;s keystore tab choose <strong>Airgapped Hardware Wallet</strong>, then <strong>Passport</strong>, click <strong>Scan&hellip;</strong> and scan the QR code. Add the other cosigners the same way, then <strong>Apply</strong>. </p>
                 <p>To use files instead:</p>
                 <div class="vault-export-settings">
                     <span class="vault-export-settings-label">SafeKeepVault &mdash; Seed Management export settings (repeat for each co-signer key)</span>
@@ -1548,14 +1551,50 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         Then you unlock with the new password; the old one no longer opens the vault. If your vault
                         was set up with an easy-to-guess password, the Dashboard shows a red warning with a button to change it.
                     </li>
+                    <li id="coldcard-send">
+                        <strong>Coldcard &mdash;</strong>
+                        <strong>Device Options &rarr; Coldcard</strong> has every COLDCARD option together: pairing for
+                        co-signing (see <a href="#sign-hardware">Co-signing with a Coldcard or Trezor</a>),
+                        <strong>Send a Passphrase to the Coldcard</strong>, <strong>Send a Seed to the Coldcard</strong>, then
+                        <strong>Import from a COLDCARD Backup</strong>. Trezor comes after. The two Send tools let you type on
+                        the computer instead of on the COLDCARD&rsquo;s small keys, and send over the USB cable. They were
+                        tested on a COLDCARD Mk4.
+                    </li>
+                    <li id="coldcard-send-passphrase">
+                        <strong>Send a Passphrase to the Coldcard &mdash;</strong>
+                        Type a BIP-39 passphrase, then type it again, or click <strong>Choose from the Passphrase
+                        Library</strong>. A typed passphrase can also be saved in the Library. No pairing is needed. Start
+                        from the COLDCARD&rsquo;s main wallet: it adds the passphrase to whichever wallet it is using now.
+                        Spaces and capital letters count. Click <strong>Send to Coldcard</strong>, then on the COLDCARD:
+                        check the length it shows (press 2 to see the passphrase itself and compare it), and press OK to
+                        switch to that wallet, or X to cancel. If it offers Seed Vault, press 1 to keep this wallet there, or
+                        OK to use it until the COLDCARD is turned off. SafeKeep works out the fingerprint the passphrase
+                        gives with the seed loaded in SafeKeep. When the COLDCARD was on that same seed, SafeKeep confirms
+                        it switched to that wallet.
+                    </li>
+                    <li id="coldcard-send-seed">
+                        <strong>Send a Seed to the Coldcard &mdash;</strong>
+                        Choose <strong>From SafeKeep&rsquo;s Seed Vault</strong> and pick a stored seed, or
+                        <strong>Type or scan the words</strong>: 12 or 24 words, or <strong>Scan a SeedQR</strong>. Click
+                        <strong>Send to Coldcard</strong>, then on the COLDCARD: at &ldquo;Restore uploaded backup as a temporary
+                        seed?&rdquo; press OK; check that the fingerprint it shows matches the one SafeKeep shows, and press OK
+                        (X cancels); if it offers Seed Vault, press 1 to keep the seed there. The COLDCARD loads it as a
+                        temporary seed, never in place of its own seed, and uses it until you switch back in its Seed Vault
+                        menu or turn it off and on. Afterwards, <strong>Check the Coldcard</strong> confirms which wallet it is using.
+                        <br><br>
+                        <strong>Naming it on the COLDCARD:</strong> the COLDCARD names Seed Vault entries by fingerprint. To
+                        give one a name, while it is still in use, go to <strong>Seed Vault &rarr; [fingerprint] &rarr;
+                        Rename</strong> on the COLDCARD. SafeKeep shows these steps with the name to type: the seed&rsquo;s
+                        SafeKeep name, or the passphrase&rsquo;s nickname from the Library.
+                    </li>
                     <li id="coldcard-import">
                         <strong>Import from a COLDCARD backup &mdash;</strong>
                         In <strong>Device Options</strong>, <strong>Import from a COLDCARD Backup</strong> adds the multisig
                         wallets and Secure Notes you choose to this vault, with the same three ways in as
                         <a href="#coldcard-restore">Restoring from a COLDCARD backup</a>. Tick what you want and click
                         <strong>Import Selected</strong>. Your seed isn&rsquo;t changed, and the backup&rsquo;s own wallet
-                        isn&rsquo;t imported. You can view the words of its Seed Vault seeds, but they aren&rsquo;t imported,
-                        because SafeKeep keeps one seed per vault. It works with backups made with a passphrase too. A
+                        isn&rsquo;t imported. You can view the words of its Seed Vault seeds, and the ones you check are kept in SafeKeep&rsquo;s
+                        <a href="#seed-vault">Seed Vault</a>. It works with backups made with a passphrase too. A
                         Temporary Session has no vault to import into.
                     </li>
                     <li>
@@ -1822,6 +1861,10 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         refused, whether it was read by USB, pasted or scanned. <em>Reading from a Coldcard has been
                         tested; reading from a Trezor One hasn&rsquo;t been tried on a real device yet.</em>
                         <br><br>
+                        Each cosigner also has a <strong>Seed Vault</strong> button, which fills in the multisig key of a seed
+                        kept in your Seed Vault. If this vault then holds enough keys to spend, SafeKeep warns you. See
+                        <a href="#seed-vault-multisig">Multisig from your Seed Vault</a>.
+                        <br><br>
                         The <strong>Receive</strong> panel works out receive addresses from the descriptor here,
                         offline, so malware on an online computer can&rsquo;t swap them. The vault can&rsquo;t see
                         which addresses have been used, so let your watch-only wallet pick the next unused address,
@@ -1837,10 +1880,11 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Import a wallet from another app</strong>: this is the easiest way to add a multisig wallet
                         you set up in a coordinator such as Sparrow, Specter or Nunchuk, with one scan instead of entering
                         each key. On the <strong>Import</strong> tab (called Verify before v1.58), scan the wallet&rsquo;s QR
-                        code (static, animated UR, or a Courier loop), paste it, or <a href="#file-picker">choose from the list of files on the Transfer Drive</a>: an
+                        code (static or animated, as UR or BBQr, or a Courier loop), paste it, or <a href="#file-picker">choose from the list of files on the Transfer Drive</a>: an
                         output descriptor, a multisig setup file (BlueWallet, Coldcard, Sparrow&hellip;), a BSMS record or an
                         extended public key, single-sig or multisig, including nested SegWit multisig
-                        <code>sh(wsh(&hellip;))</code>. A
+                        <code>sh(wsh(&hellip;))</code>. It also reads wallets shown as BBQr (<code>B$&hellip;</code>, as newer
+                        Sparrow versions and COLDCARD show them) and as UR text (<code>UR:CRYPTO-OUTPUT/&hellip;</code>). A
                         scanned, pasted or loaded descriptor is checked at once: SafeKeep checks the checksum, refuses private keys, and shows the first
                         receive and change addresses worked out from the descriptor. No seed is needed: without one the
                         result is <strong>WATCH-ONLY</strong>; with a seed loaded it still says <strong>MATCH</strong> or
@@ -2044,6 +2088,41 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     </a>
                     <figcaption>The <strong>cutting line</strong>, with a SeedQR made from public test words.</figcaption>
                 </figure>
+
+                <h3 class="sub-heading" id="seed-vault">Seed Vault</h3>
+                <p>
+                    The <strong>Seed Vault</strong> keeps up to 20 more seeds in your vault, beside your master seed: a family
+                    member&rsquo;s wallet, a second multisig key, an old wallet. Open <strong>Seed Management &rarr; Seed Vault</strong>.
+                </p>
+                <ul class="docs-list">
+                    <li><strong>Adding a seed &mdash;</strong> click <strong>Add a Seed</strong>, give it a name, and type its 12 or 24 words or <strong>Scan a SeedQR</strong>. While a temporary seed is loaded, <strong>Keep the Temporary Seed Here</strong> keeps that seed under the name you give.</li>
+                    <li><strong>Looking after them &mdash;</strong> rename a seed, click <strong>Show words</strong> to see its words (SafeKeep asks first), or delete it. Deleting asks first too: without a written backup of its words, that wallet is lost. Keep a written backup of each seed.</li>
+                    <li><strong>Switching from the Dashboard &mdash;</strong> once the Seed Vault holds a seed, the Dashboard has a <strong>Seed Vault &#9662;</strong> button listing the master seed and your stored seeds. Pick one, and signing, addresses and every tool use it. A banner shows which stored seed is in use, with its fingerprint, and <strong>Back to Master Seed</strong>. Switching clears any passphrase you applied, so apply it again if you need it.</li>
+                    <li><strong>What&rsquo;s stored where &mdash;</strong> stored seeds are encrypted in the vault on the flash drive, next to your master seed, so they&rsquo;re as safe as the vault. Encrypted Backup&rsquo;s seed option includes them, restoring that backup brings them back, and a factory reset erases them with the rest of the vault.</li>
+                    <li><strong>When it&rsquo;s off &mdash;</strong> a Temporary Session has no Seed Vault, and neither does a flash drive set not to keep the seed (see <a href="#seed-storage">Seed storage</a>).</li>
+                    <li><strong>From a COLDCARD backup &mdash;</strong> when you restore or import a COLDCARD backup, the seeds from its Seed Vault that you check are kept here (see <a href="#coldcard-restore">Restoring from a COLDCARD backup</a>). To put a stored seed on a COLDCARD, use <a href="#coldcard-send-seed">Send a Seed to the Coldcard</a>.</li>
+                </ul>
+
+                <h3 class="sub-heading" id="seed-vault-multisig">Multisig from your Seed Vault</h3>
+                <p>
+                    In <a href="#output-descriptor">Output Descriptor</a>&rsquo;s multisig builder, each cosigner slot has a
+                    <strong>Seed Vault</strong> button next to <strong>Coldcard (USB)</strong> and <strong>Trezor (USB)</strong>.
+                    It fills in the multisig key of a seed in your Seed Vault. Key 1 is the seed in use. Then save the
+                    wallet and send it to Sparrow or another app as before.
+                </p>
+                <p>
+                    <strong>The warning.</strong> If this vault holds enough of the wallet&rsquo;s keys to spend, SafeKeep says
+                    so plainly: anyone who unlocks this flash drive can spend from the wallet without any other device, so
+                    it is no safer than a single-signature wallet. It lists the keys that are here and says how many to keep
+                    only somewhere else: on another device, or on a COLDCARD (with <a href="#coldcard-send-seed">Send a Seed to the
+                    Coldcard</a>), with that seed then removed from SafeKeep&rsquo;s Seed Vault. Keeping every key in one vault is
+                    fine for trying multisig out or for a test wallet.
+                </p>
+                <p>
+                    <strong>Why keys belong in different places.</strong> A multisig wallet protects you only when no single
+                    place holds enough keys to spend. Keep the keys on different devices, stored in different places, so that
+                    one stolen flash drive, one lost device or one guessed password can&rsquo;t move your bitcoin.
+                </p>
 
                 <div class="cta-row" style="margin-top: 1.75rem;">
                     <a href="download.html" class="btn-primary">Download</a>
