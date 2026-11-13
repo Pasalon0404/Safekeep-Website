@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SafeKeepVault features (video source)</title>
+<!--
+  Source for safekeepvault-features.mp4. Every frame is drawn by render(t),
+  so the video is rebuilt deterministically by video-src/render.js:
+      node video-src/render.js safekeepvault-features.mp4 30 --page=features.html
+  Open this file in a browser and add ?play to preview it in real time.
+-->
+<style>
+  :root {
+    --bg: #0B0D10; --panel: #14171C; --line: #262B33;
+    --text: #F2F4F7; --muted: #A2AAB5; --dim: #6B7380;
+    --accent: #F7931A; --good: #3FB950; --bad: #F85149;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+  body { font-family: 'Inter', sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; }
+  #stage { position: relative; width: 1920px; height: 1080px; overflow: hidden;
+    background: radial-gradient(ellipse 1400px 900px at 50% 40%, #151922 0%, var(--bg) 70%); }
+  .scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; }
+  .el { will-change: transform, opacity; }
+  h1 { font-size: 84px; font-weight: 800; letter-spacing: -2px; line-height: 1.1; text-align: center; }
+  h2 { font-size: 64px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.15; text-align: center; }
+  p.sub { font-size: 40px; font-weight: 500; color: var(--muted); text-align: center; line-height: 1.35; }
+  .o { color: var(--accent); }
+  .g { color: var(--good); }
+  .r { color: var(--bad); }
+  .brand { font-size: 120px; font-weight: 800; letter-spacing: -3px; }
+  .eyebrow { font-family: 'JetBrains Mono', 'DejaVu Sans Mono', monospace; font-size: 26px; letter-spacing: 6px; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .pill { display: inline-flex; align-items: center; gap: 14px; padding: 14px 28px; border: 2px solid var(--line); border-radius: 999px; background: var(--panel); font-size: 32px; font-weight: 600; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--good); box-shadow: 0 0 16px var(--good); }
+
+  /* icons */
+  .icon { width: 220px; height: 220px; }
+  .icon svg { width: 100%; height: 100%; }
+  .row { display: flex; gap: 80px; align-items: center; justify-content: center; }
+
+  /* step cards */
+  .steps { display: flex; gap: 48px; }
+  .step { width: 500px; padding: 48px 40px; background: var(--panel); border: 2px solid var(--line); border-radius: 24px; text-align: center; }
+  .step .num { width: 72px; height: 72px; border-radius: 50%; background: var(--accent); color: #111; font-weight: 800; font-size: 40px; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; }
+  .step .ic { height: 150px; margin-bottom: 28px; }
+  .step .ic svg { height: 100%; }
+  .step h3 { font-size: 40px; font-weight: 700; margin-bottom: 14px; line-height: 1.2; }
+  .step p { font-size: 28px; color: var(--muted); line-height: 1.4; }
+
+  /* screenshots */
+  .shot { position: absolute; border-radius: 18px; overflow: hidden; border: 2px solid var(--line); box-shadow: 0 40px 120px rgba(0,0,0,0.6); background: #000; }
+  .shot img { display: block; width: 100%; }
+  .caption { position: absolute; left: 0; right: 0; bottom: 70px; text-align: center; }
+  .caption > span { display: inline-block; padding: 22px 44px; background: rgba(11,13,16,0.92); border: 2px solid var(--line); border-radius: 18px; font-size: 44px; font-weight: 700; }
+
+  /* flow diagram */
+  .device { width: 460px; padding: 40px; border-radius: 28px; border: 3px solid var(--line); background: var(--panel); text-align: center; }
+  .device .ic { height: 170px; margin-bottom: 20px; }
+  .device .ic svg { height: 100%; }
+  .device h3 { font-size: 40px; font-weight: 700; }
+  .device .tag { margin-top: 18px; font-size: 28px; font-weight: 600; }
+  .lane { position: relative; width: 560px; height: 260px; }
+  .packet { position: absolute; top: 0; left: 0; display: flex; align-items: center; gap: 14px; padding: 14px 22px; border-radius: 14px; background: #1B2028; border: 2px solid var(--line); font-size: 26px; font-weight: 600; white-space: nowrap; }
+  .packet svg { width: 40px; height: 40px; }
+
+  /* benefits */
+  .benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 56px; width: 1560px; }
+  .benefit { display: flex; gap: 30px; align-items: flex-start; padding: 36px 40px; background: var(--panel); border: 2px solid var(--line); border-radius: 22px; }
+  .benefit .bi { flex: 0 0 76px; height: 76px; border-radius: 18px; background: rgba(247,147,26,0.12); display: flex; align-items: center; justify-content: center; }
+  .benefit .bi svg { width: 44px; height: 44px; }
+  .benefit h3 { font-size: 38px; font-weight: 700; margin-bottom: 8px; }
+  .benefit p { font-size: 27px; color: var(--muted); line-height: 1.4; }
+
+  .url { font-family: 'JetBrains Mono', 'DejaVu Sans Mono', monospace; font-size: 64px; font-weight: 700; color: var(--accent); }
+  .ctas { display: flex; gap: 32px; }
+  .btn { padding: 24px 48px; border-radius: 14px; font-size: 36px; font-weight: 700; }
+  .btn.p { background: var(--accent); color: #111; }
+  .btn.s { border: 2px solid var(--line); color: var(--text); background: var(--panel); }
+
+  #progress { position: absolute; left: 0; bottom: 0; height: 6px; background: var(--accent); }
+
+  /* features video */
+  .feat-head { position: absolute; top: 120px; left: 0; right: 0; text-align: center; }
+  .feat-head h2 { margin-top: 18px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; width: 1500px; }
+  .tiles { display: flex; gap: 44px; }
+  .tile { position: relative; width: 300px; height: 300px; background: var(--panel); border: 2px solid var(--line); border-radius: 26px;
+          display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+  .tile svg.ic { width: 120px; height: 120px; }
+  .tile .lbl { font-size: 32px; font-weight: 700; }
+  .strike { position: absolute; left: 30px; top: 50%; height: 8px; width: 240px; background: var(--bad); border-radius: 4px;
+            transform-origin: left center; transform: rotate(-35deg) scaleX(0); top: 230px; }
+  .alert { display: inline-flex; align-items: center; gap: 18px; padding: 22px 36px; border-radius: 16px; border: 2px solid var(--bad);
+           background: rgba(248,81,73,0.12); color: #FFB4AE; font-size: 34px; font-weight: 700; }
+  .tests { width: 1100px; background: #0E1116; border: 2px solid var(--line); border-radius: 22px; padding: 36px 48px;
+           font-family: 'JetBrains Mono', 'DejaVu Sans Mono', monospace; font-size: 36px; }
+  .test { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #1E232B; }
+  .test:last-child { border-bottom: 0; }
+  .test .res { color: var(--good); font-weight: 700; }
+  .stop { margin-top: 40px; }
+  .kb-row { display: flex; align-items: center; gap: 70px; }
+  .dev { width: 380px; padding: 40px 30px; background: var(--panel); border: 2px solid var(--line); border-radius: 26px; text-align: center; position: relative; }
+  .dev svg.ic { height: 140px; }
+  .dev h3 { font-size: 34px; font-weight: 700; margin-top: 18px; }
+  .dev .tag { font-size: 28px; font-weight: 600; margin-top: 10px; }
+  .clock { width: 260px; height: 260px; position: relative; }
+  .clock svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .clock .t { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 54px; font-weight: 700; }
+  .block { position: absolute; left: 0; right: 0; top: 22px; height: 170px; display: flex; align-items: center; justify-content: center; }
+  .block svg { width: 170px; height: 170px; }
+  .grid18 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; width: 1680px; }
+  .chip { padding: 26px 18px; background: var(--panel); border: 2px solid var(--line); border-radius: 16px; text-align: center; font-size: 27px; font-weight: 600; }
+  .chip.hot { border-color: var(--accent); color: var(--accent); }
+  .tooltag { position: absolute; top: 56px; left: 70px; display: inline-flex; align-items: center; gap: 16px; padding: 16px 30px;
+             background: rgba(11,13,16,0.92); border: 2px solid var(--accent); border-radius: 14px; font-size: 36px; font-weight: 800; color: var(--accent); }
+  .wallets { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; width: 1500px; }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- F1 intro -->
+  <div class="scene" id="f1">
+    <div class="el" id="f1e"><span class="eyebrow">SafeKeepVault &middot; Features</span></div>
+    <div class="el" id="f1a" style="margin-top:30px"><h1>Built to stay <span class="o">offline</span>.</h1></div>
+    <div class="pills" style="margin-top:70px">
+      <span class="pill el" id="f1p0">No way online</span>
+      <span class="pill el" id="f1p1">Checks itself first</span>
+      <span class="pill el" id="f1p2">Blocks fake keyboards</span>
+      <span class="pill el" id="f1p3">Leaves your computer untouched</span>
+    </div>
+  </div>
+
+  <!-- F2 no way online -->
+  <div class="scene" id="f2">
+    <div class="feat-head el" id="f2h"><span class="eyebrow">01</span><h2>No way online</h2></div>
+    <div class="tiles" style="margin-top:80px">
+      <div class="tile el" id="f2t0"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#A2AAB5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"/><path d="M7 15v3h10v-3M9 18v3M15 18v3M12 18v3"/></svg><span class="lbl">Network</span><span class="strike" id="f2s0"></span></div>
+      <div class="tile el" id="f2t1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#A2AAB5" stroke-width="1.6" stroke-linecap="round"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1.2" fill="#A2AAB5"/></svg><span class="lbl">Wi-Fi</span><span class="strike" id="f2s1"></span></div>
+      <div class="tile el" id="f2t2"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#A2AAB5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg><span class="lbl">Bluetooth</span><span class="strike" id="f2s2"></span></div>
+      <div class="tile el" id="f2t3"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#A2AAB5" stroke-width="1.6" stroke-linecap="round"><path d="M6 8.5a5 5 0 0 1 0 7M9.5 6a9 9 0 0 1 0 12M13 3.5a13 13 0 0 1 0 17"/></svg><span class="lbl">NFC</span><span class="strike" id="f2s3"></span></div>
+    </div>
+    <div class="el" id="f2w" style="margin-top:70px"><span class="alert"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F85149" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg>Watchdog: connection found and switched off</span></div>
+  </div>
+
+  <!-- F3 checks itself first -->
+  <div class="scene" id="f3">
+    <div class="feat-head el" id="f3h"><span class="eyebrow">02</span><h2>Checks itself first</h2></div>
+    <div class="tests el" id="f3box" style="margin-top:120px">
+      <div class="test"><span>Seed words</span><span class="res" id="f3r0">PASS</span></div>
+      <div class="test"><span>Keys</span><span class="res" id="f3r1">PASS</span></div>
+      <div class="test"><span>Addresses</span><span class="res" id="f3r2">PASS</span></div>
+      <div class="test"><span>Signatures</span><span class="res" id="f3r3">PASS</span></div>
+    </div>
+    <div class="stop el" id="f3s"><span class="alert">One wrong answer, and the vault stops</span></div>
+  </div>
+
+  <!-- F4 blocks fake keyboards -->
+  <div class="scene" id="f4">
+    <div class="feat-head el" id="f4h"><span class="eyebrow">03</span><h2>Blocks fake keyboards</h2></div>
+    <div class="kb-row" style="margin-top:110px">
+      <div class="dev el" id="f4a">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#A2AAB5" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>
+        <h3>Your keyboard</h3><div class="tag g">Works</div>
+      </div>
+      <div class="el" id="f4c" style="text-align:center">
+        <div class="clock"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="#262B33" stroke-width="8"/><circle id="f4ring" cx="50" cy="50" r="44" fill="none" stroke="#F7931A" stroke-width="8" stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="276.5"/></svg><div class="t" id="f4t">0s</div></div>
+        <div style="font-size:28px;color:var(--muted);margin-top:14px;font-weight:600">after startup</div>
+      </div>
+      <div class="dev el" id="f4b">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#A2AAB5" stroke-width="1.5" stroke-linejoin="round"><rect x="8" y="8" width="8" height="14" rx="2"/><rect x="9.5" y="2" width="5" height="6"/></svg>
+        <h3>New &ldquo;keyboard&rdquo;</h3><div class="tag r">Blocked</div>
+        <div class="block el" id="f4x"><svg viewBox="0 0 24 24" fill="none" stroke="#F85149" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M5 5l14 14"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- F5 leaves your computer untouched -->
+  <div class="scene" id="f5">
+    <div class="feat-head el" id="f5h"><span class="eyebrow">04</span><h2>Leaves your computer untouched</h2></div>
+    <div class="kb-row" style="margin-top:110px">
+      <div class="dev el" id="f5a" style="border-color:var(--accent)">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#F7931A" stroke-width="1.5" stroke-linejoin="round"><rect x="8" y="8" width="8" height="14" rx="2"/><rect x="9.5" y="2" width="5" height="6"/></svg>
+        <h3>SafeKeepVault</h3><div class="tag o">Runs from memory</div>
+      </div>
+      <div class="el" id="f5x"><svg width="220" height="120" viewBox="0 0 220 120" fill="none" stroke-width="6" stroke-linecap="round"><path d="M10 60h170" stroke="#262B33" stroke-dasharray="14 12"/><path d="M165 40l25 20-25 20" stroke="#262B33"/><circle cx="105" cy="60" r="38" stroke="#F85149" fill="#0B0D10"/><path d="M78 33l54 54" stroke="#F85149"/></svg></div>
+      <div class="dev el" id="f5b">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#A2AAB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 14h18M7 17h.01M11 17h.01"/></svg>
+        <h3>Your computer&rsquo;s drive</h3><div class="tag" style="color:var(--muted)">Never opened</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- F6 18 tools -->
+  <div class="scene" id="f6">
+    <div class="el" id="f6h" style="text-align:center;margin-bottom:60px"><span class="eyebrow">Inside the vault</span><h2 style="margin-top:18px"><span class="o">18</span> tools</h2></div>
+    <div class="grid18">
+      <div class="chip el" id="t0">PSBT Signer</div>
+      <div class="chip el" id="t1">Show an address</div>
+      <div class="chip el" id="t2">Connect a wallet app</div>
+      <div class="chip el" id="t3">Seed Management</div>
+      <div class="chip el" id="t4">Transfer Hub</div>
+      <div class="chip el" id="t5">Entropy Generator</div>
+      <div class="chip el" id="t6">BIP-85 Child Seeds</div>
+      <div class="chip el" id="t7">Seed QR Code</div>
+      <div class="chip el" id="t8">Passphrase Library</div>
+      <div class="chip el" id="t9">Output Descriptor</div>
+      <div class="chip el" id="t10">Seed XOR Splitter</div>
+      <div class="chip el" id="t11">Shamir Backup</div>
+      <div class="chip el" id="t12">Encrypted Backup</div>
+      <div class="chip el" id="t13">Wallet Record</div>
+      <div class="chip el" id="t14">Message Signer</div>
+      <div class="chip el" id="t15">Courier Tool</div>
+      <div class="chip el" id="t16">Encrypted Notes</div>
+      <div class="chip el" id="t17">2FA Backup</div>
+    </div>
+  </div>
+
+  <!-- F7 Entropy Generator -->
+  <div class="scene" id="f7">
+    <div class="shot el" id="f7s" style="width:1300px;left:310px;top:40px"><img src="../v160-draw-your-own-words.png" alt=""></div>
+    <div class="tooltag el" id="f7t">Entropy Generator</div>
+    <div class="caption el" id="f7c"><span>Dice, cards, or words you <span class="o">draw by hand</span></span></div>
+  </div>
+
+  <!-- F8 PSBT Signer -->
+  <div class="scene" id="f8">
+    <div class="shot el" id="f8s" style="width:1500px;left:210px;top:40px"><img src="../signer.png" alt="" style="width:2200px;max-width:none;margin-left:-640px;margin-top:-40px"></div>
+    <div class="tooltag el" id="f8t">PSBT Signer</div>
+    <div class="caption el" id="f8c"><span>See exactly what leaves your wallet, <span class="o">before you sign</span></span></div>
+  </div>
+
+  <!-- F9 Wallet Record -->
+  <div class="scene" id="f9">
+    <div class="shot el" id="f9s" style="width:1300px;left:310px;top:40px"><img src="../wallet record.png" alt=""></div>
+    <div class="tooltag el" id="f9t">Wallet Record</div>
+    <div class="caption el" id="f9c"><span>A one-page record of your wallet, <span class="o">for your family</span></span></div>
+  </div>
+
+  <!-- F10 close -->
+  <div class="scene" id="f10">
+    <div class="el" id="f10a"><h1>18 tools. <span class="o">All offline.</span></h1></div>
+    <div class="wallets el" id="f10w" style="margin-top:50px">
+      <span class="pill">Sparrow</span><span class="pill">BlueWallet</span><span class="pill">Nunchuk</span><span class="pill">Electrum</span><span class="pill">Specter</span><span class="pill">Bitcoin Core</span>
+    </div>
+    <div class="el" id="f10u" style="margin-top:80px"><span class="url">safekeepbitcoin.com</span></div>
+  </div>
+
+  <div id="progress"></div>
+</div>
+
+<script>
+// ---------- timeline (seconds) ----------
+// Everything follows the narration (features-narration.flac): each scene starts
+// and each item appears when its words are spoken.
+// LINES: [line, start, end, [start of each phrase], [text of each phrase]],
+// times in seconds into the narration. Until the narration is recorded these
+// are estimates.
+const NARRATION_AT = 0.5;      // where the narration starts in the video
+const LINES = [
+  [ 1,   0.10,   2.02, [0.1], ["Here's what makes SafeKeepVault different."]],
+  [ 2,   2.82,   4.75, [2.82], ["It's built to stay offline."]],
+  [ 3,   5.95,  12.98, [5.95, 9.52], ["Every network, Wi-Fi and Bluetooth driver is removed,", "and a watchdog shuts off any connection that appears."]],
+  [ 4,  14.18,  23.53, [14.18, 20.45], ["Before you can type anything, it tests its own code against published Bitcoin test cases,", "and stops if it gets even one wrong."]],
+  [ 5,  24.73,  31.38, [24.73, 28.31], ["It blocks any keyboard plugged in after startup,", "so a fake USB keyboard can't type commands."]],
+  [ 6,  32.58,  35.66, [32.58], ["And it never touches your computer's own drive."]],
+  [ 7,  36.86,  41.48, [36.86], ["Inside are eighteen tools for creating, backing up and using your keys."]],
+  [ 8,  42.68,  48.45, [42.68], ["The Entropy Generator makes your seed from dice, cards, or words you draw by hand."]],
+  [ 9,  49.65,  54.26, [49.65], ["The PSBT Signer shows exactly what leaves your wallet before you sign."]],
+  [10,  55.46,  60.46, [55.46], ["The Wallet Record prints a one-page summary of your wallet for your family."]],
+  [11,  61.66,  65.89, [61.66], ["Every tool works offline, with the wallet app you already use."]],
+  [12,  66.69,  68.62, [66.69], ["See all eighteen at safekeepbitcoin.com."]],
+];
+const line = n => LINES.find(l => l[0] === n);
+const L = n => NARRATION_AT + line(n)[1];            // line n starts
+const E = n => NARRATION_AT + line(n)[2];            // line n ends
+const P = (n, i) => NARRATION_AT + line(n)[3][i];    // phrase i of line n starts
+const frac = (n, f) => L(n) + (E(n) - L(n)) * f;     // a fraction of the way through line n
+
+// scenes and the lines they cover; each boundary sits midway between lines
+const GROUPS = [['f1', 1, 2], ['f2', 3, 3], ['f3', 4, 4], ['f4', 5, 5], ['f5', 6, 6], ['f6', 7, 7], ['f7', 8, 8], ['f8', 9, 9], ['f9', 10, 10], ['f10', 11, 12]];
+const DURATION = +(E(12) + 2.5).toFixed(2);
+const SCENES = GROUPS.map(([id, first, last], i) => {
+  const start = i === 0 ? 0 : (E(GROUPS[i - 1][2]) + L(first)) / 2;
+  const end = i === GROUPS.length - 1 ? DURATION : (E(last) + L(GROUPS[i + 1][1])) / 2;
+  return [id, start, end];
+});
+const FADE = 0.45;
+const sceneStart = id => SCENES.find(s => s[0] === id)[1];
+const at = (id, t) => t - sceneStart(id);            // absolute time -> time into scene
+
+window.VOICEOVER = [{ file: 'features-narration.flac', at: NARRATION_AT }];
+window.CAPTIONS = LINES.flatMap(([n, , end, parts, texts]) => parts.map((p, i) => ({
+  start: NARRATION_AT + p,
+  end: i + 1 < parts.length ? NARRATION_AT + parts[i + 1] - 0.05 : NARRATION_AT + end + 0.3,
+  text: texts[i],
+})));
+
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = x => { x = clamp(x); return 1 - Math.pow(1 - x, 3); };
+const inout = x => { x = clamp(x); return x < 0.5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2; };
+const $ = id => document.getElementById(id);
+
+function appear(id, lt, at, dur = 0.6, dy = 30) {
+  const k = ease((lt - at) / dur);
+  const el = $(id);
+  el.style.opacity = k;
+  el.style.transform = `translateY(${(1 - k) * dy}px)`;
+}
+function pop(id, lt, at) {                          // quick scale-in
+  const k = ease((lt - at) / 0.4);
+  $(id).style.opacity = k;
+  $(id).style.transform = `scale(${0.85 + 0.15 * k})`;
+}
+
+function render(t) {
+  for (const [id, a, b] of SCENES) {
+    const el = $(id);
+    const isLast = b === DURATION;
+    el.style.opacity = (t >= a && t < b) ? Math.min(clamp((t - a) / FADE), isLast ? 1 : clamp((b - t) / FADE)) : 0;
+    el.style.display = (t >= a - 0.1 && t < b + 0.1) ? 'flex' : 'none';
+    if (el.style.display === 'none') continue;
+    const lt = t - a;
+    el.style.transform = `scale(${1 + 0.02 * clamp(lt / (b - a))})`;
+    SCENE_FN[id](lt, b - a);
+  }
+  $('progress').style.width = (t / DURATION * 100) + '%';
+}
+
+// a screenshot that drifts slowly up while its scene is on screen
+function drift(id, lt, d, px) { $(id).style.transform = `translateY(${-inout(lt / d) * px}px)`; }
+
+const SCENE_FN = {
+  f1(lt) {
+    appear('f1e', lt, at('f1', L(1)) - 0.2); appear('f1a', lt, at('f1', L(1)) + 0.3, 0.8);
+    [0, 1, 2, 3].forEach(i => appear('f1p' + i, lt, at('f1', L(2)) + i * 0.35));
+  },
+  f2(lt) {
+    appear('f2h', lt, 0.1);
+    [0, 1, 2, 3].forEach(i => {
+      appear('f2t' + i, lt, 0.3 + i * 0.15);
+      const k = ease((lt - at('f2', frac(3, 0.12 + i * 0.09))) / 0.35);
+      $('f2s' + i).style.transform = `rotate(-35deg) scaleX(${k})`;
+      $('f2t' + i).style.borderColor = k > 0.5 ? '#5A2724' : '';
+    });
+    appear('f2w', lt, at('f2', P(3, 1)) + 0.3);
+  },
+  f3(lt) {
+    appear('f3h', lt, 0.1); appear('f3box', lt, 0.4);
+    [0, 1, 2, 3].forEach(i => {
+      const on = lt > at('f3', frac(4, 0.25 + i * 0.1));
+      $('f3r' + i).textContent = on ? 'PASS' : '···';
+      $('f3r' + i).style.color = on ? '' : '#6B7380';
+    });
+    appear('f3s', lt, at('f3', P(4, 1)) - 0.1);
+  },
+  f4(lt) {
+    appear('f4h', lt, 0.1); appear('f4a', lt, 0.4); appear('f4c', lt, 0.7);
+    const k = clamp((lt - at('f4', L(5)) - 0.4) / ((P(5, 1) - L(5)) - 0.4));
+    $('f4ring').setAttribute('stroke-dashoffset', 276.5 * (1 - k));
+    $('f4t').textContent = Math.round(30 * k) + 's';
+    appear('f4b', lt, at('f4', P(5, 1)) - 0.2);
+    pop('f4x', lt, at('f4', P(5, 1)) + 0.6);
+  },
+  f5(lt) { appear('f5h', lt, 0.1); appear('f5a', lt, 0.4); appear('f5b', lt, 0.7); pop('f5x', lt, at('f5', frac(6, 0.45))); },
+  f6(lt) {
+    appear('f6h', lt, 0.1);
+    const s = at('f6', L(7)), e = at('f6', E(7)) - 0.6;
+    for (let i = 0; i < 18; i++) pop('t' + i, lt, s + (e - s) * i / 17);
+    // the three tools shown next
+    [5, 0, 13].forEach(i => $('t' + i).classList.toggle('hot', lt > e + 0.4));
+  },
+  f7(lt, d) { appear('f7s', lt, 0.0, 0.5, 0); drift('f7s', lt, d, 520); appear('f7t', lt, 0.3); appear('f7c', lt, at('f7', frac(8, 0.4))); },
+  f8(lt, d) { appear('f8s', lt, 0.0, 0.5, 0); drift('f8s', lt, d, 260); appear('f8t', lt, 0.3); appear('f8c', lt, at('f8', frac(9, 0.35))); },
+  f9(lt, d) { appear('f9s', lt, 0.0, 0.5, 0); drift('f9s', lt, d, 700); appear('f9t', lt, 0.3); appear('f9c', lt, at('f9', frac(10, 0.4))); },
+  f10(lt) {
+    appear('f10a', lt, at('f10', L(11)) - 0.2, 0.8); appear('f10w', lt, at('f10', frac(11, 0.55)));
+    appear('f10u', lt, at('f10', L(12)) + 0.3);
+  },
+};
+
+window.DURATION = DURATION;
+window.render = render;
+render(0);
+
+// ?play previews the animation in real time in a normal browser (no sound)
+if (location.search.includes('play')) {
+  const t0 = performance.now();
+  (function loop() { const t = ((performance.now() - t0) / 1000) % DURATION; render(t); requestAnimationFrame(loop); })();
+}
+</script>
+</body>
+</html>
