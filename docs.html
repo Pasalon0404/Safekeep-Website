@@ -338,6 +338,7 @@
                         <ul>
                             <li><a href="#seed-storage">Seed storage</a></li>
                             <li><a href="#coldcard-send">Sending a passphrase or seed to a Coldcard</a></li>
+                            <li><a href="#trezor-settings">Trezor settings and recovery</a></li>
                         </ul>
                     </li>
                     <li><a href="#updating">Updating to a new version</a></li>
@@ -735,7 +736,7 @@
                     </li>
                     <li>
                         <strong>Sign with Hardware Wallet (Temporary Session only) &mdash;</strong>
-                        Co-sign a multisig transaction with a connected Coldcard or Trezor One without loading
+                        Sign a transaction with a connected Coldcard or Trezor One without loading
                         any seed into the vault. (To add a Coldcard&rsquo;s or Trezor One&rsquo;s key to a multisig wallet
                         in the first place, use the Output Descriptor tool&rsquo;s <strong>Coldcard (USB)</strong> and
                         <strong>Trezor (USB)</strong> buttons.) See <a href="#sign-hardware-only">Signing with only a hardware wallet</a>.
@@ -1346,9 +1347,10 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
 
                 <h3 class="sub-heading" id="sign-hardware">Co-signing with a Coldcard or Trezor</h3>
                 <p>
-                    In a multisig wallet, <strong>SafeKeepVault</strong> can ask a connected
-                    <strong>Coldcard</strong> or <strong>Trezor One</strong> for its signature over USB,
-                    so you can collect two signatures in one sitting without passing files back and forth.
+                    <strong>SafeKeepVault</strong> can ask a connected
+                    <strong>Coldcard</strong> or <strong>Trezor One</strong> for its signature over USB.
+                    In a multisig wallet, that collects two signatures in one sitting without passing files back and forth;
+                    a single-signature transaction from a hardware wallet&rsquo;s own seed can be signed this way too.
                     Every signature is still approved on the hardware wallet&rsquo;s own screen.
                 </p>
                 <ol class="docs-list">
@@ -1370,6 +1372,15 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Sign with Trezor</strong> and approve the transaction on the device. The
                         export QR and files update to include the new signature. You can also add a
                         signature from another seed you hold by entering it as a temporary seed.
+                    </li>
+                    <li id="sign-trezor-passphrase">
+                        <strong>A Trezor passphrase wallet &mdash;</strong>
+                        If the key belongs to the Trezor&rsquo;s passphrase wallet, check
+                        <strong>Use a passphrase on the Trezor</strong> under the Trezor button. Type the passphrase twice,
+                        choose it from the Passphrase Library, or use the passphrase applied on the Dashboard. SafeKeep
+                        checks that the passphrase opens a wallet whose key is in the transaction before anything is sent
+                        to sign, and forgets the passphrase once the Trezor has signed. Passphrase protection must be on
+                        (see <a href="#trezor-passphrase-protection">Passphrase Protection</a>).
                     </li>
                 </ol>
                 <figure class="os-showcase">
@@ -1403,7 +1414,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
 
                 <h3 class="sub-heading" id="sign-hardware-only">Signing with only a hardware wallet</h3>
                 <p>
-                    For a multisig wallet, you can also use <strong>SafeKeepVault</strong> as a large-screen,
+                    You can also use <strong>SafeKeepVault</strong> as a large-screen,
                     air-gapped review station for your hardware wallets without loading any seed at all. Boot
                     into a <strong>Temporary Session</strong> and choose <strong>Sign with Hardware Wallet</strong>.
                     Load and review the PSBT as usual; the review lists the keys in the transaction instead
@@ -1411,8 +1422,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <strong>Sign with Coldcard</strong> or <strong>Sign with Trezor</strong>. The vault
                     checks that the device holds one of the transaction&rsquo;s keys before pairing it for
                     this session. To add more signatures, unplug the device, plug in the next one and repeat.
-                    Hardware-only signing works with multisig (m-of-n) transactions; sign a single-signature
-                    transaction in your wallet software with the hardware wallet instead.
+                    It works with multisig (m-of-n) and single-signature transactions.
                 </p>
                 <figure class="os-showcase">
                     <a href="v162-welcome-temporary.png" target="_blank" rel="noopener">
@@ -1591,11 +1601,56 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Import from a COLDCARD backup &mdash;</strong>
                         In <strong>Device Options</strong>, <strong>Import from a COLDCARD Backup</strong> adds the multisig
                         wallets and Secure Notes you choose to this vault, with the same three ways in as
-                        <a href="#coldcard-restore">Restoring from a COLDCARD backup</a>. Tick what you want and click
+                        <a href="#coldcard-restore">Restoring from a COLDCARD backup</a>. Check what you want and click
                         <strong>Import Selected</strong>. Your seed isn&rsquo;t changed, and the backup&rsquo;s own wallet
                         isn&rsquo;t imported. You can view the words of its Seed Vault seeds, and the ones you check are kept in SafeKeep&rsquo;s
                         <a href="#seed-vault">Seed Vault</a>. It works with backups made with a passphrase too. A
                         Temporary Session has no vault to import into.
+                    </li>
+                    <li id="trezor-settings">
+                        <strong>Trezor &mdash;</strong>
+                        <strong>Device Options &rarr; Trezor</strong> has pairing for co-signing (see
+                        <a href="#sign-hardware">Co-signing with a Coldcard or Trezor</a>), then Trezor settings without
+                        Trezor Suite: <strong>Passphrase Protection</strong>, <strong>Erase This Trezor</strong> and
+                        <strong>Recover from Words</strong>. In a Temporary Session, which has no Dashboard, the
+                        <strong>Trezor Tools</strong> button on the welcome screen opens the same settings. The Trezor
+                        asks you to confirm each change on its own screen, and a PIN is clicked on a grid of blank
+                        buttons, as when pairing. Recover from Words was tested on a Trezor One.
+                    </li>
+                    <li id="trezor-passphrase-protection">
+                        <strong>Passphrase Protection &mdash;</strong>
+                        Turns the Trezor&rsquo;s passphrase protection on or off. With it on, the Trezor asks for a
+                        passphrase each time it is used, and each passphrase opens a different wallet. To sign with a
+                        passphrase wallet, see <a href="#sign-hardware">Co-signing with a Coldcard or Trezor</a>.
+                    </li>
+                    <li id="trezor-erase">
+                        <strong>Erase This Trezor &mdash;</strong>
+                        Removes the seed, PIN and settings from the Trezor. Any coins it holds can then be recovered only
+                        from its recovery words, so first check the box that says you have them (or want to erase it
+                        anyway) and type <strong>ERASE</strong>. SafeKeep erases only the Trezor it unlocked, and the
+                        Trezor asks you to confirm. Its pairing in SafeKeep is removed afterwards.
+                    </li>
+                    <li id="trezor-recover">
+                        <strong>Recover from Words &mdash;</strong>
+                        Sets up a Trezor that has no seed (erase it first) from 12, 18 or 24 recovery words, and gives it
+                        a new PIN. You can turn on passphrase protection at the same time. Choose where the words come from:
+                        <ul class="docs-list">
+                            <li><strong>From a paper backup &mdash;</strong> uses <strong>advanced recovery</strong>. For
+                            each word, the Trezor shows a grid of letter ranges on its own screen, three times, then a few
+                            words. Click the same spot on SafeKeep&rsquo;s blank grid: 4 clicks per word. Only the spot you
+                            click reaches the computer, never the word. <strong>Back One Step</strong> (or Backspace) undoes a
+                            click, and the number keys work too, laid out like a number pad. A Temporary Session is the best place to do this.</li>
+                            <li><strong>From SafeKeep&rsquo;s Seed Vault &mdash;</strong> pick a stored seed. With
+                            <strong>advanced recovery</strong>, SafeKeep shows each word the Trezor wants, so you don&rsquo;t
+                            need the paper. Or choose <strong>Quicker: click the words</strong>: the Trezor asks for the words
+                            in a scrambled order, and you click the number it shows; it also asks for a few words that
+                            aren&rsquo;t in the seed, which you type. For a 12- or 18-word seed, the Trezor One first asks you
+                            to relax its safety checks, because it lets a computer see the words only then. Confirm on the
+                            Trezor. When recovery finishes, unplug the Trezor and plug it back in: that puts its safety
+                            checks back to Strict.</li>
+                        </ul>
+                        When it finishes, check that the Trezor&rsquo;s fingerprint matches your seed&rsquo;s, then pair it
+                        again in <strong>Device Options &rarr; Trezor</strong>.
                     </li>
                     <li>
                         <strong>Update SafeKeep &mdash;</strong>
