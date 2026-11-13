@@ -114,6 +114,10 @@
   .chip.hot { border-color: var(--accent); color: var(--accent); }
   .tooltag { position: absolute; top: 56px; left: 70px; display: inline-flex; align-items: center; gap: 16px; padding: 16px 30px;
              background: rgba(11,13,16,0.92); border: 2px solid var(--accent); border-radius: 14px; font-size: 36px; font-weight: 800; color: var(--accent); }
+  .link-panel { position: absolute; right: 110px; top: 90px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .qrcard { background: #fff; border-radius: 22px; padding: 22px 22px 14px; box-shadow: 0 30px 90px rgba(0,0,0,0.6); text-align: center; }
+  .qrcard svg { display: block; }
+  .qrlbl { color: #0B0D10; font-size: 24px; font-weight: 700; margin-top: 6px; }
   .wallets { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; width: 1500px; }
 </style>
 </head>
@@ -231,11 +235,20 @@
     <div class="caption el" id="f8c"><span>See exactly what leaves your wallet, <span class="o">before you sign</span></span></div>
   </div>
 
-  <!-- F9 Wallet Record -->
+  <!-- F9 Seed Management -->
   <div class="scene" id="f9">
-    <div class="shot el" id="f9s" style="width:1300px;left:310px;top:40px"><img src="../wallet record.png" alt=""></div>
-    <div class="tooltag el" id="f9t">Wallet Record</div>
-    <div class="caption el" id="f9c"><span>A one-page record of your wallet, <span class="o">for your family</span></span></div>
+    <div class="shot el" id="f9s" style="width:1250px;left:80px;top:40px"><img src="../v158-seed-management.png" alt="" style="width:1760px;max-width:none;margin-left:-505px"></div>
+    <div class="tooltag el" id="f9t" style="left:40px">Seed Management</div>
+    <div class="link-panel">
+      <div class="qrcard el" id="f9q"><svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31" shape-rendering="crispEdges"><path fill="#FFFFFF" d="M0 0h31v31H0z"/><path stroke="#0B0D10" d="M1 1.5h7m1 0h1m2 0h1m1 0h3m2 0h1m3 0h7M1 2.5h1m5 0h1m2 0h3m3 0h1m1 0h2m1 0h1m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h3m1 0h2m3 0h4m1 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m2 0h4m2 0h3m1 0h1m2 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m3 0h1m1 0h1m2 0h2m1 0h1m3 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h2m1 0h1m1 0h2m1 0h3m1 0h1m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 8.5h1m3 0h1m5 0h2M1 9.5h1m1 0h1m3 0h2m1 0h3m1 0h1m1 0h2m3 0h1m2 0h1m2 0h1m1 0h1M1 10.5h2m14 0h1m2 0h2m1 0h2m3 0h2M1 11.5h1m1 0h3m1 0h4m1 0h4m1 0h1m1 0h2m1 0h1m2 0h3m1 0h1M1 12.5h1m3 0h2m1 0h1m2 0h2m2 0h3m1 0h2m1 0h3m1 0h1M4 13.5h2m1 0h1m6 0h2m4 0h2m1 0h2m4 0h1M1 14.5h2m2 0h2m1 0h1m2 0h1m2 0h2m2 0h1m1 0h2m1 0h2m3 0h2M1 15.5h1m3 0h1m1 0h1m1 0h1m1 0h1m4 0h1m3 0h2m1 0h2m4 0h1M3 16.5h2m4 0h1m3 0h2m4 0h1m1 0h2m1 0h1M1 17.5h1m3 0h6m1 0h1m1 0h1m1 0h2m2 0h1m2 0h2m4 0h1M3 18.5h1m1 0h2m1 0h1m8 0h2m1 0h2m1 0h2m2 0h3M1 19.5h4m2 0h4m1 0h4m1 0h2m1 0h1m2 0h1m1 0h2m2 0h1M5 20.5h2m5 0h1m2 0h3m1 0h1m2 0h1M1 21.5h4m2 0h2m4 0h3m2 0h2m1 0h6m1 0h1M9 22.5h3m2 0h2m2 0h1m2 0h1m3 0h3m1 0h1M1 23.5h7m1 0h1m1 0h3m2 0h1m4 0h1m1 0h1m1 0h1m3 0h1M1 24.5h1m5 0h1m2 0h1m3 0h1m3 0h1m1 0h2m3 0h1m2 0h2M1 25.5h1m1 0h3m1 0h1m3 0h4m1 0h3m1 0h7m1 0h1M1 26.5h1m1 0h3m1 0h1m2 0h1m2 0h1m3 0h1m3 0h2m2 0h4M1 27.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h5m3 0h1m2 0h2M1 28.5h1m5 0h1m5 0h2m1 0h2m1 0h1m1 0h1m2 0h3M1 29.5h7m1 0h3m1 0h1m4 0h2m1 0h5m3 0h1"/></svg>
+<div class="qrlbl">Public key only</div></div>
+      <div class="el" id="f9a"><svg width="60" height="120" viewBox="0 0 60 120" fill="none" stroke="#F7931A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M30 8v96M10 84l20 22 20-22"/></svg></div>
+      <div class="dev el" id="f9p" style="width:400px;padding:28px">
+        <svg class="ic" style="height:110px" viewBox="0 0 24 24" fill="none" stroke="#A2AAB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 19h2"/><path d="M9.5 9a3.5 3.5 0 0 1 5 0M10.8 11a1.6 1.6 0 0 1 2.4 0" stroke="#3FB950"/></svg>
+        <h3>Your wallet app</h3><div class="tag g">Watch-only</div>
+      </div>
+    </div>
+    <div class="caption el" id="f9c" style="right:560px"><span>Connect your wallet app. <span class="o">Your keys stay in the vault.</span></span></div>
   </div>
 
   <!-- F10 close -->
@@ -268,7 +281,7 @@ const LINES = [
   [ 7,  36.86,  41.48, [36.86], ["Inside are eighteen tools for creating, backing up and using your keys."]],
   [ 8,  42.68,  48.45, [42.68], ["The Entropy Generator makes your seed from dice, cards, or words you draw by hand."]],
   [ 9,  49.65,  54.26, [49.65], ["The PSBT Signer shows exactly what leaves your wallet before you sign."]],
-  [10,  55.46,  60.46, [55.46], ["The Wallet Record prints a one-page summary of your wallet for your family."]],
+  [10,  55.46,  60.46, [55.46], ["Seed Management connects your online wallet app with a QR code, and your keys never leave the vault."]],
   [11,  61.66,  65.89, [61.66], ["Every tool works offline, with the wallet app you already use."]],
   [12,  66.69,  68.62, [66.69], ["See all eighteen at safekeepbitcoin.com."]],
 ];
@@ -369,11 +382,15 @@ const SCENE_FN = {
     const s = at('f6', L(7)), e = at('f6', E(7)) - 0.6;
     for (let i = 0; i < 18; i++) pop('t' + i, lt, s + (e - s) * i / 17);
     // the three tools shown next
-    [5, 0, 13].forEach(i => $('t' + i).classList.toggle('hot', lt > e + 0.4));
+    [5, 0, 3].forEach(i => $('t' + i).classList.toggle('hot', lt > e + 0.4));
   },
   f7(lt, d) { appear('f7s', lt, 0.0, 0.5, 0); drift('f7s', lt, d, 520); appear('f7t', lt, 0.3); appear('f7c', lt, at('f7', frac(8, 0.4))); },
   f8(lt, d) { appear('f8s', lt, 0.0, 0.5, 0); drift('f8s', lt, d, 260); appear('f8t', lt, 0.3); appear('f8c', lt, at('f8', frac(9, 0.35))); },
-  f9(lt, d) { appear('f9s', lt, 0.0, 0.5, 0); drift('f9s', lt, d, 700); appear('f9t', lt, 0.3); appear('f9c', lt, at('f9', frac(10, 0.4))); },
+  f9(lt, d) {
+    appear('f9s', lt, 0.0, 0.5, 0); drift('f9s', lt, d, 160); appear('f9t', lt, 0.3);
+    pop('f9q', lt, at('f9', frac(10, 0.3))); appear('f9a', lt, at('f9', frac(10, 0.45))); appear('f9p', lt, at('f9', frac(10, 0.55)));
+    appear('f9c', lt, at('f9', frac(10, 0.7)));
+  },
   f10(lt) {
     appear('f10a', lt, at('f10', L(11)) - 0.2, 0.8); appear('f10w', lt, at('f10', frac(11, 0.55)));
     appear('f10u', lt, at('f10', L(12)) + 0.3);
