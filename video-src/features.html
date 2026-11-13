@@ -97,6 +97,7 @@
   .test { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid #1E232B; }
   .test:last-child { border-bottom: 0; }
   .test .res { color: var(--good); font-weight: 700; }
+  .alert.ok { border-color: var(--good); background: rgba(63,185,80,0.10); color: #9BE3A6; }
   .stop { margin-top: 40px; }
   .kb-row { display: flex; align-items: center; gap: 70px; }
   .dev { width: 380px; padding: 40px 30px; background: var(--panel); border: 2px solid var(--line); border-radius: 26px; text-align: center; position: relative; }
@@ -140,7 +141,7 @@
       <div class="tile el" id="f2t2"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#A2AAB5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></svg><span class="lbl">Bluetooth</span><span class="strike" id="f2s2"></span></div>
       <div class="tile el" id="f2t3"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#A2AAB5" stroke-width="1.6" stroke-linecap="round"><path d="M6 8.5a5 5 0 0 1 0 7M9.5 6a9 9 0 0 1 0 12M13 3.5a13 13 0 0 1 0 17"/></svg><span class="lbl">NFC</span><span class="strike" id="f2s3"></span></div>
     </div>
-    <div class="el" id="f2w" style="margin-top:70px"><span class="alert"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F85149" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg>Watchdog: connection found and switched off</span></div>
+    <div class="el" id="f2w" style="margin-top:70px"><span class="alert ok"><span class="dot"></span>Watchdog active: monitoring for any connection attempt</span></div>
   </div>
 
   <!-- F3 checks itself first -->
@@ -260,7 +261,7 @@ const NARRATION_AT = 0.5;      // where the narration starts in the video
 const LINES = [
   [ 1,   0.10,   2.02, [0.1], ["Here's what makes SafeKeepVault different."]],
   [ 2,   2.82,   4.75, [2.82], ["It's built to stay offline."]],
-  [ 3,   5.95,  12.98, [5.95, 9.52], ["Every network, Wi-Fi and Bluetooth driver is removed,", "and a watchdog shuts off any connection that appears."]],
+  [ 3,   5.95,  12.98, [5.95, 9.52], ["Every network, Wi-Fi and Bluetooth driver is removed,", "and a watchdog continually monitors for any attempt to connect."]],
   [ 4,  14.18,  23.53, [14.18, 20.45], ["Before you can type anything, it tests its own code against published Bitcoin test cases,", "and stops if it gets even one wrong."]],
   [ 5,  24.73,  31.38, [24.73, 28.31], ["It blocks any keyboard plugged in after startup,", "so a fake USB keyboard can't type commands."]],
   [ 6,  32.58,  35.66, [32.58], ["And it never touches your computer's own drive."]],
