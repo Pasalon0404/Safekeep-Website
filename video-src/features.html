@@ -254,9 +254,6 @@
   <!-- F10 close -->
   <div class="scene" id="f10">
     <div class="el" id="f10a"><h1>18 tools. <span class="o">All offline.</span></h1></div>
-    <div class="wallets el" id="f10w" style="margin-top:50px">
-      <span class="pill">Sparrow</span><span class="pill">BlueWallet</span><span class="pill">Nunchuk</span><span class="pill">Electrum</span><span class="pill">Specter</span><span class="pill">Bitcoin Core</span>
-    </div>
     <div class="el" id="f10u" style="margin-top:80px"><span class="url">safekeepbitcoin.com</span></div>
   </div>
 
@@ -282,7 +279,7 @@ const LINES = [
   [ 8,  42.68,  48.45, [42.68], ["The Entropy Generator makes your seed from dice, cards, or words you draw by hand."]],
   [ 9,  49.65,  54.26, [49.65], ["The PSBT Signer shows exactly what leaves your wallet before you sign."]],
   [10,  55.46,  60.46, [55.46], ["Seed Management connects your online wallet app with a QR code, and your keys never leave the vault."]],
-  [11,  61.66,  65.89, [61.66], ["Every tool works offline, with the wallet app you already use."]],
+  [11,  61.66,  65.89, [61.66], ["Every tool works completely offline."]],
   [12,  66.69,  68.62, [66.69], ["See all eighteen at safekeepbitcoin.com."]],
 ];
 const line = n => LINES.find(l => l[0] === n);
@@ -392,7 +389,7 @@ const SCENE_FN = {
     appear('f9c', lt, at('f9', frac(10, 0.7)));
   },
   f10(lt) {
-    appear('f10a', lt, at('f10', L(11)) - 0.2, 0.8); appear('f10w', lt, at('f10', frac(11, 0.55)));
+    appear('f10a', lt, at('f10', L(11)) - 0.2, 0.8);
     appear('f10u', lt, at('f10', L(12)) + 0.3);
   },
 };
