@@ -341,6 +341,14 @@
                             <li><a href="#trezor-settings">Trezor settings and recovery</a></li>
                         </ul>
                     </li>
+                    <li><a href="#security-keys">Unlocking with a security key</a>
+                        <ul>
+                            <li><a href="#security-key-setup">Choosing it at first setup</a></li>
+                            <li><a href="#security-key-manage">Adding or removing keys later</a></li>
+                            <li><a href="#security-key-unlock">Unlocking with your key</a></li>
+                            <li><a href="#security-key-safety">Before you rely on it</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#updating">Updating to a new version</a></li>
                     <li><a href="#recover-without">Recovering without SafeKeepVault</a></li>
                     <li><a href="#tools">The tools</a>
@@ -637,6 +645,13 @@
                     unlock, scan the QR code, or type the words in lowercase with one space between them.
                 </p>
                 <p>
+                    <strong>Prefer a security key?</strong> Right after the welcome screen, setup asks
+                    <strong>How should this vault unlock?</strong> The default, <strong>Master Passphrase
+                    (recommended)</strong>, is the password setup described above. You can instead choose
+                    <strong>Passphrase or security key</strong> or <strong>Security key only</strong>. See
+                    <a href="#security-keys">Unlocking with a security key</a>.
+                </p>
+                <p>
                     Changed your mind half-way? <strong>Cancel</strong> takes you back a step. Closing the first
                     choice offers <strong>Go back to setup</strong> or <strong>Shut down</strong>; after a shutdown,
                     setup starts again the next time you start the computer from the flash drive.
@@ -783,8 +798,8 @@
                 <ul class="docs-list">
                     <li><strong>The wallet &mdash;</strong> the main wallet&rsquo;s recovery words, checked against the rest of the file, with its fingerprint. <strong>Restore This Wallet</strong> shows that fingerprint on the button.</li>
                     <li><strong>Seed Vault &mdash;</strong> if the backup holds a Seed Vault, you can restore one of those seeds instead of the main wallet, or click <strong>Show words</strong> to view its words and write them down. The seeds you check are kept in this vault&rsquo;s <a href="#seed-vault">Seed Vault</a>, so you can switch to them from the Dashboard (not in a Temporary Session, or on a flash drive set not to keep the seed).</li>
-                    <li><strong>Multisig wallets &mdash;</strong> each one you tick is saved in <a href="#output-descriptor">Output Descriptor</a>, showing which key is yours, so the PSBT Signer checks transactions against it.</li>
-                    <li><strong>Secure Notes &amp; Passwords (COLDCARD Q) &mdash;</strong> each one you tick becomes a SafeKeep note. A title you already use gets &ldquo;(COLDCARD)&rdquo; added, so nothing is overwritten.</li>
+                    <li><strong>Multisig wallets &mdash;</strong> each one you check is saved in <a href="#output-descriptor">Output Descriptor</a>, showing which key is yours, so the PSBT Signer checks transactions against it.</li>
+                    <li><strong>Secure Notes &amp; Passwords (COLDCARD Q) &mdash;</strong> each one you check becomes a SafeKeep note. A title you already use gets &ldquo;(COLDCARD)&rdquo; added, so nothing is overwritten.</li>
                 </ul>
                 <p>
                     <strong>Backups made with a passphrase.</strong> If a BIP-39 passphrase was active when the COLDCARD
@@ -826,9 +841,9 @@
                         entirely on your dice, so use a fair die and never let anyone see or record the rolls.
                         SafeKeep refuses rolls that follow a pattern, such as 123456 over and over or long runs of
                         one face, because a seed made from them could be guessed. If the rolls only look unusual,
-                        you tick a box to confirm they came from real dice before the seed is made.
+                        you check a box to confirm they came from real dice before the seed is made.
                         <br><br>
-                        You can also check on Ian Coleman&rsquo;s BIP39 tool: tick <em>Show entropy details</em>, choose
+                        You can also check on Ian Coleman&rsquo;s BIP39 tool: check <em>Show entropy details</em>, choose
                         entropy type <strong>Base 10</strong> (not Dice, which counts a 6 as 0 and gives different words),
                         set Mnemonic Length to the same word count (not &ldquo;Use Raw Entropy&rdquo;), and type the rolls
                         as digits 1&ndash;6. <strong>Only do this with practice rolls</strong>, or with the tool&rsquo;s
@@ -882,7 +897,7 @@
                 <ol class="wallet-steps">
                     <li>Put the 2048 BIP-39 words on slips (or the numbers 1&ndash;2048, and look each number up in the word list), mix them in a bag, and draw one. Write it down, <strong>put it back</strong>, mix again, and draw the next. Repeat until you have <strong>11 words</strong> (<strong>23</strong> for a 24-word seed).</li>
                     <li>Flip a fair coin <strong>7 times</strong> (<strong>3 times</strong> for a 24-word seed): <strong>Heads = 1, Tails = 0</strong>.</li>
-                    <li>Enter the words and the flips in the order you drew and flipped them, tick the confirmation box, and click <strong>Forge Seed</strong>.</li>
+                    <li>Enter the words and the flips in the order you drew and flipped them, check the confirmation box, and click <strong>Forge Seed</strong>.</li>
                 </ol>
                 <div class="notice-block">
                     <p class="notice-title">Draw the words; never choose them</p>
@@ -894,7 +909,7 @@
                 <p>
                     SafeKeep refuses a draw that looks made up: the same word three or more times, four or more words
                     in a row that sit next to each other in the word list, or all the words in alphabetical order. It
-                    says what it found and asks you to draw again. You also tick a box that reads &ldquo;I drew these
+                    says what it found and asks you to draw again. You also check a box that reads &ldquo;I drew these
                     words at random and flipped a real coin. I didn&rsquo;t choose any of them.&rdquo; Changing a word or a
                     flip clears the box.
                 </p>
@@ -904,7 +919,7 @@
                 </p>
                 <figure class="os-showcase">
                     <a href="v160-draw-your-own-words.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="v160-draw-your-own-words.png" alt="Draw Your Own Words mode with 11 practice words and 7 coin flips entered, the confirmation box ticked, and the Forge Seed button">
+                        <img class="img-elevated" src="v160-draw-your-own-words.png" alt="Draw Your Own Words mode with 11 practice words and 7 coin flips entered, the confirmation box checked, and the Forge Seed button">
                     </a>
                     <figcaption><strong>Draw Your Own Words</strong> with 11 practice words and 7 coin flips entered. These are public test words: never use words from a picture for a real seed.</figcaption>
                 </figure>
@@ -1230,7 +1245,7 @@
                 <p>If you run your own Bitcoin Core node, you can import the wallet into it as a watch-only descriptor wallet. This works for single-signature and multisig wallets, and uses the <strong>Output Descriptor</strong> tool rather than Seed Management.</p>
                 <ol class="wallet-steps">
                     <li>In <strong>SafeKeepVault</strong>, open <strong>Output Descriptor</strong> (under All tools &rarr; Keys &amp; Seeds) and build the descriptor for your wallet.</li>
-                    <li>If this is a brand-new wallet that has never received funds, tick the box to skip Bitcoin Core&rsquo;s blockchain rescan. Otherwise leave it unticked, so Core scans from the start of the chain and finds every past transaction.</li>
+                    <li>If this is a brand-new wallet that has never received funds, check the box to skip Bitcoin Core&rsquo;s blockchain rescan. Otherwise leave it unticked, so Core scans from the start of the chain and finds every past transaction.</li>
                     <li>Click <strong>Export for Bitcoin Core (.json)</strong>. The file saves to your Transfer Drive. Move it to the computer running Bitcoin Core by moving the flash drive, or send it from the <strong>Transfer Hub</strong>.</li>
                     <li>In the folder holding the file, create an empty watch-only wallet, then import the file. The vault shows both commands with the exact file name; they look like this:
                         <pre>bitcoin-cli -named createwallet wallet_name=safekeep-watch disable_private_keys=true blank=true
@@ -1310,7 +1325,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li><strong>Which wallet it spends from &mdash;</strong> if you saved your wallet in the <strong>Output Descriptor</strong> tool (see <a href="#output-descriptor">Output Descriptor</a>), a banner names the saved wallet the inputs come from, or warns when an input matches none of your saved wallets. A change output that is one of your saved wallet&rsquo;s own addresses is marked verified, even when the PSBT leaves out the multisig details.</li>
                     <li><strong>Summary &mdash;</strong> how much you are sending, the mining fee, the <strong>total leaving your wallet</strong>, and the change coming back. Open <strong>Spending N inputs</strong> to see each input&rsquo;s amount, address, saved wallet and, for multisig, how many signatures it has so far.</li>
                     <li><strong>Lock time and replace-by-fee &mdash;</strong> whether the transaction can&rsquo;t be mined before a certain block or date, and whether its fee can be raised later. An input that is time-locked (for example an inheritance or recovery path) gets a warning.</li>
-                    <li><strong>Compare with the address you were given &mdash;</strong> on each destination card, paste or scan the address the recipient gave you. SafeKeep compares every character and shows <strong>Identical</strong>, or <strong>Different address. Don&rsquo;t sign</strong> with the differences highlighted. It never ticks the verification box for you.</li>
+                    <li><strong>Compare with the address you were given &mdash;</strong> on each destination card, paste or scan the address the recipient gave you. SafeKeep compares every character and shows <strong>Identical</strong>, or <strong>Different address. Don&rsquo;t sign</strong> with the differences highlighted. It never checks the verification box for you.</li>
                     <li><strong>Older addresses &mdash;</strong> when a transaction spends from legacy <code>1&hellip;</code> addresses, the vault checks that the previous transaction included in the PSBT is really the one being spent, then shows the fee. If it isn&rsquo;t, the fee could be far higher than it looks, so signing is blocked.</li>
                 </ul>
                 <p>
@@ -1501,8 +1516,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         Click <strong>Lock or switch seed</strong> on the Dashboard&rsquo;s wallet card to lock. Locking is a
                         real lock, not just a screen cover: the app closes, your keys are cleared from
                         memory, the encrypted partition is closed, and the vault returns to the password
-                        prompt. Locking never powers the machine off. Scan your QR or type your password to
-                        continue.
+                        prompt. Locking never powers the machine off. Scan your QR, type your password or use
+                        your <a href="#security-keys">security key</a> to continue.
                     </li>
                     <li id="seed-storage">
                         <strong>Seed storage &mdash;</strong>
@@ -1560,6 +1575,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         Generate One for Me, with the same strength check). What is in your vault is not changed.
                         Then you unlock with the new password; the old one no longer opens the vault. If your vault
                         was set up with an easy-to-guess password, the Dashboard shows a red warning with a button to change it.
+                        In a vault that opens with <a href="#security-keys">security keys only</a>, there is no Master
+                        Passphrase, so this is hidden.
                     </li>
                     <li id="coldcard-send">
                         <strong>Coldcard &mdash;</strong>
@@ -1675,6 +1692,66 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     </a>
                     <figcaption>After unlocking a flash drive that doesn&rsquo;t keep its seed: <strong>Enter your seed</strong>.</figcaption>
                 </figure>
+            </section>
+
+            <!-- Unlocking with a security key -->
+            <section class="content-section" id="security-keys">
+                <h2 class="section-heading">Unlocking with a security key</h2>
+                <p>
+                    Since v1.67, a FIDO2 security key can unlock your vault with its PIN and a touch. The key
+                    must support the FIDO2 <strong>hmac-secret</strong> feature, as the YubiKey&nbsp;5, Security Key
+                    by Yubico, Nitrokey&nbsp;3, SoloKey&nbsp;2 and Google Titan do. Keys without it, and older
+                    U2F-only keys, are refused with a plain message. It has been tested with a YubiKey; the other
+                    brands are supported but haven&rsquo;t been tested on real hardware yet.
+                </p>
+                <p>There are three ways a vault can unlock, under <strong>How should this vault unlock?</strong>:</p>
+                <ul class="docs-list">
+                    <li><strong>Master Passphrase (recommended) &mdash;</strong> the default, unchanged: you scan or type your password.</li>
+                    <li><strong>Passphrase or security key &mdash;</strong> either one opens the vault. This is only as strong as the passphrase.</li>
+                    <li><strong>Security key only &mdash;</strong> there is no passphrase at all. Someone who copies the flash drive has nothing to guess offline, and the key allows only a few PIN guesses before it locks.</li>
+                </ul>
+
+                <h3 class="sub-heading" id="security-key-setup">Choosing it at first setup</h3>
+                <p>
+                    The choice comes right after the welcome screen. If you pick <strong>Security key only</strong>,
+                    SafeKeep explains the risk and asks you to check <strong>I understand, and want a security key
+                    only</strong>. It then adds your key: if the key has no PIN yet, you set one of at least 6
+                    characters. SafeKeep checks that the key opens the vault and offers to add a spare. No passphrase is
+                    ever created. If setup stops before a key is added, it starts again the next time you start the
+                    computer from the flash drive.
+                </p>
+
+                <h3 class="sub-heading" id="security-key-manage">Adding or removing keys later</h3>
+                <p>
+                    Go to <strong>Device Options &rarr; Security Keys &rarr; Manage Security Keys</strong> and click
+                    <strong>Lock and Manage</strong>. SafeKeep locks the vault, then on its own screens you can:
+                </p>
+                <ul class="docs-list">
+                    <li><strong>Add a key &mdash;</strong> up to 4 per vault. Adding one takes two touches, and the screen shows <strong>1 of 2</strong> and <strong>2 of 2</strong>.</li>
+                    <li><strong>Rename or remove a key &mdash;</strong> for example, when a key is lost or replaced.</li>
+                    <li><strong>Security keys only &mdash;</strong> <strong>Use security keys only (remove the Master Passphrase)</strong> removes the passphrase. Each key must open the vault first, and you confirm a warning by checking a box.</li>
+                    <li><strong>Passphrase back &mdash;</strong> <strong>Add a Master Passphrase</strong> lets the vault open with a passphrase again.</li>
+                </ul>
+
+                <h3 class="sub-heading" id="security-key-unlock">Unlocking with your key</h3>
+                <p>
+                    The unlock screen offers <strong>Use a Security Key</strong> first. Plug in the key, type its PIN,
+                    and tap the key when it blinks. The screen confirms each step: &ldquo;PIN accepted. Touch your
+                    security key now&rdquo;, then &ldquo;&#10003; Touch received. Unlocking your vault&hellip;&rdquo;
+                </p>
+                <ul class="docs-list">
+                    <li><strong>A short tap is right &mdash;</strong> holding a YubiKey for about 3 seconds makes it type a one-time code instead.</li>
+                    <li><strong>Plug it in any time &mdash;</strong> before or after you start the computer, also through a USB hub.</li>
+                </ul>
+
+                <h3 class="sub-heading" id="security-key-safety">Before you rely on it</h3>
+                <ul class="docs-list">
+                    <li><strong>Wrong PINs &mdash;</strong> after 8 wrong PINs (on most keys) the key locks for good and can never open this vault again.</li>
+                    <li><strong>Losing your keys &mdash;</strong> with <strong>Security key only</strong>, losing every key, or blocking its PIN, means the vault can&rsquo;t be opened. Your seed backup still restores your wallet, but saved wallets, the Passphrase Library and notes come back only from an <a href="#encrypted-backup">Encrypted Backup</a>.</li>
+                    <li><strong>Keep a spare &mdash;</strong> a second key, kept somewhere else, is recommended but not required.</li>
+                    <li><strong>Nothing is stored on the key &mdash;</strong> each key works for its own vault. After restoring a backup onto a new flash drive, add your keys again.</li>
+                    <li><strong>USB safety &mdash;</strong> a security key plugged in after start-up is let through, but only its FIDO2 part. Any device plugged in late that tries to type as a keyboard is muted, and the kernel&rsquo;s SysRq keys are off.</li>
+                </ul>
             </section>
 
             <!-- Updating to a new version -->
@@ -1832,7 +1909,12 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Entropy Generator &mdash;</strong>
                         Generates your master seed from the system&rsquo;s random number generator, mixed with
                         any randomness you add: dice rolls, a shuffled deck of cards, mouse movement and camera
-                        noise. Verifiable Dice mode makes a seed you can check on SeedSigner or COLDCARD.
+                        noise. The mouse card shows how many bits the mouse has added and says when its share is full (the
+                        mouse can fill at most half the meter; <strong>Reset</strong> clears it), and
+                        each <strong>Capture Video Noise</strong> turns the camera on for about a second to take 5
+                        frames. The meter and <strong>Generate Seed</strong> stay at the top while you scroll, and the
+                        pool itself is under <strong>Show the entropy pool</strong>.
+                        Verifiable Dice mode makes a seed you can check on SeedSigner or COLDCARD.
                         <a href="#draw-your-own-words">Draw Your Own Words</a> makes a seed from words you draw by hand and coin flips.
                         A live fairness check scores your physical dice rolls and, after 30 rolls,
                         warns if the die looks biased. See <a href="#generate-seed">Generating a new seed</a>.
@@ -1985,7 +2067,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         When recovering, SafeKeep shows both readings (made with SafeKeep, made on a Trezor) and
                         saves only the one you choose.
                     </li>
-                    <li>
+                    <li id="encrypted-backup">
                         <strong>Encrypted Backup &mdash;</strong>
                         Exports a fully encrypted backup of your vault to the transfer drive.
                         Everything inside is sealed &mdash; file names included &mdash; until the
@@ -2034,7 +2116,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         the QR code runs); it works
                         with the online Courier Tool at courier.safekeepbitcoin.com. It can also carry PSBT
                         files to and from the PSBT Signer, for wallets that only work with files, such as
-                        Trezor Suite.
+                        Trezor Suite. On the Receive tab, long text sent as an animated QR code from the online
+                        Courier Tool arrives whole, with its line breaks, and animated BBQr codes work too. A PSBT
+                        received this way is offered as a file to save.
                     </li>
                 </ul>
                 <p class="wallet-sig-heading">Private Data</p>
@@ -2111,8 +2195,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 </p>
                 <ul class="docs-list">
                     <li><strong>Size &mdash;</strong> anywhere from 10 to 150 mm wide, with a slider and a number box. The <strong>Template size</strong> button sets the size of the blank template. Smaller codes are fine to scan, so try the smallest your camera reads: on a Samsung Xpress M2070, a laptop camera read a 14 mm code.</li>
-                    <li><strong>Fingerprint &mdash;</strong> tick the box to print the seed fingerprint under the code.</li>
-                    <li><strong>Cutting line &mdash;</strong> tick <strong>Print a square line around it to cut along</strong> to print a thin square line around the code and, if you print it, the fingerprint. <strong>White space inside the line</strong> sets how much white stays between the code and the line, from 0.5 to 30 mm (3 mm to start). SafeKeep remembers the setting from your last printout. A close-up shows exactly the square you&rsquo;ll cut out and gives its size, and it redraws as you move the slider. With less than two squares&rsquo; worth of white, SafeKeep notes that some cameras may not read the code, so check the printout with <strong>Scan to Verify</strong>. If a very large square wouldn&rsquo;t fit on the paper, SafeKeep leaves less white and tells you.</li>
+                    <li><strong>Fingerprint &mdash;</strong> check the box to print the seed fingerprint under the code.</li>
+                    <li><strong>Cutting line &mdash;</strong> check <strong>Print a square line around it to cut along</strong> to print a thin square line around the code and, if you print it, the fingerprint. <strong>White space inside the line</strong> sets how much white stays between the code and the line, from 0.5 to 30 mm (3 mm to start). SafeKeep remembers the setting from your last printout. A close-up shows exactly the square you&rsquo;ll cut out and gives its size, and it redraws as you move the slider. With less than two squares&rsquo; worth of white, SafeKeep notes that some cameras may not read the code, so check the printout with <strong>Scan to Verify</strong>. If a very large square wouldn&rsquo;t fit on the paper, SafeKeep leaves less white and tells you.</li>
                     <li><strong>Preview &mdash;</strong> the page is shown before you print.</li>
                 </ul>
                 <div class="notice-block">
@@ -2139,7 +2223,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 </figure>
                 <figure class="os-showcase">
                     <a href="v164-seedqr-cutting-line.png" target="_blank" rel="noopener">
-                        <img class="img-elevated" src="v164-seedqr-cutting-line.png" alt="The print screen with Print a square line around it to cut along ticked: the page preview shows a thin square around the SeedQR and fingerprint, with the White space inside the line slider and a close-up of the square to cut out">
+                        <img class="img-elevated" src="v164-seedqr-cutting-line.png" alt="The print screen with Print a square line around it to cut along checked: the page preview shows a thin square around the SeedQR and fingerprint, with the White space inside the line slider and a close-up of the square to cut out">
                     </a>
                     <figcaption>The <strong>cutting line</strong>, with a SeedQR made from public test words.</figcaption>
                 </figure>
