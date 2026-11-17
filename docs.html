@@ -440,6 +440,12 @@
                         truly unbreakable credential without the risk of forgetting it, and pairs
                         seamlessly with the QR unlock workflow described in Step 1 below.
                     </li>
+                    <li>
+                        <strong>A Security Key (optional) &mdash;</strong>
+                        A FIDO2 security key with the hmac-secret feature, such as a YubiKey&nbsp;5, can unlock the
+                        vault with its PIN and a touch, as well as your password or instead of it. See
+                        <a href="#security-keys">Unlocking with a security key</a>.
+                    </li>
                 </ul>
 
                 <h3 class="sub-heading" id="components">Components</h3>
@@ -452,7 +458,7 @@
                         QR tool&mdash;this creates a secure, bidirectional data flow.
                         <ul style="margin: 0.65rem 0 0 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.93rem; color: var(--text-muted); line-height: 1.6;">
                             <li><strong>Seamless QR Unlocking:</strong> By storing your vault password in a manager on your mobile device, you can generate a QR code from that password (see Step 1). Simply display your phone to the host&rsquo;s webcam to unlock your encrypted vault instantly&mdash;combining elite cryptographic strength with a streamlined, convenient way to unlock your wallet. Keep the QR image inside the password manager, never in your photo library.</li>
-                            <li><strong>Port Security:</strong> About 30 seconds after boot, the vault blocks any new keyboard or mouse that is plugged in, to defend against &ldquo;BadUSB&rdquo; devices that pretend to be a keyboard and type commands. Other USB storage is never mounted. The only exceptions are a <strong>Coldcard</strong> or <strong>Trezor One</strong> used for co-signing, which can be plugged in at any time and can never act as a keyboard or mouse. File-based transfers should be managed by moving the drive between machines while the vault is powered down.</li>
+                            <li><strong>Port Security:</strong> About 30 seconds after boot, the vault blocks any new keyboard or mouse that is plugged in, to defend against &ldquo;BadUSB&rdquo; devices that pretend to be a keyboard and type commands. Other USB storage is never mounted. The only exceptions are a <strong>Coldcard</strong> or <strong>Trezor One</strong> used for co-signing, and a <a href="#security-keys">security key</a> used to unlock (only its FIDO2 part is let through). These can be plugged in at any time and can never act as a keyboard or mouse. File-based transfers should be managed by moving the drive between machines while the vault is powered down.</li>
                         </ul>
                     </li>
                 </ul>
@@ -467,6 +473,13 @@
                     of your flash drive&mdash;the storage layer where your keys and vault data live
                     between sessions. It is the primary cryptographic barrier protecting everything
                     inside the vault.
+                </p>
+                <p>
+                    <strong>Using a security key?</strong> A FIDO2 security key, such as a YubiKey, can unlock the
+                    vault with its PIN and a touch. With <strong>Passphrase or security key</strong>, you still need a
+                    strong password, because either one opens the vault. With <strong>Security key only</strong>,
+                    there is no password, so you can skip this step. See
+                    <a href="#security-keys">Unlocking with a security key</a>.
                 </p>
 
                 <div class="notice-block">
@@ -658,7 +671,7 @@
                 </p>
                 <p>
                     Once the vault is created, choose <strong>Continue now</strong>: you go straight to the unlock prompt,
-                    scan or type the same password, and <strong>SafeKeepVault</strong> starts, with no restart. To
+                    scan or type the same password (or use your security key), and <strong>SafeKeepVault</strong> starts, with no restart. To
                     restore from a <code>.7z</code> backup that isn&rsquo;t on the flash drive yet, continue too: on the
                     welcome screen choose <strong>I already have a backup</strong> &rarr; <strong>Encrypted backup (.7z)</strong>,
                     then <strong>Receive a Backup with the Courier</strong>, and send the backup from the <a href="courier.html">Courier Tool</a> on your phone
@@ -1794,7 +1807,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li><strong>3. Copy the backup off the flash drive &mdash;</strong> click <strong>Send with the Courier</strong> and receive the backup on your phone with the <a href="courier.html">Courier Tool</a>. Or power down the vault, plug the flash drive into your everyday computer, and copy the <code>.7z</code> file from the <strong>TRANSFER</strong> drive to that computer or to another USB drive. It is encrypted, so it is safe to hold there briefly.</li>
                     <li><strong>4. Download, verify and flash the new release &mdash;</strong> follow the <a href="download.html">Download page</a>, including all three verification steps.</li>
                     <li><strong>5. Put the backup back &mdash;</strong> if you sent it to your phone, skip this step: you receive it with the Courier in step 6. Otherwise unplug and replug the freshly flashed drive so the computer sees its new <strong>TRANSFER</strong> drive, then copy the <code>.7z</code> file onto it.</li>
-                    <li><strong>6. Boot and restore &mdash;</strong> boot the vault and create the encrypted vault as on first use (you can keep the same vault password and unlock QR), then choose <strong>Continue now</strong> and unlock it. On the welcome screen choose <strong>I already have a backup</strong> &rarr; <strong>Encrypted backup (.7z)</strong> (with a backup on your phone, first <strong>Receive a Backup with the Courier</strong> and play it from the Courier Tool), pick the file and enter its password. If the backup didn&rsquo;t include your seed, choose <strong>I already have a backup</strong> &rarr; <strong>Recovery words</strong> and enter it from your paper backup.</li>
+                    <li><strong>6. Boot and restore &mdash;</strong> boot the vault and create the encrypted vault as on first use (you can keep the same vault password and unlock QR; security keys must be added again, since nothing is stored on the key), then choose <strong>Continue now</strong> and unlock it. On the welcome screen choose <strong>I already have a backup</strong> &rarr; <strong>Encrypted backup (.7z)</strong> (with a backup on your phone, first <strong>Receive a Backup with the Courier</strong> and play it from the Courier Tool), pick the file and enter its password. If the backup didn&rsquo;t include your seed, choose <strong>I already have a backup</strong> &rarr; <strong>Recovery words</strong> and enter it from your paper backup.</li>
                     <li><strong>7. Check, then clean up &mdash;</strong> confirm the Dashboard&rsquo;s wallet card shows the fingerprint and Seed Nickname you noted in step 1. Then delete the <code>.7z</code> copy from your everyday computer, and from the Transfer Drive using the <strong>Transfer Hub</strong>.</li>
                 </ol>
                 <p>
@@ -2074,7 +2087,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         correct password is entered. Type the password twice, or scan it once from a QR code.
                         A bar shows how strong the password is, and a weak one is refused: a backup can be copied
                         to a computer and guessed far faster than the vault. Your vault password works if it came
-                        from a password manager or is 6 or more random words. After the backup is made,
+                        from a password manager or is 6 or more random words. A vault that opens with security keys
+                        only has no password, so choose one for the backup and keep it safe. After the backup is made,
                         <strong>Send with the Courier</strong> sends it to your phone, and <strong>Check this
                         backup</strong> confirms it opens with its password. <strong>Check a Backup</strong>, on the
                         same screen, does this for any backup on the Transfer Drive: it shows whether the backup&rsquo;s
