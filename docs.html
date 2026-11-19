@@ -1791,6 +1791,19 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     is still a good habit.
                 </p>
 
+                <h3 class="sub-heading" id="vault-size">Vault size</h3>
+                <p>
+                    A flash drive flashed with v1.68 or later has a <strong>900 MB</strong> vault, about 750 MB usable, up
+                    from 300 MB, and it still fits an 8 GB flash drive. First setup takes a minute or two longer while
+                    the vault is created. Updating in place keeps a drive&rsquo;s current vault, so a drive updated to
+                    v1.68 keeps its 300 MB vault; <a href="#documents">Documents</a> works there too, with less room.
+                </p>
+                <p>
+                    To move to the larger vault: make an <a href="#encrypted-backup">Encrypted Backup</a> that includes
+                    everything you keep, including <strong>Documents</strong>, flash a new flash drive with v1.68 or later,
+                    then restore the backup. The steps are the same as below, from step 1.
+                </p>
+
                 <h3 class="sub-heading" id="update-reflash">Updating from v1.46 or earlier (once)</h3>
                 <p>
                     Flash drives set up with v1.46 or earlier have the older layout and can&rsquo;t update in place, so
@@ -1803,7 +1816,7 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                 </p>
                 <ol class="docs-list">
                     <li><strong>1. Note your fingerprint &mdash;</strong> write down the fingerprint and the three-word Seed Nickname shown on the Dashboard&rsquo;s wallet card (with no passphrase applied), so you can confirm the same seed after the update.</li>
-                    <li><strong>2. Make an encrypted backup &mdash;</strong> click <strong>Back up</strong> on the Dashboard (or <strong>Encrypted Backup</strong> under All tools &rarr; Backup &amp; Recovery) and select what to keep: Encrypted Notes, Application Settings, Saved Passphrases and 2FA Backup. We recommend leaving <strong>Master Seed</strong> unticked and re-entering your seed from your paper backup in step 6 instead: it keeps the seed off the Transfer Drive, and it proves your paper backup works. The backup is saved to the Transfer Drive as a <code>.7z</code> file. Click <strong>Check this backup</strong> and enter its password to confirm it opens.</li>
+                    <li><strong>2. Make an encrypted backup &mdash;</strong> click <strong>Back up</strong> on the Dashboard (or <strong>Encrypted Backup</strong> under All tools &rarr; Backup &amp; Recovery) and select what to keep: Encrypted Notes, Documents, Application Settings, Saved Passphrases and 2FA Backup. We recommend leaving <strong>Master Seed</strong> unchecked and re-entering your seed from your paper backup in step 6 instead: it keeps the seed off the Transfer Drive, and it proves your paper backup works. The backup is saved to the Transfer Drive as a <code>.7z</code> file. Click <strong>Check this backup</strong> and enter its password to confirm it opens.</li>
                     <li><strong>3. Copy the backup off the flash drive &mdash;</strong> click <strong>Send with the Courier</strong> and receive the backup on your phone with the <a href="courier.html">Courier Tool</a>. Or power down the vault, plug the flash drive into your everyday computer, and copy the <code>.7z</code> file from the <strong>TRANSFER</strong> drive to that computer or to another USB drive. It is encrypted, so it is safe to hold there briefly.</li>
                     <li><strong>4. Download, verify and flash the new release &mdash;</strong> follow the <a href="download.html">Download page</a>, including all three verification steps.</li>
                     <li><strong>5. Put the backup back &mdash;</strong> if you sent it to your phone, skip this step: you receive it with the Courier in step 6. Otherwise unplug and replug the freshly flashed drive so the computer sees its new <strong>TRANSFER</strong> drive, then copy the <code>.7z</code> file onto it.</li>
@@ -1926,7 +1939,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         mouse can fill at most half the meter; <strong>Reset</strong> clears it), and
                         each <strong>Capture Video Noise</strong> turns the camera on for about a second to take 5
                         frames. The meter and <strong>Generate Seed</strong> stay at the top while you scroll, and the
-                        pool itself is under <strong>Show the entropy pool</strong>.
+                        pool itself is under <strong>Show the entropy pool</strong>. The result shows your seed words first, with the hex
+                        and binary under <strong>Show technical details (hex and binary)</strong>.
                         Verifiable Dice mode makes a seed you can check on SeedSigner or COLDCARD.
                         <a href="#draw-your-own-words">Draw Your Own Words</a> makes a seed from words you draw by hand and coin flips.
                         A live fairness check scores your physical dice rolls and, after 30 rolls,
@@ -2093,6 +2107,12 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         backup</strong> confirms it opens with its password. <strong>Check a Backup</strong>, on the
                         same screen, does this for any backup on the Transfer Drive: it shows whether the backup&rsquo;s
                         seed is the one loaded now and what else it holds, and restores nothing.
+                        <br><br>
+                        Since v1.68 a backup can include your <a href="#documents">Documents</a> (the
+                        <strong>Documents</strong> item), and restoring shows how many documents a backup holds. In a backup
+                        opened with 7-Zip on another computer, documents are stored under code names in a
+                        <code>documents</code> folder, and its <code>README - document names.txt</code> says which file is
+                        which document.
                     </li>
                     <li>
                         <strong>Wallet Record &mdash;</strong>
@@ -2141,6 +2161,21 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Encrypted Notes &mdash;</strong>
                         Encrypted notes stored inside the vault. Keep recovery instructions,
                         multisig details, and setup notes sealed within the vault. For your eyes only.
+                        <strong>Paste</strong> in the note editor works at once, without asking for clipboard permission.
+                    </li>
+                    <li id="documents">
+                        <strong>Documents &mdash;</strong>
+                        In <strong>Encrypted Notes &rarr; Documents</strong>, next to your notes, keep files such as a
+                        letter of instruction, a will, recovery steps or scans in the encrypted vault (since v1.68).
+                        <ul style="margin: 0.65rem 0 0 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.93rem; color: var(--text-muted); line-height: 1.6;">
+                            <li><strong>Import from Transfer Drive:</strong> choose a file on the Transfer Drive and it&rsquo;s saved in the vault, checked byte for byte. <strong>Remove it from the Transfer Drive after importing</strong> is checked by default, because the Transfer Drive isn&rsquo;t encrypted, and removing a file there isn&rsquo;t a secure erase.</li>
+                            <li><strong>Shown in SafeKeep:</strong> PDFs (page by page, with zoom), JPEG, PNG, GIF and WebP images, text files (<code>.txt</code>, <code>.md</code>, <code>.csv</code>) and OpenDocument text (<code>.odt</code>), which appears as a reading view with its headings, lists, tables, images and footnotes, not the exact page layout.</li>
+                            <li><strong>Stored and exported only:</strong> any other file, such as Word documents or videos, is kept safely but not shown.</li>
+                            <li><strong>Rename, Export and Delete:</strong> on each document. <strong>Export</strong> copies it back to the Transfer Drive, with a reminder that the copy there isn&rsquo;t encrypted.</li>
+                            <li><strong>Size:</strong> up to 100 MB per document. The tab shows how much room the vault has left (see <a href="#vault-size">Vault size</a>).</li>
+                            <li><strong>Safe to open:</strong> documents are shown in a sealed viewer that can&rsquo;t read your vault or reach the rest of SafeKeep, even if a file were made to attack it. PDFs are drawn by pdf.js, never by the browser&rsquo;s own PDF viewer, and nothing in a document can run.</li>
+                            <li><strong>Temporary Session:</strong> not available, since documents live in the vault.</li>
+                        </ul>
                     </li>
                     <li>
                         <strong>2FA Backup &mdash;</strong>
