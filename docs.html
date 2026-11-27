@@ -1008,6 +1008,14 @@
                     wallet software direct access to any files the vault has written to it &mdash; this is
                     how you carry files between the two computers.
                 </p>
+                <p>
+                    The image is made for 8 GB flash drives. On a larger flash drive (16, 32 or 64 GB, for example)
+                    flashed with v1.69 or later, the Transfer Drive grows to fill the rest of the drive at first
+                    setup, so a Mac or PC shows one large <strong>TRANSFER</strong> drive. This happens only while
+                    the Transfer Drive is still empty: if you copied an Encrypted Backup onto it before first setup,
+                    it is left as it is. Drives that are already set up, or that update in place, keep their current
+                    Transfer Drive. The vault stays 900 MB.
+                </p>
                 <div class="notice-block">
                     <p class="notice-title">No setup needed</p>
                     <p>
@@ -1572,7 +1580,10 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                     <li>
                         <strong>Auto-Lock &amp; Display Sleep &mdash;</strong>
                         In <strong>Device Options</strong>, set how many idle minutes pass before the vault
-                        locks itself or the screen goes dark. Set either to 0 to turn it off.
+                        locks itself or the screen goes dark. Set either to 0 to turn it off. SafeKeep never puts the
+                        computer to sleep: closing the lid or pressing a sleep key does nothing, so Auto-Lock and
+                        Auto-Off keep counting while the lid is closed (since v1.69). If a computer sleeps anyway,
+                        SafeKeep locks on waking once the Auto-Lock time has passed.
                     </li>
                     <li>
                         <strong>Auto-Off &mdash;</strong>
@@ -1969,7 +1980,8 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         Manages BIP-39 passphrases (the &ldquo;25th word&rdquo;) inside the encrypted
                         vault. Loads directly into the PSBT Signer and other tools when you need a
                         passphrase-protected wallet. <strong>Generate</strong> opens a generator right under
-                        the passphrase field; changing the separator or capitalization keeps the same words.
+                        the passphrase field. It starts at 6 words (66 bits); 4 and 8 words are there too, and the
+                        strength meter shows the bits for each. Changing the separator or capitalization keeps the same words.
                         A generated passphrase doesn&rsquo;t need re-typing: write it down (or print it), then
                         type it back from your copy to unlock <strong>Save</strong>. <strong>Use this wallet now</strong>
                         switches straight to the passphrase wallet. A printed backup always shows the fingerprint
@@ -2007,9 +2019,11 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Save Wallet</strong>. The vault keeps it in the encrypted partition, and the
                         <strong>PSBT Signer</strong> then shows which of your wallets a transaction spends from and
                         confirms that its change comes back to you (see <a href="#sign-review">Reviewing the
-                        Transaction</a>) and <strong>Show an address</strong> offers it in its wallet list. Your saved wallets are listed in the tool, each with <strong>Open</strong> and
-                        <strong>Remove</strong> buttons. <strong>Open</strong> shows the wallet&rsquo;s descriptor and
-                        addresses and sets the form above to it: for a multisig, the other cosigners&rsquo; keys are filled
+                        Transaction</a>) and <strong>Show an address</strong> offers it in its wallet list. Your saved wallets are on the tool&rsquo;s own <strong>Saved Wallets</strong> tab, each with <strong>Open</strong>,
+                        <strong>Rename</strong> and <strong>Remove</strong>. <strong>Open</strong> shows the wallet&rsquo;s descriptor and
+                        addresses, and <strong>How this wallet is built</strong>: its script type, how many keys must sign,
+                        and each key&rsquo;s fingerprint, derivation path and extended public key, with the key from this
+                        seed marked. It also sets the form to that wallet: for a multisig, the other cosigners&rsquo; keys are filled
                         in, so <strong>Generate Descriptor</strong> rebuilds the same wallet.
                         <br><br>
                         Each cosigner also has <strong>Coldcard (USB)</strong> and <strong>Trezor (USB)</strong> buttons.
@@ -2106,7 +2120,9 @@ bitcoin-cli -rpcwallet=safekeep-watch importdescriptors "$(cat SAFEKEEP-CORE-IMP
                         <strong>Send with the Courier</strong> sends it to your phone, and <strong>Check this
                         backup</strong> confirms it opens with its password. <strong>Check a Backup</strong>, on the
                         same screen, does this for any backup on the Transfer Drive: it shows whether the backup&rsquo;s
-                        seed is the one loaded now and what else it holds, and restores nothing.
+                        seed is the one loaded now and what else it holds, and restores nothing. Restoring brings back
+                        only your data: notes, passphrases, 2FA codes, settings, documents and master seed. Anything
+                        else in a backup is skipped (since v1.69).
                         <br><br>
                         Since v1.68 a backup can include your <a href="#documents">Documents</a> (the
                         <strong>Documents</strong> item), and restoring shows how many documents a backup holds. In a backup
